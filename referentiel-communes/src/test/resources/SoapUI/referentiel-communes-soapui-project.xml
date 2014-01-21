@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="referentiel-communes" resourceRoot="" soapui-version="4.5.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="referentiel-communes-JAXWSBinding" type="wsdl" bindingName="{http://ch.ge.ael.referentiels.communes/referentiel-communes}referentiel-communes-JAXWSBinding" soapVersion="1_1" anonymous="optional" definition="http://127.0.0.1:26000/referentiel/communes/referentiel-communes?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://127.0.0.1:26000/referentiel/communes/referentiel-communes?wsdl"><con:part><con:url>http://127.0.0.1:26000/referentiel/communes/referentiel-communes?wsdl</con:url><con:content><![CDATA[<definitions name="referentiel-communes" targetNamespace="http://ch.ge.ael.referentiels.communes/referentiel-communes" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ch.ge.ael.referentiels.communes/referentiel-communes" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xs:schema targetNamespace="http://ch.ge.ael.referentiels.communes/referentiel-communes" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ReferentielCommunesException" type="tns:ReferentielCommunesException"/>
+      <xs:element name="canton">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="GDEKT" type="xs:string"/>
+            <xs:element name="GDEKTNA" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="district">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="GDEBZNR" type="xs:int"/>
+                  <xs:element name="GDEBZNA" type="xs:string"/>
+                  <xs:element maxOccurs="unbounded" name="commune">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="GDENR" type="xs:int"/>
+                        <xs:element name="GDENAME" type="xs:string"/>
+                        <xs:element name="GDENAMK" type="xs:string"/>
+                        <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="commune">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="GDENR" type="xs:int"/>
+            <xs:element name="GDENAME" type="xs:string"/>
+            <xs:element name="GDENAMK" type="xs:string"/>
+            <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="district">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="GDEBZNR" type="xs:int"/>
+            <xs:element name="GDEBZNA" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="commune">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="GDENR" type="xs:int"/>
+                  <xs:element name="GDENAME" type="xs:string"/>
+                  <xs:element name="GDENAMK" type="xs:string"/>
+                  <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCanton" type="tns:getCanton"/>
+      <xs:element name="getCantonResponse" type="tns:getCantonResponse"/>
+      <xs:element name="getCantons" type="tns:getCantons"/>
+      <xs:element name="getCantonsResponse" type="tns:getCantonsResponse"/>
+      <xs:element name="getCommune" type="tns:getCommune"/>
+      <xs:element name="getCommuneResponse" type="tns:getCommuneResponse"/>
+      <xs:element name="getCommunesByCanton" type="tns:getCommunesByCanton"/>
+      <xs:element name="getCommunesByCantonResponse" type="tns:getCommunesByCantonResponse"/>
+      <xs:element name="getCommunesByDistrict" type="tns:getCommunesByDistrict"/>
+      <xs:element name="getCommunesByDistrictResponse" type="tns:getCommunesByDistrictResponse"/>
+      <xs:element name="getDistrict" type="tns:getDistrict"/>
+      <xs:element name="getDistrictResponse" type="tns:getDistrictResponse"/>
+      <xs:element name="getDistrictsByCanton" type="tns:getDistrictsByCanton"/>
+      <xs:element name="getDistrictsByCantonResponse" type="tns:getDistrictsByCantonResponse"/>
+      <xs:complexType name="getCantons">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getCantonsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="canton">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDEKT" type="xs:string"/>
+                <xs:element name="GDEKTNA" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="district">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="GDEBZNR" type="xs:int"/>
+                      <xs:element name="GDEBZNA" type="xs:string"/>
+                      <xs:element maxOccurs="unbounded" name="commune">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="GDENR" type="xs:int"/>
+                            <xs:element name="GDENAME" type="xs:string"/>
+                            <xs:element name="GDENAMK" type="xs:string"/>
+                            <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReferentielCommunesException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCanton">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GDEKT" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCantonResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="canton">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDEKT" type="xs:string"/>
+                <xs:element name="GDEKTNA" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="district">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="GDEBZNR" type="xs:int"/>
+                      <xs:element name="GDEBZNA" type="xs:string"/>
+                      <xs:element maxOccurs="unbounded" name="commune">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="GDENR" type="xs:int"/>
+                            <xs:element name="GDENAME" type="xs:string"/>
+                            <xs:element name="GDENAMK" type="xs:string"/>
+                            <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDistrictsByCanton">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GDEKT" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDistrictsByCantonResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="district">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDEBZNR" type="xs:int"/>
+                <xs:element name="GDEBZNA" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="commune">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="GDENR" type="xs:int"/>
+                      <xs:element name="GDENAME" type="xs:string"/>
+                      <xs:element name="GDENAMK" type="xs:string"/>
+                      <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDistrict">
+        <xs:sequence>
+          <xs:element name="GDEBZNR" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDistrictResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="district">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDEBZNR" type="xs:int"/>
+                <xs:element name="GDEBZNA" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="commune">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="GDENR" type="xs:int"/>
+                      <xs:element name="GDENAME" type="xs:string"/>
+                      <xs:element name="GDENAMK" type="xs:string"/>
+                      <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommunesByDistrict">
+        <xs:sequence>
+          <xs:element name="GDEBZNR" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommunesByDistrictResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="commune">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDENR" type="xs:int"/>
+                <xs:element name="GDENAME" type="xs:string"/>
+                <xs:element name="GDENAMK" type="xs:string"/>
+                <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommunesByCanton">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GDEKT" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommunesByCantonResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="commune">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDENR" type="xs:int"/>
+                <xs:element name="GDENAME" type="xs:string"/>
+                <xs:element name="GDENAMK" type="xs:string"/>
+                <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommune">
+        <xs:sequence>
+          <xs:element name="GDENR" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCommuneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="commune">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GDENR" type="xs:int"/>
+                <xs:element name="GDENAME" type="xs:string"/>
+                <xs:element name="GDENAMK" type="xs:string"/>
+                <xs:element minOccurs="0" name="GDEMUTDAT" type="xs:date"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="referentiel-communes-JAXWS_getCantonsResponse">
+    <part element="tns:getCantonsResponse" name="getCantonsResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommune">
+    <part element="tns:getCommune" name="getCommune"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommunesByCantonResponse">
+    <part element="tns:getCommunesByCantonResponse" name="getCommunesByCantonResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getDistrictsByCantonResponse">
+    <part element="tns:getDistrictsByCantonResponse" name="getDistrictsByCantonResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCantonResponse">
+    <part element="tns:getCantonResponse" name="getCantonResponse"/>
+  </message>
+  <message name="ReferentielCommunesException">
+    <part element="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommunesByDistrictResponse">
+    <part element="tns:getCommunesByDistrictResponse" name="getCommunesByDistrictResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommunesByCanton">
+    <part element="tns:getCommunesByCanton" name="getCommunesByCanton"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommuneResponse">
+    <part element="tns:getCommuneResponse" name="getCommuneResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCommunesByDistrict">
+    <part element="tns:getCommunesByDistrict" name="getCommunesByDistrict"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getDistrict">
+    <part element="tns:getDistrict" name="getDistrict"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getDistrictResponse">
+    <part element="tns:getDistrictResponse" name="getDistrictResponse"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getDistrictsByCanton">
+    <part element="tns:getDistrictsByCanton" name="getDistrictsByCanton"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCantons">
+    <part element="tns:getCantons" name="getCantons"/>
+  </message>
+  <message name="referentiel-communes-JAXWS_getCanton">
+    <part element="tns:getCanton" name="getCanton"/>
+  </message>
+  <portType name="referentiel-communes-JAXWS">
+    <operation name="getCanton" parameterOrder="getCanton">
+      <input message="tns:referentiel-communes-JAXWS_getCanton"/>
+      <output message="tns:referentiel-communes-JAXWS_getCantonResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getCantons" parameterOrder="getCantons">
+      <input message="tns:referentiel-communes-JAXWS_getCantons"/>
+      <output message="tns:referentiel-communes-JAXWS_getCantonsResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getCommune" parameterOrder="getCommune">
+      <input message="tns:referentiel-communes-JAXWS_getCommune"/>
+      <output message="tns:referentiel-communes-JAXWS_getCommuneResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getCommunesByCanton" parameterOrder="getCommunesByCanton">
+      <input message="tns:referentiel-communes-JAXWS_getCommunesByCanton"/>
+      <output message="tns:referentiel-communes-JAXWS_getCommunesByCantonResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getCommunesByDistrict" parameterOrder="getCommunesByDistrict">
+      <input message="tns:referentiel-communes-JAXWS_getCommunesByDistrict"/>
+      <output message="tns:referentiel-communes-JAXWS_getCommunesByDistrictResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getDistrict" parameterOrder="getDistrict">
+      <input message="tns:referentiel-communes-JAXWS_getDistrict"/>
+      <output message="tns:referentiel-communes-JAXWS_getDistrictResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+    <operation name="getDistrictsByCanton" parameterOrder="getDistrictsByCanton">
+      <input message="tns:referentiel-communes-JAXWS_getDistrictsByCanton"/>
+      <output message="tns:referentiel-communes-JAXWS_getDistrictsByCantonResponse"/>
+      <fault message="tns:ReferentielCommunesException" name="ReferentielCommunesException"/>
+    </operation>
+  </portType>
+  <binding name="referentiel-communes-JAXWSBinding" type="tns:referentiel-communes-JAXWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getCanton">
+      <soap:operation soapAction="getCanton"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getCantons">
+      <soap:operation soapAction="getCantons"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getCommune">
+      <soap:operation soapAction="getCommune"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getCommunesByCanton">
+      <soap:operation soapAction="getCommunesByCanton"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getCommunesByDistrict">
+      <soap:operation soapAction="getCommunesByDistrict"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDistrict">
+      <soap:operation soapAction="getDistrict"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDistrictsByCanton">
+      <soap:operation soapAction="getDistrictsByCanton"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ReferentielCommunesException">
+        <soap:fault name="ReferentielCommunesException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="referentiel-communes">
+    <port binding="tns:referentiel-communes-JAXWSBinding" name="referentiel-communes">
+      <soap:address location="http://127.0.0.1:26000/referentiel/communes/referentiel-communes"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:26000/referentiel/communes/referentiel-communes</con:endpoint><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint></con:endpoints><con:operation isOneWay="false" action="getCanton" name="getCanton" bindingOperationName="getCanton" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>GE</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="ZH" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="XX" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>XX</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCanton"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getCantons" name="getCantons" bindingOperationName="getCantons" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="All" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCantons/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCantons"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getCommune" name="getCommune" bindingOperationName="getCommune" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE (6601)" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>6601</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommune"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommune"/><con:wsrmConfig version="1.2"/></con:call><con:call name="0000" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>0000</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommune"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getCommunesByCanton" name="getCommunesByCanton" bindingOperationName="getCommunesByCanton" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>GE</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="ZH" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="XX" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>XX</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByCanton"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getCommunesByDistrict" name="getCommunesByDistrict" bindingOperationName="getCommunesByDistrict" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE (2500)" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>2500</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByDistrict"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByDistrict"/><con:wsrmConfig version="1.2"/></con:call><con:call name="0000" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>0000</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getCommunesByDistrict"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getDistrict" name="getDistrict" bindingOperationName="getDistrict" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE (2500)" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+         <GDEBZNR>2500</GDEBZNR>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrict"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrict"/><con:wsrmConfig version="1.2"/></con:call><con:call name="0000" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+         <GDEBZNR>0000</GDEBZNR>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrict"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="getDistrictsByCanton" name="getDistrictsByCanton" bindingOperationName="getDistrictsByCanton" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="GE" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+         <!--Optional:-->
+         <GDEKT>GE</GDEKT>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrictsByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="ZH" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrictsByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Null" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrictsByCanton"/><con:wsrmConfig version="1.2"/></con:call><con:call name="XX" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+         <!--Optional:-->
+         <GDEKT>XX</GDEKT>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getDistrictsByCanton"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="referentiel-communes-JAXWSBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="referentiel-communes-JAXWSBinding TestSuite" searchProperties="true" id="60386f69-7b4e-4680-9bf5-be8a9ce9e4e3"><con:settings/><con:testStep type="request" name="2.getCantons"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCantons</con:operation><con:request name="2.getCantons"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCantons/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//canton)</path><content>26</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCantons" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="3.1.getCanton(GE)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCanton</con:operation><con:request name="3.1.getCanton(GE)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <GDEKT>GE</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//canton)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Canton=GE"><con:configuration><path>//canton/GDEKT</path><content>GE</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="3.2.getCanton(ZH)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCanton</con:operation><con:request name="3.2.getCanton(ZH)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//canton)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="canton=ZH"><con:configuration><path>//canton/GDEKT</path><content>ZH</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="3.3.getCanton(null)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCanton</con:operation><con:request name="3.3.getCanton(null)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>?</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//canton)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="3.4.getCanton(XX)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCanton</con:operation><con:request name="3.4.getCanton(XX)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCanton>
+         <!--Optional:-->
+         <GDEKT>XX</GDEKT>
+      </ref:getCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//canton)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="4.1.getDistrict(2500)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrict</con:operation><con:request name="4.1.getDistrict(2500)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+         <GDEBZNR>2500</GDEBZNR>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//district)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="District=2500"><con:configuration><path>//district/GDEBZNR</path><content>2500</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="4.2.getDistrict(0)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrict</con:operation><con:request name="4.2.getDistrict(0)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+         <GDEBZNR>0</GDEBZNR>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//district)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="4.3.getDistrict()"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrict</con:operation><con:request name="4.3.getDistrict()"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrict>
+      </ref:getDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//district)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="5.1.getDistrictsByCanton(GE)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrictsByCanton</con:operation><con:request name="5.1.getDistrictsByCanton(GE)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+         <!--Optional:-->
+         <GDEKT>GE</GDEKT>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//district)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="canton=GE"><con:configuration><path>//district/GDEBZNR</path><content>2500</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrictsByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="5.2.getDistrictsByCanton(ZH)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrictsByCanton</con:operation><con:request name="5.2.getDistrictsByCanton(ZH)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//district)</path><content>12</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDEBZNR=110"><con:configuration><path>//district/GDEBZNR</path><content>110</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDEBZNR=101"><con:configuration><path>//district/GDEBZNR</path><content>101</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrictsByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="5.3.getDistrictsByCanton(null)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrictsByCanton</con:operation><con:request name="5.3.getDistrictsByCanton(null)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//districts)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrictsByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="5.4.getDistrictsByCanton(XX)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getDistrictsByCanton</con:operation><con:request name="5.4.getDistrictsByCanton(XX)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getDistrictsByCanton>
+      </ref:getDistrictsByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//districts)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getDistrictsByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="6.1. getCommune(6621)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommune</con:operation><con:request name="6.1. getCommune(6621)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>6621</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6621"><con:configuration><path>//commune/GDENR</path><content>6621</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommune" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="6.2. getCommune(1001)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommune</con:operation><con:request name="6.2. getCommune(1001)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>1001</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6621"><con:configuration><path>//commune/GDENR</path><content>1001</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommune" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="6.3. getCommune(9999)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommune</con:operation><con:request name="6.3. getCommune(9999)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>9999</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommune" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="6.4. getCommune(0)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommune</con:operation><con:request name="6.4. getCommune(0)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+         <GDENR>0</GDENR>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommune" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="6.5. getCommune(null)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommune</con:operation><con:request name="6.5. getCommune(null)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommune>
+      </ref:getCommune>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommune" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="7.1. getCommunesByCanton(GE)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByCanton</con:operation><con:request name="7.1. getCommunesByCanton(GE)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>GE</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>45</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6604"><con:configuration><path>//commune/GDENR</path><content>6604</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6624"><con:configuration><path>//commune/GDENR</path><content>6624</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="7.2. getCommunesByCanton(ZH)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByCanton</con:operation><con:request name="7.2. getCommunesByCanton(ZH)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>ZH</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>170</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=1"><con:configuration><path>//commune/GDENR</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=298"><con:configuration><path>//commune/GDENR</path><content>298</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="7.3. getCommunesByCanton(XX)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByCanton</con:operation><con:request name="7.3. getCommunesByCanton(XX)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+         <!--Optional:-->
+         <GDEKT>XX</GDEKT>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//communes)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="7.4. getCommunesByCanton(null)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByCanton</con:operation><con:request name="7.4. getCommunesByCanton(null)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByCanton>
+      </ref:getCommunesByCanton>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//communes)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByCanton" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="8.1. getCommunesByDistrict(2500)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByDistrict</con:operation><con:request name="8.1. getCommunesByDistrict(2500)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>2500</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>45</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6601"><con:configuration><path>//commune/GDENR</path><content>6601</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=6645"><con:configuration><path>//commune/GDENR</path><content>6645</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="8.2. getCommunesByDistrict(101)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByDistrict</con:operation><con:request name="8.2. getCommunesByDistrict(101)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>101</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//commune)</path><content>14</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=1"><con:configuration><path>//commune/GDENR</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="GDENR=14"><con:configuration><path>//commune/GDENR</path><content>14</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="8.3. getCommunesByDistrict(9999)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByDistrict</con:operation><con:request name="8.3. getCommunesByDistrict(9999)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>9999</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//communes)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="8.4. getCommunesByDistrict(0)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByDistrict</con:operation><con:request name="8.4. getCommunesByDistrict(0)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+         <GDEBZNR>0</GDEBZNR>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//communes)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="8.5. getCommunesByDistrict(null)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-communes-JAXWSBinding</con:interface><con:operation>getCommunesByDistrict</con:operation><con:request name="8.5. getCommunesByDistrict(null)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://oslo2:20000/referentiel/communes/referentiel-communes</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.ael.referentiels.communes/referentiel-communes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ref:getCommunesByDistrict>
+      </ref:getCommunesByDistrict>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>count(//communes)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getCommunesByDistrict" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>20</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>200</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>

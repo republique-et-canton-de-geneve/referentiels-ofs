@@ -1,0 +1,34 @@
+LOT DE TYPE TP SIMPLE
+=====================
+
+LOT PRODUIT PAR MELUSINE
+
+IDENTIFICATION
+==============
+
+groupe: ${pom.groupId}
+projet: ${project.name}
+artefact: ${pom.artifactId}
+packaging: ${pom.packaging}
+version: ${pom.version}
+
+nom final du lot: ${pom.build.finalName}
+
+DETAIL
+======
+
+Un lot de type TP SIMPLE consiste en une archive (*.zip ou *.tar) dont la structure
+est la suivante:
+
+	/lib
+		tous les jars nécessaires à l'exécution (en l'occurrence: un ear)
+
+	/scripts
+		les scripts (sql) associés
+
+	DossierExploitation.doc
+	
+L'installation manuelle du lot "tp_simple" consiste à décompresser l'archive dans le directory
+adéquat. Il suffit ensuite de déployer l'ear sur le serveur d'application.
+
+

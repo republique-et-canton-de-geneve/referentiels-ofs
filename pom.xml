@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.ge.cti</groupId>
+		<artifactId>ct_jee5_parent</artifactId>
+		<version>1.0.83</version>
+	</parent>
+
+	<groupId>ch.ge.cti.ct.referentiels</groupId>
+	<artifactId>ct_referentiels-ofs</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>${project.groupId}:${project.artifactId} parent</name>
+
+	<description>
+		
+	</description>
+
+	<scm>
+		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/referentiels/ct_referentiels-ofs/trunk</developerConnection>
+		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/referentiels/ct_referentiels-ofs/trunk</connection>
+	</scm>
+
+	<modules>
+		<module>referentiels-api</module>
+		<module>referentiels-ofs-ear</module>
+		<module>referentiel-communes</module>
+<!-- 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
+		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<developers>
+		<developer>
+			<id>JDE</id>
+			<name>Jacques Desmazières (CE-ASI)</name>
+		</developer>
+	</developers>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.sdmxsource</groupId>
+				<artifactId>SdmxStructureParser</artifactId>
+				<version>1.0.5</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>SdmxEdiParser</artifactId>
+						<groupId>org.sdmxsource</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>SdmxQueryBuilder</artifactId>
+						<groupId>org.sdmxsource</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>15.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>0.6.4</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.ge.cti.ct.act</groupId>
+				<artifactId>ct_configuration</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.7.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans-xpath</artifactId>
+				<version>2.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>

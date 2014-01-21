@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<!-- definition of simple elements -->
+	<xs:element name="id" type="xs:int"/>
+	<xs:element name="code" type="xs:string"/>
+	<xs:element name="nom" type="xs:string"/>
+	<xs:element name="nom-court" type="xs:string"/>
+	<xs:element name="validFrom" type="xs:date"/>
+	<xs:element name="validTo" type="xs:date"/>
+	<xs:attribute name="id" type="xs:string"/>
+	<xs:attribute name="date" type="xs:date"/>
+
+	<xs:element name="referentiel-communes">
+		<xs:annotation>
+			<xs:documentation>
+				Source: http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/blank/blank/gem_liste/03.html
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="canton" maxOccurs="unbounded" minOccurs="1" />
+			</xs:sequence>
+			<xs:attribute ref="id" use="optional" />
+			<xs:attribute ref="date" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="canton">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="code" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="nom" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="nom-court" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="validFrom" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="validTo" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="district">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="nom" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="nom-court" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="validFrom" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="validTo" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="commune">
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element ref="id" minOccurs="1" maxOccurs="1" />
+					<xs:element ref="nom" minOccurs="1" maxOccurs="1" />
+					<xs:element ref="nom-court" minOccurs="1" maxOccurs="1" />
+					<xs:element ref="validFrom" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="validTo" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
