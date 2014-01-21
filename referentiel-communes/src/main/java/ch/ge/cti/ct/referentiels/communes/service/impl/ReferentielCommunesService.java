@@ -43,9 +43,6 @@ public enum ReferentielCommunesService implements
 	public List<Canton> getCantons() throws ReferentielOfsException {
 		LOG.debug("getCantons()");
 		return getCantons(new Date());
-		//		return FluentIterable.from(
-		//				ReferentielDataSingleton.instance.getData().getCanton())
-		//				.toSortedList(new CantonComparator());
 	}
 
 	@Override
@@ -63,16 +60,6 @@ public enum ReferentielCommunesService implements
 			throws ReferentielOfsException {
 		LOG.debug("getDistricts(codeCanton='{}')", codeCanton);
 		return getDistricts(codeCanton, new Date());
-
-		//		if (StringUtils.isBlank(codeCanton)) {
-		//			return null;
-		//		}
-		//		// liste de 1 canton ou vide
-		//		final FluentIterable<Canton> cantons = extractCanton(codeCanton, null);
-		//
-		//		return FluentIterable.from(cantons.toList())
-		//				.transformAndConcat(new ExtractDistrictFunction())
-		//				.toSortedList(new DistrictComparator());
 	}
 
 	@Override
@@ -280,10 +267,10 @@ public enum ReferentielCommunesService implements
 		@Override
 		public boolean apply(final Canton canton) {
 			return (dateValid == null)
-					|| (canton.getValidFrom() == null || canton.getValidFrom()
-							.getTime() <= dateValid.getTime())
-					&& (canton.getValidTo() == null || canton.getValidTo()
-							.getTime() >= dateValid.getTime());
+					|| ((canton.getValidFrom() == null || canton.getValidFrom()
+							.getTime() <= dateValid.getTime()) && (canton
+							.getValidTo() == null || canton.getValidTo()
+							.getTime() >= dateValid.getTime()));
 		}
 	}
 
@@ -297,10 +284,10 @@ public enum ReferentielCommunesService implements
 		@Override
 		public boolean apply(final District district) {
 			return (dateValid == null)
-					|| (district.getValidFrom() == null || district
-							.getValidFrom().getTime() <= dateValid.getTime())
-					&& (district.getValidTo() == null || district.getValidTo()
-							.getTime() >= dateValid.getTime());
+					|| ((district.getValidFrom() == null || district
+							.getValidFrom().getTime() <= dateValid.getTime()) && (district
+							.getValidTo() == null || district.getValidTo()
+							.getTime() >= dateValid.getTime()));
 		}
 	}
 
@@ -314,10 +301,10 @@ public enum ReferentielCommunesService implements
 		@Override
 		public boolean apply(final Commune commune) {
 			return (dateValid == null)
-					|| (commune.getValidFrom() == null || commune
-							.getValidFrom().getTime() <= dateValid.getTime())
-					&& (commune.getValidTo() == null || commune.getValidTo()
-							.getTime() >= dateValid.getTime());
+					|| ((commune.getValidFrom() == null || commune
+							.getValidFrom().getTime() <= dateValid.getTime()) && (commune
+							.getValidTo() == null || commune.getValidTo()
+							.getTime() >= dateValid.getTime()));
 		}
 	}
 

@@ -69,7 +69,8 @@ public class ReferentielOfsCacheIntercept {
 	/**
 	 * Construction de la clef de cache pour l'invocation de la méthode<br/>
 	 * Le premier paramètre d'appel est utilisé comme clef<br/>
-	 * Si la méthode n'a pas de paramètre, alors on retourne une constante
+	 * Si la méthode n'a pas de paramètre, alors on retourne une constante <br/>
+	 * TODO: rendre + générique
 	 * 
 	 * @param ctx contexte d'appel
 	 * @return clef de cache

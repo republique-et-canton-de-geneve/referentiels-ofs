@@ -65,7 +65,7 @@ public abstract class AbstractServiceDataReader<T> {
 	 * @return url du fichier XML
 	 * @throws ReferentielOfsException erreur de traitement
 	 */
-	public URL getURL() throws ReferentielOfsException {
+	private URL getURL() throws ReferentielOfsException {
 		try {
 			final String filename = DistributionFactory.getConfiguration()
 					.getString(getConfigurationEntry());
@@ -82,7 +82,12 @@ public abstract class AbstractServiceDataReader<T> {
 		}
 	}
 
-	/** getter url du fichier de configuration */
+	/**
+	 * getter url du fichier référentiel SDMX
+	 * 
+	 * @return url du fichier référentiel
+	 * @throws ReferentielOfsException erreur de traitement
+	 */
 	public synchronized URL getXmlFile() throws ReferentielOfsException {
 		if (xmlFile == null) {
 			xmlFile = getURL();

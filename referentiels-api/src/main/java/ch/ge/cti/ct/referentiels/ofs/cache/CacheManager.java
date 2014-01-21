@@ -14,6 +14,7 @@ import com.google.common.cache.CacheBuilder;
  * 
  */
 public enum CacheManager {
+	/** instance du singleton */
 	instance;
 
 	/** liste des caches instanciés */

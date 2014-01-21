@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import ch.ge.cti.ct.referentiels.communes.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.communes.model.ReferentielCommunes;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 

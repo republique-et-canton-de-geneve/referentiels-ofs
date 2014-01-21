@@ -7,6 +7,13 @@ import org.slf4j.LoggerFactory;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
+/**
+ * Classe abstraite définissant le contrat de l'adapteur de données SDMX<br/>
+ * L'adapteur a pour objectif de convertir la structure générique SDMX en une
+ * structure spécifique au référentiel, pour en optimise l'exploitation
+ * 
+ * @param <T> type de structure du référentiel
+ */
 public abstract class AbstractSDMXDataAdaptor<T> {
 
 	/** service de parsing du fichier SDMX */
@@ -33,11 +40,21 @@ public abstract class AbstractSDMXDataAdaptor<T> {
 	 */
 	public abstract T parse(final URL urlXML) throws ReferentielOfsException;
 
-	protected SDMXParser getParser() {
+	/**
+	 * Getter du parseur générique SDMX
+	 * 
+	 * @return parseur SDMX
+	 */
+	protected final SDMXParser getParser() {
 		return parser;
 	}
 
-	protected Logger log() {
+	/**
+	 * Getter du logger
+	 * 
+	 * @return logger
+	 */
+	protected final Logger log() {
 		return log;
 	}
 }
