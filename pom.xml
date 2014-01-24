@@ -15,7 +15,8 @@
 	<name>${project.groupId}:${project.artifactId} parent</name>
 
 	<description>
-		
+		Exposition sous forme de web services des nomenclatures fédérales au format SDMX
+		http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/sdmx.html
 	</description>
 
 	<scm>
@@ -27,6 +28,7 @@
 		<module>referentiels-api</module>
 		<module>referentiels-ofs-ear</module>
 		<module>referentiel-communes</module>
+		<module>referentiel-pays</module>
 <!-- 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module>
 	</modules>

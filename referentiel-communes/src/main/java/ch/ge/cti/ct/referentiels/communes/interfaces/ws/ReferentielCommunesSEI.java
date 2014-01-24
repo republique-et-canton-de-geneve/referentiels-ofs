@@ -3,7 +3,6 @@ package ch.ge.cti.ct.referentiels.communes.interfaces.ws;
 import java.util.Date;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.jws.WebMethod;
@@ -26,6 +25,7 @@ import ch.ge.cti.ct.referentiels.communes.model.Canton;
 import ch.ge.cti.ct.referentiels.communes.model.Commune;
 import ch.ge.cti.ct.referentiels.communes.model.District;
 import ch.ge.cti.ct.referentiels.communes.service.ReferentielCommunesServiceAble;
+import ch.ge.cti.ct.referentiels.communes.service.impl.ReferentielCommunesService;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.Cachable;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
@@ -42,15 +42,14 @@ import com.google.common.collect.FluentIterable;
  */
 @Stateless
 @WebService(name = "referentiel-communes-JAXWS", serviceName = "referentiel-communes", portName = "referentiel-communes", targetNamespace = "http://ch.ge.cti.ct.referentiels.communes/referentiel-communes")
-@WebContext(contextRoot = "/referentiels-ofs", urlPattern = "/referentiel-communes")
+@WebContext(contextRoot = "/referentiels-ofs/communes", urlPattern = "/referentiel-communes")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 		ReferentielOfsCacheIntercept.class })
 public class ReferentielCommunesSEI {
 
-	/** Référence sur l'EJB d'implémentation */
-	@EJB
-	private ReferentielCommunesServiceAble service;
+	/** Référence au service d'implémentation */
+	private ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
 
 	/** logger SLF4j */
 	private static final Logger LOG = LoggerFactory
