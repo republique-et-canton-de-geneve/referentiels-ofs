@@ -70,7 +70,9 @@ public enum ReferentielCommunesService implements
 	if (idDistrict <= 0) {
 	    return null;
 	}
-	return extractDistrict(idDistrict, null).first().orNull();
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	return extractDistrict(idDistrict, null, cantonRef).first().orNull();
     }
 
     @Override
@@ -94,16 +96,22 @@ public enum ReferentielCommunesService implements
 	if (idCommune <= 0) {
 	    return null;
 	}
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	final District[] districtRef = new District[1];
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
-		.transformAndConcat(new ExtractDistrictFunction())
-		.transformAndConcat(new ExtractCommuneFunction())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
+		.transformAndConcat(new ExtractCommuneFunction(districtRef))
 		.filter(new Predicate<Commune>() {
 		    @Override
 		    public boolean apply(final Commune commune) {
 			return commune.getId() == idCommune;
 		    }
-		}).first().orNull();
+		})
+		.transform(
+			new CommuneSetCantonDistrictFunction(cantonRef,
+				districtRef)).first().orNull();
     }
 
     @Override
@@ -139,9 +147,12 @@ public enum ReferentielCommunesService implements
 	final FluentIterable<Canton> cantons = extractCanton(codeCanton,
 		dateValid);
 
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
 	return FluentIterable.from(cantons.toList())
-		.transformAndConcat(new ExtractDistrictFunction())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
 		.filter(new DistrictValidPredicate(dateValid))
+		.transform(new DistrictSetCantonFunction(cantonRef))
 		.toSortedList(new DistrictComparator());
     }
 
@@ -154,15 +165,18 @@ public enum ReferentielCommunesService implements
 	    return null;
 	}
 
-	// liste de 1 district ou vide
-	final FluentIterable<District> districts = extractDistrict(idDistrict,
-		dateValid);
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	final District[] districtRef = new District[1];
 
 	// extraction de la liste des communes
-	return FluentIterable.from(districts.toList())
+	return extractDistrict(idDistrict, dateValid, cantonRef)
 		.filter(new DistrictValidPredicate(dateValid))
-		.transformAndConcat(new ExtractCommuneFunction())
+		.transformAndConcat(new ExtractCommuneFunction(districtRef))
 		.filter(new CommuneValidPredicate(dateValid))
+		.transform(
+			new CommuneSetCantonDistrictFunction(cantonRef,
+				districtRef))
 		.toSortedList(new CommuneComparator());
     }
 
@@ -178,14 +192,21 @@ public enum ReferentielCommunesService implements
 	final FluentIterable<Canton> cantons = extractCanton(codeCanton,
 		dateValid);
 
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
 	final FluentIterable<District> districts = FluentIterable
 		.from(cantons.toList())
-		.transformAndConcat(new ExtractDistrictFunction())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
 		.filter(new DistrictValidPredicate(dateValid));
 
-	return FluentIterable.from(districts.toList())
-		.transformAndConcat(new ExtractCommuneFunction())
+	final District[] districtRef = new District[1];
+	return FluentIterable
+		.from(districts.toList())
+		.transformAndConcat(new ExtractCommuneFunction(districtRef))
 		.filter(new CommuneValidPredicate(dateValid))
+		.transform(
+			new CommuneSetCantonDistrictFunction(cantonRef,
+				districtRef))
 		.toSortedList(new CommuneComparator());
     }
 
@@ -197,12 +218,18 @@ public enum ReferentielCommunesService implements
 	if (StringUtils.isBlank(critere)) {
 	    return null;
 	}
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	final District[] districtRef = new District[1];
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
-		.transformAndConcat(new ExtractDistrictFunction())
-		.transformAndConcat(new ExtractCommuneFunction())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
+		.transformAndConcat(new ExtractCommuneFunction(districtRef))
 		.filter(new CommuneValidPredicate(dateValid))
 		.filter(new CommuneNameMatcherPredicate(critere))
+		.transform(
+			new CommuneSetCantonDistrictFunction(cantonRef,
+				districtRef))
 		.toSortedList(new CommuneComparator());
 
     }
@@ -241,17 +268,19 @@ public enum ReferentielCommunesService implements
      *             exception d'accès au référentiel
      */
     private FluentIterable<District> extractDistrict(final int idDistrict,
-	    final Date dateValid) throws ReferentielOfsException {
+	    final Date dateValid, final Canton[] cantonRef)
+	    throws ReferentielOfsException {
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
 		.filter(new CantonValidPredicate(dateValid))
-		.transformAndConcat(new ExtractDistrictFunction())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
 		.filter(new Predicate<District>() {
 		    @Override
 		    public boolean apply(final District district) {
 			return district.getId() == idDistrict;
 		    }
-		}).filter(new DistrictValidPredicate(dateValid));
+		}).filter(new DistrictValidPredicate(dateValid))
+		.transform(new DistrictSetCantonFunction(cantonRef));
     }
 
     /**
@@ -369,16 +398,64 @@ public enum ReferentielCommunesService implements
 
     private class ExtractDistrictFunction implements
 	    Function<Canton, Iterable<? extends District>> {
+	private final Canton[] cantonRef;
+
+	public ExtractDistrictFunction(final Canton[] cantonRef) {
+	    this.cantonRef = cantonRef;
+	}
+
 	@Override
 	public Iterable<? extends District> apply(final Canton canton) {
+	    cantonRef[0] = canton;
 	    return canton.getDistrict();
+	}
+    }
+
+    private class DistrictSetCantonFunction implements
+	    Function<District, District> {
+	private final Canton[] cantonRef;
+
+	public DistrictSetCantonFunction(final Canton[] cantonRef) {
+	    this.cantonRef = cantonRef;
+	}
+
+	@Override
+	public District apply(final District district) {
+	    district.setCodeCanton(cantonRef[0].getCode());
+	    return district;
+	}
+    }
+
+    private class CommuneSetCantonDistrictFunction implements
+	    Function<Commune, Commune> {
+	private final Canton[] cantonRef;
+	private final District[] districtRef;
+
+	public CommuneSetCantonDistrictFunction(final Canton[] cantonRef,
+		final District[] districtRef) {
+	    this.cantonRef = cantonRef;
+	    this.districtRef = districtRef;
+	}
+
+	@Override
+	public Commune apply(final Commune commune) {
+	    commune.setCodeCanton(cantonRef[0].getCode());
+	    commune.setIdDistrict(districtRef[0].getId());
+	    return commune;
 	}
     }
 
     private class ExtractCommuneFunction implements
 	    Function<District, Iterable<? extends Commune>> {
+	private final District[] districtRef;
+
+	public ExtractCommuneFunction(final District[] districtRef) {
+	    this.districtRef = districtRef;
+	}
+
 	@Override
 	public Iterable<? extends Commune> apply(final District district) {
+	    districtRef[0] = district;
 	    return district.getCommune();
 	}
     }

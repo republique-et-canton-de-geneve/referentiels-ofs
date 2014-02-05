@@ -260,7 +260,7 @@ public class ReferentielCommunesSEI {
 
     @WebMethod(operationName = "searchCommuneDate", action = "searchCommuneDate")
     @WebResult(name = "commune")
-    public List<CommuneWS> searchCommune(
+    public List<CommuneWS> searchCommuneDate(
 	    @WebParam(name = "critere") final String critere,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
@@ -331,6 +331,7 @@ public class ReferentielCommunesSEI {
 	    cout.setNomCourt(cin.getNomCourt());
 	    cout.setValidFrom(cin.getValidFrom());
 	    cout.setValidTo(cin.getValidTo());
+	    cout.setCodeCanton(cin.getCodeCanton());
 	    return cout;
 	}
     }
@@ -350,6 +351,8 @@ public class ReferentielCommunesSEI {
 	    cout.setNomCourt(cin.getNomCourt());
 	    cout.setValidFrom(cin.getValidFrom());
 	    cout.setValidTo(cin.getValidTo());
+	    cout.setCodeCanton(cin.getCodeCanton());
+	    cout.setIdDistrict(cin.getIdDistrict());
 	    return cout;
 	}
     }

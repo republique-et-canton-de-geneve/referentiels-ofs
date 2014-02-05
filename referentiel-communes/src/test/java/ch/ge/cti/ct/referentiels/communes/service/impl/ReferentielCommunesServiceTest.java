@@ -71,15 +71,20 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<District> districts = ReferentielCommunesService.instance
 		.getDistricts("GE");
 	assertEquals("Nombre de districts incorrect", 1, districts.size());
-	// check shallowCopy
+	assertEquals("District.codeCanton incorrect", "GE", districts.get(0)
+		.getCodeCanton());
 	assertEquals("La liste des districts est incorrecte", 45, districts
 		.get(0).getCommune().size());
 
 	districts = ReferentielCommunesService.instance.getDistricts("JU");
 	assertEquals("Nombre de districts incorrect", 3, districts.size());
+	assertEquals("District.codeCanton incorrect", "JU", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("AI");
 	assertEquals("Nombre de districts incorrect", 1, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("XX");
 	assertEquals("Nombre de districts incorrect", 0, districts.size());
@@ -92,6 +97,15 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	assertNotNull("District non trouvé", district);
 	assertEquals("La liste des communes est incorrecte", 45, district
 		.getCommune().size());
+	assertEquals("District.codeCanton incorrect", "GE",
+		district.getCodeCanton());
+
+	district = ReferentielCommunesService.instance.getDistrict(1600);
+	assertNotNull("District non trouvé", district);
+	assertEquals("La liste des communes est incorrecte", 6, district
+		.getCommune().size());
+	assertEquals("District.codeCanton incorrect", "AI",
+		district.getCodeCanton());
 
 	district = ReferentielCommunesService.instance.getDistrict(9999);
 	assertNull("District non trouvé", district);
@@ -100,16 +114,36 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
     @Test
     public void testGetCommunesByDistrict() throws ReferentielOfsException {
 	List<Commune> communes = ReferentielCommunesService.instance
+		.getCommunesByDistrict(2601);
+	assertEquals("Nombre de communes incorrect", 22, communes.size());
+	assertEquals("Commune.idDistrict incorrect", 2601, communes.get(0)
+		.getIdDistrict());
+	assertEquals("Commune.codeCanton incorrect", "JU", communes.get(0)
+		.getCodeCanton());
+
+	communes = ReferentielCommunesService.instance
 		.getCommunesByDistrict(2500);
 	assertEquals("Nombre de communes incorrect", 45, communes.size());
+	assertEquals("Commune.idDistrict incorrect", 2500, communes.get(0)
+		.getIdDistrict());
+	assertEquals("Commune.codeCanton incorrect", "GE", communes.get(0)
+		.getCodeCanton());
 
 	communes = ReferentielCommunesService.instance
 		.getCommunesByDistrict(101);
 	assertEquals("Nombre de communes incorrect", 14, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "ZH", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 101, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance
 		.getCommunesByDistrict(1600);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance
 		.getCommunesByDistrict(1601);
@@ -125,6 +159,10 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<Commune> communes = ReferentielCommunesService.instance
 		.getCommunesByCanton("GE");
 	assertEquals("Nombre de communes incorrect", 45, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "GE", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 2500, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance
 		.getCommunesByCanton("JU");
@@ -165,6 +203,8 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<District> districts = ReferentielCommunesService.instance
 		.getDistricts("JU");
 	assertEquals("Nombre de districts incorrect", 3, districts.size());
+	assertEquals("District.codeCanton incorrect", "JU", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("JU",
 		DATE_01011960);
@@ -173,10 +213,14 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	districts = ReferentielCommunesService.instance.getDistricts("JU",
 		DATE_01011979);
 	assertEquals("Nombre de districts incorrect", 3, districts.size());
+	assertEquals("District.codeCanton incorrect", "JU", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("JU",
 		new Date());
 	assertEquals("Nombre de districts incorrect", 3, districts.size());
+	assertEquals("District.codeCanton incorrect", "JU", districts.get(0)
+		.getCodeCanton());
 
 	for (Date dateValid : DATES_VALID) {
 	    districts = ReferentielCommunesService.instance.getDistricts("JU",
@@ -201,22 +245,32 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<District> districts = ReferentielCommunesService.instance
 		.getDistricts("ZH");
 	assertEquals("Nombre de districts incorrect", 12, districts.size());
+	assertEquals("District.codeCanton incorrect", "ZH", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("ZH",
 		DATE_01011960);
 	assertEquals("Nombre de districts incorrect", 11, districts.size());
+	assertEquals("District.codeCanton incorrect", "ZH", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("ZH",
 		DATE_31121989);
 	assertEquals("Nombre de districts incorrect", 11, districts.size());
+	assertEquals("District.codeCanton incorrect", "ZH", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("ZH",
 		DATE_01011990);
 	assertEquals("Nombre de districts incorrect", 12, districts.size());
+	assertEquals("District.codeCanton incorrect", "ZH", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("ZH",
 		new Date());
 	assertEquals("Nombre de districts incorrect", 12, districts.size());
+	assertEquals("District.codeCanton incorrect", "ZH", districts.get(0)
+		.getCodeCanton());
 
 	for (Date dateValid : DATES_VALID) {
 	    districts = ReferentielCommunesService.instance.getDistricts("ZH",
@@ -241,22 +295,32 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<District> districts = ReferentielCommunesService.instance
 		.getDistricts("AI");
 	assertEquals("Nombre de districts incorrect", 1, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("AI",
 		DATE_01011960);
 	assertEquals("Nombre de districts incorrect", 2, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("AI",
 		DATE_31121996);
 	assertEquals("Nombre de districts incorrect", 2, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("AI",
 		DATE_01011997);
 	assertEquals("Nombre de districts incorrect", 1, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	districts = ReferentielCommunesService.instance.getDistricts("AI",
 		new Date());
 	assertEquals("Nombre de districts incorrect", 1, districts.size());
+	assertEquals("District.codeCanton incorrect", "AI", districts.get(0)
+		.getCodeCanton());
 
 	for (Date dateValid : DATES_VALID) {
 	    districts = ReferentielCommunesService.instance.getDistricts("AI",
@@ -284,6 +348,10 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	communes = ReferentielCommunesService.instance
 		.getCommunesByDistrict(1600);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1600, DATE_01011960);
@@ -304,26 +372,50 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1600, DATE_01011997);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1600, new Date());
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1601, DATE_01011960);
 	assertEquals("Nombre de communes incorrect", 5, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1601, DATE_01011979);
 	assertEquals("Nombre de communes incorrect", 5, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1601, DATE_31121989);
 	assertEquals("Nombre de communes incorrect", 5, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1601, DATE_31121996);
 	assertEquals("Nombre de communes incorrect", 5, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1601, DATE_01011997);
@@ -336,18 +428,34 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1602, DATE_01011960);
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1602, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1602, DATE_01011979);
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1602, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1602, DATE_31121989);
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1602, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1602, DATE_31121996);
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1602, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByDistrict(
 		1602, DATE_01011997);
@@ -416,30 +524,58 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	communes = ReferentielCommunesService.instance
 		.getCommunesByCanton("AI");
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", DATE_01011960);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", DATE_01011979);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", DATE_31121989);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", DATE_31121996);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1601, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", DATE_01011997);
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.getCommunesByCanton(
 		"AI", new Date());
 	assertEquals("Nombre de communes incorrect", 6, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "AI", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1600, communes.get(0)
+		.getIdDistrict());
 
 	for (Date dateValid : DATES_VALID) {
 	    communes = ReferentielCommunesService.instance.getCommunesByCanton(
@@ -464,6 +600,10 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	List<Commune> communes = null;
 	communes = ReferentielCommunesService.instance.searchCommune("Basel");
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "BS", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1200, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.searchCommune("aar");
 	assertEquals("Nombre de communes incorrect", 4, communes.size());
@@ -499,6 +639,10 @@ public class ReferentielCommunesServiceTest extends AbstractReferentielTest {
 	communes = ReferentielCommunesService.instance.searchCommune("Basel",
 		DATE_01011960);
 	assertEquals("Nombre de communes incorrect", 1, communes.size());
+	assertEquals("Commune.codeCanton incorrect", "BS", communes.get(0)
+		.getCodeCanton());
+	assertEquals("Commune.idDistrict incorrect", 1200, communes.get(0)
+		.getIdDistrict());
 
 	communes = ReferentielCommunesService.instance.searchCommune("Basel",
 		DATE_31122013);

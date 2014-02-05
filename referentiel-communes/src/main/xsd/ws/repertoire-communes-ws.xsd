@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<!-- definition of simple elements -->
+	<xs:attribute name="id" type="xs:string"/>
+	<xs:attribute name="date" type="xs:date"/>
 	<xs:element name="id" type="xs:int"/>
 	<xs:element name="code" type="xs:string"/>
 	<xs:element name="nom" type="xs:string"/>
 	<xs:element name="nom-court" type="xs:string"/>
 	<xs:element name="validFrom" type="xs:date"/>
 	<xs:element name="validTo" type="xs:date"/>
-	<xs:attribute name="id" type="xs:string"/>
-	<xs:attribute name="date" type="xs:date"/>
+	<xs:element name="codeCanton" type="xs:string"/>
+	<xs:element name="idDistrict" type="xs:int"/>
 
 	<xs:element name="referentiel-communes">
 		<xs:annotation>
@@ -46,6 +48,7 @@
 				<xs:element ref="nom-court" minOccurs="1" maxOccurs="1" />
 				<xs:element ref="validFrom" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="validTo" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="codeCanton" minOccurs="1" maxOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -58,6 +61,8 @@
 					<xs:element ref="nom-court" minOccurs="1" maxOccurs="1" />
 					<xs:element ref="validFrom" minOccurs="0" maxOccurs="1" />
 					<xs:element ref="validTo" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="codeCanton" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="idDistrict" minOccurs="1" maxOccurs="1" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
