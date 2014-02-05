@@ -37,118 +37,170 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 @Local
 public interface ReferentielCommunesServiceAble {
 
-	/**
-	 * Retourne l'intégralité du référentiel des communes
-	 * 
-	 * @return référentiel en entier
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	ReferentielCommunes getReferentiel() throws ReferentielOfsException;
+    /**
+     * Retourne l'intégralité du référentiel des communes
+     * 
+     * @return référentiel en entier
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    ReferentielCommunes getReferentiel() throws ReferentielOfsException;
 
-	/**
-	 * Retourne la liste des cantons<br/>
-	 * 
-	 * @return liste des cantons
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Canton> getCantons() throws ReferentielOfsException;
-	
-	/**
-	 * Retourne la liste des cantons valides pour la date de validation<br/>
-	 * 
-	 * @param dateValid date de validité
-	 * @return liste des cantons
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Canton> getCantons(final Date dateValid) throws ReferentielOfsException;
+    /**
+     * Retourne la liste des cantons<br/>
+     * 
+     * @return liste des cantons
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Canton> getCantons() throws ReferentielOfsException;
 
-	/**
-	 * Recherche un canton par son identifiant abrégé (2 n/a)<br/>
-	 * 
-	 * @param codeCanton identifiant de canton (2 caractères alpha)
-	 * @return objet canton
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	Canton getCanton(final String codeCanton) throws ReferentielOfsException;
+    /**
+     * Retourne la liste des cantons valides pour la date de validation<br/>
+     * 
+     * @param dateValid
+     *            date de validité
+     * @return liste des cantons
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Canton> getCantons(final Date dateValid)
+	    throws ReferentielOfsException;
 
-	/**
-	 * Liste des disticts du canton<br/>
-	 * 
-	 * @param codeCanton identifiant de canton (2 caractères alpha)
-	 * @return liste des districts
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<District> getDistricts(final String codeCanton)
-			throws ReferentielOfsException;
+    /**
+     * Recherche un canton par son identifiant abrégé (2 n/a)<br/>
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @return objet canton
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    Canton getCanton(final String codeCanton) throws ReferentielOfsException;
 
-	/**
-	 * Liste des disticts du canton valides pour la date de validation<br/>
-	 * 
-	 * @param codeCanton identifiant de canton (2 caractères alpha)
-	 * @param dateValid date de validité
-	 * @return liste des districts
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<District> getDistricts(final String codeCanton, final Date dateValid)
-			throws ReferentielOfsException;
+    /**
+     * Liste des disticts du canton<br/>
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @return liste des districts
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<District> getDistricts(final String codeCanton)
+	    throws ReferentielOfsException;
 
-	/**
-	 * recherche d'un district par son identifiant<br/>
-	 * 
-	 * @param idDistrict identifiant de district (numérique)
-	 * @return objet district
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	District getDistrict(final int idDistrict) throws ReferentielOfsException;
+    /**
+     * Liste des disticts du canton valides pour la date de validation<br/>
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @param dateValid
+     *            date de validité
+     * @return liste des districts
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<District> getDistricts(final String codeCanton, final Date dateValid)
+	    throws ReferentielOfsException;
 
-	/**
-	 * Liste des communes d'un district
-	 * 
-	 * @param idDistrict identifiant de district (numérique)
-	 * @return liste des communes
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Commune> getCommunesByDistrict(final int idDistrict)
-			throws ReferentielOfsException;
+    /**
+     * recherche d'un district par son identifiant<br/>
+     * 
+     * @param idDistrict
+     *            identifiant de district (numérique)
+     * @return objet district
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    District getDistrict(final int idDistrict) throws ReferentielOfsException;
 
-	/**
-	 * Liste des communes d'un district valides pour la date de validation
-	 * 
-	 * @param idDistrict identifiant de district (numérique)
-	 * @param dateValid date de validité
-	 * @return liste des communes
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Commune> getCommunesByDistrict(final int idDistrict, final Date dateValid)
-			throws ReferentielOfsException;
+    /**
+     * Liste des communes d'un district
+     * 
+     * @param idDistrict
+     *            identifiant de district (numérique)
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> getCommunesByDistrict(final int idDistrict)
+	    throws ReferentielOfsException;
 
-	/**
-	 * Liste des communes d'un canton
-	 * 
-	 * @param codeCanton identifiant de canton (2 caractères alpha)
-	 * @return liste des communes
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Commune> getCommunesByCanton(final String codeCanton)
-			throws ReferentielOfsException;
+    /**
+     * Liste des communes d'un district valides pour la date de validation
+     * 
+     * @param idDistrict
+     *            identifiant de district (numérique)
+     * @param dateValid
+     *            date de validité
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> getCommunesByDistrict(final int idDistrict,
+	    final Date dateValid) throws ReferentielOfsException;
 
-	/**
-	 * Liste des communes d'un canton valides pour la date de validation
-	 * 
-	 * @param codeCanton identifiant de canton (2 caractères alpha)
-	 * @param dateValid date de validité
-	 * @return liste des communes
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	List<Commune> getCommunesByCanton(final String codeCanton, final Date dateValid)
-			throws ReferentielOfsException;
+    /**
+     * Liste des communes d'un canton
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> getCommunesByCanton(final String codeCanton)
+	    throws ReferentielOfsException;
 
-	/**
-	 * recherche d'une commune par son identifiant
-	 * 
-	 * @param idCommune identifiant de la commune
-	 * @return commune
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	Commune getCommune(final int idCommune) throws ReferentielOfsException;
+    /**
+     * Liste des communes d'un canton valides pour la date de validation
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @param dateValid
+     *            date de validité
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> getCommunesByCanton(final String codeCanton,
+	    final Date dateValid) throws ReferentielOfsException;
+
+    /**
+     * recherche d'une commune par son identifiant
+     * 
+     * @param idCommune
+     *            identifiant de la commune
+     * @return commune
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    Commune getCommune(final int idCommune) throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes par son nom
+     * 
+     * @param critere
+     *            critère de recherche (sur le nom)
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> searchCommune(final String critere)
+	    throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes par son nom
+     * 
+     * @param critere
+     *            critère de recherche (sur le nom)
+     * @param dateValid
+     *            date de validité
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> searchCommune(final String critere, final Date dateValid)
+	    throws ReferentielOfsException;
 }
