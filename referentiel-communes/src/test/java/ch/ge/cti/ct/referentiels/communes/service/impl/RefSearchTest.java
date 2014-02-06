@@ -94,7 +94,7 @@ public class RefSearchTest extends AbstractRefTest {
 
     private static boolean done = false;
 
-    @Test
+    // @Test
     public void dump() throws Exception {
 	if (!done) {
 	    System.out
