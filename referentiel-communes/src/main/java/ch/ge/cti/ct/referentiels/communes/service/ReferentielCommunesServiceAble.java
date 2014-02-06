@@ -79,6 +79,20 @@ public interface ReferentielCommunesServiceAble {
     Canton getCanton(final String codeCanton) throws ReferentielOfsException;
 
     /**
+     * Recherche un canton par son identifiant abrégé (2 n/a)<br/>
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @param dateValid
+     *            date de validité
+     * @return objet canton
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    Canton getCanton(final String codeCanton, final Date dateValid)
+	    throws ReferentielOfsException;
+
+    /**
      * Liste des disticts du canton<br/>
      * 
      * @param codeCanton
@@ -114,6 +128,20 @@ public interface ReferentielCommunesServiceAble {
      *             erreur de traitement
      */
     District getDistrict(final int idDistrict) throws ReferentielOfsException;
+
+    /**
+     * recherche d'un district par son identifiant<br/>
+     * 
+     * @param idDistrict
+     *            identifiant de district (numérique)
+     * @param dateValid
+     *            date de validité
+     * @return objet district
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    District getDistrict(final int idDistrict, final Date dateValid)
+	    throws ReferentielOfsException;
 
     /**
      * Liste des communes d'un district
@@ -177,6 +205,20 @@ public interface ReferentielCommunesServiceAble {
      *             erreur de traitement
      */
     Commune getCommune(final int idCommune) throws ReferentielOfsException;
+
+    /**
+     * recherche d'une commune par son identifiant
+     * 
+     * @param idCommune
+     *            identifiant de la commune
+     * @param dateValid
+     *            date de validité
+     * @return commune
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    Commune getCommune(final int idCommune, final Date dateValid)
+	    throws ReferentielOfsException;
 
     /**
      * Recherche des communes par son nom

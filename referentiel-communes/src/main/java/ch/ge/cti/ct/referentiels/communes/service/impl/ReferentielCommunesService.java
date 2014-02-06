@@ -3,6 +3,7 @@ package ch.ge.cti.ct.referentiels.communes.service.impl;
 import java.text.Normalizer;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -67,12 +68,7 @@ public enum ReferentielCommunesService implements
     public District getDistrict(final int idDistrict)
 	    throws ReferentielOfsException {
 	LOG.debug("getDistricts(idDistrict='{}')", idDistrict);
-	if (idDistrict <= 0) {
-	    return null;
-	}
-	// on utilise un tableau car les variables sont passées par valeur
-	final Canton[] cantonRef = new Canton[1];
-	return extractDistrict(idDistrict, null, cantonRef).first().orNull();
+	return getDistrict(idDistrict, new Date());
     }
 
     @Override
@@ -93,25 +89,7 @@ public enum ReferentielCommunesService implements
     public Commune getCommune(final int idCommune)
 	    throws ReferentielOfsException {
 	LOG.debug("getCommune(idCommune='{}')", idCommune);
-	if (idCommune <= 0) {
-	    return null;
-	}
-	// on utilise un tableau car les variables sont passées par valeur
-	final Canton[] cantonRef = new Canton[1];
-	final District[] districtRef = new District[1];
-	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
-		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
-		.transformAndConcat(new ExtractCommuneFunction(districtRef))
-		.filter(new Predicate<Commune>() {
-		    @Override
-		    public boolean apply(final Commune commune) {
-			return commune.getId() == idCommune;
-		    }
-		})
-		.transform(
-			new CommuneSetCantonDistrictFunction(cantonRef,
-				districtRef)).first().orNull();
+	return getCommune(idCommune, new Date());
     }
 
     @Override
@@ -136,12 +114,23 @@ public enum ReferentielCommunesService implements
     }
 
     @Override
+    public Canton getCanton(final String codeCanton, final Date dateValid)
+	    throws ReferentielOfsException {
+	LOG.debug("getCanton(codeCanton='{}', dateValid='{}')", codeCanton,
+		dateValid);
+	if (StringUtils.isBlank(codeCanton)) {
+	    return null;
+	}
+	return extractCanton(codeCanton, dateValid).first().orNull();
+    }
+
+    @Override
     public List<District> getDistricts(final String codeCanton,
 	    final Date dateValid) throws ReferentielOfsException {
 	LOG.debug("getDistricts(codeCanton='{}', dateValid='{}')", codeCanton,
 		dateValid);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<District>();
 	}
 	// liste de 1 canton ou vide (avec test de date de validité du canton)
 	final FluentIterable<Canton> cantons = extractCanton(codeCanton,
@@ -149,11 +138,25 @@ public enum ReferentielCommunesService implements
 
 	// on utilise un tableau car les variables sont passées par valeur
 	final Canton[] cantonRef = new Canton[1];
-	return FluentIterable.from(cantons.toList())
+	return cantons
 		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
 		.filter(new DistrictValidPredicate(dateValid))
 		.transform(new DistrictSetCantonFunction(cantonRef))
 		.toSortedList(new DistrictComparator());
+    }
+
+    @Override
+    public District getDistrict(final int idDistrict, final Date dateValid)
+	    throws ReferentielOfsException {
+	LOG.debug("getDistricts(idDistrict='{}', dateValid='{}')", idDistrict,
+		dateValid);
+	if (idDistrict <= 0) {
+	    return null;
+	}
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	return extractDistrict(idDistrict, dateValid, cantonRef).first()
+		.orNull();
     }
 
     @Override
@@ -162,7 +165,7 @@ public enum ReferentielCommunesService implements
 	LOG.debug("getCommunesByDistrict(idDistrict='{}', dateValid='{}')",
 		idDistrict, dateValid);
 	if (idDistrict <= 0) {
-	    return null;
+	    return new LinkedList<Commune>();
 	}
 
 	// on utilise un tableau car les variables sont passées par valeur
@@ -186,7 +189,7 @@ public enum ReferentielCommunesService implements
 	LOG.debug("getCommunesByCanton(codeCanton='{}', dateValid='{}')",
 		codeCanton, dateValid);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<Commune>();
 	}
 	// liste de 1 canton ou vide
 	final FluentIterable<Canton> cantons = extractCanton(codeCanton,
@@ -194,14 +197,12 @@ public enum ReferentielCommunesService implements
 
 	// on utilise un tableau car les variables sont passées par valeur
 	final Canton[] cantonRef = new Canton[1];
-	final FluentIterable<District> districts = FluentIterable
-		.from(cantons.toList())
-		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
-		.filter(new DistrictValidPredicate(dateValid));
+	final FluentIterable<District> districts = cantons.transformAndConcat(
+		new ExtractDistrictFunction(cantonRef)).filter(
+		new DistrictValidPredicate(dateValid));
 
 	final District[] districtRef = new District[1];
-	return FluentIterable
-		.from(districts.toList())
+	return districts
 		.transformAndConcat(new ExtractCommuneFunction(districtRef))
 		.filter(new CommuneValidPredicate(dateValid))
 		.transform(
@@ -211,12 +212,39 @@ public enum ReferentielCommunesService implements
     }
 
     @Override
+    public Commune getCommune(final int idCommune, final Date dateValid)
+	    throws ReferentielOfsException {
+	LOG.debug("getCommune(idCommune='{}', dateValid='{}')", idCommune,
+		dateValid);
+	if (idCommune <= 0) {
+	    return null;
+	}
+	// on utilise un tableau car les variables sont passées par valeur
+	final Canton[] cantonRef = new Canton[1];
+	final District[] districtRef = new District[1];
+	return FluentIterable
+		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.transformAndConcat(new ExtractDistrictFunction(cantonRef))
+		.transformAndConcat(new ExtractCommuneFunction(districtRef))
+		.filter(new Predicate<Commune>() {
+		    @Override
+		    public boolean apply(final Commune commune) {
+			return commune.getId() == idCommune;
+		    }
+		})
+		.filter(new CommuneValidPredicate(dateValid))
+		.transform(
+			new CommuneSetCantonDistrictFunction(cantonRef,
+				districtRef)).first().orNull();
+    }
+
+    @Override
     public List<Commune> searchCommune(final String critere,
 	    final Date dateValid) throws ReferentielOfsException {
 	LOG.debug("searchCommune(critere='{}', dateValid='{}')", critere,
 		dateValid);
 	if (StringUtils.isBlank(critere)) {
-	    return null;
+	    return new LinkedList<Commune>();
 	}
 	// on utilise un tableau car les variables sont passées par valeur
 	final Canton[] cantonRef = new Canton[1];
@@ -373,7 +401,7 @@ public enum ReferentielCommunesService implements
 	private final String matcher;
 
 	public CommuneNameMatcherPredicate(final String matcher) {
-	    this.matcher = matcher;
+	    this.matcher = matcher.trim();
 	}
 
 	@Override
