@@ -19,32 +19,51 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
  * 
  */
 public class ReferentielCommunesMgt extends ServiceMBeanSupport implements
-		ReferentielCommunesMgtMBean {
+	ReferentielCommunesMgtMBean {
 
-	/** logger SLF4J */
-	private final Logger log = LoggerFactory.getLogger(getClass());
+    /** logger SLF4J */
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-	@Override
-	public URL getReferentielFile() throws ReferentielOfsException {
-		log.info(getClass().getName() + ": getReferentielFile()");
-		return ReferentielDataSingleton.instance.getReferentielFile();
+    /** constructeur avec initialisation du contexte */
+    public ReferentielCommunesMgt() {
+	initialize();
+    }
+
+    /**
+     * Le MBean est instancié au démarrage du serveur<br/>
+     * On utilise donc cet "événement" pour charger le référentiel afin que le
+     * premier utilisateur ne soit pas pénalisé
+     */
+    private void initialize() {
+	log.info("Initialisation du référentiel communes");
+	try {
+	    ReferentielDataSingleton.instance.getData();
+	} catch (ReferentielOfsException e) {
+	    log.error("Erreur de chargement du référentiel communes: {}", e);
 	}
+    }
 
-	@Override
-	public String displayStatitiques(final String modeDisplay) {
-		DisplayMode mode = DisplayMode.XML;
-		try {
-			mode = DisplayMode.valueOf(modeDisplay);
-		} catch (IllegalArgumentException ie) {
-			log.warn("La valeur '"
-					+ modeDisplay
-					+ "' dans l'appel de la méthode displayStatitiques n'est pas valide (XML, HTML)");
-		}
-		return mode.render();
-	}
+    @Override
+    public URL getReferentielFile() throws ReferentielOfsException {
+	log.info(getClass().getName() + ": getReferentielFile()");
+	return ReferentielDataSingleton.instance.getReferentielFile();
+    }
 
-	@Override
-	public void resetStatistiques() {
-		StatistiquesServiceSingleton.instance.reset();
+    @Override
+    public String displayStatitiques(final String modeDisplay) {
+	DisplayMode mode = DisplayMode.XML;
+	try {
+	    mode = DisplayMode.valueOf(modeDisplay);
+	} catch (IllegalArgumentException ie) {
+	    log.warn("La valeur '"
+		    + modeDisplay
+		    + "' dans l'appel de la méthode displayStatitiques n'est pas valide (XML, HTML)");
 	}
+	return mode.render();
+    }
+
+    @Override
+    public void resetStatistiques() {
+	StatistiquesServiceSingleton.instance.reset();
+    }
 }
