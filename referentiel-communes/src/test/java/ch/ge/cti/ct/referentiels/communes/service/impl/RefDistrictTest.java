@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +17,7 @@ import ch.ge.cti.ct.referentiels.communes.model.District;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 @RunWith(value = Parameterized.class)
+@PerfTest(invocations = 1000, threads = 20)
 public class RefDistrictTest extends AbstractRefTest {
 
     private final int idDistrict;
@@ -89,6 +92,7 @@ public class RefDistrictTest extends AbstractRefTest {
     }
 
     @Test
+    @Required(percentile90 = 10, percentile95 = 20)
     public void test() throws ReferentielOfsException {
 	District district = null;
 	if (dateValid == null) {

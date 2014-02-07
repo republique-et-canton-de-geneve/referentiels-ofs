@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -361,8 +362,10 @@ public enum ReferentielCommunesService implements
 	}
     }
 
-    private class CommuneNameMatcherPredicate implements Predicate<Commune> {
-	private static final String NORMALIZER_SEARCH = "[^\\p{ASCII}]";
+    private static class CommuneNameMatcherPredicate implements
+	    Predicate<Commune> {
+	private static final Pattern NORMALIZER_REGEX = Pattern
+		.compile("[^\\p{ASCII}]");
 	private static final String NORMALIZER_REPLACE = "";
 	private final String matcher;
 
@@ -384,9 +387,9 @@ public enum ReferentielCommunesService implements
 	 * spéciaux
 	 */
 	private String normalize(final String value) {
-	    return Normalizer.normalize(value, Normalizer.Form.NFD)
-		    .replaceAll(NORMALIZER_SEARCH, NORMALIZER_REPLACE)
-		    .toLowerCase();
+	    return NORMALIZER_REGEX
+		    .matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
+		    .replaceAll(NORMALIZER_REPLACE).toLowerCase();
 	}
     }
 

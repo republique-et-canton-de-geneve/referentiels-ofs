@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,6 +24,7 @@ import ch.ge.cti.ct.referentiels.communes.model.District;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 @RunWith(value = Parameterized.class)
+@PerfTest(invocations = 200, threads = 5)
 public class RefSearchTest extends AbstractRefTest {
 
     private final String search;
@@ -76,6 +79,7 @@ public class RefSearchTest extends AbstractRefTest {
     }
 
     @Test
+    @Required(average = 50, percentile90 = 100, percentile95 = 200)
     public void test() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {

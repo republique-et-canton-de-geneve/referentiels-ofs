@@ -9,7 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 
 import ch.ge.cti.ct.referentiels.communes.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.communes.model.Canton;
@@ -24,7 +26,8 @@ import com.google.common.collect.FluentIterable;
 
 public abstract class AbstractRefTest extends AbstractReferentielTest {
 
-    public static Date TODAY = new Date();
+    @Rule
+    public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
