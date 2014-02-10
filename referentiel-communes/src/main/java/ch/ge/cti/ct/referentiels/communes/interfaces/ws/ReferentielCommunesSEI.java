@@ -1,6 +1,7 @@
 package ch.ge.cti.ct.referentiels.communes.interfaces.ws;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -91,7 +92,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getDistricts(canton='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<DistrictWS>();
 	}
 	try {
 	    return FluentIterable.from(service.getDistricts(codeCanton))
@@ -125,7 +126,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getCommunesByDistrict(district='{}')", districtId);
 	if (districtId <= 0) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable
@@ -144,7 +145,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getCommunesByCanton(canton='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable.from(service.getCommunesByCanton(codeCanton))
@@ -169,6 +170,24 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @WebMethod(operationName = "getCantonDate", action = "getCantonDate")
+    @WebResult(name = "canton")
+    public CantonWS getCantonDate(
+	    @WebParam(name = "canton") final String codeCanton,
+	    @WebParam(name = "dateValid") final Date dateValid)
+	    throws ReferentielOfsException {
+	LOG.debug("getCanton(canton='{}', {})", codeCanton, dateValid);
+	if (StringUtils.isBlank(codeCanton)) {
+	    return null;
+	}
+	try {
+	    return new CantonConvert().apply(service.getCanton(codeCanton,
+		    dateValid));
+	} catch (Exception e) {
+	    throw processException(e);
+	}
+    }
+
     @WebMethod(operationName = "getCantonsDate", action = "getCantonsDate")
     @WebResult(name = "canton")
     public List<CantonWS> getCantonsDate(
@@ -183,6 +202,24 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @WebMethod(operationName = "getDistrictDate", action = "getDistrictDate")
+    @WebResult(name = "district")
+    public DistrictWS getDistrictDate(
+	    @WebParam(name = "district") final int districtId,
+	    @WebParam(name = "dateValid") final Date dateValid)
+	    throws ReferentielOfsException {
+	LOG.debug("getDistricts(district='{}', {})", districtId, dateValid);
+	if (districtId <= 0) {
+	    return null;
+	}
+	try {
+	    return new DistrictConvert().apply(service.getDistrict(districtId,
+		    dateValid));
+	} catch (Exception e) {
+	    throw processException(e);
+	}
+    }
+
     @WebMethod(operationName = "getDistrictsByCantonDate", action = "getDistrictsByCantonDate")
     @WebResult(name = "district")
     public List<DistrictWS> getDistrictsByCantonDate(
@@ -191,7 +228,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getDistricts(canton='{}', date='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<DistrictWS>();
 	}
 	try {
 	    return FluentIterable
@@ -210,7 +247,7 @@ public class ReferentielCommunesSEI {
 	LOG.debug("getCommunesByDistrict(district='{}', date='{}')",
 		districtId, dateValid);
 	if (districtId <= 0) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable
@@ -230,7 +267,7 @@ public class ReferentielCommunesSEI {
 	LOG.debug("getCommunesByCanton(canton='{}', date='{}')", codeCanton,
 		dateValid);
 	if (StringUtils.isBlank(codeCanton)) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable
@@ -248,7 +285,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("searchCommune(critere='{}')", critere);
 	if (StringUtils.isBlank(critere)) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable.from(service.searchCommune(critere))
@@ -266,7 +303,7 @@ public class ReferentielCommunesSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("searchCommune(critere='{}', date='{}')", critere, dateValid);
 	if (StringUtils.isBlank(critere)) {
-	    return null;
+	    return new LinkedList<CommuneWS>();
 	}
 	try {
 	    return FluentIterable
