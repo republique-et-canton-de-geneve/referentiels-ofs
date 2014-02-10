@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +17,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.pays.model.Region;
 
 @RunWith(value = Parameterized.class)
+@PerfTest(invocations = 1000, threads = 20)
 public class RefRegionsContinentTest extends AbstractRefTest {
 
     private final int continentId;
@@ -43,6 +46,7 @@ public class RefRegionsContinentTest extends AbstractRefTest {
     }
 
     @Test
+    @Required(percentile90 = 1, percentile95 = 1)
     public void test() throws ReferentielOfsException {
 	final List<Region> regions = ReferentielPaysTerritoiresService.instance
 		.getRegions(continentId);

@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +17,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.pays.model.Pays;
 
 @RunWith(value = Parameterized.class)
+@PerfTest(invocations = 200, threads = 5)
 public class RefPaysSearchTest extends AbstractRefTest {
 
     private final String critere;
@@ -62,6 +65,7 @@ public class RefPaysSearchTest extends AbstractRefTest {
     }
 
     @Test
+    @Required(average = 2, percentile90 = 1, percentile95 = 3)
     public void test() throws ReferentielOfsException {
 	final List<Pays> payss = ReferentielPaysTerritoiresService.instance
 		.searchPays(critere);

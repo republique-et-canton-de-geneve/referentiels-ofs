@@ -5,7 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.commons.lang.StringUtils;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.pays.AbstractReferentielTest;
@@ -14,6 +16,9 @@ import ch.ge.cti.ct.referentiels.pays.model.Pays;
 import ch.ge.cti.ct.referentiels.pays.model.Region;
 
 public class AbstractRefTest extends AbstractReferentielTest {
+
+    @Rule
+    public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {

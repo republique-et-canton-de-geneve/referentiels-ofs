@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +17,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.pays.model.Pays;
 
 @RunWith(value = Parameterized.class)
+@PerfTest(invocations = 1000, threads = 20)
 public class RefPaysISO3Test extends AbstractRefTest {
 
     private final String iso2;
@@ -69,6 +72,7 @@ public class RefPaysISO3Test extends AbstractRefTest {
     }
 
     @Test
+    @Required(percentile90 = 1, percentile95 = 1)
     public void test() throws ReferentielOfsException {
 	final Pays pays = ReferentielPaysTerritoiresService.instance
 		.getPaysByISO3(iso3);
