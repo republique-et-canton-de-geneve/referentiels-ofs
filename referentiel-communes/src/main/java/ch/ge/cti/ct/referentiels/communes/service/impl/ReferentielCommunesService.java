@@ -221,12 +221,14 @@ public enum ReferentielCommunesService implements
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<Commune>();
 	}
+	final String critereN = CommuneNameMatcherPredicate.normalize(critere
+		.trim());
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
-		.filter(new CommuneNameMatcherPredicate(critere))
+		.filter(new CommuneNameMatcherPredicate(critereN))
 		.toSortedList(communeComparator);
 
     }
@@ -370,23 +372,20 @@ public enum ReferentielCommunesService implements
 	private final String matcher;
 
 	public CommuneNameMatcherPredicate(final String matcher) {
-	    this.matcher = matcher.trim();
+	    this.matcher = matcher;
 	}
 
 	@Override
 	public boolean apply(final Commune commune) {
-	    return normalize(matcher).equals(
-		    normalize(commune.getNom().substring(
-			    0,
-			    Math.min(commune.getNom().length(),
-				    matcher.length()))));
+	    return matcher.equals(normalize(commune.getNom().substring(0,
+		    Math.min(commune.getNom().length(), matcher.length()))));
 	}
 
 	/**
 	 * la comparaison se fait sans tenir compte des accents et caractères
 	 * spéciaux
 	 */
-	private String normalize(final String value) {
+	public static String normalize(final String value) {
 	    return NORMALIZER_REGEX
 		    .matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
 		    .replaceAll(NORMALIZER_REPLACE).toLowerCase();
