@@ -1,8 +1,10 @@
 package ch.ge.cti.ct.referentiels.pays.service.impl;
 
+import java.text.Normalizer;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -68,8 +70,7 @@ public enum ReferentielPaysTerritoiresService implements
 	}
 	final FluentIterable<Continent> continents = extractContinent(continentId);
 
-	return FluentIterable.from(continents.toList())
-		.transformAndConcat(new ExtractRegionFunction())
+	return continents.transformAndConcat(new ExtractRegionFunction())
 		.toSortedList(new RegionComparator());
     }
 
@@ -93,8 +94,7 @@ public enum ReferentielPaysTerritoiresService implements
 	final FluentIterable<Region> regions = extractRegion(regionId);
 
 	// extraction de la liste des pays
-	return FluentIterable.from(regions.toList())
-		.transformAndConcat(new ExtractPaysFunction())
+	return regions.transformAndConcat(new ExtractPaysFunction())
 		.toSortedList(new PaysComparator());
     }
 
@@ -107,12 +107,10 @@ public enum ReferentielPaysTerritoiresService implements
 	}
 	final FluentIterable<Continent> continents = extractContinent(continentId);
 
-	final FluentIterable<Region> regions = FluentIterable.from(
-		continents.toList()).transformAndConcat(
-		new ExtractRegionFunction());
+	final FluentIterable<Region> regions = continents
+		.transformAndConcat(new ExtractRegionFunction());
 
-	return FluentIterable.from(regions.toList())
-		.transformAndConcat(new ExtractPaysFunction())
+	return regions.transformAndConcat(new ExtractPaysFunction())
 		.toSortedList(new PaysComparator());
     }
 
@@ -175,6 +173,40 @@ public enum ReferentielPaysTerritoiresService implements
 		}).first().orNull();
     }
 
+    @Override
+    public List<Pays> searchPays(final String critere)
+	    throws ReferentielOfsException {
+	LOG.debug("searchPays(critere='{}')", critere);
+	if (StringUtils.isBlank(critere)) {
+	    return new LinkedList<Pays>();
+	}
+	final String critereN = normalize(critere.trim());
+	return FluentIterable
+		.from(ReferentielDataSingleton.instance.getData()
+			.getContinent())
+		.transformAndConcat(new ExtractRegionFunction())
+		.transformAndConcat(new ExtractPaysFunction())
+		.filter(new PaysNameStringMatcherPredicate(critereN))
+		.toSortedList(new PaysComparator());
+    }
+
+    @Override
+    public List<Pays> searchPaysRegexp(final String critere)
+	    throws ReferentielOfsException {
+	LOG.debug("searchPays(critere='{}')", critere);
+	if (StringUtils.isBlank(critere)) {
+	    return new LinkedList<Pays>();
+	}
+	final Pattern critereN = Pattern.compile(normalize(critere.trim()));
+	return FluentIterable
+		.from(ReferentielDataSingleton.instance.getData()
+			.getContinent())
+		.transformAndConcat(new ExtractRegionFunction())
+		.transformAndConcat(new ExtractPaysFunction())
+		.filter(new PaysNameRegexpMatcherPredicate(critereN))
+		.toSortedList(new PaysComparator());
+    }
+
     // ==================================================================================================================================================================
     // ==================================================================================================================================================================
 
@@ -220,6 +252,55 @@ public enum ReferentielPaysTerritoiresService implements
 			return region.getId() == regionId;
 		    }
 		});
+    }
+
+    private static final Pattern NORMALIZER_REGEX = Pattern
+	    .compile("[^\\p{ASCII}]");
+    private static final String NORMALIZER_REPLACE = "";
+
+    /**
+     * la comparaison se fait sans tenir compte des accents et caractères
+     * spéciaux
+     */
+    protected String normalize(final String value) {
+	return NORMALIZER_REGEX
+		.matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
+		.replaceAll(NORMALIZER_REPLACE).toLowerCase();
+    }
+
+    /**
+     * Matcher exact sur le nom
+     * 
+     */
+    private class PaysNameStringMatcherPredicate implements Predicate<Pays> {
+	private final String matcher;
+
+	public PaysNameStringMatcherPredicate(final String matcher) {
+	    this.matcher = matcher;
+	}
+
+	@Override
+	public boolean apply(final Pays pays) {
+	    return matcher.equals(normalize(pays.getNom().substring(0,
+		    Math.min(pays.getNom().length(), matcher.length()))));
+	}
+    }
+
+    /**
+     * Matcher par regexp sur le nom
+     * 
+     */
+    private class PaysNameRegexpMatcherPredicate implements Predicate<Pays> {
+	private final Pattern regexp;
+
+	public PaysNameRegexpMatcherPredicate(final Pattern regexp) {
+	    this.regexp = regexp;
+	}
+
+	@Override
+	public boolean apply(final Pays pays) {
+	    return regexp.matcher(normalize(pays.getNom())).find();
+	}
     }
 
     /**
