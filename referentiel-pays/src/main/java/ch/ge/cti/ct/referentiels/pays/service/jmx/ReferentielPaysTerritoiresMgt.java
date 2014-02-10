@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 import ch.ge.cti.ct.referentiels.pays.data.ReferentielDataSingleton;
 
@@ -53,7 +54,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
 
     @Override
     public String displayStatitiques(final String modeDisplay) {
-	DisplayMode mode = DisplayMode.XML;
+	Renderable mode = DisplayMode.XML;
 	try {
 	    mode = DisplayMode.valueOf(modeDisplay);
 	} catch (IllegalArgumentException ie) {
