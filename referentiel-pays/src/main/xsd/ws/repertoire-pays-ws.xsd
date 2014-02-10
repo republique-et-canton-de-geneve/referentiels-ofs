@@ -2,6 +2,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<!-- definition of simple elements -->
 	<xs:element name="id" type="xs:int" nillable="false"/>
+	<xs:element name="continent-id" type="xs:int" nillable="false"/>
+	<xs:element name="region-id" type="xs:int" nillable="false"/>
 	<xs:element name="nom" type="xs:string" nillable="false"/>
 	<xs:element name="nom-long" type="xs:string" nillable="false"/>
 	<xs:element name="iso2" type="xs:string" nillable="false"/>
@@ -39,6 +41,7 @@
 			<xs:sequence>
 				<xs:element ref="id" />
 				<xs:element ref="nom" />
+				<xs:element ref="continent-id"  />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -51,6 +54,8 @@
 				<xs:element ref="nom-long" />
 				<xs:element ref="iso2" />
 				<xs:element ref="iso3" />
+				<xs:element ref="continent-id"  />
+				<xs:element ref="region-id"  />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
