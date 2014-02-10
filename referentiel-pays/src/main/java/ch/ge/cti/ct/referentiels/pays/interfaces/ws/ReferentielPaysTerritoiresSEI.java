@@ -1,5 +1,6 @@
 package ch.ge.cti.ct.referentiels.pays.interfaces.ws;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -92,7 +93,7 @@ public class ReferentielPaysTerritoiresSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getRegions(continent='{}')", continentId);
 	if (continentId <= 0) {
-	    return null;
+	    return new LinkedList<RegionWS>();
 	}
 	try {
 	    return FluentIterable.from(service.getRegions(continentId))
@@ -138,7 +139,7 @@ public class ReferentielPaysTerritoiresSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getPaysByRegion(region='{}')", regionId);
 	if (regionId <= 0) {
-	    return null;
+	    return new LinkedList<PaysWS>();
 	}
 	try {
 	    return FluentIterable.from(service.getPaysByRegion(regionId))
@@ -156,7 +157,7 @@ public class ReferentielPaysTerritoiresSEI {
 	    throws ReferentielOfsException {
 	LOG.debug("getPaysByContinent(continent='{}')", continentId);
 	if (continentId <= 0) {
-	    return null;
+	    return new LinkedList<PaysWS>();
 	}
 	try {
 	    return FluentIterable.from(service.getPaysByContinent(continentId))
@@ -214,7 +215,10 @@ public class ReferentielPaysTerritoiresSEI {
     public List<PaysWS> searchPays(
 	    @WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException {
-	LOG.debug("searchPays()");
+	LOG.debug("searchPays({})", critere);
+	if (StringUtils.isBlank(critere)) {
+	    return new LinkedList<PaysWS>();
+	}
 	try {
 	    return FluentIterable.from(service.searchPays(critere))
 		    .transform(new PaysConvert()).toList();
@@ -228,7 +232,10 @@ public class ReferentielPaysTerritoiresSEI {
     public List<PaysWS> searchPaysRegexp(
 	    @WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException {
-	LOG.debug("searchPays()");
+	LOG.debug("searchPaysRegexp({})", critere);
+	if (StringUtils.isBlank(critere)) {
+	    return new LinkedList<PaysWS>();
+	}
 	try {
 	    return FluentIterable.from(service.searchPaysRegexp(critere))
 		    .transform(new PaysConvert()).toList();
@@ -268,6 +275,7 @@ public class ReferentielPaysTerritoiresSEI {
 	    }
 	    final ContinentWS cout = new ContinentWS();
 	    cout.setId(cin.getId());
+	    cout.setNom(cin.getNom());
 	    return cout;
 	}
     }
