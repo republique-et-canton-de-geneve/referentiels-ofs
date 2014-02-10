@@ -209,6 +209,34 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    @WebMethod(operationName = "searchPays", action = "searchPays")
+    @WebResult(name = "pays")
+    public List<PaysWS> searchPays(
+	    @WebParam(name = "critere") final String critere)
+	    throws ReferentielOfsException {
+	LOG.debug("searchPays()");
+	try {
+	    return FluentIterable.from(service.searchPays(critere))
+		    .transform(new PaysConvert()).toList();
+	} catch (Exception e) {
+	    throw processException(e);
+	}
+    }
+
+    @WebMethod(operationName = "searchPaysRegexp", action = "searchPaysRegexp")
+    @WebResult(name = "pays")
+    public List<PaysWS> searchPaysRegexp(
+	    @WebParam(name = "critere") final String critere)
+	    throws ReferentielOfsException {
+	LOG.debug("searchPays()");
+	try {
+	    return FluentIterable.from(service.searchPaysRegexp(critere))
+		    .transform(new PaysConvert()).toList();
+	} catch (Exception e) {
+	    throw processException(e);
+	}
+    }
+
     /**
      * Méthode partagée de traitement des exceptions<br/>
      * Les exceptions sont encapsulées dans une
