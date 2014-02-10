@@ -30,6 +30,7 @@
 		<module>referentiels-ofs-ear</module>
 		<module>referentiel-communes</module>
 		<module>referentiel-pays</module>
+		<module>referentiel-formes-juridiques</module>
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module> -->
 	</modules>
