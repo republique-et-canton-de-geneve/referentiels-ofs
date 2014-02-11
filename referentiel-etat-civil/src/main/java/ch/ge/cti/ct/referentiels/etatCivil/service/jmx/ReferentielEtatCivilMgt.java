@@ -19,14 +19,14 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
  * @author DESMAZIERESJ
  * 
  */
-public class ReferentielFormesJuridiquesMgt extends ServiceMBeanSupport
-	implements ReferentielFormesJuridiquesMgtMBean {
+public class ReferentielEtatCivilMgt extends ServiceMBeanSupport
+	implements ReferentielEtatCivilMgtMBean {
 
     /** logger SLF4J */
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     /** constructeur avec initialisation du contexte */
-    public ReferentielFormesJuridiquesMgt() {
+    public ReferentielEtatCivilMgt() {
 	initialize();
     }
 

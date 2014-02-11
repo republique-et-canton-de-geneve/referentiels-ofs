@@ -11,6 +11,6 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielMgtMBean;
  * @author DESMAZIERESJ
  * 
  */
-public interface ReferentielFormesJuridiquesMgtMBean extends ReferentielMgtMBean {
+public interface ReferentielEtatCivilMgtMBean extends ReferentielMgtMBean {
 
 }
