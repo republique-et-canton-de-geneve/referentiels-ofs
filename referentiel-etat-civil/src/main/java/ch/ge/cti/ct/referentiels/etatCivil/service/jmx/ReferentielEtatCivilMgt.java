@@ -19,8 +19,8 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
  * @author DESMAZIERESJ
  * 
  */
-public class ReferentielEtatCivilMgt extends ServiceMBeanSupport
-	implements ReferentielEtatCivilMgtMBean {
+public class ReferentielEtatCivilMgt extends ServiceMBeanSupport implements
+	ReferentielEtatCivilMgtMBean {
 
     /** logger SLF4J */
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -36,13 +36,11 @@ public class ReferentielEtatCivilMgt extends ServiceMBeanSupport
      * premier utilisateur ne soit pas pénalisé
      */
     private void initialize() {
-	log.info("Initialisation du référentiel formes juridiques");
+	log.info("Initialisation du référentiel états civils");
 	try {
 	    ReferentielDataSingleton.instance.getData();
 	} catch (ReferentielOfsException e) {
-	    log.error(
-		    "Erreur de chargement du référentiel formes juridiques: {}",
-		    e);
+	    log.error("Erreur de chargement du référentiel états civils: {}", e);
 	}
     }
 

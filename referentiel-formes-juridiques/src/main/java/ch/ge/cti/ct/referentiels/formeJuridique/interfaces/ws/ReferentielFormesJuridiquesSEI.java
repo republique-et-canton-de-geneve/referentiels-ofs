@@ -30,8 +30,8 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-pays-JAXWS", serviceName = "referentiel-pays", portName = "referentiel-pays", targetNamespace = "http://ch.ge.cti.ct.referentiels.pays/referentiel-pays")
-@WebContext(contextRoot = "/referentiels-ofs/territoires", urlPattern = "/referentiel-pays")
+@WebService(name = "referentiel-formes-juridiques-JAXWS", serviceName = "referentiel-formes-juridiques", portName = "referentiel-formes-juridiques", targetNamespace = "http://ch.ge.cti.ct.referentiels.formes-juridiques/referentiel-formes-juridiques")
+@WebContext(contextRoot = "/referentiels-ofs/formes-juridiques", urlPattern = "/referentiel-formes-juridiques")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })

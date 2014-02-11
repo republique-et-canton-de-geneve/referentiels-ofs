@@ -19,7 +19,7 @@ public class RefEtatsCivilsTest extends AbstractRefTest {
     public void test() throws ReferentielOfsException {
 	final List<EtatCivil> formesJuridiques = ReferentielEtatCivilService.instance
 		.getEtatsCivils();
-	assertEquals("La liste des formes juridiques est incorrecte", 7,
+	assertEquals("La liste des états civils est incorrecte", 7,
 		formesJuridiques.size());
 	for (EtatCivil etatCivil : formesJuridiques) {
 	    assertEtatCivil(etatCivil);

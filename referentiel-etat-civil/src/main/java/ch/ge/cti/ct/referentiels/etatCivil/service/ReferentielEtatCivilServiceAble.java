@@ -29,20 +29,20 @@ public interface ReferentielEtatCivilServiceAble {
     ReferentielEtatCivil getReferentiel() throws ReferentielOfsException;
 
     /**
-     * Retourne la liste des formes juridiques<br/>
+     * Retourne la liste des états civils<br/>
      * 
-     * @return liste des formes juridiques
+     * @return liste des états civils
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
     List<EtatCivil> getEtatsCivils() throws ReferentielOfsException;
 
     /**
-     * Retourne la liste des formes juridiques<br/>
+     * Retourne la liste des états civils<br/>
      * 
      * @param etatCivilId
      *            identifiant de la forme juridique
-     * @return liste des formes juridiques
+     * @return liste des états civils
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
