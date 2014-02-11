@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.ge.cti.ct.referentiels.etatCivil.data.ReferentielDataSingleton;
+import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilSEI;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
@@ -65,6 +66,7 @@ public class ReferentielEtatCivilMgt extends ServiceMBeanSupport implements
 
     @Override
     public void resetStatistiques() {
-	StatistiquesServiceSingleton.instance.reset();
+	StatistiquesServiceSingleton.instance
+		.reset(ReferentielEtatCivilSEI.class);
     }
 }

@@ -4,8 +4,7 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
-import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
-import ch.ge.cti.ct.referentiels.ofs.service.jmx.CacheStatUtil;
+import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilSEI;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Call;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Stat;
@@ -33,15 +32,8 @@ public enum DisplayMode implements Renderable {
 	    final StringBuilder xml = new StringBuilder();
 	    xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 	    xml.append("<referentiel-etat-civil-statistiques>\n");
-	    xml.append("  <cache>\n");
-	    for (CacheEnum cache : CacheEnum.values()) {
-		CacheStatUtil.renderCacheStats(cache.name(),
-			CacheManager.instance.getCaches().get(cache.name()),
-			xml);
-	    }
-	    xml.append("  </cache>\n");
 	    for (Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
-		    .getStatistiques().entrySet()) {
+		    .getStatistiques(ReferentielEtatCivilSEI.class).entrySet()) {
 		if (entry.getKey().getParametre() != null) {
 		    xml.append("  <call method=\"")
 			    .append(entry.getKey().getMethode())
@@ -66,9 +58,4 @@ public enum DisplayMode implements Renderable {
 	    return xml.toString();
 	}
     };
-
-    private enum CacheEnum {
-	cantons, districts, communes;
-    }
-
 }

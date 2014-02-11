@@ -10,6 +10,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 import ch.ge.cti.ct.referentiels.pays.data.ReferentielDataSingleton;
+import ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSEI;
 
 /**
  * Implémentation du MBean <br/>
@@ -67,6 +68,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
 
     @Override
     public void resetStatistiques() {
-	StatistiquesServiceSingleton.instance.reset();
+	StatistiquesServiceSingleton.instance
+		.reset(ReferentielPaysTerritoiresSEI.class);
     }
 }

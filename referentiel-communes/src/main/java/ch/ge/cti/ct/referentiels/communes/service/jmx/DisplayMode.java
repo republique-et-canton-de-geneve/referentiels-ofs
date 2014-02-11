@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+import ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesSEI;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.CacheStatUtil;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Call;
@@ -41,7 +42,7 @@ public enum DisplayMode implements Renderable {
 	    }
 	    xml.append("  </cache>\n");
 	    for (Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
-		    .getStatistiques().entrySet()) {
+		    .getStatistiques(ReferentielCommunesSEI.class).entrySet()) {
 		if (entry.getKey().getParametre() != null) {
 		    xml.append("  <call method=\"")
 			    .append(entry.getKey().getMethode())

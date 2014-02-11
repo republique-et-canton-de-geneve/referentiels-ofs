@@ -10,6 +10,7 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.Call;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Stat;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
+import ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSEI;
 
 /**
  * Mode de rendering des données statistiques
@@ -41,7 +42,8 @@ public enum DisplayMode implements Renderable {
 	    }
 	    xml.append("  </cache>\n");
 	    for (Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
-		    .getStatistiques().entrySet()) {
+		    .getStatistiques(ReferentielPaysTerritoiresSEI.class)
+		    .entrySet()) {
 		if (entry.getKey().getParametre() != null) {
 		    xml.append("  <call method=\"")
 			    .append(entry.getKey().getMethode())
@@ -68,7 +70,7 @@ public enum DisplayMode implements Renderable {
     };
 
     private enum CacheEnum {
-	cantons, districts, communes;
+	continents, regions, pays;
     }
 
 }

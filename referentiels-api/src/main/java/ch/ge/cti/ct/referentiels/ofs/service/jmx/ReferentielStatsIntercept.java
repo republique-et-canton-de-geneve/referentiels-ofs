@@ -13,26 +13,26 @@ import org.slf4j.LoggerFactory;
  * 
  */
 public class ReferentielStatsIntercept {
-	/** logger SLF4J */
-	private final Logger log = LoggerFactory.getLogger(getClass());
+    /** logger SLF4J */
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * interception de toutes les méthodes pour enregistrement de l'appel avec
-	 * le temps d'exécution en nanosecondes
-	 */
-	@AroundInvoke
-	public Object processStats(InvocationContext ctx) throws Exception {
-		final long start = System.nanoTime();
-		try {
-			return ctx.proceed();
-		} finally {
-			try {
-				StatistiquesServiceSingleton.instance.registerCall(
-						ctx.getMethod(), ctx.getParameters(), System.nanoTime()
-								- start);
-			} catch (Exception e) {
-				log.warn("Erreur lors de l'enregistrement des statistiques", e);
-			}
-		}
+    /**
+     * interception de toutes les méthodes pour enregistrement de l'appel avec
+     * le temps d'exécution en nanosecondes
+     */
+    @AroundInvoke
+    public Object processStats(InvocationContext ctx) throws Exception {
+	final long start = System.nanoTime();
+	try {
+	    return ctx.proceed();
+	} finally {
+	    try {
+		StatistiquesServiceSingleton.instance.registerCall(ctx
+			.getTarget().getClass(), ctx.getMethod(), ctx
+			.getParameters(), System.nanoTime() - start);
+	    } catch (Exception e) {
+		log.warn("Erreur lors de l'enregistrement des statistiques", e);
+	    }
 	}
+    }
 }

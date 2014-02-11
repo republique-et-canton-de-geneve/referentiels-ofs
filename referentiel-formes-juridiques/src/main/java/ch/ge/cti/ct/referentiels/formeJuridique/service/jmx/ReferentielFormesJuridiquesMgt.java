@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.ge.cti.ct.referentiels.formeJuridique.data.ReferentielDataSingleton;
+import ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesSEI;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.Renderable;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
@@ -67,6 +68,7 @@ public class ReferentielFormesJuridiquesMgt extends ServiceMBeanSupport
 
     @Override
     public void resetStatistiques() {
-	StatistiquesServiceSingleton.instance.reset();
+	StatistiquesServiceSingleton.instance
+		.reset(ReferentielFormesJuridiquesSEI.class);
     }
 }
