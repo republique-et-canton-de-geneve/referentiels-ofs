@@ -26,8 +26,13 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
     /** logger SLF4J */
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    /** constructeur avec initialisation du contexte */
-    public ReferentielPaysTerritoiresMgt() {
+    /**
+     * chargement du référentiel au démarrage du MBean: le référentiel est
+     * chargé au démarrage du JBoss
+     */
+    @Override
+    protected void startService() throws Exception {
+	super.startService();
 	initialize();
     }
 
