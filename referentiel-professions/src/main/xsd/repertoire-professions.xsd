@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+	jaxb:version="2.1"
+	jaxb:extensionBindingPrefixes="inheritance">
+	
+	<!-- definition of simple elements -->
+	<xs:element name="id" type="xs:int" nillable="false"/>
+	<xs:element name="division-id" type="xs:int" nillable="false"/>
+	<xs:element name="classe-id" type="xs:int" nillable="false"/>
+	<xs:element name="groupe-id" type="xs:int" nillable="false"/>
+	<xs:element name="nom" type="xs:string" nillable="false"/>
+	<xs:attribute name="id" type="xs:string"/>
+	<xs:attribute name="date" type="xs:date"/>
+
+	<xs:element name="referentiel-professions">
+		<xs:annotation>
+			<xs:documentation>
+				Source: http://www.bfs.admin.ch/xmlns/sdmx/CH1_BN+HCL_SBN+2.0.xml
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="division" maxOccurs="unbounded" minOccurs="1" />
+			</xs:sequence>
+			<xs:attribute ref="id" use="optional" />
+			<xs:attribute ref="date" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="division">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom"  />
+				<xs:element ref="classe" maxOccurs="unbounded" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="classe">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom" />
+				<xs:element ref="division-id"  />
+				<xs:element ref="groupe" maxOccurs="unbounded" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="groupe">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom" />
+				<xs:element ref="division-id"  />
+				<xs:element ref="classe-id"  />
+				<xs:element ref="genre" maxOccurs="unbounded" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="genre">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom" />
+				<xs:element ref="division-id"  />
+				<xs:element ref="classe-id"  />
+				<xs:element ref="groupe-id"  />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

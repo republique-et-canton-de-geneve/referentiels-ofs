@@ -1,0 +1,21 @@
+<jxb:bindings
+ 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ 		xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+ 		xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+ 		jxb:extensionBindingPrefixes="xjc"
+ 		jxb:version="2.1">
+
+	<jxb:globalBindings collectionType="java.util.LinkedList">
+		<xjc:serializable uid="100" />
+		<xjc:javaType name="java.util.Date" xmlType="xs:date" adapter="ch.ge.cti.ct.referentiels.ofs.data.JaxbDateAdapter" />
+   </jxb:globalBindings>
+
+	<jxb:bindings schemaLocation="repertoire-professions-ws.xsd">
+		<jxb:schemaBindings>
+			<jxb:nameXmlTransform>
+				<jxb:elementName suffix="WS"/>
+			</jxb:nameXmlTransform>
+		</jxb:schemaBindings>
+	</jxb:bindings>
+
+</jxb:bindings>
