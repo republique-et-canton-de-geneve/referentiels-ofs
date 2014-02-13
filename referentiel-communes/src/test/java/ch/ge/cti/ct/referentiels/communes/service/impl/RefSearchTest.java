@@ -64,7 +64,7 @@ public class RefSearchTest extends AbstractRefTest {
 	/* 27 */{ "ZeNauvA", "01.01.2003", 0 },
 	/* 28 */{ "ZeNauvA", null, 0 },
 	/* 29 */{ "Aesch", null, 5 },
-	/* 30 */{ "Aesch ", null, 5 },
+	/* 30 */{ "Aesch ", null, 3 },
 	/* 31 */{ "Aesch (", null, 3 },
 	/* 32 */{ "Aesch (", "01.01.1960", 2 },
 	/* */
@@ -104,10 +104,10 @@ public class RefSearchTest extends AbstractRefTest {
 	    System.out
 		    .println("----------------------------------------------------------------------------------------------------------");
 	    final List<Commune> cs = new ArrayList<Commune>();
-	    for (Canton kt : ReferentielCommunesService.instance
+	    for (final Canton kt : ReferentielCommunesService.instance
 		    .getReferentiel().getCanton()) {
-		for (District bez : kt.getDistrict()) {
-		    for (Commune gde : bez.getCommune()) {
+		for (final District bez : kt.getDistrict()) {
+		    for (final Commune gde : bez.getCommune()) {
 			if (gde.getValidFrom() != null
 				|| gde.getValidTo() != null)
 			    cs.add(gde);
@@ -116,13 +116,13 @@ public class RefSearchTest extends AbstractRefTest {
 	    }
 	    Collections.sort(cs, new Comparator<Commune>() {
 		@Override
-		public int compare(Commune arg0, Commune arg1) {
+		public int compare(final Commune arg0, final Commune arg1) {
 		    return arg0.getNom().compareTo(arg1.getNom());
 		}
 
 	    });
 
-	    for (Commune c : cs) {
+	    for (final Commune c : cs) {
 		System.out.println(StringUtils.rightPad(c.getNom(), 64)
 			+ "\t ["
 			+ StringUtils.rightPad(format(c.getValidFrom()), 16)

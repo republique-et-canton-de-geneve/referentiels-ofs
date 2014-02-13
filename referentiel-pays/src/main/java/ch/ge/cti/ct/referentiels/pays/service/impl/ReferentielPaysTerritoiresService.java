@@ -1,16 +1,17 @@
 package ch.ge.cti.ct.referentiels.pays.service.impl;
 
-import java.text.Normalizer;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.processing.IdFilterPredicate;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomRegexpMatcherPredicate;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomStringMatcherPredicate;
 import ch.ge.cti.ct.referentiels.pays.data.ReferentielDataSingleton;
 import ch.ge.cti.ct.referentiels.pays.model.Continent;
 import ch.ge.cti.ct.referentiels.pays.model.Pays;
@@ -48,7 +49,7 @@ public enum ReferentielPaysTerritoiresService implements
 	// on retourne une copie de la liste des continents
 	return FluentIterable.from(
 		ReferentielDataSingleton.instance.getData().getContinent())
-		.toSortedList(new ContinentComparator());
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -70,8 +71,8 @@ public enum ReferentielPaysTerritoiresService implements
 	}
 	final FluentIterable<Continent> continents = extractContinent(continentId);
 
-	return continents.transformAndConcat(new ExtractRegionFunction())
-		.toSortedList(new RegionComparator());
+	return continents.transformAndConcat(extractRegionFunction)
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -94,8 +95,8 @@ public enum ReferentielPaysTerritoiresService implements
 	final FluentIterable<Region> regions = extractRegion(regionId);
 
 	// extraction de la liste des pays
-	return regions.transformAndConcat(new ExtractPaysFunction())
-		.toSortedList(new PaysComparator());
+	return regions.transformAndConcat(extractPaysFunction).toSortedList(
+		nomComparator);
     }
 
     @Override
@@ -108,10 +109,10 @@ public enum ReferentielPaysTerritoiresService implements
 	final FluentIterable<Continent> continents = extractContinent(continentId);
 
 	final FluentIterable<Region> regions = continents
-		.transformAndConcat(new ExtractRegionFunction());
+		.transformAndConcat(extractRegionFunction);
 
-	return regions.transformAndConcat(new ExtractPaysFunction())
-		.toSortedList(new PaysComparator());
+	return regions.transformAndConcat(extractPaysFunction).toSortedList(
+		nomComparator);
     }
 
     @Override
@@ -120,8 +121,8 @@ public enum ReferentielPaysTerritoiresService implements
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.toSortedList(new RegionComparator());
+		.transformAndConcat(extractRegionFunction)
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -130,9 +131,9 @@ public enum ReferentielPaysTerritoiresService implements
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.transformAndConcat(new ExtractPaysFunction())
-		.toSortedList(new PaysComparator());
+		.transformAndConcat(extractRegionFunction)
+		.transformAndConcat(extractPaysFunction)
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -144,8 +145,8 @@ public enum ReferentielPaysTerritoiresService implements
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.transformAndConcat(new ExtractPaysFunction())
+		.transformAndConcat(extractRegionFunction)
+		.transformAndConcat(extractPaysFunction)
 		.filter(new Predicate<Pays>() {
 		    @Override
 		    public boolean apply(final Pays pays) {
@@ -163,8 +164,8 @@ public enum ReferentielPaysTerritoiresService implements
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.transformAndConcat(new ExtractPaysFunction())
+		.transformAndConcat(extractRegionFunction)
+		.transformAndConcat(extractPaysFunction)
 		.filter(new Predicate<Pays>() {
 		    @Override
 		    public boolean apply(final Pays pays) {
@@ -180,14 +181,13 @@ public enum ReferentielPaysTerritoiresService implements
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<Pays>();
 	}
-	final String critereN = normalize(critere.trim());
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.transformAndConcat(new ExtractPaysFunction())
-		.filter(new PaysNameStringMatcherPredicate(critereN))
-		.toSortedList(new PaysComparator());
+		.transformAndConcat(extractRegionFunction)
+		.transformAndConcat(extractPaysFunction)
+		.filter(new NomStringMatcherPredicate(critere))
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -197,18 +197,19 @@ public enum ReferentielPaysTerritoiresService implements
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<Pays>();
 	}
-	final Pattern critereN = Pattern.compile(normalize(critere.trim()));
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.transformAndConcat(new ExtractPaysFunction())
-		.filter(new PaysNameRegexpMatcherPredicate(critereN))
-		.toSortedList(new PaysComparator());
+		.transformAndConcat(extractRegionFunction)
+		.transformAndConcat(extractPaysFunction)
+		.filter(new NomRegexpMatcherPredicate(critere))
+		.toSortedList(nomComparator);
     }
 
     // ==================================================================================================================================================================
     // ==================================================================================================================================================================
+
+    private final NomComparator nomComparator = new NomComparator();
 
     /**
      * Extrait le continent du référentiel
@@ -223,12 +224,7 @@ public enum ReferentielPaysTerritoiresService implements
 	    throws ReferentielOfsException {
 	return FluentIterable.from(
 		ReferentielDataSingleton.instance.getData().getContinent())
-		.filter(new Predicate<Continent>() {
-		    @Override
-		    public boolean apply(final Continent continent) {
-			return continent.getId() == continentId;
-		    }
-		});
+		.filter(new IdFilterPredicate(continentId));
     }
 
     /**
@@ -245,112 +241,22 @@ public enum ReferentielPaysTerritoiresService implements
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
 			.getContinent())
-		.transformAndConcat(new ExtractRegionFunction())
-		.filter(new Predicate<Region>() {
-		    @Override
-		    public boolean apply(final Region region) {
-			return region.getId() == regionId;
-		    }
-		});
+		.transformAndConcat(extractRegionFunction)
+		.filter(new IdFilterPredicate(regionId));
     }
 
-    private static final Pattern NORMALIZER_REGEX = Pattern
-	    .compile("[^\\p{ASCII}]");
-    private static final String NORMALIZER_REPLACE = "";
-
-    /**
-     * la comparaison se fait sans tenir compte des accents et caractères
-     * spéciaux
-     */
-    protected String normalize(final String value) {
-	return NORMALIZER_REGEX
-		.matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
-		.replaceAll(NORMALIZER_REPLACE).toLowerCase();
-    }
-
-    /**
-     * Matcher exact sur le nom
-     * 
-     */
-    private class PaysNameStringMatcherPredicate implements Predicate<Pays> {
-	private final String matcher;
-
-	public PaysNameStringMatcherPredicate(final String matcher) {
-	    this.matcher = matcher;
-	}
-
-	@Override
-	public boolean apply(final Pays pays) {
-	    return matcher.equals(normalize(pays.getNom().substring(0,
-		    Math.min(pays.getNom().length(), matcher.length()))));
-	}
-    }
-
-    /**
-     * Matcher par regexp sur le nom
-     * 
-     */
-    private class PaysNameRegexpMatcherPredicate implements Predicate<Pays> {
-	private final Pattern regexp;
-
-	public PaysNameRegexpMatcherPredicate(final Pattern regexp) {
-	    this.regexp = regexp;
-	}
-
-	@Override
-	public boolean apply(final Pays pays) {
-	    return regexp.matcher(normalize(pays.getNom())).find();
-	}
-    }
-
-    /**
-     * Comparateur pour le tri des listes des continents
-     * 
-     */
-    private class ContinentComparator implements Comparator<Continent> {
-	@Override
-	public int compare(final Continent c0, final Continent c1) {
-	    return c0.getId() - c1.getId();
-	}
-    }
-
-    /**
-     * Comparateur pour le tri des listes des regions
-     * 
-     */
-    private class RegionComparator implements Comparator<Region> {
-	@Override
-	public int compare(final Region c0, final Region c1) {
-	    return c0.getNom().compareTo(c1.getNom());
-	}
-    }
-
-    /**
-     * Comparateur pour le tri des listes des communes
-     * 
-     */
-    private class PaysComparator implements Comparator<Pays> {
-	@Override
-	public int compare(final Pays c0, final Pays c1) {
-	    return c0.getNom().compareTo(c1.getNom());
-	    // certains pays n'ont pas de code iso
-	    // return c0.getIso2().compareTo(c1.getIso2());
-	}
-    }
-
-    private class ExtractRegionFunction implements
-	    Function<Continent, Iterable<? extends Region>> {
+    private final Function<Continent, Iterable<? extends Region>> extractRegionFunction = new Function<Continent, Iterable<? extends Region>>() {
 	@Override
 	public Iterable<? extends Region> apply(final Continent continent) {
 	    return continent.getRegion();
 	}
-    }
+    };
 
-    private class ExtractPaysFunction implements
-	    Function<Region, Iterable<? extends Pays>> {
+    private final Function<Region, Iterable<? extends Pays>> extractPaysFunction = new Function<Region, Iterable<? extends Pays>>() {
 	@Override
 	public Iterable<? extends Pays> apply(final Region region) {
 	    return region.getPays();
 	}
-    }
+    };
+
 }

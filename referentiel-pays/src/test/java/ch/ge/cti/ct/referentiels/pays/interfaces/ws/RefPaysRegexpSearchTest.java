@@ -66,14 +66,14 @@ public class RefPaysRegexpSearchTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(average = 4, percentile90 = 3, percentile95 = 6)
+    @Required(average = 5, percentile90 = 5, percentile95 = 10)
     public void test() throws ReferentielOfsException {
 	final List<Pays> payss = ReferentielPaysTerritoiresService.instance
 		.searchPaysRegexp(critere);
 
 	assertEquals("Pays[" + critere + "].size est incorrect", paysCount,
 		payss.size());
-	for (Pays pays : payss) {
+	for (final Pays pays : payss) {
 	    if (continentId > 0) {
 		assertEquals("Pays[" + critere + "].continentId est incorrect",
 			continentId, pays.getContinentId());

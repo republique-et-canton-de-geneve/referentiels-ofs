@@ -38,6 +38,32 @@
 	</modules>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.8.3</version>
+					<configuration>
+						<verbose>false</verbose>
+						<specVersion>2.1</specVersion>
+						<extension>true</extension>
+						<forceRegenerate>true</forceRegenerate>
+						<args>
+							<arg>-Xinheritance</arg>
+							<arg>-XtoString</arg>
+						</args>
+						<plugins>
+							<plugin>
+								<groupId>org.jvnet.jaxb2_commons</groupId>
+								<artifactId>jaxb2-basics</artifactId>
+								<version>0.6.4</version>
+							</plugin>
+						</plugins>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -168,6 +194,10 @@
 					<groupId>com.sun.jdmk</groupId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+		   <groupId>org.jvnet.jaxb2_commons</groupId>
+		   <artifactId>jaxb2-basics-runtime</artifactId>
 		</dependency>
 	</dependencies>
 </project>

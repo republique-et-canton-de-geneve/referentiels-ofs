@@ -43,8 +43,8 @@ public class RefPaysSearchTest extends AbstractRefWSTest {
 		/* 9 */{ "Iles Fêroe", 1, 1, 11, "Iles Féroé", "FO" },
 		/* 10 */{ "Iles Feroe", 1, 1, 11, "Iles Féroé", "FO" },
 		/* 11 */{ "Iles", 16, 0, 0, null, null },
-		/* 12 */{ "Iles ", 16, 0, 0, null, null },
-		/* 13 */{ "îles ", 16, 0, 0, null, null },
+		/* 12 */{ "Iles ", 15, 0, 0, null, null },
+		/* 13 */{ "îles ", 15, 0, 0, null, null },
 		/* 14 */{ "yougoslavie", 0, 0, 0, null, null },
 		/* 15 */{ "Province de Voïvodine", 1, 1, 17,
 			"Province de Voïvodine", "" },
@@ -66,14 +66,14 @@ public class RefPaysSearchTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(average = 2, percentile90 = 1, percentile95 = 3)
+    @Required(average = 3, percentile90 = 2, percentile95 = 5)
     public void test() throws ReferentielOfsException {
 	final List<Pays> payss = ReferentielPaysTerritoiresService.instance
 		.searchPays(critere);
 
 	assertEquals("Pays[" + critere + "].size est incorrect", paysCount,
 		payss.size());
-	for (Pays pays : payss) {
+	for (final Pays pays : payss) {
 	    if (continentId > 0) {
 		assertEquals("Pays[" + critere + "].continentId est incorrect",
 			continentId, pays.getContinentId());

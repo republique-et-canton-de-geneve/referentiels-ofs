@@ -1,6 +1,5 @@
 package ch.ge.cti.ct.referentiels.etatCivil.service.impl;
 
-import java.util.Comparator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
 import ch.ge.cti.ct.referentiels.etatCivil.model.ReferentielEtatCivil;
 import ch.ge.cti.ct.referentiels.etatCivil.service.ReferentielEtatCivilServiceAble;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
@@ -40,7 +40,7 @@ public enum ReferentielEtatCivilService implements
 	// on retourne une copie de la liste des continents
 	return FluentIterable.from(
 		ReferentielDataSingleton.instance.getData().getEtatCivil())
-		.toSortedList(new EtatCivilComparator());
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -60,14 +60,5 @@ public enum ReferentielEtatCivilService implements
 		}).first().orNull();
     }
 
-    /**
-     * Comparateur pour le tri des listes des regions
-     * 
-     */
-    private class EtatCivilComparator implements Comparator<EtatCivil> {
-	@Override
-	public int compare(final EtatCivil c0, final EtatCivil c1) {
-	    return c0.getNom().compareTo(c1.getNom());
-	}
-    }
+    private final NomComparator nomComparator = new NomComparator();
 }

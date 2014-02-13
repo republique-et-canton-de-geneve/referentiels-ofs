@@ -64,24 +64,6 @@
 					<plugin>
 						<groupId>org.jvnet.jaxb2.maven2</groupId>
 						<artifactId>maven-jaxb2-plugin</artifactId>
-						<version>0.8.3</version>
-						<configuration>
-							<verbose>false</verbose>
-							<specVersion>2.1</specVersion>
-							<extension>true</extension>
-							<forceRegenerate>true</forceRegenerate>
-							<args>
-								<arg>-Xinheritance</arg>
-								<arg>-XtoString</arg>
-							</args>
-							<plugins>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics</artifactId>
-									<version>0.6.4</version>
-								</plugin>
-							</plugins>
-					</configuration>
 						<executions>
 							<execution>
 								<id>xjc</id>
@@ -113,11 +95,6 @@
 	</profiles>
 
 	<dependencies>
-<dependency>
-   <groupId>org.jvnet.jaxb2_commons</groupId>
-   <artifactId>jaxb2-basics-runtime</artifactId>
-   <version>0.6.4</version>
-</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiels-api</artifactId>

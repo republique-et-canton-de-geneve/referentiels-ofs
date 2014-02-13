@@ -1,11 +1,9 @@
 package ch.ge.cti.ct.referentiels.communes.service.impl;
 
-import java.text.Normalizer;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -18,6 +16,9 @@ import ch.ge.cti.ct.referentiels.communes.model.District;
 import ch.ge.cti.ct.referentiels.communes.model.ReferentielCommunes;
 import ch.ge.cti.ct.referentiels.communes.service.ReferentielCommunesServiceAble;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.processing.IdFilterPredicate;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomStringMatcherPredicate;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -94,7 +95,7 @@ public enum ReferentielCommunesService implements
     }
 
     @Override
-    public List<Commune> searchCommune(String critere)
+    public List<Commune> searchCommune(final String critere)
 	    throws ReferentielOfsException {
 	LOG.debug("searchCommune(critere='{}')", critere);
 	return searchCommune(critere, new Date());
@@ -140,7 +141,7 @@ public enum ReferentielCommunesService implements
 	// on utilise un tableau car les variables sont passées par valeur
 	return cantons.transformAndConcat(extractDistrictFunction)
 		.filter(new DistrictValidPredicate(dateValid))
-		.toSortedList(districtComparator);
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -168,7 +169,7 @@ public enum ReferentielCommunesService implements
 		.filter(new DistrictValidPredicate(dateValid))
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
-		.toSortedList(communeComparator);
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -189,7 +190,7 @@ public enum ReferentielCommunesService implements
 
 	return districts.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
-		.toSortedList(communeComparator);
+		.toSortedList(nomComparator);
     }
 
     @Override
@@ -204,13 +205,8 @@ public enum ReferentielCommunesService implements
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
-		.filter(new Predicate<Commune>() {
-		    @Override
-		    public boolean apply(final Commune commune) {
-			return commune.getId() == idCommune;
-		    }
-		}).filter(new CommuneValidPredicate(dateValid)).first()
-		.orNull();
+		.filter(new IdFilterPredicate(idCommune))
+		.filter(new CommuneValidPredicate(dateValid)).first().orNull();
     }
 
     @Override
@@ -221,20 +217,20 @@ public enum ReferentielCommunesService implements
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<Commune>();
 	}
-	final String critereN = CommuneNameMatcherPredicate.normalize(critere
-		.trim());
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
-		.filter(new CommuneNameMatcherPredicate(critereN))
-		.toSortedList(communeComparator);
+		.filter(new NomStringMatcherPredicate(critere))
+		.toSortedList(nomComparator);
 
     }
 
     // ==================================================================================================================================================================
     // ==================================================================================================================================================================
+
+    private final NomComparator nomComparator = new NomComparator();
 
     /**
      * Extrait le canton du référentiel
@@ -272,44 +268,18 @@ public enum ReferentielCommunesService implements
 		.from(ReferentielDataSingleton.instance.getData().getCanton())
 		.filter(new CantonValidPredicate(dateValid))
 		.transformAndConcat(extractDistrictFunction)
-		.filter(new Predicate<District>() {
-		    @Override
-		    public boolean apply(final District district) {
-			return district.getId() == idDistrict;
-		    }
-		}).filter(new DistrictValidPredicate(dateValid));
+		.filter(new IdFilterPredicate(idDistrict))
+		.filter(new DistrictValidPredicate(dateValid));
     }
 
     /**
      * Comparateur pour le tri des listes des cantons
      * 
      */
-    private Comparator<Canton> cantonComparator = new Comparator<Canton>() {
+    private final Comparator<Canton> cantonComparator = new Comparator<Canton>() {
 	@Override
 	public int compare(final Canton c0, final Canton c1) {
 	    return c0.getCode().compareTo(c1.getCode());
-	}
-    };
-
-    /**
-     * Comparateur pour le tri des listes des districts
-     * 
-     */
-    private Comparator<District> districtComparator = new Comparator<District>() {
-	@Override
-	public int compare(final District c0, final District c1) {
-	    return c0.getNom().compareTo(c1.getNom());
-	}
-    };
-
-    /**
-     * Comparateur pour le tri des listes des communes
-     * 
-     */
-    private Comparator<Commune> communeComparator = new Comparator<Commune>() {
-	@Override
-	public int compare(final Commune c0, final Commune c1) {
-	    return c0.getNom().compareTo(c1.getNom());
 	}
     };
 
@@ -364,42 +334,14 @@ public enum ReferentielCommunesService implements
 	}
     }
 
-    private static class CommuneNameMatcherPredicate implements
-	    Predicate<Commune> {
-	private static final Pattern NORMALIZER_REGEX = Pattern
-		.compile("[^\\p{ASCII}]");
-	private static final String NORMALIZER_REPLACE = "";
-	private final String matcher;
-
-	public CommuneNameMatcherPredicate(final String matcher) {
-	    this.matcher = matcher;
-	}
-
-	@Override
-	public boolean apply(final Commune commune) {
-	    return matcher.equals(normalize(commune.getNom().substring(0,
-		    Math.min(commune.getNom().length(), matcher.length()))));
-	}
-
-	/**
-	 * la comparaison se fait sans tenir compte des accents et caractères
-	 * spéciaux
-	 */
-	public static String normalize(final String value) {
-	    return NORMALIZER_REGEX
-		    .matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
-		    .replaceAll(NORMALIZER_REPLACE).toLowerCase();
-	}
-    }
-
-    private Function<Canton, Iterable<? extends District>> extractDistrictFunction = new Function<Canton, Iterable<? extends District>>() {
+    private final Function<Canton, Iterable<? extends District>> extractDistrictFunction = new Function<Canton, Iterable<? extends District>>() {
 	@Override
 	public Iterable<? extends District> apply(final Canton canton) {
 	    return canton.getDistrict();
 	}
     };
 
-    private Function<District, Iterable<? extends Commune>> extractCommuneFunction = new Function<District, Iterable<? extends Commune>>() {
+    private final Function<District, Iterable<? extends Commune>> extractCommuneFunction = new Function<District, Iterable<? extends Commune>>() {
 	@Override
 	public Iterable<? extends Commune> apply(final District district) {
 	    return district.getCommune();

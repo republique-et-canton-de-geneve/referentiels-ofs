@@ -58,7 +58,7 @@ public class RefSearchTest extends AbstractRefWSTest {
 	/* 27 */{ "ZeNauvA", "01.01.2003", 0 },
 	/* 28 */{ "ZeNauvA", null, 0 },
 	/* 29 */{ "Aesch", null, 5 },
-	/* 30 */{ "Aesch ", null, 5 },
+	/* 30 */{ "Aesch ", null, 3 },
 	/* 31 */{ "Aesch (", null, 3 },
 	/* 32 */{ "Aesch (", "01.01.1960", 2 },
 	/* */

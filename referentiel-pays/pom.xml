@@ -64,13 +64,6 @@
 					<plugin>
 						<groupId>org.jvnet.jaxb2.maven2</groupId>
 						<artifactId>maven-jaxb2-plugin</artifactId>
-						<version>0.8.3</version>
-						<configuration>
-							<verbose>false</verbose>
-							<specVersion>2.1</specVersion>
-							<extension>true</extension>
-							<forceRegenerate>true</forceRegenerate>
-						</configuration>
 						<executions>
 							<execution>
 								<id>xjc</id>

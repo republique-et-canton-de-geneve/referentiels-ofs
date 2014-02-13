@@ -1,13 +1,18 @@
-<jxb:bindings
- 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
- 		xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
- 		xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
- 		jxb:extensionBindingPrefixes="xjc"
- 		jxb:version="2.1">
+<jxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+	jxb:extensionBindingPrefixes="inheritance" 
+	jxb:version="2.1">
 
 	<jxb:globalBindings collectionType="java.util.LinkedList">
 		<xjc:serializable uid="100" />
 		<xjc:javaType name="java.util.Date" xmlType="xs:date" adapter="ch.ge.cti.ct.referentiels.ofs.data.JaxbDateAdapter" />
    </jxb:globalBindings>
 
+	<jxb:bindings schemaLocation="repertoire-formes-juridiques.xsd" node="/xs:schema">
+		<jxb:bindings node="xs:element[@name='forme-juridique']/xs:complexType">
+			<inheritance:implements>ch.ge.cti.ct.referentiels.ofs.model.IComplexType</inheritance:implements>
+		</jxb:bindings>
+	</jxb:bindings>
 </jxb:bindings>

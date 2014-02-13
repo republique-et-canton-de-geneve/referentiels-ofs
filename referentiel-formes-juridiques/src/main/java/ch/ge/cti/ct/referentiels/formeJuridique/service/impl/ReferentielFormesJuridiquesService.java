@@ -1,6 +1,5 @@
 package ch.ge.cti.ct.referentiels.formeJuridique.service.impl;
 
-import java.util.Comparator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.ReferentielFormesJuridiques;
 import ch.ge.cti.ct.referentiels.formeJuridique.service.ReferentielFormesJuridiquesServiceAble;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
@@ -42,8 +42,7 @@ public enum ReferentielFormesJuridiquesService implements
 	// on retourne une copie de la liste des continents
 	return FluentIterable
 		.from(ReferentielDataSingleton.instance.getData()
-			.getFormeJuridique()).toSortedList(
-			new FormeJuridiqueComparator());
+			.getFormeJuridique()).toSortedList(nomComparator);
     }
 
     @Override
@@ -64,15 +63,5 @@ public enum ReferentielFormesJuridiquesService implements
 		}).first().orNull();
     }
 
-    /**
-     * Comparateur pour le tri des listes des regions
-     * 
-     */
-    private class FormeJuridiqueComparator implements
-	    Comparator<FormeJuridique> {
-	@Override
-	public int compare(final FormeJuridique c0, final FormeJuridique c1) {
-	    return c0.getNom().compareTo(c1.getNom());
-	}
-    }
+    private final NomComparator nomComparator = new NomComparator();
 }
