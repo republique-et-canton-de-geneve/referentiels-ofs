@@ -1,15 +1,11 @@
 package ch.ge.cti.ct.referentiels.communes.data;
 
-import java.io.File;
 import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 
 import org.sdmxsource.sdmx.api.model.StructureWorkspace;
 import org.sdmxsource.sdmx.api.model.beans.SdmxBeans;
@@ -75,9 +71,6 @@ public class SDMXDataAdaptor extends
 	populateMetaData(workspace);
 	populateTempRefs(workspace);
 	populateHierarchy(workspace);
-	if (log().isDebugEnabled()) {
-	    dumpResult();
-	}
 	log().info("Chargement du référentiel {}: {} ms", urlXML,
 		System.currentTimeMillis() - start);
 	return referentielCommunes;
@@ -231,29 +224,6 @@ public class SDMXDataAdaptor extends
 		}
 	    }
 	}
-    }
-
-    /**
-     * Méthode debug
-     */
-    private void dumpResult() {
-	try {
-	    log().debug("Cantons:   {}", cantonRef.size());
-	    log().debug("Districts: {}" + districtRef.size());
-	    log().debug("Communes:  {}" + communeRef.size());
-	    log().debug("Dump XML dans le fichier target/out.xml");
-
-	    final JAXBContext jc = JAXBContext
-		    .newInstance(ReferentielCommunes.class.getPackage()
-			    .getName());
-	    final Marshaller marshaller = jc.createMarshaller();
-	    marshaller.setProperty("jaxb.encoding", "UTF-8");
-	    marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-	    marshaller.marshal(referentielCommunes, new File("target/out.xml"));
-	} catch (final Exception e) {
-	    e.printStackTrace();
-	}
-
     }
 
     /**

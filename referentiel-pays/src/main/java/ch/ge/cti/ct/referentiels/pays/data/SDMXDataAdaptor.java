@@ -1,14 +1,10 @@
 package ch.ge.cti.ct.referentiels.pays.data;
 
-import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 
 import org.sdmxsource.sdmx.api.model.StructureWorkspace;
 import org.sdmxsource.sdmx.api.model.beans.SdmxBeans;
@@ -40,13 +36,13 @@ public class SDMXDataAdaptor extends
     private static final String NULL_VALUE = "";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private ReferentielPaysTerritoires referentielPaysTerritoires = new ReferentielPaysTerritoires();
+    private final ReferentielPaysTerritoires referentielPaysTerritoires = new ReferentielPaysTerritoires();
     /** liste temporaires de cantons */
-    private Map<String, Continent> continentRef = new HashMap<String, Continent>();
+    private final Map<String, Continent> continentRef = new HashMap<String, Continent>();
     /** liste temporaires de districts */
-    private Map<String, Region> regionRef = new HashMap<String, Region>();
+    private final Map<String, Region> regionRef = new HashMap<String, Region>();
     /** liste temporaires de communes */
-    private Map<String, Pays> paysRef = new HashMap<String, Pays>();
+    private final Map<String, Pays> paysRef = new HashMap<String, Pays>();
 
     /**
      * Constructeur avec injection du parseur SDMX
@@ -68,6 +64,7 @@ public class SDMXDataAdaptor extends
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
+    @Override
     public ReferentielPaysTerritoires parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
@@ -76,9 +73,6 @@ public class SDMXDataAdaptor extends
 	populateMetaData(workspace);
 	populateTempRefs(workspace);
 	populateHierarchy(workspace);
-	if (log().isDebugEnabled()) {
-	    dumpResult();
-	}
 	log().info("Chargement du référentiel {}: {} ms", urlXML,
 		System.currentTimeMillis() - start);
 	return referentielPaysTerritoires;
@@ -121,13 +115,13 @@ public class SDMXDataAdaptor extends
 	// 4. <structure:CodeRef>: liste continents
 	final List<HierarchicalCodeBean> cbContinents = hb
 		.getHierarchicalCodeBeans();
-	for (HierarchicalCodeBean cbContinent : cbContinents) {
+	for (final HierarchicalCodeBean cbContinent : cbContinents) {
 	    final Continent continent = continentRef.get(cbContinent
 		    .getCodeId());
 	    referentielPaysTerritoires.getContinent().add(continent);
 	    final Set<HierarchicalCodeBean> cbRegionPayss = cbContinent
 		    .getComposites(HierarchicalCodeBean.class);
-	    for (HierarchicalCodeBean cbRegionPays : cbRegionPayss) {
+	    for (final HierarchicalCodeBean cbRegionPays : cbRegionPayss) {
 		if (ListAlias.REGION.code.equals(cbRegionPays
 			.getCodelistAliasRef())) {
 		    final Region region = regionRef.get(cbRegionPays
@@ -162,9 +156,9 @@ public class SDMXDataAdaptor extends
     private void populateTempRefs(final StructureWorkspace workspace) {
 	final Set<CodelistBean> cls = workspace.getStructureBeans(false)
 		.getCodelists();
-	for (CodelistBean cl : cls) {
+	for (final CodelistBean cl : cls) {
 	    final List<CodeBean> cbs = cl.getItems();
-	    for (CodeBean cb : cbs) {
+	    for (final CodeBean cb : cbs) {
 		if (CodeList.CL_CONTINENTS.name().equals(cl.getId())) {
 		    final Continent continent = new Continent();
 		    continent.setId(Integer.parseInt(cb.getId()));
@@ -193,7 +187,7 @@ public class SDMXDataAdaptor extends
     }
 
     private String getName(final CodeBean cb, final AnnotationType lang) {
-	for (TextTypeWrapper ttw : cb.getNames()) {
+	for (final TextTypeWrapper ttw : cb.getNames()) {
 	    if (lang.name().equals(ttw.getLocale())) {
 		return ttw.getValue();
 	    }
@@ -205,8 +199,8 @@ public class SDMXDataAdaptor extends
 	    final String name, final String defaultValue) {
 	String value = null;
 	if (cb.getAnnotationsByType(name).iterator().hasNext()) {
-	    for (TextTypeWrapper ttw : cb.getAnnotationsByType(name).iterator()
-		    .next().getText()) {
+	    for (final TextTypeWrapper ttw : cb.getAnnotationsByType(name)
+		    .iterator().next().getText()) {
 		value = ttw.getValue();
 		if (lang.name().equals(ttw.getLocale())) {
 		    return ttw.getValue();
@@ -214,30 +208,6 @@ public class SDMXDataAdaptor extends
 	    }
 	}
 	return value == null ? defaultValue : value;
-    }
-
-    /**
-     * Méthode debug
-     */
-    private void dumpResult() {
-	try {
-	    log().debug("Continents:   {}", continentRef.size());
-	    log().debug("Regions: {}" + regionRef.size());
-	    log().debug("Pays:  {}" + paysRef.size());
-	    log().debug("Dump XML dans le fichier target/out.xml");
-
-	    final JAXBContext jc = JAXBContext
-		    .newInstance(ReferentielPaysTerritoires.class.getPackage()
-			    .getName());
-	    final Marshaller marshaller = jc.createMarshaller();
-	    marshaller.setProperty("jaxb.encoding", "UTF-8");
-	    marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-	    marshaller.marshal(referentielPaysTerritoires, new File(
-		    "target/out.xml"));
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
-
     }
 
     /**
