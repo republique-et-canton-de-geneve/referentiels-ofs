@@ -34,8 +34,7 @@ public enum StatistiquesServiceSingleton {
      */
     public void registerCall(final Class<? extends Object> clazz,
 	    final Method method, final Object[] params, final long laps) {
-	final Call key = new Call().withClasse(clazz).withMethod(method)
-		.withParameters(params);
+	final Call key = new Call().withClasse(clazz).withMethod(method);
 	Stat count = null;
 	if (!stats.containsKey(key)) {
 	    count = new Stat();

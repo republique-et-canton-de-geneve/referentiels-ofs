@@ -35,34 +35,22 @@ public enum DisplayMode implements Renderable {
 	    xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 	    xml.append("<referentiel-pays-territoires-statistiques>\n");
 	    xml.append("  <cache>\n");
-	    for (CacheEnum cache : CacheEnum.values()) {
+	    for (final CacheEnum cache : CacheEnum.values()) {
 		CacheStatUtil.renderCacheStats(cache.name(),
 			CacheManager.instance.getCaches().get(cache.name()),
 			xml);
 	    }
 	    xml.append("  </cache>\n");
-	    for (Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
+	    for (final Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
 		    .getStatistiques(ReferentielPaysTerritoiresSEI.class)
 		    .entrySet()) {
-		if (entry.getKey().getParametre() != null) {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" parametre=\"")
-			    .append(entry.getKey().getParametre())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		} else {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		}
+		xml.append("  <call method=\"")
+			.append(entry.getKey().getMethode())
+			.append("\" count=\"")
+			.append(entry.getValue().getCalls().longValue())
+			.append("\" total-laps-nano=\"")
+			.append(entry.getValue().getLaps().longValue())
+			.append("\"/>\n");
 	    }
 	    xml.append("</referentiel-pays-territoires-statistiques>");
 	    return xml.toString();

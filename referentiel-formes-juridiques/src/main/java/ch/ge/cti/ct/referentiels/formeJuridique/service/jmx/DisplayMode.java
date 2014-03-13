@@ -32,28 +32,16 @@ public enum DisplayMode implements Renderable {
 	    final StringBuilder xml = new StringBuilder();
 	    xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 	    xml.append("<referentiel-formes-juridiques-statistiques>\n");
-	    for (Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
+	    for (final Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
 		    .getStatistiques(ReferentielFormesJuridiquesSEI.class)
 		    .entrySet()) {
-		if (entry.getKey().getParametre() != null) {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" parametre=\"")
-			    .append(entry.getKey().getParametre())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		} else {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		}
+		xml.append("  <call method=\"")
+			.append(entry.getKey().getMethode())
+			.append("\" count=\"")
+			.append(entry.getValue().getCalls().longValue())
+			.append("\" total-laps-nano=\"")
+			.append(entry.getValue().getLaps().longValue())
+			.append("\"/>\n");
 	    }
 	    xml.append("</referentiel-formes-juridiques-statistiques>");
 	    return xml.toString();

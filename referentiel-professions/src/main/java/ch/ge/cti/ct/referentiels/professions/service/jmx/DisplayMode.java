@@ -44,25 +44,13 @@ public enum DisplayMode implements Renderable {
 	    for (final Entry<Call, Stat> entry : StatistiquesServiceSingleton.instance
 		    .getStatistiques(ReferentielProfessionsSEI.class)
 		    .entrySet()) {
-		if (entry.getKey().getParametre() != null) {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" parametre=\"")
-			    .append(entry.getKey().getParametre())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		} else {
-		    xml.append("  <call method=\"")
-			    .append(entry.getKey().getMethode())
-			    .append("\" count=\"")
-			    .append(entry.getValue().getCalls().longValue())
-			    .append("\" total-laps-nano=\"")
-			    .append(entry.getValue().getLaps().longValue())
-			    .append("\"/>\n");
-		}
+		xml.append("  <call method=\"")
+			.append(entry.getKey().getMethode())
+			.append("\" count=\"")
+			.append(entry.getValue().getCalls().longValue())
+			.append("\" total-laps-nano=\"")
+			.append(entry.getValue().getLaps().longValue())
+			.append("\"/>\n");
 	    }
 	    xml.append("</referentiel-professions-territoires-statistiques>");
 	    return xml.toString();
