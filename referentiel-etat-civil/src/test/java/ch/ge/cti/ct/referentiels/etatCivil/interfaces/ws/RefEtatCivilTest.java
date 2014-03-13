@@ -47,7 +47,7 @@ public class RefEtatCivilTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 1, percentile95 = 1)
+    @Required(percentile90 = 2, percentile95 = 5)
     public void test() throws ReferentielOfsException {
 	final EtatCivil etatCivil = getWS().getEtatCivil(etatCivilId);
 	if (etatCivilNom == null) {

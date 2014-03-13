@@ -79,7 +79,7 @@ public class RefSearchTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(average = 50, percentile90 = 100, percentile95 = 200)
+    @Required(average = 50, percentile90 = 150, percentile95 = 300)
     public void test() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {

@@ -46,7 +46,7 @@ public class RefGroupesSearchRegexpTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 5, percentile95 = 20)
+    @Required(percentile90 = 10, percentile95 = 30)
     public void test() throws ReferentielOfsException {
 	final List<GroupeWS> groupes = getWS().searchGroupeRegexp(searchString);
 	if (countGroupes == -1) {

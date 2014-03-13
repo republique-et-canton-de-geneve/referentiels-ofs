@@ -46,7 +46,7 @@ public class RefGroupesSearchRegexpTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 25, percentile95 = 100)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Groupe> groupes = ReferentielProfessionsService.instance
 		.searchGroupeRegexp(searchString);

@@ -46,7 +46,7 @@ public class RefRegionsContinentTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 1, percentile95 = 1)
+    @Required(percentile90 = 2, percentile95 = 5)
     public void test() throws ReferentielOfsException {
 	final List<Region> regions = ReferentielPaysTerritoiresService.instance
 		.getRegions(continentId);

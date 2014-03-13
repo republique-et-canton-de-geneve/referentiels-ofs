@@ -46,7 +46,7 @@ public class RefDivisionSearchStringTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 25, percentile95 = 100)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Division> classes = ReferentielProfessionsService.instance
 		.searchDivisionRegexp(searchString);

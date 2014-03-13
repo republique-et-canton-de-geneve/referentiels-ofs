@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.model.Division;
 public class RefTest extends AbstractRefTest {
 
     @Test
-    @Required(percentile90 = 5, percentile95 = 20)
+    @Required(percentile90 = 10, percentile95 = 30)
     public void test() throws ReferentielOfsException {
 	assertTrue("ReferentielProfessions.id est incorrect",
 		StringUtils.isNotBlank(ReferentielProfessionsService.instance

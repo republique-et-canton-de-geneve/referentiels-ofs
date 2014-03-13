@@ -44,7 +44,7 @@ public class RefCantonsTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 10, percentile95 = 20)
+    @Required(percentile90 = 15, percentile95 = 30)
     public void testGetCantons() throws ReferentielOfsException {
 	List<CantonWS> cantons = null;
 	if (dateValid == null) {

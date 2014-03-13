@@ -84,7 +84,7 @@ public class RefCommunesDistrictTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 10, percentile95 = 20)
+    @Required(percentile90 = 15, percentile95 = 30)
     public void test() throws ReferentielOfsException {
 	List<CommuneWS> communes = null;
 	if (dateValid == null) {

@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.pays.model.Continent;
 public class RefContinentsTest extends AbstractRefTest {
 
     @Test
-    @Required(percentile90 = 1, percentile95 = 1)
+    @Required(percentile90 = 2, percentile95 = 5)
     public void test() throws ReferentielOfsException {
 	final List<Continent> continents = ReferentielPaysTerritoiresService.instance
 		.getContinents();

@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.RegionWS;
 public class RefRegionsTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 1, percentile95 = 1)
+    @Required(percentile90 = 2, percentile95 = 5)
     public void test() throws ReferentielOfsException {
 	final List<RegionWS> regions = getWS().getRegions();
 	assertEquals("La liste des regions est incorrecte", 32, regions.size());
