@@ -27,8 +27,6 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	    throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielFormesJuridiquesSEI();
-	    // on force le chargement pour ne pas impacter les mesures de perf
-	    ws.getFormesJuridiques();
 	}
 	return ws;
     }

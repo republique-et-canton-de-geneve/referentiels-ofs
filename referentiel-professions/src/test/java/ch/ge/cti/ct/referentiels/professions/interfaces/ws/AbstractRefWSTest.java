@@ -31,8 +31,6 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
     protected ReferentielProfessionsSEI getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielProfessionsSEI();
-	    // on force le chargement pour ne pas impacter les mesures de perf
-	    ws.getClasses();
 	}
 	return ws;
     }

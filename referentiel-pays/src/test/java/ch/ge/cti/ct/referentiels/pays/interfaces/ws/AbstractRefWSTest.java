@@ -32,8 +32,6 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	    throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielPaysTerritoiresSEI();
-	    // on force le chargement pour ne pas impacter les mesures de perf
-	    ws.getContinents();
 	}
 	return ws;
     }

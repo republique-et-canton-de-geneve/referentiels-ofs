@@ -32,8 +32,6 @@ public abstract class AbstractRefWSTest extends AbstractReferentielTest {
     protected ReferentielCommunesSEI getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielCommunesSEI();
-	    // on force le chargement pour ne pas impacter les mesures de perf
-	    ws.getCantons();
 	}
 	return ws;
     }
