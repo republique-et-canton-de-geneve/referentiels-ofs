@@ -58,7 +58,7 @@ public class ReferentielCommunesSEI {
 
     @WebMethod(operationName = "getCantons", action = "getCantons")
     @WebResult(name = "canton")
-    @Cachable(name = "cantons", size = 1)
+    @Cachable(name = "cantons", size = Cachable.SMALL)
     public List<CantonWS> getCantons() throws ReferentielOfsException {
 	LOG.debug("getCantons()");
 	try {
@@ -86,7 +86,7 @@ public class ReferentielCommunesSEI {
 
     @WebMethod(operationName = "getDistrictsByCanton", action = "getDistrictsByCanton")
     @WebResult(name = "district")
-    @Cachable(name = "districts", size = 200)
+    @Cachable(name = "districts", size = Cachable.MEDIUM)
     public List<DistrictWS> getDistricts(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {
@@ -120,7 +120,7 @@ public class ReferentielCommunesSEI {
 
     @WebMethod(operationName = "getCommunesByDistrict", action = "getCommunesByDistrict")
     @WebResult(name = "commune")
-    @Cachable(name = "communes", size = 500)
+    @Cachable(name = "communes", size = Cachable.LARGE)
     public List<CommuneWS> getCommunesByDistrict(
 	    @WebParam(name = "district") final int districtId)
 	    throws ReferentielOfsException {
@@ -139,7 +139,7 @@ public class ReferentielCommunesSEI {
 
     @WebMethod(operationName = "getCommunesByCanton", action = "getCommunesByCanton")
     @WebResult(name = "commune")
-    @Cachable(name = "communes", size = 500)
+    @Cachable(name = "communes", size = Cachable.LARGE)
     public List<CommuneWS> getCommunesByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {

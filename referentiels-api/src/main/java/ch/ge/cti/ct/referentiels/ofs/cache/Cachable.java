@@ -17,12 +17,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = ElementType.METHOD)
 public @interface Cachable {
-	/** identifiant du cache */
-	String name();
+    int SMALL = 10;
+    int MEDIUM = 300;
+    int LARGE = 1000;
 
-	/** taille maximale du cache */
-	int size();
+    /** identifiant du cache */
+    String name();
 
-	/** activation des statistiques sur le cache */
-	boolean stats() default true;
+    /** taille maximale du cache */
+    int size();
+
+    /** activation des statistiques sur le cache */
+    boolean stats() default true;
 }

@@ -50,11 +50,6 @@ import com.google.common.collect.FluentIterable;
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
 public class ReferentielProfessionsSEI {
-    /* définition des tailles des modules de cache */
-    private static final int DIVISIONS_CACHE = 200;
-    private static final int CLASSES_CACHE = 500;
-    private static final int GROUPES_CACHE = 1000;
-    private static final int GENRES_CACHE = 1000;
 
     /** Référence sur l'implémentation */
     private final ReferentielProfessionsServiceAble service = ReferentielProfessionsService.instance;
@@ -80,7 +75,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getClasses", action = "getClasses")
     @WebResult(name = "classe")
-    @Cachable(name = "classes", size = CLASSES_CACHE)
+    @Cachable(name = "classes", size = Cachable.MEDIUM)
     public List<ClasseWS> getClasses() throws ReferentielOfsException {
 	LOG.debug("getClasses()");
 	try {
@@ -93,7 +88,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getClassesByDivision", action = "getClassesByDivision")
     @WebResult(name = "classe")
-    @Cachable(name = "classes", size = CLASSES_CACHE)
+    @Cachable(name = "classes", size = Cachable.MEDIUM)
     public List<ClasseWS> getClassesByDivision(
 	    @WebParam(name = "divisionId") final int divisionId)
 	    throws ReferentielOfsException {
@@ -127,7 +122,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getDivisions", action = "getDivisions")
     @WebResult(name = "division")
-    @Cachable(name = "divisions", size = DIVISIONS_CACHE)
+    @Cachable(name = "divisions", size = Cachable.MEDIUM)
     public List<DivisionWS> getDivisions() throws ReferentielOfsException {
 	LOG.debug("getDivisions()");
 	try {
@@ -155,7 +150,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getGenres", action = "getGenres")
     @WebResult(name = "genre")
-    @Cachable(name = "genres", size = GENRES_CACHE)
+    @Cachable(name = "genres", size = Cachable.LARGE)
     public List<GenreWS> getGenres() throws ReferentielOfsException {
 	LOG.debug("getGenres()");
 	try {
@@ -168,7 +163,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getGenresByGroup", action = "getGenresByGroup")
     @WebResult(name = "genre")
-    @Cachable(name = "genres", size = GENRES_CACHE)
+    @Cachable(name = "genres", size = Cachable.LARGE)
     public List<GenreWS> getGenresByGroup(
 	    @WebParam(name = "groupeId") final int groupeId)
 	    throws ReferentielOfsException {
@@ -201,7 +196,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getGroupes", action = "getGroupes")
     @WebResult(name = "groupe")
-    @Cachable(name = "groupes", size = GROUPES_CACHE)
+    @Cachable(name = "groupes", size = Cachable.LARGE)
     public List<GroupeWS> getGroupes() throws ReferentielOfsException {
 	LOG.debug("getGroupes()");
 	try {
@@ -214,7 +209,7 @@ public class ReferentielProfessionsSEI {
 
     @WebMethod(operationName = "getGroupesByClasse", action = "getGroupesByClasse")
     @WebResult(name = "groupe")
-    @Cachable(name = "groupes", size = GROUPES_CACHE)
+    @Cachable(name = "groupes", size = Cachable.LARGE)
     public List<GroupeWS> getGroupesByClasse(
 	    @WebParam(name = "classeId") final int classeId)
 	    throws ReferentielOfsException {

@@ -57,7 +57,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getContinents", action = "getContinents")
     @WebResult(name = "continent")
-    @Cachable(name = "continents", size = 1)
+    @Cachable(name = "continents", size = Cachable.SMALL)
     public List<ContinentWS> getContinents() throws ReferentielOfsException {
 	LOG.debug("getContinents()");
 	try {
@@ -87,7 +87,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getRegionsByContinent", action = "getRegionsByContinent")
     @WebResult(name = "region")
-    @Cachable(name = "regions", size = 300)
+    @Cachable(name = "regions", size = Cachable.MEDIUM)
     public List<RegionWS> getRegionsByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException {
@@ -105,7 +105,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getRegions", action = "getRegions")
     @WebResult(name = "region")
-    @Cachable(name = "regions", size = 300)
+    @Cachable(name = "regions", size = Cachable.MEDIUM)
     public List<RegionWS> getRegions() throws ReferentielOfsException {
 	LOG.debug("getRegions()");
 	try {
@@ -133,7 +133,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getPaysByRegion", action = "getPaysByRegion")
     @WebResult(name = "pays")
-    @Cachable(name = "pays", size = 1000)
+    @Cachable(name = "pays", size = Cachable.LARGE)
     public List<PaysWS> getPaysByRegion(
 	    @WebParam(name = "region") final int regionId)
 	    throws ReferentielOfsException {
@@ -151,7 +151,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getPaysByContinent", action = "getPaysByContinent")
     @WebResult(name = "pays")
-    @Cachable(name = "pays", size = 1000)
+    @Cachable(name = "pays", size = Cachable.LARGE)
     public List<PaysWS> getPaysByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException {
@@ -169,7 +169,7 @@ public class ReferentielPaysTerritoiresSEI {
 
     @WebMethod(operationName = "getPays", action = "getPays")
     @WebResult(name = "pays")
-    @Cachable(name = "pays", size = 1000)
+    @Cachable(name = "pays", size = Cachable.LARGE)
     public List<PaysWS> getPays() throws ReferentielOfsException {
 	LOG.debug("getPays()");
 	try {
