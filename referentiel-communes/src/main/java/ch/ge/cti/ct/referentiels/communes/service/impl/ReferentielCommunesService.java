@@ -283,7 +283,7 @@ public enum ReferentielCommunesService implements
 	}
     };
 
-    private class CantonValidPredicate implements Predicate<Canton> {
+    private static class CantonValidPredicate implements Predicate<Canton> {
 	private final Date dateValid;
 
 	public CantonValidPredicate(final Date dateValid) {
@@ -300,7 +300,7 @@ public enum ReferentielCommunesService implements
 	}
     }
 
-    private class DistrictValidPredicate implements Predicate<District> {
+    private static class DistrictValidPredicate implements Predicate<District> {
 	private final Date dateValid;
 
 	public DistrictValidPredicate(final Date dateValid) {
@@ -317,7 +317,7 @@ public enum ReferentielCommunesService implements
 	}
     }
 
-    private class CommuneValidPredicate implements Predicate<Commune> {
+    private static class CommuneValidPredicate implements Predicate<Commune> {
 	private final Date dateValid;
 
 	public CommuneValidPredicate(final Date dateValid) {

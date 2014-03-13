@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GenreWS;
 public class RefGenresTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 5, percentile95 = 20)
+    @Required(percentile90 = 5, percentile95 = 25)
     public void test() throws ReferentielOfsException {
 	final List<GenreWS> genres = getWS().getGenres();
 	assertEquals("La liste des genres est incorrecte", 383, genres.size());

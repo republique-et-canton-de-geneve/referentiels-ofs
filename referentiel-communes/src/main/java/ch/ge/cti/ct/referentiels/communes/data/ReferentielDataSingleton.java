@@ -14,46 +14,51 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  * 
  */
 public enum ReferentielDataSingleton {
-	instance;
+    instance;
 
-	/** instance de la classe de lecture du flux XML */
-	private final ServiceDataReader reader = new ServiceDataReader();
-	/** référentiel instancié */
-	private ReferentielCommunes data;
+    /** instance de la classe de lecture du flux XML */
+    private final ServiceDataReader reader = new ServiceDataReader();
+    /** référentiel instancié */
+    private ReferentielCommunes data;
 
-	/**
-	 * Getter du référentiel
-	 * 
-	 * @return référentiel
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	public ReferentielCommunes getData() throws ReferentielOfsException {
-		if (data == null) {
-			loadData();
-		}
-		return data;
+    /**
+     * Getter du référentiel
+     * 
+     * @return référentiel
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    public ReferentielCommunes getData() throws ReferentielOfsException {
+	if (data == null) {
+	    loadData();
 	}
+	return data;
+    }
 
-	/**
-	 * Getter de l'url du fichier XML
-	 * 
-	 * @return url du fichier XML
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	public URL getReferentielFile() throws ReferentielOfsException {
-		return reader.getXmlFile();
-	}
+    /**
+     * Getter de l'url du fichier XML
+     * 
+     * @return url du fichier XML
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    public URL getReferentielFile() throws ReferentielOfsException {
+	return reader.getXmlFile();
+    }
 
-	/**
-	 * Chargement du fichier XML
-	 * 
-	 * @throws ReferentielOfsException erreur de traitement
-	 */
-	private synchronized void loadData() throws ReferentielOfsException {
-		if (data == null) {
-			DistributionFactory.setDisableJNDI(true);
-			data = reader.read();
-		}
+    /**
+     * Chargement du fichier XML
+     * 
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    private void loadData() throws ReferentielOfsException {
+	if (data == null) {
+	    synchronized (this) {
+		DistributionFactory.setDisableJNDI(true);
+		data = reader.read();
+	    }
 	}
+    }
 
 }

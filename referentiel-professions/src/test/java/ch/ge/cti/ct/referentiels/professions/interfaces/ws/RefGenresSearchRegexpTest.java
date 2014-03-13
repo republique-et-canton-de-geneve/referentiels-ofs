@@ -46,7 +46,7 @@ public class RefGenresSearchRegexpTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 5, percentile95 = 20)
+    @Required(percentile90 = 5, percentile95 = 25)
     public void test() throws ReferentielOfsException {
 	final List<GenreWS> genres = getWS().searchGenreRegexp(searchString);
 	if (countGenres == -1) {

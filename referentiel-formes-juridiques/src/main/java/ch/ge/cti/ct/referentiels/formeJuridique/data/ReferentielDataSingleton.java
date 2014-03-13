@@ -52,10 +52,12 @@ public enum ReferentielDataSingleton {
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
-    private synchronized void loadData() throws ReferentielOfsException {
+    private void loadData() throws ReferentielOfsException {
 	if (data == null) {
-	    DistributionFactory.setDisableJNDI(true);
-	    data = reader.read();
+	    synchronized (this) {
+		DistributionFactory.setDisableJNDI(true);
+		data = reader.read();
+	    }
 	}
     }
 

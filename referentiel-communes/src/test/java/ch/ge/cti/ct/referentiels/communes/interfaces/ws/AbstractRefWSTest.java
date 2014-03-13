@@ -32,6 +32,8 @@ public abstract class AbstractRefWSTest extends AbstractReferentielTest {
     protected ReferentielCommunesSEI getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielCommunesSEI();
+	    // on force le chargement pour ne pas impacter les mesures de perf
+	    ws.getCantons();
 	}
 	return ws;
     }
@@ -43,7 +45,7 @@ public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 	final Date valid = dateValid == null ? new Date() : dateValid;
 	assertEquals(message + "le nombre de communes est incorrect",
 		countCommunes, communes.size());
-	for (CommuneWS c : communes) {
+	for (final CommuneWS c : communes) {
 	    assertTrue(
 		    message
 			    + "commune["
@@ -85,7 +87,7 @@ public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 	    final List<DistrictWS> districts, final Date dateValid,
 	    final String codeCanton) {
 	final Date valid = dateValid == null ? new Date() : dateValid;
-	for (DistrictWS c : districts) {
+	for (final DistrictWS c : districts) {
 	    assertTrue(
 		    message
 			    + "district["
@@ -140,7 +142,7 @@ public abstract class AbstractRefWSTest extends AbstractReferentielTest {
     protected void assertValidCantons(final String message,
 	    final List<CantonWS> cantons, final Date dateValid) {
 	final Date valid = dateValid == null ? new Date() : dateValid;
-	for (CantonWS c : cantons) {
+	for (final CantonWS c : cantons) {
 	    assertTrue(
 		    message
 			    + "canton["

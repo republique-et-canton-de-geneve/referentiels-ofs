@@ -26,6 +26,8 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
     protected ReferentielEtatCivilSEI getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielEtatCivilSEI();
+	    // on force le chargement pour ne pas impacter les mesures de perf
+	    ws.getEtatsCivils();
 	}
 	return ws;
     }
