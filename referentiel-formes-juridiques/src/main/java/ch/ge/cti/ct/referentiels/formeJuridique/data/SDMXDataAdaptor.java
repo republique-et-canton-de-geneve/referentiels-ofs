@@ -26,7 +26,7 @@ public class SDMXDataAdaptor extends
     private static final String SPRING_CONTEXT_FILE = "referentiel-formes-juridiques-context.xml";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private ReferentielFormesJuridiques ReferentielFormesJuridiques = new ReferentielFormesJuridiques();
+    private final ReferentielFormesJuridiques referentielFormesJuridiques = new ReferentielFormesJuridiques();
 
     /**
      * Constructeur avec injection du parseur SDMX
@@ -48,6 +48,7 @@ public class SDMXDataAdaptor extends
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
+    @Override
     public ReferentielFormesJuridiques parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
@@ -57,7 +58,7 @@ public class SDMXDataAdaptor extends
 	populateHierarchy(workspace);
 	log().info("Chargement du référentiel {}: {} ms", urlXML,
 		System.currentTimeMillis() - start);
-	return ReferentielFormesJuridiques;
+	return referentielFormesJuridiques;
     }
 
     /**
@@ -71,9 +72,9 @@ public class SDMXDataAdaptor extends
      *            données SDMX parsées
      */
     private void populateMetaData(final StructureWorkspace workspace) {
-	ReferentielFormesJuridiques.setId(workspace.getStructureBeans(false)
+	referentielFormesJuridiques.setId(workspace.getStructureBeans(false)
 		.getHeader().getId());
-	ReferentielFormesJuridiques.setDate(workspace.getStructureBeans(false)
+	referentielFormesJuridiques.setDate(workspace.getStructureBeans(false)
 		.getHeader().getPrepared());
     }
 
@@ -87,21 +88,21 @@ public class SDMXDataAdaptor extends
     private void populateHierarchy(final StructureWorkspace workspace) {
 	final Set<CodelistBean> cls = workspace.getStructureBeans(false)
 		.getCodelists();
-	for (CodelistBean cl : cls) {
+	for (final CodelistBean cl : cls) {
 	    final List<CodeBean> cbs = cl.getItems();
-	    for (CodeBean cb : cbs) {
+	    for (final CodeBean cb : cbs) {
 		final FormeJuridique formeJ = new FormeJuridique();
 		formeJ.setId(Integer.parseInt(cb.getId()));
 		formeJ.setNom(getName(cb, AnnotationType.fr));
 		formeJ.setNomCourt(getAnnotation(cb, AnnotationType.fr,
 			AnnotationType.ABBREV.name(), ""));
-		ReferentielFormesJuridiques.getFormeJuridique().add(formeJ);
+		referentielFormesJuridiques.getFormeJuridique().add(formeJ);
 	    }
 	}
     }
 
     private String getName(final CodeBean cb, final AnnotationType lang) {
-	for (TextTypeWrapper ttw : cb.getNames()) {
+	for (final TextTypeWrapper ttw : cb.getNames()) {
 	    if (lang.name().equals(ttw.getLocale())) {
 		return ttw.getValue();
 	    }
@@ -113,8 +114,8 @@ public class SDMXDataAdaptor extends
 	    final String name, final String defaultValue) {
 	String value = null;
 	if (cb.getAnnotationsByType(name).iterator().hasNext()) {
-	    for (TextTypeWrapper ttw : cb.getAnnotationsByType(name).iterator()
-		    .next().getText()) {
+	    for (final TextTypeWrapper ttw : cb.getAnnotationsByType(name)
+		    .iterator().next().getText()) {
 		value = ttw.getValue();
 		if (lang.name().equals(ttw.getLocale())) {
 		    return ttw.getValue();

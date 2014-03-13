@@ -49,7 +49,7 @@ import com.google.common.collect.FluentIterable;
 public class ReferentielPaysTerritoiresSEI {
 
     /** Référence sur l'implémentation */
-    private ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.instance;
+    private final ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.instance;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -63,7 +63,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getContinents())
 		    .transform(new ContinentConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -80,7 +80,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return new ContinentConvert().apply(service
 		    .getContinent(continentId));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -98,7 +98,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getRegions(continentId))
 		    .transform(new RegionConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -111,7 +111,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getRegions())
 		    .transform(new RegionConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -126,7 +126,7 @@ public class ReferentielPaysTerritoiresSEI {
 	}
 	try {
 	    return new RegionConvert().apply(service.getRegion(regionId));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -144,7 +144,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getPaysByRegion(regionId))
 		    .transform(new PaysConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -162,7 +162,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getPaysByContinent(continentId))
 		    .transform(new PaysConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -175,7 +175,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.getPays())
 		    .transform(new PaysConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -190,7 +190,7 @@ public class ReferentielPaysTerritoiresSEI {
 	}
 	try {
 	    return new PaysConvert().apply(service.getPaysByISO2(iso2));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -205,7 +205,7 @@ public class ReferentielPaysTerritoiresSEI {
 	}
 	try {
 	    return new PaysConvert().apply(service.getPaysByISO3(iso3));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -222,7 +222,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.searchPays(critere))
 		    .transform(new PaysConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -239,7 +239,7 @@ public class ReferentielPaysTerritoiresSEI {
 	try {
 	    return FluentIterable.from(service.searchPaysRegexp(critere))
 		    .transform(new PaysConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -267,7 +267,8 @@ public class ReferentielPaysTerritoiresSEI {
      * Fonction (closure) de copie du continent en ContinentWS<br/>
      * On ne copie par l'arborescence descendante (regions)
      */
-    private class ContinentConvert implements Function<Continent, ContinentWS> {
+    private static class ContinentConvert implements
+	    Function<Continent, ContinentWS> {
 	@Override
 	public ContinentWS apply(final Continent cin) {
 	    if (cin == null) {
@@ -284,7 +285,7 @@ public class ReferentielPaysTerritoiresSEI {
      * Fonction (closure) de copie du Region en RegionWS<br/>
      * On ne copie par l'arborescence descendante (regions)
      */
-    private class RegionConvert implements Function<Region, RegionWS> {
+    private static class RegionConvert implements Function<Region, RegionWS> {
 	@Override
 	public RegionWS apply(final Region cin) {
 	    if (cin == null) {
@@ -301,7 +302,7 @@ public class ReferentielPaysTerritoiresSEI {
     /**
      * Fonction (closure) de copie du Pays en PaysWS
      */
-    private class PaysConvert implements Function<Pays, PaysWS> {
+    private static class PaysConvert implements Function<Pays, PaysWS> {
 	@Override
 	public PaysWS apply(final Pays cin) {
 	    if (cin == null) {

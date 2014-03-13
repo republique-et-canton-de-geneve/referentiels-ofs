@@ -50,7 +50,7 @@ import com.google.common.collect.FluentIterable;
 public class ReferentielCommunesSEI {
 
     /** Référence au service d'implémentation */
-    private ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
+    private final ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -64,7 +64,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return FluentIterable.from(service.getCantons())
 		    .transform(new CantonConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -79,7 +79,7 @@ public class ReferentielCommunesSEI {
 	}
 	try {
 	    return new CantonConvert().apply(service.getCanton(codeCanton));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -97,7 +97,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return FluentIterable.from(service.getDistricts(codeCanton))
 		    .transform(new DistrictConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -113,7 +113,7 @@ public class ReferentielCommunesSEI {
 	}
 	try {
 	    return new DistrictConvert().apply(service.getDistrict(districtId));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -132,7 +132,7 @@ public class ReferentielCommunesSEI {
 	    return FluentIterable
 		    .from(service.getCommunesByDistrict(districtId))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -150,7 +150,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return FluentIterable.from(service.getCommunesByCanton(codeCanton))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -165,7 +165,7 @@ public class ReferentielCommunesSEI {
 	}
 	try {
 	    return new CommuneConvert().apply(service.getCommune(communeId));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -183,7 +183,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return new CantonConvert().apply(service.getCanton(codeCanton,
 		    dateValid));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -197,7 +197,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return FluentIterable.from(service.getCantons(dateValid))
 		    .transform(new CantonConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -215,7 +215,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return new DistrictConvert().apply(service.getDistrict(districtId,
 		    dateValid));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -234,7 +234,7 @@ public class ReferentielCommunesSEI {
 	    return FluentIterable
 		    .from(service.getDistricts(codeCanton, dateValid))
 		    .transform(new DistrictConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -253,7 +253,7 @@ public class ReferentielCommunesSEI {
 	    return FluentIterable
 		    .from(service.getCommunesByDistrict(districtId, dateValid))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -273,7 +273,7 @@ public class ReferentielCommunesSEI {
 	    return FluentIterable
 		    .from(service.getCommunesByCanton(codeCanton, dateValid))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -290,7 +290,7 @@ public class ReferentielCommunesSEI {
 	try {
 	    return FluentIterable.from(service.searchCommune(critere))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -309,7 +309,7 @@ public class ReferentielCommunesSEI {
 	    return FluentIterable
 		    .from(service.searchCommune(critere, dateValid))
 		    .transform(new CommuneConvert()).toList();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
@@ -336,7 +336,7 @@ public class ReferentielCommunesSEI {
      * Fonction (closure) de copie du canton en CantonWS<br/>
      * On ne copie par l'arborescence descendante (districts)
      */
-    private class CantonConvert implements Function<Canton, CantonWS> {
+    private static class CantonConvert implements Function<Canton, CantonWS> {
 	@Override
 	public CantonWS apply(final Canton cin) {
 	    if (cin == null) {
@@ -356,7 +356,8 @@ public class ReferentielCommunesSEI {
      * Fonction (closure) de copie du District en DistrictWS<br/>
      * On ne copie par l'arborescence descendante (districts)
      */
-    private class DistrictConvert implements Function<District, DistrictWS> {
+    private static class DistrictConvert implements
+	    Function<District, DistrictWS> {
 	@Override
 	public DistrictWS apply(final District cin) {
 	    if (cin == null) {
@@ -376,7 +377,7 @@ public class ReferentielCommunesSEI {
     /**
      * Fonction (closure) de copie du canton en CommuneWS
      */
-    private class CommuneConvert implements Function<Commune, CommuneWS> {
+    private static class CommuneConvert implements Function<Commune, CommuneWS> {
 	@Override
 	public CommuneWS apply(final Commune cin) {
 	    if (cin == null) {

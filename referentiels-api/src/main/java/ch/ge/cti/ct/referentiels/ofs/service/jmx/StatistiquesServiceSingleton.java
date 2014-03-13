@@ -51,17 +51,13 @@ public enum StatistiquesServiceSingleton {
      * Réinitialisation des statistiques
      */
     public void reset(final Class<? extends Object> clazz) {
-	System.err.println("pre reset(" + clazz.getName() + "): "
-		+ stats.size());
 	final Call[] calls = new Call[stats.size()];
 	stats.keySet().toArray(calls);
-	for (Call key : calls) {
+	for (final Call key : calls) {
 	    if (key.getClasse().equals(clazz.getName())) {
 		stats.remove(key);
 	    }
 	}
-	System.err.println("post reset(" + clazz.getName() + "): "
-		+ stats.size());
     }
 
     /**
@@ -75,7 +71,7 @@ public enum StatistiquesServiceSingleton {
 	return filteredMap;
     }
 
-    private class ClassFilterPredicate implements Predicate<Call> {
+    private static class ClassFilterPredicate implements Predicate<Call> {
 	private final String classeFilter;
 
 	ClassFilterPredicate(final String classeFilter) {
@@ -83,7 +79,7 @@ public enum StatistiquesServiceSingleton {
 	}
 
 	@Override
-	public boolean apply(Call call) {
+	public boolean apply(final Call call) {
 	    return classeFilter.equals(call.getClasse());
 	}
 

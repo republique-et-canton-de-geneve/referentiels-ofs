@@ -26,7 +26,7 @@ public class SDMXDataAdaptor extends
     private static final String SPRING_CONTEXT_FILE = "referentiel-etat-civil-context.xml";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private ReferentielEtatCivil ReferentielEtatCivil = new ReferentielEtatCivil();
+    private final ReferentielEtatCivil referentielEtatCivil = new ReferentielEtatCivil();
 
     /**
      * Constructeur avec injection du parseur SDMX
@@ -48,6 +48,7 @@ public class SDMXDataAdaptor extends
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
+    @Override
     public ReferentielEtatCivil parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
@@ -57,7 +58,7 @@ public class SDMXDataAdaptor extends
 	populateHierarchy(workspace);
 	log().info("Chargement du référentiel {}: {} ms", urlXML,
 		System.currentTimeMillis() - start);
-	return ReferentielEtatCivil;
+	return referentielEtatCivil;
     }
 
     /**
@@ -71,9 +72,9 @@ public class SDMXDataAdaptor extends
      *            données SDMX parsées
      */
     private void populateMetaData(final StructureWorkspace workspace) {
-	ReferentielEtatCivil.setId(workspace.getStructureBeans(false)
+	referentielEtatCivil.setId(workspace.getStructureBeans(false)
 		.getHeader().getId());
-	ReferentielEtatCivil.setDate(workspace.getStructureBeans(false)
+	referentielEtatCivil.setDate(workspace.getStructureBeans(false)
 		.getHeader().getPrepared());
     }
 
@@ -87,19 +88,19 @@ public class SDMXDataAdaptor extends
     private void populateHierarchy(final StructureWorkspace workspace) {
 	final Set<CodelistBean> cls = workspace.getStructureBeans(false)
 		.getCodelists();
-	for (CodelistBean cl : cls) {
+	for (final CodelistBean cl : cls) {
 	    final List<CodeBean> cbs = cl.getItems();
-	    for (CodeBean cb : cbs) {
+	    for (final CodeBean cb : cbs) {
 		final EtatCivil formeJ = new EtatCivil();
 		formeJ.setId(Integer.parseInt(cb.getId()));
 		formeJ.setNom(getName(cb, AnnotationType.fr));
-		ReferentielEtatCivil.getEtatCivil().add(formeJ);
+		referentielEtatCivil.getEtatCivil().add(formeJ);
 	    }
 	}
     }
 
     private String getName(final CodeBean cb, final AnnotationType lang) {
-	for (TextTypeWrapper ttw : cb.getNames()) {
+	for (final TextTypeWrapper ttw : cb.getNames()) {
 	    if (lang.name().equals(ttw.getLocale())) {
 		return ttw.getValue();
 	    }

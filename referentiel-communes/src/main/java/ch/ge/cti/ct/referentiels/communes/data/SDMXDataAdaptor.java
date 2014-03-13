@@ -38,13 +38,13 @@ public class SDMXDataAdaptor extends
     private static final String SPRING_CONTEXT_FILE = "referentiel-communes-context.xml";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private ReferentielCommunes referentielCommunes = new ReferentielCommunes();
+    private final ReferentielCommunes referentielCommunes = new ReferentielCommunes();
     /** liste temporaires de cantons */
-    private Map<String, Canton> cantonRef = new HashMap<String, Canton>();
+    private final Map<String, Canton> cantonRef = new HashMap<String, Canton>();
     /** liste temporaires de districts */
-    private Map<String, District> districtRef = new HashMap<String, District>();
+    private final Map<String, District> districtRef = new HashMap<String, District>();
     /** liste temporaires de communes */
-    private Map<String, Commune> communeRef = new HashMap<String, Commune>();
+    private final Map<String, Commune> communeRef = new HashMap<String, Commune>();
 
     /**
      * Constructeur avec injection du parseur SDMX
@@ -66,6 +66,7 @@ public class SDMXDataAdaptor extends
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
+    @Override
     public ReferentielCommunes parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
@@ -118,7 +119,7 @@ public class SDMXDataAdaptor extends
 	final HierarchyBean hb = hclb.getHierarchies().iterator().next();
 	// 4. <structure:CodeRef>: liste cantons
 	final List<HierarchicalCodeBean> cbKTs = hb.getHierarchicalCodeBeans();
-	for (HierarchicalCodeBean cbKT : cbKTs) {
+	for (final HierarchicalCodeBean cbKT : cbKTs) {
 	    final Canton kt = cantonRef.get(cbKT.getCodeId());
 	    kt.setValidFrom(getValidFrom(cbKT));
 	    kt.setValidTo(cbKT.getValidTo() == null ? null : cbKT.getValidTo()
@@ -126,7 +127,7 @@ public class SDMXDataAdaptor extends
 	    referentielCommunes.getCanton().add(kt);
 	    final Set<HierarchicalCodeBean> cbBEZGDEs = cbKT
 		    .getComposites(HierarchicalCodeBean.class);
-	    for (HierarchicalCodeBean cbBEZGDE : cbBEZGDEs) {
+	    for (final HierarchicalCodeBean cbBEZGDE : cbBEZGDEs) {
 		if (ListAlias.BEZ.name().equals(cbBEZGDE.getCodelistAliasRef())) {
 		    final District bez = districtRef.get(cbBEZGDE.getCodeId());
 		    bez.setValidFrom(getValidFrom(cbBEZGDE));
@@ -151,7 +152,7 @@ public class SDMXDataAdaptor extends
     }
 
     /** Date minimale de validité: 01-01-1960=pas de date from */
-    private static Date START = new Date(-315619200000l);
+    private static final Date START = new Date(-315619200000l);
 
     /**
      * Génération de la date validFrom <br/>
@@ -179,9 +180,9 @@ public class SDMXDataAdaptor extends
     private void populateTempRefs(final StructureWorkspace workspace) {
 	final Set<CodelistBean> cls = workspace.getStructureBeans(false)
 		.getCodelists();
-	for (CodelistBean cl : cls) {
+	for (final CodelistBean cl : cls) {
 	    final List<CodeBean> cbs = cl.getItems();
-	    for (CodeBean cb : cbs) {
+	    for (final CodeBean cb : cbs) {
 		if (CodeList.CL_HGDE_KT.name().equals(cl.getId())) {
 		    final Canton kt = new Canton();
 		    kt.setCode(cb
@@ -249,7 +250,7 @@ public class SDMXDataAdaptor extends
 	    marshaller.setProperty("jaxb.encoding", "UTF-8");
 	    marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
 	    marshaller.marshal(referentielCommunes, new File("target/out.xml"));
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    e.printStackTrace();
 	}
 

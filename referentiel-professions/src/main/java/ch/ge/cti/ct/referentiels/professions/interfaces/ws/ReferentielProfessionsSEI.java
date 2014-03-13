@@ -389,7 +389,8 @@ public class ReferentielProfessionsSEI {
      * Fonction (closure) de copie du continent en DivisionWS<br/>
      * On ne copie par l'arborescence descendante (Classe)
      */
-    private class DivisionConvert implements Function<Division, DivisionWS> {
+    private static class DivisionConvert implements
+	    Function<Division, DivisionWS> {
 	@Override
 	public DivisionWS apply(final Division cin) {
 	    if (cin == null) {
@@ -406,7 +407,7 @@ public class ReferentielProfessionsSEI {
      * Fonction (closure) de copie du continent en ClasseWS<br/>
      * On ne copie par l'arborescence descendante (Classe)
      */
-    private class ClasseConvert implements Function<Classe, ClasseWS> {
+    private static class ClasseConvert implements Function<Classe, ClasseWS> {
 	@Override
 	public ClasseWS apply(final Classe cin) {
 	    if (cin == null) {
@@ -424,7 +425,7 @@ public class ReferentielProfessionsSEI {
      * Fonction (closure) de copie du continent en GroupeWS<br/>
      * On ne copie par l'arborescence descendante (Groupe)
      */
-    private class GroupeConvert implements Function<Groupe, GroupeWS> {
+    private static class GroupeConvert implements Function<Groupe, GroupeWS> {
 	@Override
 	public GroupeWS apply(final Groupe cin) {
 	    if (cin == null) {
@@ -443,7 +444,7 @@ public class ReferentielProfessionsSEI {
      * Fonction (closure) de copie du continent en GenreWS<br/>
      * On ne copie par l'arborescence descendante (Genre)
      */
-    private class GenreConvert implements Function<Genre, GenreWS> {
+    private static class GenreConvert implements Function<Genre, GenreWS> {
 	@Override
 	public GenreWS apply(final Genre cin) {
 	    if (cin == null) {
