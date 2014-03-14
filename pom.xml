@@ -20,8 +20,8 @@
 	</description>
 
 	<scm>
-		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/referentiels/ct_referentiels-ofs/trunk</developerConnection>
-		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/referentiels/ct_referentiels-ofs/trunk</connection>
+		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</developerConnection>
+		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</connection>
 	</scm>
 
 	<modules>
