@@ -18,8 +18,11 @@ public abstract class AbstractMatcherPredicate implements
      * spéciaux
      */
     protected final String normalize(final String value) {
-	return NORMALIZER_REGEX
-		.matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
-		.replaceAll(NORMALIZER_REPLACE).toLowerCase();
+	if (value != null) {
+	    return NORMALIZER_REGEX
+		    .matcher(Normalizer.normalize(value, Normalizer.Form.NFD))
+		    .replaceAll(NORMALIZER_REPLACE).toLowerCase();
+	}
+	return null;
     }
 }

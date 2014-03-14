@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import ch.ge.cti.ct.referentiels.ofs.model.IComplexType;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Strings;
 
 public class NomRegexpMatcherPredicate extends AbstractMatcherPredicate
 	implements Predicate<IComplexType> {
@@ -12,12 +13,17 @@ public class NomRegexpMatcherPredicate extends AbstractMatcherPredicate
     private final Pattern regexp;
 
     public NomRegexpMatcherPredicate(final String regexp) {
-	this.regexp = Pattern.compile(normalize(regexp.trim()));
+	this.regexp = Strings.emptyToNull(regexp) == null ? null : Pattern
+		.compile(normalize(Strings.nullToEmpty(regexp).trim()));
     }
 
     @Override
     public boolean apply(final IComplexType compleType) {
-	return regexp.matcher(normalize(compleType.getNom())).find();
+	if (regexp == null) {
+	    return false;
+	}
+	return regexp.matcher(
+		normalize(Strings.nullToEmpty(compleType.getNom()))).find();
     }
 
 }
