@@ -43,7 +43,7 @@
 					</modules>
 					<jboss>
 						<version>5</version>
-						<loader-repository loaderRepositoryClass="${groupId}">${groupId}:loader=${artifactId}</loader-repository>
+						<loader-repository loaderRepositoryClass="${project.groupId}">${project.groupId}:loader=${project.artifactId}</loader-repository>
 					</jboss>
 				</configuration>
 			</plugin>
