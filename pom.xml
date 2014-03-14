@@ -9,7 +9,7 @@
 
 	<groupId>ch.ge.cti.ct.referentiels</groupId>
 	<artifactId>ct_referentiels-ofs</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId}:${project.artifactId} parent</name>
