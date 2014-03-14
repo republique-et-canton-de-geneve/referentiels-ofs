@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>ct_referentiels-ofs</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>referentiels-ofs-ear</artifactId>
@@ -54,31 +54,31 @@
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-communes</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-pays</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-formes-juridiques</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-etat-civil</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-professions</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
