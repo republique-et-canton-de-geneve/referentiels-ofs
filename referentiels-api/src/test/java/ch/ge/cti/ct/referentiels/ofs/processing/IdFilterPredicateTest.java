@@ -11,10 +11,10 @@ public class IdFilterPredicateTest {
 
     @Test
     public void testApply() {
-	TestComplexType test = new TestComplexType(0, "");
+	_ComplexType test = new _ComplexType(0, "");
 	assertFalse("Le prédicat est incorrect", predicate.apply(test));
 
-	test = new TestComplexType(1, null);
+	test = new _ComplexType(1, null);
 	assertTrue("Le prédicat est incorrect", predicate.apply(test));
     }
 

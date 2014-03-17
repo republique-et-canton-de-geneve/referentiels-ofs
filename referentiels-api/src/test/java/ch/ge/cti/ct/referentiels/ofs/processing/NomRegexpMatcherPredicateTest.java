@@ -12,30 +12,30 @@ public class NomRegexpMatcherPredicateTest {
 	NomRegexpMatcherPredicate predicate = null;
 
 	predicate = new NomRegexpMatcherPredicate(null);
-	assertFalse(predicate.apply(new TestComplexType(0, null)));
-	assertFalse(predicate.apply(new TestComplexType(0, "")));
+	assertFalse(predicate.apply(new _ComplexType(0, null)));
+	assertFalse(predicate.apply(new _ComplexType(0, "")));
 
 	predicate = new NomRegexpMatcherPredicate("");
-	assertFalse(predicate.apply(new TestComplexType(0, null)));
-	assertFalse(predicate.apply(new TestComplexType(0, "")));
+	assertFalse(predicate.apply(new _ComplexType(0, null)));
+	assertFalse(predicate.apply(new _ComplexType(0, "")));
 
 	predicate = new NomRegexpMatcherPredicate("a");
-	assertFalse(predicate.apply(new TestComplexType(0, null)));
-	assertFalse(predicate.apply(new TestComplexType(0, "")));
-	assertTrue(predicate.apply(new TestComplexType(0, "a")));
-	assertTrue(predicate.apply(new TestComplexType(0, "abcdef")));
-	assertTrue(predicate.apply(new TestComplexType(0, "bcadef")));
-	assertTrue(predicate.apply(new TestComplexType(0, "BCADEF")));
-	assertTrue(predicate.apply(new TestComplexType(0, "bcädef")));
+	assertFalse(predicate.apply(new _ComplexType(0, null)));
+	assertFalse(predicate.apply(new _ComplexType(0, "")));
+	assertTrue(predicate.apply(new _ComplexType(0, "a")));
+	assertTrue(predicate.apply(new _ComplexType(0, "abcdef")));
+	assertTrue(predicate.apply(new _ComplexType(0, "bcadef")));
+	assertTrue(predicate.apply(new _ComplexType(0, "BCADEF")));
+	assertTrue(predicate.apply(new _ComplexType(0, "bcädef")));
 
 	predicate = new NomRegexpMatcherPredicate("a.c");
-	assertFalse(predicate.apply(new TestComplexType(0, null)));
-	assertFalse(predicate.apply(new TestComplexType(0, "")));
-	assertFalse(predicate.apply(new TestComplexType(0, "a")));
-	assertTrue(predicate.apply(new TestComplexType(0, "abcdef")));
-	assertTrue(predicate.apply(new TestComplexType(0, "cdabcef")));
-	assertTrue(predicate.apply(new TestComplexType(0, "ABC")));
-	assertFalse(predicate.apply(new TestComplexType(0, "bcadef")));
+	assertFalse(predicate.apply(new _ComplexType(0, null)));
+	assertFalse(predicate.apply(new _ComplexType(0, "")));
+	assertFalse(predicate.apply(new _ComplexType(0, "a")));
+	assertTrue(predicate.apply(new _ComplexType(0, "abcdef")));
+	assertTrue(predicate.apply(new _ComplexType(0, "cdabcef")));
+	assertTrue(predicate.apply(new _ComplexType(0, "ABC")));
+	assertFalse(predicate.apply(new _ComplexType(0, "bcadef")));
     }
 
 }
