@@ -35,6 +35,7 @@
 		<module>referentiel-professions</module>
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module> -->
+		<module>referentiel-integration-tests</module>
 	</modules>
 
 	<build>

@@ -42,12 +42,12 @@ import com.google.common.collect.FluentIterable;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-communes-JAXWS", serviceName = "referentiel-communes", portName = "referentiel-communes", targetNamespace = "http://ch.ge.cti.ct.referentiels.communes/referentiel-communes")
+@WebService(name = ReferentielCommunesWS.WEBSERVICE_NAME, serviceName = ReferentielCommunesWS.SERVICE_NAME, portName = ReferentielCommunesWS.PORT_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE)
 @WebContext(contextRoot = "/referentiels-ofs/communes", urlPattern = "/referentiel-communes")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielCommunesSEI {
+public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 
     /** Référence au service d'implémentation */
     private final ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
@@ -56,6 +56,7 @@ public class ReferentielCommunesSEI {
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielCommunesSEI.class);
 
+    @Override
     @WebMethod(operationName = "getCantons", action = "getCantons")
     @WebResult(name = "canton")
     @Cachable(name = "cantons", size = Cachable.SMALL)
@@ -69,6 +70,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCanton", action = "getCanton")
     @WebResult(name = "canton")
     public CantonWS getCanton(@WebParam(name = "canton") final String codeCanton)
@@ -84,10 +86,11 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDistrictsByCanton", action = "getDistrictsByCanton")
     @WebResult(name = "district")
     @Cachable(name = "districts", size = Cachable.MEDIUM)
-    public List<DistrictWS> getDistricts(
+    public List<DistrictWS> getDistrictsByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {
 	LOG.debug("getDistricts(canton='{}')", codeCanton);
@@ -102,6 +105,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDistrict", action = "getDistrict")
     @WebResult(name = "district")
     public DistrictWS getDistrict(
@@ -118,6 +122,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCommunesByDistrict", action = "getCommunesByDistrict")
     @WebResult(name = "commune")
     @Cachable(name = "communes", size = Cachable.LARGE)
@@ -137,6 +142,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCommunesByCanton", action = "getCommunesByCanton")
     @WebResult(name = "commune")
     @Cachable(name = "communes", size = Cachable.LARGE)
@@ -155,6 +161,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCommune", action = "getCommune")
     @WebResult(name = "commune")
     public CommuneWS getCommune(@WebParam(name = "commune") final int communeId)
@@ -170,6 +177,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCantonDate", action = "getCantonDate")
     @WebResult(name = "canton")
     public CantonWS getCantonDate(
@@ -188,6 +196,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCantonsDate", action = "getCantonsDate")
     @WebResult(name = "canton")
     public List<CantonWS> getCantonsDate(
@@ -202,6 +211,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDistrictDate", action = "getDistrictDate")
     @WebResult(name = "district")
     public DistrictWS getDistrictDate(
@@ -220,6 +230,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDistrictsByCantonDate", action = "getDistrictsByCantonDate")
     @WebResult(name = "district")
     public List<DistrictWS> getDistrictsByCantonDate(
@@ -239,6 +250,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCommunesByDistrictDate", action = "getCommunesByDistrictDate")
     @WebResult(name = "commune")
     public List<CommuneWS> getCommunesByDistrictDate(final int districtId,
@@ -258,6 +270,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getCommunesByCantonDate", action = "getCommunesByCantonDate")
     @WebResult(name = "commune")
     public List<CommuneWS> getCommunesByCantonDate(
@@ -278,6 +291,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchCommune", action = "searchCommune")
     @WebResult(name = "commune")
     public List<CommuneWS> searchCommune(
@@ -295,6 +309,7 @@ public class ReferentielCommunesSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchCommuneDate", action = "searchCommuneDate")
     @WebResult(name = "commune")
     public List<CommuneWS> searchCommuneDate(

@@ -53,12 +53,11 @@
 						<configuration>
 							<ejbVersion>3.0</ejbVersion>
 							<generateClient>true</generateClient>
-							<clientExcludes>
-								<clientExclude>ch/ge/ael/referentiels/pays/data/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/pays/interfaces/**/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/pays/service/impl/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/pays/service/jmx/*</clientExclude>
-							</clientExcludes>
+							<clientIncludes>
+								<clientInclude>ch/ge/cti/ct/referentiels/pays/interfaces/ws/model/*.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/pays/interfaces/ws/*WS.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/pays/client/*</clientInclude>
+							</clientIncludes>
 						</configuration>
 					</plugin>
 					<plugin>

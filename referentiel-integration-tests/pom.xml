@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.ge.cti.ct.referentiels</groupId>
+		<artifactId>ct_referentiels-ofs</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>referentiel-integration-tests</artifactId>
+	<name>+    ${project.artifactId}</name>
+
+	<description>Tests d'intégration des référentiels</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-communes</artifactId>
+			<classifier>client</classifier>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-etat-civil</artifactId>
+			<classifier>client</classifier>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-formes-juridiques</artifactId>
+			<classifier>client</classifier>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-pays</artifactId>
+			<classifier>client</classifier>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-professions</artifactId>
+			<classifier>client</classifier>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+</project>

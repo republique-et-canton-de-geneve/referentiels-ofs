@@ -44,12 +44,12 @@ import com.google.common.collect.FluentIterable;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-professions-JAXWS", serviceName = "referentiel-professions", portName = "referentiel-professions", targetNamespace = "http://ch.ge.cti.ct.referentiels.professions/referentiel-professions")
+@WebService(name = ReferentielProfessionsWS.WEBSERVICE_NAME, serviceName = ReferentielProfessionsWS.SERVICE_NAME, portName = ReferentielProfessionsWS.PORT_NAME, targetNamespace = ReferentielProfessionsWS.TARGET_NAMESPACE)
 @WebContext(contextRoot = "/referentiels-ofs/professions", urlPattern = "/referentiel-professions")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielProfessionsSEI {
+public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
 
     /** Référence sur l'implémentation */
     private final ReferentielProfessionsServiceAble service = ReferentielProfessionsService.instance;
@@ -58,6 +58,7 @@ public class ReferentielProfessionsSEI {
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielProfessions.class);
 
+    @Override
     @WebMethod(operationName = "getClasse", action = "getClasse")
     @WebResult(name = "classe")
     public ClasseWS getClasse(@WebParam(name = "classeId") final int classeId)
@@ -73,6 +74,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getClasses", action = "getClasses")
     @WebResult(name = "classe")
     @Cachable(name = "classes", size = Cachable.MEDIUM)
@@ -86,6 +88,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getClassesByDivision", action = "getClassesByDivision")
     @WebResult(name = "classe")
     @Cachable(name = "classes", size = Cachable.MEDIUM)
@@ -104,6 +107,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDivision", action = "getDivision")
     @WebResult(name = "division")
     public DivisionWS getDivision(
@@ -120,6 +124,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getDivisions", action = "getDivisions")
     @WebResult(name = "division")
     @Cachable(name = "divisions", size = Cachable.MEDIUM)
@@ -133,6 +138,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGenre", action = "getGenre")
     @WebResult(name = "genre")
     public GenreWS getGenre(@WebParam(name = "genreId") final int genreId)
@@ -148,6 +154,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGenres", action = "getGenres")
     @WebResult(name = "genre")
     @Cachable(name = "genres", size = Cachable.LARGE)
@@ -161,6 +168,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGenresByGroup", action = "getGenresByGroup")
     @WebResult(name = "genre")
     @Cachable(name = "genres", size = Cachable.LARGE)
@@ -179,6 +187,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGroupe", action = "getGroupe")
     @WebResult(name = "groupe")
     public GroupeWS getGroupe(@WebParam(name = "groupeId") final int groupeId)
@@ -194,6 +203,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGroupes", action = "getGroupes")
     @WebResult(name = "groupe")
     @Cachable(name = "groupes", size = Cachable.LARGE)
@@ -207,6 +217,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "getGroupesByClasse", action = "getGroupesByClasse")
     @WebResult(name = "groupe")
     @Cachable(name = "groupes", size = Cachable.LARGE)
@@ -225,6 +236,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchClasse", action = "searchClasse")
     @WebResult(name = "classe")
     public List<ClasseWS> searchClasse(
@@ -242,6 +254,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchClasseRegexp", action = "searchClasseRegexp")
     @WebResult(name = "classe")
     public List<ClasseWS> searchClasseRegexp(
@@ -259,6 +272,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchDivision", action = "searchDivision")
     @WebResult(name = "division")
     public List<DivisionWS> searchDivision(
@@ -276,6 +290,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchDivisionRegexp", action = "searchDivisionRegexp")
     @WebResult(name = "division")
     public List<DivisionWS> searchDivisionRegexp(
@@ -293,6 +308,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchGenre", action = "searchGenre")
     @WebResult(name = "genre")
     public List<GenreWS> searchGenre(
@@ -310,6 +326,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchGenreRegexp", action = "searchGenreRegexp")
     @WebResult(name = "genre")
     public List<GenreWS> searchGenreRegexp(
@@ -327,6 +344,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchGroupe", action = "searchGroupe")
     @WebResult(name = "groupe")
     public List<GroupeWS> searchGroupe(
@@ -344,6 +362,7 @@ public class ReferentielProfessionsSEI {
 	}
     }
 
+    @Override
     @WebMethod(operationName = "searchGroupeRegexp", action = "searchGroupeRegexp")
     @WebResult(name = "groupe")
     public List<GroupeWS> searchGroupeRegexp(

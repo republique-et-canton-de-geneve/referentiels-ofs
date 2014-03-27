@@ -30,20 +30,28 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-formes-juridiques-JAXWS", serviceName = "referentiel-formes-juridiques", portName = "referentiel-formes-juridiques", targetNamespace = "http://ch.ge.cti.ct.referentiels.formes-juridiques/referentiel-formes-juridiques")
+@WebService(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, serviceName = ReferentielFormesJuridiquesWS.SERVICE_NAME, portName = ReferentielFormesJuridiquesWS.PORT_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
 @WebContext(contextRoot = "/referentiels-ofs/formes-juridiques", urlPattern = "/referentiel-formes-juridiques")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielFormesJuridiquesSEI {
+public class ReferentielFormesJuridiquesSEI implements
+	ReferentielFormesJuridiquesWS {
 
     /** Référence sur l'implémentation */
-    private ReferentielFormesJuridiquesServiceAble service = ReferentielFormesJuridiquesService.instance;
+    private final ReferentielFormesJuridiquesServiceAble service = ReferentielFormesJuridiquesService.instance;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielFormesJuridiquesSEI.class);
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.
+     * ReferentielFormesJuridiquesWS#getFormesJuridiques()
+     */
+    @Override
     @WebMethod(operationName = "getFormesJuridiques", action = "getFormesJuridiques")
     @WebResult(name = "formeJuridique")
     public List<FormeJuridique> getFormesJuridiques()
@@ -51,11 +59,18 @@ public class ReferentielFormesJuridiquesSEI {
 	LOG.debug("getContinents()");
 	try {
 	    return service.getFormesJuridiques();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.
+     * ReferentielFormesJuridiquesWS#getFormeJuridique(int)
+     */
+    @Override
     @WebMethod(operationName = "getFormeJuridique", action = "getFormeJuridique")
     @WebResult(name = "formeJuridique")
     public FormeJuridique getFormeJuridique(
@@ -67,7 +82,7 @@ public class ReferentielFormesJuridiquesSEI {
 	}
 	try {
 	    return service.getFormeJuridique(formeJuridiqueId);
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }

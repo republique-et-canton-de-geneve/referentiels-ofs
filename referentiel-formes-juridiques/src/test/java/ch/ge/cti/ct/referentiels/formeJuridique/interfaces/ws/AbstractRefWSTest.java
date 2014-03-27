@@ -21,9 +21,9 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	new ReferentielFormesJuridiquesSEI().getFormesJuridiques();
     }
 
-    private ReferentielFormesJuridiquesSEI ws = null;
+    private ReferentielFormesJuridiquesWS ws = null;
 
-    protected ReferentielFormesJuridiquesSEI getWS()
+    protected ReferentielFormesJuridiquesWS getWS()
 	    throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielFormesJuridiquesSEI();

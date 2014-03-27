@@ -53,12 +53,11 @@
 						<configuration>
 							<ejbVersion>3.0</ejbVersion>
 							<generateClient>true</generateClient>
-							<clientExcludes>
-								<clientExclude>ch/ge/ael/referentiels/formeJuridique/data/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/formeJuridique/interfaces/**/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/formeJuridique/service/impl/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/formeJuridique/service/jmx/*</clientExclude>
-							</clientExcludes>
+							<clientIncludes>
+								<clientInclude>ch/ge/cti/ct/referentiels/formeJuridique/model/*.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/formeJuridique/interfaces/ws/*WS.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/formeJuridique/client/*</clientInclude>
+							</clientIncludes>
 						</configuration>
 					</plugin>
 					<plugin>

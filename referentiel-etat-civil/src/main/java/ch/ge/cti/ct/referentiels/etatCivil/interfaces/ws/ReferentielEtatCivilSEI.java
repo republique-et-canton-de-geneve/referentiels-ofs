@@ -30,31 +30,47 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-etat-civil-JAXWS", serviceName = "referentiel-etat-civil", portName = "referentiel-etat-civil", targetNamespace = "http://ch.ge.cti.ct.referentiels.etat-civil/referentiel-etat-civil")
+@WebService(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, serviceName = ReferentielEtatCivilWS.SERVICE_NAME, portName = ReferentielEtatCivilWS.PORT_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
 @WebContext(contextRoot = "/referentiels-ofs/etat-civil", urlPattern = "/referentiel-etat-civil")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielEtatCivilSEI {
+public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
 
     /** Référence sur l'implémentation */
-    private ReferentielEtatCivilServiceAble service = ReferentielEtatCivilService.instance;
+    private final ReferentielEtatCivilServiceAble service = ReferentielEtatCivilService.instance;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielEtatCivilSEI.class);
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS
+     * #getEtatsCivils()
+     */
+    @Override
     @WebMethod(operationName = "getEtatsCivils", action = "getEtatsCivils")
     @WebResult(name = "etatCivil")
     public List<EtatCivil> getEtatsCivils() throws ReferentielOfsException {
 	LOG.debug("getEtatsCivils()");
 	try {
 	    return service.getEtatsCivils();
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS
+     * #getEtatCivil(int)
+     */
+    @Override
     @WebMethod(operationName = "getEtatCivil", action = "getEtatCivil")
     @WebResult(name = "etatCivil")
     public EtatCivil getEtatCivil(
@@ -66,7 +82,7 @@ public class ReferentielEtatCivilSEI {
 	}
 	try {
 	    return service.getEtatCivil(etatCivilId);
-	} catch (Exception e) {
+	} catch (final Exception e) {
 	    throw processException(e);
 	}
     }

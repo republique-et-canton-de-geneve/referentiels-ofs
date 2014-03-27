@@ -21,9 +21,9 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	new ReferentielEtatCivilSEI().getEtatsCivils();
     }
 
-    private ReferentielEtatCivilSEI ws = null;
+    private ReferentielEtatCivilWS ws = null;
 
-    protected ReferentielEtatCivilSEI getWS() throws ReferentielOfsException {
+    protected ReferentielEtatCivilWS getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielEtatCivilSEI();
 	}

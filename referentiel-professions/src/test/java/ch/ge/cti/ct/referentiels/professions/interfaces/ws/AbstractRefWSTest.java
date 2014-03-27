@@ -26,9 +26,9 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	new ReferentielProfessionsSEI().searchGenre("Professions");
     }
 
-    private ReferentielProfessionsSEI ws = null;
+    private ReferentielProfessionsWS ws = null;
 
-    protected ReferentielProfessionsSEI getWS() throws ReferentielOfsException {
+    protected ReferentielProfessionsWS getWS() throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielProfessionsSEI();
 	}

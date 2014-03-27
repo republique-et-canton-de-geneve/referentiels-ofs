@@ -64,7 +64,7 @@ public class RefDistrictsTest extends AbstractRefWSTest {
     public void test() throws ReferentielOfsException {
 	List<DistrictWS> districts = null;
 	if (dateValid == null) {
-	    districts = getWS().getDistricts(cantonCode);
+	    districts = getWS().getDistrictsByCanton(cantonCode);
 	} else {
 	    districts = getWS().getDistrictsByCantonDate(cantonCode, dateValid);
 	}

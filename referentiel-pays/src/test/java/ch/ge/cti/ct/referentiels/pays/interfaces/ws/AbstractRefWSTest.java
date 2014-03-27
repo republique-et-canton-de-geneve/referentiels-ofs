@@ -26,9 +26,9 @@ public class AbstractRefWSTest extends AbstractReferentielTest {
 	new ReferentielPaysTerritoiresSEI().searchPays("fr");
     }
 
-    private ReferentielPaysTerritoiresSEI ws = null;
+    private ReferentielPaysTerritoiresWS ws = null;
 
-    protected ReferentielPaysTerritoiresSEI getWS()
+    protected ReferentielPaysTerritoiresWS getWS()
 	    throws ReferentielOfsException {
 	if (ws == null) {
 	    ws = new ReferentielPaysTerritoiresSEI();

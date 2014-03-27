@@ -53,12 +53,11 @@
 						<configuration>
 							<ejbVersion>3.0</ejbVersion>
 							<generateClient>true</generateClient>
-							<clientExcludes>
-								<clientExclude>ch/ge/ael/referentiels/communes/data/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/communes/interfaces/**/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/communes/service/impl/*</clientExclude>
-								<clientExclude>ch/ge/ael/referentiels/communes/service/jmx/*</clientExclude>
-							</clientExcludes>
+							<clientIncludes>
+								<clientInclude>ch/ge/cti/ct/referentiels/communes/interfaces/ws/model/*.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/communes/interfaces/ws/*WS.class</clientInclude>
+								<clientInclude>ch/ge/cti/ct/referentiels/communes/client/*</clientInclude>
+							</clientIncludes>
 						</configuration>
 					</plugin>
 					<plugin>

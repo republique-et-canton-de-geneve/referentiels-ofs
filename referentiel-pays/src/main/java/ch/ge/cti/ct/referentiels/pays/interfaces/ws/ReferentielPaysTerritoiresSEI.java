@@ -41,12 +41,13 @@ import com.google.common.collect.FluentIterable;
  * 
  */
 @Stateless
-@WebService(name = "referentiel-pays-JAXWS", serviceName = "referentiel-pays", portName = "referentiel-pays", targetNamespace = "http://ch.ge.cti.ct.referentiels.pays/referentiel-pays")
+@WebService(name = ReferentielPaysTerritoiresWS.WEBSERVICE_NAME, serviceName = ReferentielPaysTerritoiresWS.SERVICE_NAME, portName = ReferentielPaysTerritoiresWS.PORT_NAME, targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
 @WebContext(contextRoot = "/referentiels-ofs/territoires", urlPattern = "/referentiel-pays")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielPaysTerritoiresSEI {
+public class ReferentielPaysTerritoiresSEI implements
+	ReferentielPaysTerritoiresWS {
 
     /** Référence sur l'implémentation */
     private final ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.instance;
@@ -55,6 +56,14 @@ public class ReferentielPaysTerritoiresSEI {
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielPaysTerritoiresSEI.class);
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getContinents()
+     */
+    @Override
     @WebMethod(operationName = "getContinents", action = "getContinents")
     @WebResult(name = "continent")
     @Cachable(name = "continents", size = Cachable.SMALL)
@@ -68,6 +77,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getContinent(int)
+     */
+    @Override
     @WebMethod(operationName = "getContinent", action = "getContinent")
     @WebResult(name = "continent")
     public ContinentWS getContinent(
@@ -85,6 +102,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getRegionsByContinent(int)
+     */
+    @Override
     @WebMethod(operationName = "getRegionsByContinent", action = "getRegionsByContinent")
     @WebResult(name = "region")
     @Cachable(name = "regions", size = Cachable.MEDIUM)
@@ -103,6 +128,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getRegions()
+     */
+    @Override
     @WebMethod(operationName = "getRegions", action = "getRegions")
     @WebResult(name = "region")
     @Cachable(name = "regions", size = Cachable.MEDIUM)
@@ -116,6 +149,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getRegion(int)
+     */
+    @Override
     @WebMethod(operationName = "getRegion", action = "getRegion")
     @WebResult(name = "region")
     public RegionWS getRegion(@WebParam(name = "region") final int regionId)
@@ -131,6 +172,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getPaysByRegion(int)
+     */
+    @Override
     @WebMethod(operationName = "getPaysByRegion", action = "getPaysByRegion")
     @WebResult(name = "pays")
     @Cachable(name = "pays", size = Cachable.LARGE)
@@ -149,6 +198,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getPaysByContinent(int)
+     */
+    @Override
     @WebMethod(operationName = "getPaysByContinent", action = "getPaysByContinent")
     @WebResult(name = "pays")
     @Cachable(name = "pays", size = Cachable.LARGE)
@@ -167,6 +224,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getPays()
+     */
+    @Override
     @WebMethod(operationName = "getPays", action = "getPays")
     @WebResult(name = "pays")
     @Cachable(name = "pays", size = Cachable.LARGE)
@@ -180,6 +245,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getPaysByIso2(java.lang.String)
+     */
+    @Override
     @WebMethod(operationName = "getPaysByIso2", action = "getPaysByIso2")
     @WebResult(name = "pays")
     public PaysWS getPaysByIso2(@WebParam(name = "iso2") final String iso2)
@@ -195,6 +268,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #getPaysByIso3(java.lang.String)
+     */
+    @Override
     @WebMethod(operationName = "getPaysByIso3", action = "getPaysByIso3")
     @WebResult(name = "pays")
     public PaysWS getPaysByIso3(@WebParam(name = "iso3") final String iso3)
@@ -210,6 +291,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #searchPays(java.lang.String)
+     */
+    @Override
     @WebMethod(operationName = "searchPays", action = "searchPays")
     @WebResult(name = "pays")
     public List<PaysWS> searchPays(
@@ -227,6 +316,14 @@ public class ReferentielPaysTerritoiresSEI {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
+     * #searchPaysRegexp(java.lang.String)
+     */
+    @Override
     @WebMethod(operationName = "searchPaysRegexp", action = "searchPaysRegexp")
     @WebResult(name = "pays")
     public List<PaysWS> searchPaysRegexp(
