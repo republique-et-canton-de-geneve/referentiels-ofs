@@ -15,4 +15,9 @@ public abstract class AbstractClientTest {
 	DOMConfigurator.configure(new File("src/test/resources/log4j.xml")
 		.toURI().toURL());
     }
+
+    protected String getContextRoot() {
+	// return "http://localhost:26000/referentiels-ofs";
+	return "http://oslo2:20500/referentiels-ofs";
+    }
 }
