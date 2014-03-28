@@ -20,7 +20,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  * @author DESMAZIERESJ
  * 
  */
-@WebService(name = ReferentielCommunesWS.WEBSERVICE_NAME, serviceName = ReferentielCommunesWS.SERVICE_NAME, portName = ReferentielCommunesWS.PORT_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE)
+@WebService(targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE)
 public interface ReferentielCommunesWS {
 
     /** nom du service web */

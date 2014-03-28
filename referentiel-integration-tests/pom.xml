@@ -16,27 +16,11 @@
 
 	<properties>
 		<skipTests>false</skipTests>
+		<openejb.version>4.5.1</openejb.version>
 	</properties>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<skipTests>${skipTests}</skipTests>
-					<parallel>methods</parallel>
-					<threadCount>5</threadCount>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -47,37 +31,100 @@
 		</plugins>
 	</build>
 
-	<dependencies>
-		<dependency>
-			<groupId>ch.ge.cti.ct.referentiels</groupId>
-			<artifactId>referentiel-communes</artifactId>
-			<classifier>client</classifier>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.ge.cti.ct.referentiels</groupId>
-			<artifactId>referentiel-etat-civil</artifactId>
-			<classifier>client</classifier>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.ge.cti.ct.referentiels</groupId>
-			<artifactId>referentiel-formes-juridiques</artifactId>
-			<classifier>client</classifier>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.ge.cti.ct.referentiels</groupId>
-			<artifactId>referentiel-pays</artifactId>
-			<classifier>client</classifier>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.ge.cti.ct.referentiels</groupId>
-			<artifactId>referentiel-professions</artifactId>
-			<classifier>client</classifier>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
-
+	<profiles>
+		<profile>
+			<id>integration-tests</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>commons-dbcp</groupId>
+						<artifactId>commons-dbcp</artifactId>
+						<version>1.4</version>
+					</dependency>
+					<dependency>
+						<groupId>junit</groupId>
+						<artifactId>junit</artifactId>
+						<version>4.10</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>xerces</groupId>
+						<artifactId>xercesImpl</artifactId>
+						<version>2.9.1</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.apache.openejb</groupId>
+					<artifactId>openejb-cxf</artifactId>
+					<version>${openejb.version}</version>
+					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.slf4j</groupId>
+							<artifactId>slf4j-jdk14</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<dependency>
+					<groupId>ch.ge.cti.ct.referentiels</groupId>
+					<artifactId>referentiel-communes</artifactId>
+					<version>1.0.1-SNAPSHOT</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>ch.ge.cti.ct.referentiels</groupId>
+					<artifactId>referentiel-etat-civil</artifactId>
+					<version>1.0.1-SNAPSHOT</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>ch.ge.cti.ct.referentiels</groupId>
+					<artifactId>referentiel-formes-juridiques</artifactId>
+					<version>1.0.1-SNAPSHOT</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>ch.ge.cti.ct.referentiels</groupId>
+					<artifactId>referentiel-pays</artifactId>
+					<version>1.0.1-SNAPSHOT</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>ch.ge.cti.ct.referentiels</groupId>
+					<artifactId>referentiel-professions</artifactId>
+					<version>1.0.1-SNAPSHOT</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<skipTests>${skipTests}</skipTests>
+							<parallel>methods</parallel>
+							<threadCount>5</threadCount>
+							<forkMode>always</forkMode>
+							<parallel>classes</parallel>
+							<testFailureIgnore>false</testFailureIgnore>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.DivisionWS;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GenreWS;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GroupeWS;
 
-@WebService(name = ReferentielProfessionsWS.WEBSERVICE_NAME, serviceName = ReferentielProfessionsWS.SERVICE_NAME, portName = ReferentielProfessionsWS.PORT_NAME, targetNamespace = ReferentielProfessionsWS.TARGET_NAMESPACE)
+@WebService(targetNamespace = ReferentielProfessionsWS.TARGET_NAMESPACE)
 public interface ReferentielProfessionsWS {
 
     /** nom du service web */

@@ -5,18 +5,38 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
+import org.apache.openejb.junit.ApplicationComposer;
+import org.apache.openejb.junit.EnableServices;
+import org.apache.openejb.junit.Module;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import ch.ge.cti.ct.referentiels.AbstractClientTest;
 import ch.ge.cti.ct.referentiels.communes.client.ReferentielCommunesClient;
 
+/**
+ * @see http://tomee.apache.org/examples-trunk/application-composer/README.html
+ * @see http://tomee.apache.org/examples-trunk/simple-webservice/README.html
+ * @see http
+ *      ://rmannibucau.wordpress.com/2012/11/13/openejb-application-composer
+ *      -new-features-jaxrs-jaxws-classes/
+ */
+@EnableServices(value = "jax-ws")
+@RunWith(ApplicationComposer.class)
 public class ReferentielCommunesClientTestIT extends AbstractClientTest {
+
+    @Module
+    public static Class<?>[] communes() throws Exception {
+	return new Class<?>[] { ReferentielCommunesSEI.class };
+    }
 
     @Test
     public void test() throws Exception {
 	final ReferentielCommunesWS client = ReferentielCommunesClient.Factory
-		.getClient(getContextRoot()
-			+ "/communes/referentiel-communes?wsdl");
+		.getClient("http://127.0.0.1:4204/communes/ReferentielCommunesSEI?wsdl");
+
+	assertTrue(client.getCantons().size() > 0);
+
 	assertTrue(client.getCantons().size() > 0);
 	assertTrue(client.getCantonsDate(new Date()).size() > 0);
 	assertTrue(client.getDistrictsByCanton("GE").size() > 0);

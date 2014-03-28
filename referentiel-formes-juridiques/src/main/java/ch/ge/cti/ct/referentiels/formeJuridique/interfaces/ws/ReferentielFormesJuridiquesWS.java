@@ -11,7 +11,7 @@ import javax.xml.namespace.QName;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
-@WebService(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, serviceName = ReferentielFormesJuridiquesWS.SERVICE_NAME, portName = ReferentielFormesJuridiquesWS.PORT_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
+@WebService(targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
 public interface ReferentielFormesJuridiquesWS {
 
     /** nom du service web */

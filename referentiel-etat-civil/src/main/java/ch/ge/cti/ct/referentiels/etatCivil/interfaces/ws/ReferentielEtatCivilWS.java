@@ -11,7 +11,13 @@ import javax.xml.namespace.QName;
 import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
-@WebService(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, serviceName = ReferentielEtatCivilWS.SERVICE_NAME, portName = ReferentielEtatCivilWS.PORT_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
+/**
+ * Interface du service au format JAX-WS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
+@WebService(targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
 public interface ReferentielEtatCivilWS {
 
     /** nom du service web */

@@ -41,7 +41,7 @@ import com.google.common.collect.FluentIterable;
  * 
  */
 @Stateless
-@WebService(name = ReferentielPaysTerritoiresWS.WEBSERVICE_NAME, serviceName = ReferentielPaysTerritoiresWS.SERVICE_NAME, portName = ReferentielPaysTerritoiresWS.PORT_NAME, targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
+@WebService(name = ReferentielPaysTerritoiresWS.WEBSERVICE_NAME, serviceName = ReferentielPaysTerritoiresWS.SERVICE_NAME, portName = ReferentielPaysTerritoiresWS.PORT_NAME, targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS")
 @WebContext(contextRoot = "/referentiels-ofs/territoires", urlPattern = "/referentiel-pays")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,

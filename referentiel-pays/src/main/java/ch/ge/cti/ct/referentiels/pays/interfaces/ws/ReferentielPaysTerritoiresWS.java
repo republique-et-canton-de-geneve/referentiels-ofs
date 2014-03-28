@@ -13,7 +13,7 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.ContinentWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.PaysWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.RegionWS;
 
-@WebService(name = ReferentielPaysTerritoiresWS.WEBSERVICE_NAME, serviceName = ReferentielPaysTerritoiresWS.SERVICE_NAME, portName = ReferentielPaysTerritoiresWS.PORT_NAME, targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
+@WebService(targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
 public interface ReferentielPaysTerritoiresWS {
 
     /** nom du service web */

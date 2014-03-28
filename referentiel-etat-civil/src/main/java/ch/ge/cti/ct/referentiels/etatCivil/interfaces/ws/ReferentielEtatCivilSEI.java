@@ -30,7 +30,7 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  * 
  */
 @Stateless
-@WebService(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, serviceName = ReferentielEtatCivilWS.SERVICE_NAME, portName = ReferentielEtatCivilWS.PORT_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
+@WebService(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, serviceName = ReferentielEtatCivilWS.SERVICE_NAME, portName = ReferentielEtatCivilWS.PORT_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS")
 @WebContext(contextRoot = "/referentiels-ofs/etat-civil", urlPattern = "/referentiel-etat-civil")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
@@ -44,13 +44,6 @@ public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielEtatCivilSEI.class);
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS
-     * #getEtatsCivils()
-     */
     @Override
     @WebMethod(operationName = "getEtatsCivils", action = "getEtatsCivils")
     @WebResult(name = "etatCivil")
@@ -63,13 +56,6 @@ public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS
-     * #getEtatCivil(int)
-     */
     @Override
     @WebMethod(operationName = "getEtatCivil", action = "getEtatCivil")
     @WebResult(name = "etatCivil")
