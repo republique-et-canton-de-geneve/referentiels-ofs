@@ -76,5 +76,13 @@ public class NomStringMatcherPredicateTest {
 	assertTrue(predicate.apply(new _ComplexType(0, "àbcdèf")));
 	assertTrue(predicate.apply(new _ComplexType(0, "äbcdëf")));
 	assertTrue(predicate.apply(new _ComplexType(0, "ÀBCDEF")));
+
+	predicate = new NomStringMatcherPredicate("abcdef:");
+	assertTrue(predicate.apply(new _ComplexType(0, "abcdef:")));
+	assertTrue(predicate.apply(new _ComplexType(0, "ÀBCDEF:")));
+
+	predicate = new NomStringMatcherPredicate("abc:def");
+	assertTrue(predicate.apply(new _ComplexType(0, "abc:def")));
+	assertTrue(predicate.apply(new _ComplexType(0, "ÀBC:DEF")));
     }
 }
