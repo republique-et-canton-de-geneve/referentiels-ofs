@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+	jaxb:version="2.1"
+	jaxb:extensionBindingPrefixes="inheritance">
+	
+	<!-- definition of simple elements -->
+	<xs:element name="id" type="xs:int" nillable="false"/>
+	<xs:element name="nom" type="xs:string" nillable="false"/>
+	<xs:element name="niveau1-id" type="xs:int" nillable="false"/>
+	
+	<xs:attribute name="id" type="xs:string"/>
+	<xs:attribute name="date" type="xs:date"/>
+
+	<xs:element name="referentiel-socioprofessionnel">
+		<xs:annotation>
+			<xs:documentation>
+				Source: http://www.bfs.admin.ch/xmlns/sdmx/CH1_BN+HCL_CSP+2.0.xml
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="niveau1" maxOccurs="unbounded" minOccurs="1" />
+			</xs:sequence>
+			<xs:attribute ref="id" use="optional" />
+			<xs:attribute ref="date" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="niveau1">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom"  />
+				<xs:element ref="niveau2" maxOccurs="unbounded" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="niveau2">
+		<xs:complexType >
+			<xs:sequence>
+				<xs:element ref="id" />
+				<xs:element ref="nom" />
+				<xs:element ref="niveau1-id"  />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
