@@ -33,8 +33,7 @@ public class NomStringMatcherPredicate extends AbstractMatcherPredicate
 	if (matcher == null ^ Strings.emptyToNull(compleType.getNom()) == null) {
 	    return false;
 	}
-	return matcher.equals(normalize(compleType.getNom().substring(0,
-		Math.min(compleType.getNom().length(), matcher.length()))));
+	return matcher.equals(normalize(compleType.getNom()).substring(0,
+		Math.min(compleType.getNom().length(), matcher.length())));
     }
-
 }
