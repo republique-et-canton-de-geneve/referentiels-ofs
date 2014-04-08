@@ -9,6 +9,12 @@ import javax.xml.ws.WebServiceClient;
 
 import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.ReferentielSocioprofessionnelWS;
 
+/**
+ * Client du WebService ReferentielSocioprofessionnelWS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @WebServiceClient(name = ReferentielSocioprofessionnelWS.WEBSERVICE_NAME, targetNamespace = ReferentielSocioprofessionnelWS.TARGET_NAMESPACE)
 public final class ReferentielSocioprofessionnelClient extends Service {
 
