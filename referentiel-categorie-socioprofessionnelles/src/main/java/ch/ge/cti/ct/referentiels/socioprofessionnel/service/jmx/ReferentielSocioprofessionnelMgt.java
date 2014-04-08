@@ -42,12 +42,12 @@ public class ReferentielSocioprofessionnelMgt extends ServiceMBeanSupport
      * premier utilisateur ne soit pas pénalisé
      */
     private void initialize() {
-	log.info("Initialisation du référentiel socioprofessionel et territoires");
+	log.info("Initialisation du référentiel des catégories socioprofessionnelles");
 	try {
 	    ReferentielDataSingleton.instance.getData();
 	} catch (final ReferentielOfsException e) {
 	    log.error(
-		    "Erreur de chargement du référentiel socioprofessionel et territoires: {}",
+		    "Erreur de chargement du référentiel des catégories socioprofessionnelles: {}",
 		    e);
 	}
     }

@@ -23,8 +23,8 @@ public class AbstractReferentielTest {
 	final Properties props = new Properties();
 	final File xmlFile = new File(
 		"src/test/resources/CH1_BN+HCL_CSP+2.0.xml");
-	props.setProperty("referentiel.socioprofessionel.file", xmlFile.toURI()
-		.toURL().toString());
+	props.setProperty("referentiel.socioprofessionnel.file", xmlFile
+		.toURI().toURL().toString());
 	props.save(new FileOutputStream(distributionFile), "");
 
 	DistributionFactory.setDisableJNDI(true);
@@ -35,6 +35,6 @@ public class AbstractReferentielTest {
     @BeforeClass
     public static void setupClass() throws Exception {
 	ctxt = new ClassPathXmlApplicationContext(
-		"referentiel-socioprofessionel-context.xml");
+		"referentiel-socioprofessionnel-context.xml");
     }
 }

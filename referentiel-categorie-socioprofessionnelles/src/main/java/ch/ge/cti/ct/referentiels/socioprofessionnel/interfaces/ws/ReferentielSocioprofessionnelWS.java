@@ -16,13 +16,13 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau2W
 public interface ReferentielSocioprofessionnelWS {
 
     /** nom du service web */
-    String WEBSERVICE_NAME = "referentiel-socioprofessionel-JAXWS";
+    String WEBSERVICE_NAME = "referentiel-socioprofessionnel-JAXWS";
     /** nom du service */
-    String SERVICE_NAME = "referentiel-socioprofessionel-service";
+    String SERVICE_NAME = "referentiel-socioprofessionnel-service";
     /** nom du port */
-    String PORT_NAME = "referentiel-socioprofessionel-port";
+    String PORT_NAME = "referentiel-socioprofessionnel-port";
     /** namespace du service */
-    String TARGET_NAMESPACE = "http://ch.ge.cti.ct.referentiels.socioprofessionel/referentiel-socioprofessionel/";
+    String TARGET_NAMESPACE = "http://ch.ge.cti.ct.referentiels.socioprofessionnel/referentiel-socioprofessionnel/";
 
     /** QName du service */
     QName SERVICE_QNAME = new QName(TARGET_NAMESPACE, SERVICE_NAME);

@@ -10,7 +10,8 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau2;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.ReferentielSocioprofessionnel;
 
 /**
- * Définition du contrat du service de référentiel des socioprofessionel<br/>
+ * Définition du contrat du service de référentiel des catégories
+ * socioprofessionnelles<br/>
  * Le référentiel provient de l'office statistique Suisse dépendant de
  * l'administration fédérale<br/>
  * 
@@ -21,7 +22,8 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.ReferentielSocioprofes
 public interface ReferentielSocioprofessionnelServiceAble {
 
     /**
-     * Retourne l'intégralité du référentiel des socioprofessionel
+     * Retourne l'intégralité du référentiel des catégories
+     * socioprofessionnelles
      * 
      * @return référentiel en entier
      * @throws ReferentielOfsException

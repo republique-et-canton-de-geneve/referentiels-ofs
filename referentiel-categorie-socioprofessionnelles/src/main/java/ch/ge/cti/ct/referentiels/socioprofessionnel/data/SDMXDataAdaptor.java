@@ -30,10 +30,10 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.ReferentielSocioprofes
 public class SDMXDataAdaptor extends
 	AbstractSDMXDataAdaptor<ReferentielSocioprofessionnel> {
 
-    private static final String SPRING_CONTEXT_FILE = "referentiel-socioprofessionel-context.xml";
+    private static final String SPRING_CONTEXT_FILE = "referentiel-socioprofessionnel-context.xml";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private final ReferentielSocioprofessionnel referentielsocioprofessionel = new ReferentielSocioprofessionnel();
+    private final ReferentielSocioprofessionnel referentielsocioprofessionnel = new ReferentielSocioprofessionnel();
     /** liste temporaires de Niveau1s */
     private final Map<String, Niveau1> niveau1Ref = new HashMap<String, Niveau1>();
     /** liste temporaires de Niveau2s */
@@ -70,7 +70,7 @@ public class SDMXDataAdaptor extends
 	populateHierarchy(workspace);
 	log().info("Chargement du référentiel {}: {} ms", urlXML,
 		System.currentTimeMillis() - start);
-	return referentielsocioprofessionel;
+	return referentielsocioprofessionnel;
     }
 
     /**
@@ -84,10 +84,10 @@ public class SDMXDataAdaptor extends
      *            données SDMX parsées
      */
     private void populateMetaData(final StructureWorkspace workspace) {
-	referentielsocioprofessionel.setId(workspace.getStructureBeans(false)
+	referentielsocioprofessionnel.setId(workspace.getStructureBeans(false)
 		.getHeader().getId());
-	referentielsocioprofessionel.setDate(workspace.getStructureBeans(false)
-		.getHeader().getPrepared());
+	referentielsocioprofessionnel.setDate(workspace
+		.getStructureBeans(false).getHeader().getPrepared());
     }
 
     /**
@@ -107,7 +107,7 @@ public class SDMXDataAdaptor extends
 		.getHierarchicalCodeBeans();
 	for (final HierarchicalCodeBean cbNiveau1 : cbNiveau1s) {
 	    final Niveau1 niveau1 = niveau1Ref.get(cbNiveau1.getCodeId());
-	    referentielsocioprofessionel.getNiveau1().add(niveau1);
+	    referentielsocioprofessionnel.getNiveau1().add(niveau1);
 	    for (final HierarchicalCodeBean cbNiveau2Ref : cbNiveau1
 		    .getCodeRefs()) {
 		final Niveau2 niveau2 = niveau2Ref
