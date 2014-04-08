@@ -35,13 +35,13 @@ public class RefNiveau1Test extends AbstractRefWSTest {
 			/* 0 */{ -1, null },
 			/* 1 */{ 0, null },
 			/* 2 */{ 10, "Dirigeant-e-s" },
-			/* 3 */{ 20, "Professions libÃ©rales et assimilÃ©es" },
-			/* 4 */{ 30, "Autres indÃ©pendant-e-s" },
+			/* 3 */{ 20, "Professions libérales et assimilées" },
+			/* 4 */{ 30, "Autres indépendant-e-s" },
 			/* 5 */{ 60,
-				"Non-manuel-le-s qualifiÃ©-e-sÂ : employÃ©-e-s" },
+				"Non-manuel-le-s qualifié-e-s : employé-e-s" },
 			/* 6 */{
 				91,
-				"Personnes actives occupÃ©es non attribuables (information manquante ou non plausible)" },
+				"Personnes actives occupées non attribuables (information manquante ou non plausible)" },
 			/* 7 */{ 97, "Autres personnes non actives" },
 			/* 8 */{ 98, "Enfants de moins de 15 ans" },
 			/* 9 */{ 100, null }
