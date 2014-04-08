@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesWS;
  * @author DESMAZIERESJ
  */
 @WebServiceClient(name = ReferentielCommunesWS.WEBSERVICE_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE)
-public class ReferentielCommunesClient extends Service {
+public final class ReferentielCommunesClient extends Service {
 
     /**
      * Constructeur privé: classe instanciable uniquement par la factory

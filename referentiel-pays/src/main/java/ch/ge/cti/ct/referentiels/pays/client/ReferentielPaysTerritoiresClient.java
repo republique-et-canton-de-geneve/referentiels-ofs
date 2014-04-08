@@ -10,7 +10,7 @@ import javax.xml.ws.WebServiceClient;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS;
 
 @WebServiceClient(name = ReferentielPaysTerritoiresWS.WEBSERVICE_NAME, targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
-public class ReferentielPaysTerritoiresClient extends Service {
+public final class ReferentielPaysTerritoiresClient extends Service {
     /**
      * Constructeur privé: classe instanciable uniquement par la factory
      * 

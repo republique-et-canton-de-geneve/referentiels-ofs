@@ -10,7 +10,7 @@ import javax.xml.ws.WebServiceClient;
 import ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesWS;
 
 @WebServiceClient(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
-public class ReferentielFormesJuridiquesClient extends Service {
+public final class ReferentielFormesJuridiquesClient extends Service {
 
     /**
      * Constructeur privé: classe instanciable uniquement par la factory

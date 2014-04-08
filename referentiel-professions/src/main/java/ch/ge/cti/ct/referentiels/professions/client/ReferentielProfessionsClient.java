@@ -10,7 +10,7 @@ import javax.xml.ws.WebServiceClient;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.ReferentielProfessionsWS;
 
 @WebServiceClient(name = ReferentielProfessionsWS.WEBSERVICE_NAME, targetNamespace = ReferentielProfessionsWS.TARGET_NAMESPACE)
-public class ReferentielProfessionsClient extends Service {
+public final class ReferentielProfessionsClient extends Service {
 
     /**
      * Constructeur privé: classe instanciable uniquement par la factory

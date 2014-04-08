@@ -10,7 +10,7 @@ import javax.xml.ws.WebServiceClient;
 import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS;
 
 @WebServiceClient(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
-public class ReferentielEtatCivilClient extends Service {
+public final class ReferentielEtatCivilClient extends Service {
 
     /**
      * Constructeur privé: classe instanciable uniquement par la factory
