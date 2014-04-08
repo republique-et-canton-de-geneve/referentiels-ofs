@@ -27,6 +27,13 @@ import ch.ge.cti.ct.referentiels.pays.model.Pays;
 import ch.ge.cti.ct.referentiels.pays.model.ReferentielPaysTerritoires;
 import ch.ge.cti.ct.referentiels.pays.model.Region;
 
+/**
+ * Classe d'adapation de la structure de parsing SDMX à une structure
+ * intermédiaire proche du service à rendre
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @Service("sdmxDataReader")
 public class SDMXDataAdaptor extends
 	AbstractSDMXDataAdaptor<ReferentielPaysTerritoires> {

@@ -27,6 +27,13 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.data.AbstractSDMXDataAdaptor;
 import ch.ge.cti.ct.referentiels.ofs.data.SDMXParser;
 
+/**
+ * Classe d'adapation de la structure de parsing SDMX à une structure
+ * intermédiaire proche du service à rendre
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @Service("sdmxDataReader")
 public class SDMXDataAdaptor extends
 	AbstractSDMXDataAdaptor<ReferentielCommunes> {

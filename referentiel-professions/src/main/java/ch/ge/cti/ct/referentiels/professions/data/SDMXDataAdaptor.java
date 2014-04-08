@@ -28,6 +28,13 @@ import ch.ge.cti.ct.referentiels.professions.model.Genre;
 import ch.ge.cti.ct.referentiels.professions.model.Groupe;
 import ch.ge.cti.ct.referentiels.professions.model.ReferentielProfessions;
 
+/**
+ * Classe d'adapation de la structure de parsing SDMX à une structure
+ * intermédiaire proche du service à rendre
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @Service("sdmxDataReader")
 public class SDMXDataAdaptor extends
 	AbstractSDMXDataAdaptor<ReferentielProfessions> {
@@ -35,15 +42,15 @@ public class SDMXDataAdaptor extends
     private static final String SPRING_CONTEXT_FILE = "referentiel-professions-context.xml";
 
     /** référentiel instancié par le parsing du fichier SDMX */
-    private ReferentielProfessions referentielProfessions = new ReferentielProfessions();
+    private final ReferentielProfessions referentielProfessions = new ReferentielProfessions();
     /** liste temporaires de Divisions */
-    private Map<String, Division> divisionRef = new HashMap<String, Division>();
+    private final Map<String, Division> divisionRef = new HashMap<String, Division>();
     /** liste temporaires de Classes */
-    private Map<String, Classe> classeRef = new HashMap<String, Classe>();
+    private final Map<String, Classe> classeRef = new HashMap<String, Classe>();
     /** liste temporaires de Groupes */
-    private Map<String, Groupe> groupeRef = new HashMap<String, Groupe>();
+    private final Map<String, Groupe> groupeRef = new HashMap<String, Groupe>();
     /** liste temporaires de Genres */
-    private Map<String, Genre> genreRef = new HashMap<String, Genre>();
+    private final Map<String, Genre> genreRef = new HashMap<String, Genre>();
 
     /**
      * Constructeur avec injection du parseur SDMX
@@ -65,6 +72,7 @@ public class SDMXDataAdaptor extends
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
+    @Override
     public ReferentielProfessions parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
@@ -110,20 +118,21 @@ public class SDMXDataAdaptor extends
 	final HierarchyBean hb = hclb.getHierarchies().iterator().next();
 	final List<HierarchicalCodeBean> cbDivisions = hb
 		.getHierarchicalCodeBeans();
-	for (HierarchicalCodeBean cbDivision : cbDivisions) {
+	for (final HierarchicalCodeBean cbDivision : cbDivisions) {
 	    final Division division = divisionRef.get(cbDivision.getCodeId());
 	    referentielProfessions.getDivision().add(division);
-	    for (HierarchicalCodeBean cbClasseRef : cbDivision.getCodeRefs()) {
+	    for (final HierarchicalCodeBean cbClasseRef : cbDivision
+		    .getCodeRefs()) {
 		final Classe classe = classeRef.get(cbClasseRef.getCodeId());
 		classe.setDivisionId(division.getId());
 		division.getClasse().add(classe);
-		for (HierarchicalCodeBean cbGroupeRef : cbClasseRef
+		for (final HierarchicalCodeBean cbGroupeRef : cbClasseRef
 			.getCodeRefs()) {
 		    final Groupe groupe = groupeRef.get(cbGroupeRef.getId());
 		    groupe.setDivisionId(division.getId());
 		    groupe.setClasseId(classe.getId());
 		    classe.getGroupe().add(groupe);
-		    for (HierarchicalCodeBean cbGenreRef : cbGroupeRef
+		    for (final HierarchicalCodeBean cbGenreRef : cbGroupeRef
 			    .getCodeRefs()) {
 			final Genre genre = genreRef.get(cbGenreRef.getId());
 			genre.setDivisionId(division.getId());
@@ -145,9 +154,9 @@ public class SDMXDataAdaptor extends
     private void populateTempRefs(final StructureWorkspace workspace) {
 	final Set<CodelistBean> cls = workspace.getStructureBeans(false)
 		.getCodelists();
-	for (CodelistBean cl : cls) {
+	for (final CodelistBean cl : cls) {
 	    final List<CodeBean> cbs = cl.getItems();
-	    for (CodeBean cb : cbs) {
+	    for (final CodeBean cb : cbs) {
 		if (CodeList.CL_SBN_BERUFSABTEILUNG.name().equals(cl.getId())) {
 		    final Division division = new Division();
 		    division.setId(Integer.parseInt(cb.getId()));
@@ -176,7 +185,7 @@ public class SDMXDataAdaptor extends
     }
 
     private String getName(final CodeBean cb, final AnnotationType lang) {
-	for (TextTypeWrapper ttw : cb.getNames()) {
+	for (final TextTypeWrapper ttw : cb.getNames()) {
 	    if (lang.name().equals(ttw.getLocale())) {
 		return ttw.getValue();
 	    }

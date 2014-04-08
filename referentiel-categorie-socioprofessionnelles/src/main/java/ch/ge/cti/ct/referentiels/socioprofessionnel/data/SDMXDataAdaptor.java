@@ -26,6 +26,13 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau1;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau2;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.ReferentielSocioprofessionnel;
 
+/**
+ * Classe d'adapation de la structure de parsing SDMX à une structure
+ * intermédiaire proche du service à rendre
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @Service("sdmxDataReader")
 public class SDMXDataAdaptor extends
 	AbstractSDMXDataAdaptor<ReferentielSocioprofessionnel> {
