@@ -2,6 +2,7 @@ package ch.ge.cti.ct.referentiels.pays;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
@@ -12,7 +13,6 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
 public class AbstractReferentielTest {
 
-    @SuppressWarnings("deprecation")
     @BeforeClass
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target");
@@ -25,7 +25,13 @@ public class AbstractReferentielTest {
 		"src/test/resources/CH1_RN+HCL_COUNTRIESGEO+1.0.xml");
 	props.setProperty("referentiel.pays.file", xmlFile.toURI().toURL()
 		.toString());
-	props.save(new FileOutputStream(distributionFile), "");
+	OutputStream os = null;
+	try {
+	    os = new FileOutputStream(distributionFile);
+	    props.store(os, "");
+	} finally {
+	    os.close();
+	}
 
 	DistributionFactory.setDisableJNDI(true);
     }

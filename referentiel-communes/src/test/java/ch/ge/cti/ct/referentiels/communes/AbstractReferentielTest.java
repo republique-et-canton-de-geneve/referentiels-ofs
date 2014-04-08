@@ -2,6 +2,7 @@ package ch.ge.cti.ct.referentiels.communes;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Properties;
@@ -17,7 +18,6 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
 public class AbstractReferentielTest {
 
-    @SuppressWarnings("deprecation")
     @BeforeClass
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target");
@@ -30,7 +30,13 @@ public class AbstractReferentielTest {
 		"src/test/resources/CH1_RN+HCL_HGDE_HIST+1.0.xml");
 	props.setProperty("referentiel.communes.file", xmlFile.toURI().toURL()
 		.toString());
-	props.save(new FileOutputStream(distributionFile), "");
+	OutputStream os = null;
+	try {
+	    os = new FileOutputStream(distributionFile);
+	    props.store(os, "");
+	} finally {
+	    os.close();
+	}
 
 	DistributionFactory.setDisableJNDI(true);
     }

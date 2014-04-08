@@ -2,6 +2,7 @@ package ch.ge.cti.ct.referentiels.formeJuridique;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
@@ -13,7 +14,6 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 public class AbstractReferentielTest {
     public static final String SDMX_FILE = "CH1_BUR+CL_LEGALFORMS+2.0.xml";
 
-    @SuppressWarnings("deprecation")
     @BeforeClass
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target");
@@ -25,7 +25,13 @@ public class AbstractReferentielTest {
 	final File xmlFile = new File("src/test/resources/" + SDMX_FILE);
 	props.setProperty("referentiel.formes-jurdiques.file", xmlFile.toURI()
 		.toURL().toString());
-	props.save(new FileOutputStream(distributionFile), "");
+	OutputStream os = null;
+	try {
+	    os = new FileOutputStream(distributionFile);
+	    props.store(os, "");
+	} finally {
+	    os.close();
+	}
 
 	DistributionFactory.setDisableJNDI(true);
     }

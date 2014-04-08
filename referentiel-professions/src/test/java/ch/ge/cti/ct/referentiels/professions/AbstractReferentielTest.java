@@ -2,6 +2,7 @@ package ch.ge.cti.ct.referentiels.professions;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
@@ -12,7 +13,6 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
 public class AbstractReferentielTest {
 
-    @SuppressWarnings("deprecation")
     @BeforeClass
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target");
@@ -23,9 +23,15 @@ public class AbstractReferentielTest {
 	final Properties props = new Properties();
 	final File xmlFile = new File(
 		"src/test/resources/CH1_BN+HCL_SBN+2.0.xml");
-	props.setProperty("referentiel.professions.file", xmlFile.toURI().toURL()
-		.toString());
-	props.save(new FileOutputStream(distributionFile), "");
+	props.setProperty("referentiel.professions.file", xmlFile.toURI()
+		.toURL().toString());
+	OutputStream os = null;
+	try {
+	    os = new FileOutputStream(distributionFile);
+	    props.store(os, "");
+	} finally {
+	    os.close();
+	}
 
 	DistributionFactory.setDisableJNDI(true);
     }
