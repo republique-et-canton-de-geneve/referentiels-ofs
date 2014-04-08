@@ -19,6 +19,15 @@ public class NomComparator implements Comparator<IComplexType>, Serializable {
     /** serialVersionUID */
     private static final long serialVersionUID = 1601290705999124051L;
 
+    /**
+     * Méthode d'exécution du comparateur
+     * 
+     * @param ct0
+     *            IComplexType de référence
+     * @param ct1
+     *            IComplexType à comparer
+     * @return résultat de comparaison
+     */
     @Override
     public int compare(final IComplexType ct0, final IComplexType ct1) {
 	return ComparisonChain

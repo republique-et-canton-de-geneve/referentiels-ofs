@@ -20,11 +20,24 @@ public class NomStringMatcherPredicate extends AbstractMatcherPredicate
 
     private final String matcher;
 
+    /**
+     * Constructeur
+     * 
+     * @param matcher
+     *            chaîne de comparaison
+     */
     public NomStringMatcherPredicate(final String matcher) {
 	this.matcher = Strings.isNullOrEmpty(matcher) ? null
 		: normalize(matcher);
     }
 
+    /**
+     * Méthode d'exécution du prédicat
+     * 
+     * @param entité
+     *            à tester
+     * @return résultat de la comparaison
+     */
     @Override
     public boolean apply(final IComplexType compleType) {
 	if (matcher == null && Strings.emptyToNull(compleType.getNom()) == null) {

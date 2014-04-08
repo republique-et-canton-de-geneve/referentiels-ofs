@@ -13,10 +13,23 @@ import com.google.common.base.Predicate;
 public class IdFilterPredicate implements Predicate<IComplexType> {
     private final int id;
 
+    /**
+     * Constructeur
+     * 
+     * @param id
+     *            identifiant
+     */
     public IdFilterPredicate(final int id) {
 	this.id = id;
     }
 
+    /**
+     * Méthode d'exécution du prédicat
+     * 
+     * @param données
+     *            à tester par le prédicat
+     * @return flag d'identité des identifiants
+     */
     @Override
     public boolean apply(final IComplexType ct) {
 	return ct.getId() == id;

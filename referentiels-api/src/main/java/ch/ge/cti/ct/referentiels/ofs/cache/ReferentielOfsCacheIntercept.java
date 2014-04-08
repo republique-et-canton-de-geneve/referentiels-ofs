@@ -33,6 +33,12 @@ public class ReferentielOfsCacheIntercept {
 
     /**
      * interception de toutes les méthodes pour gestion du cache
+     * 
+     * @param ctx
+     *            contexte d'appel
+     * @return résultat du traitement
+     * @throws Exception
+     *             toute exception ..
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @AroundInvoke

@@ -12,6 +12,7 @@ public final class CacheStatUtil {
 
     private static final long MICROSECONDS_COEFF = 1000000l;
 
+    /** constructeur */
     private CacheStatUtil() {
     }
 

@@ -28,6 +28,15 @@ public class JaxbDateAdapter extends XmlAdapter<String, Date> {
     /** format de date supporté */
     private final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
+    /**
+     * Convertion String -> Date
+     * 
+     * @param date
+     *            date au format String (dd.MM.yyyy)
+     * @return date
+     * @exception exception
+     *                de convertion
+     */
     @Override
     public Date unmarshal(final String date) throws Exception {// NOSONAR
 	if (StringUtils.isNotBlank(date)) {
@@ -36,6 +45,15 @@ public class JaxbDateAdapter extends XmlAdapter<String, Date> {
 	return null;
     }
 
+    /**
+     * Convertion Date -> String
+     * 
+     * @param date
+     *            date
+     * @return date au format String (dd.MM.yyyy)
+     * @exception exception
+     *                de convertion
+     */
     @Override
     public String marshal(final Date date) throws Exception {// NOSONAR
 	if (date != null) {
