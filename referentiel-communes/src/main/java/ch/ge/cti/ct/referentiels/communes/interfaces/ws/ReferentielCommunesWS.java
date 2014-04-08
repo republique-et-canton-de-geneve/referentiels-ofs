@@ -39,91 +39,89 @@ public interface ReferentielCommunesWS {
 
     @WebMethod(operationName = "getCantons", action = "getCantons")
     @WebResult(name = "canton")
-    public List<CantonWS> getCantons() throws ReferentielOfsException;
+    List<CantonWS> getCantons() throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCanton", action = "getCanton")
     @WebResult(name = "canton")
-    public CantonWS getCanton(@WebParam(name = "canton") final String codeCanton)
+    CantonWS getCanton(@WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getDistrictsByCanton", action = "getDistrictsByCanton")
     @WebResult(name = "district")
-    public List<DistrictWS> getDistrictsByCanton(
+    List<DistrictWS> getDistrictsByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getDistrict", action = "getDistrict")
     @WebResult(name = "district")
-    public DistrictWS getDistrict(
-	    @WebParam(name = "district") final int districtId)
+    DistrictWS getDistrict(@WebParam(name = "district") final int districtId)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCommunesByDistrict", action = "getCommunesByDistrict")
     @WebResult(name = "commune")
-    public List<CommuneWS> getCommunesByDistrict(
+    List<CommuneWS> getCommunesByDistrict(
 	    @WebParam(name = "district") final int districtId)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCommunesByCanton", action = "getCommunesByCanton")
     @WebResult(name = "commune")
-    public List<CommuneWS> getCommunesByCanton(
+    List<CommuneWS> getCommunesByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCommune", action = "getCommune")
     @WebResult(name = "commune")
-    public CommuneWS getCommune(@WebParam(name = "commune") final int communeId)
+    CommuneWS getCommune(@WebParam(name = "commune") final int communeId)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCantonDate", action = "getCantonDate")
     @WebResult(name = "canton")
-    public CantonWS getCantonDate(
-	    @WebParam(name = "canton") final String codeCanton,
+    CantonWS getCantonDate(@WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCantonsDate", action = "getCantonsDate")
     @WebResult(name = "canton")
-    public List<CantonWS> getCantonsDate(
+    List<CantonWS> getCantonsDate(
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getDistrictDate", action = "getDistrictDate")
     @WebResult(name = "district")
-    public DistrictWS getDistrictDate(
+    DistrictWS getDistrictDate(
 	    @WebParam(name = "district") final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getDistrictsByCantonDate", action = "getDistrictsByCantonDate")
     @WebResult(name = "district")
-    public List<DistrictWS> getDistrictsByCantonDate(
+    List<DistrictWS> getDistrictsByCantonDate(
 	    @WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCommunesByDistrictDate", action = "getCommunesByDistrictDate")
     @WebResult(name = "commune")
-    public List<CommuneWS> getCommunesByDistrictDate(final int districtId,
+    List<CommuneWS> getCommunesByDistrictDate(final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "getCommunesByCantonDate", action = "getCommunesByCantonDate")
     @WebResult(name = "commune")
-    public List<CommuneWS> getCommunesByCantonDate(
+    List<CommuneWS> getCommunesByCantonDate(
 	    @WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "searchCommune", action = "searchCommune")
     @WebResult(name = "commune")
-    public List<CommuneWS> searchCommune(
+    List<CommuneWS> searchCommune(
 	    @WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException;
 
     @WebMethod(operationName = "searchCommuneDate", action = "searchCommuneDate")
     @WebResult(name = "commune")
-    public List<CommuneWS> searchCommuneDate(
+    List<CommuneWS> searchCommuneDate(
 	    @WebParam(name = "critere") final String critere,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
