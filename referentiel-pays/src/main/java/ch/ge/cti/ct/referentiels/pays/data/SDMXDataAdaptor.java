@@ -239,6 +239,11 @@ public class SDMXDataAdaptor extends
 	private ListAlias(final String code) {
 	    this.code = code;
 	}
+
+	@SuppressWarnings("unused")
+	public String code() {
+	    return code;
+	}
     }
 
     private enum AnnotationType {
