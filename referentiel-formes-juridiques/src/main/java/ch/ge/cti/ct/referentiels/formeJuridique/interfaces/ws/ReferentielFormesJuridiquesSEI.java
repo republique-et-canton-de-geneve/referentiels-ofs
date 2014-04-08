@@ -32,11 +32,7 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 @WebService(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, serviceName = ReferentielFormesJuridiquesWS.SERVICE_NAME, portName = ReferentielFormesJuridiquesWS.PORT_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesWS")
 @WebContext(contextRoot = "/referentiels-ofs/formes-juridiques", urlPattern = "/referentiel-formes-juridiques")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
-@Interceptors({ ReferentielStatsIntercept.class /*
-						 * Pas de cache ,
-						 * ReferentielOfsCacheIntercept
-						 * .class
-						 */})
+@Interceptors({ ReferentielStatsIntercept.class })
 public class ReferentielFormesJuridiquesSEI implements
 	ReferentielFormesJuridiquesWS {
 
