@@ -18,7 +18,7 @@ public enum StatistiquesServiceSingleton {
     instance;
 
     /** données statistiques par méthode / paramètre */
-    private final Map<Call, Stat> stats = new Hashtable<Call, Stat>();
+    private final transient Map<Call, Stat> stats = new Hashtable<Call, Stat>();
 
     /**
      * Enregistrement d'un appel de méthode
