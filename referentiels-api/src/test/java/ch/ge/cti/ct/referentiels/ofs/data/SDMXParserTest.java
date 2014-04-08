@@ -15,8 +15,9 @@ public class SDMXParserTest extends AbstractDataTest {
 
     @BeforeClass
     public static void setupTestClass() throws Exception {
+	assertNotNull("Le contexte applicatif Spring n'est pas chargé", ctxt);
 	parser = ctxt.getBean(SDMXParser.class);
-	assertNotNull(parser);
+	assertNotNull("Le parseur SDMX n'a pu être instancié", parser);
     }
 
     @Test
