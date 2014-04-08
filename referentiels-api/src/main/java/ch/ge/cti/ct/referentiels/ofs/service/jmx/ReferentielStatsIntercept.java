@@ -9,6 +9,12 @@ import org.slf4j.LoggerFactory;
 /**
  * Intercepteur des appels afin d'alimenter le MBean de statistiques
  * 
+ * le tag NOSONAR est ajouté pour supprimer les warnings
+ * <ul>
+ * <li>"Signature Declare Throws Exception", car on implémente une interface
+ * prédéfinie</li>
+ * </ul>
+ * 
  * @author DESMAZIERESJ
  * 
  */
@@ -21,7 +27,7 @@ public class ReferentielStatsIntercept {
      * le temps d'exécution en nanosecondes
      */
     @AroundInvoke
-    public Object processStats(InvocationContext ctx) throws Exception {
+    public Object processStats(final InvocationContext ctx) throws Exception { // NOSONAR
 	final long start = System.nanoTime();
 	try {
 	    return ctx.proceed();
@@ -30,7 +36,7 @@ public class ReferentielStatsIntercept {
 		StatistiquesServiceSingleton.instance.registerCall(ctx
 			.getTarget().getClass(), ctx.getMethod(), ctx
 			.getParameters(), System.nanoTime() - start);
-	    } catch (Exception e) {
+	    } catch (final Exception e) {
 		log.warn("Erreur lors de l'enregistrement des statistiques", e);
 	    }
 	}
