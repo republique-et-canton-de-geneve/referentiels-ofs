@@ -286,6 +286,12 @@ public enum ReferentielCommunesService implements
     private static class CantonValidPredicate implements Predicate<Canton> {
 	private final Date dateValid;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param dateValid
+	 *            date de validation
+	 */
 	public CantonValidPredicate(final Date dateValid) {
 	    this.dateValid = dateValid;
 	}
@@ -303,6 +309,12 @@ public enum ReferentielCommunesService implements
     private static class DistrictValidPredicate implements Predicate<District> {
 	private final Date dateValid;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param dateValid
+	 *            date de validation
+	 */
 	public DistrictValidPredicate(final Date dateValid) {
 	    this.dateValid = dateValid;
 	}
@@ -320,6 +332,12 @@ public enum ReferentielCommunesService implements
     private static class CommuneValidPredicate implements Predicate<Commune> {
 	private final Date dateValid;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param dateValid
+	 *            date de validation
+	 */
 	public CommuneValidPredicate(final Date dateValid) {
 	    this.dateValid = dateValid;
 	}
