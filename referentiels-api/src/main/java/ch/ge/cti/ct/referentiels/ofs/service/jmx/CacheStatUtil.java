@@ -10,6 +10,8 @@ import com.google.common.cache.Cache;
  */
 public final class CacheStatUtil {
 
+    private static final long MICROSECONDS_COEFF = 1000000l;
+
     private CacheStatUtil() {
     }
 
@@ -42,11 +44,11 @@ public final class CacheStatUtil {
 	    xml.append(" evictionCount=\"")
 		    .append(cache.stats().evictionCount()).append("\"");
 	    xml.append(" totalLoadTime=\"")
-		    .append(cache.stats().totalLoadTime() / 1000000l)
+		    .append(cache.stats().totalLoadTime() / MICROSECONDS_COEFF)
 		    .append("\"");
 	    xml.append(" averageLoadPenalty=\"")
-		    .append((long) cache.stats().averageLoadPenalty() / 1000000l)
-		    .append("\"");
+		    .append((long) cache.stats().averageLoadPenalty()
+			    / MICROSECONDS_COEFF).append("\"");
 	}
 	xml.append("/>\n");
     }
