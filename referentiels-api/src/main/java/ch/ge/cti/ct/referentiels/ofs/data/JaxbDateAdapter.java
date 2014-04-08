@@ -13,28 +13,34 @@ import org.apache.commons.lang.StringUtils;
  * Permet de supporter des champs définis comme xs:date dans le xsd d'être
  * spécifiés au format dd.MM.yyyy dans le fichier XML
  * 
+ * le tag NOSONAR est ajouté pour supprimer les warnings
+ * <ul>
+ * <li>"Signature Declare Throws Exception", car on implémente une interface
+ * prédéfinie</li>
+ * </ul>
+ * 
  * @author desmazieresj
  * @see javax.xml.bind.annotation.adapters.XmlAdapter
  */
 public class JaxbDateAdapter extends XmlAdapter<String, Date> {
 
-	private static final String BLANK = "";
-	/** format de date supporté */
-	private final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    private static final String BLANK = "";
+    /** format de date supporté */
+    private final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
-	@Override
-	public Date unmarshal(final String date) throws Exception {
-		if (StringUtils.isNotBlank(date)) {
-			return df.parse(date);
-		}
-		return null;
+    @Override
+    public Date unmarshal(final String date) throws Exception {// NOSONAR
+	if (StringUtils.isNotBlank(date)) {
+	    return df.parse(date);
 	}
+	return null;
+    }
 
-	@Override
-	public String marshal(final Date date) throws Exception {
-		if (date != null) {
-			return df.format(date);
-		}
-		return BLANK;
+    @Override
+    public String marshal(final Date date) throws Exception {// NOSONAR
+	if (date != null) {
+	    return df.format(date);
 	}
+	return BLANK;
+    }
 }

@@ -17,6 +17,12 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSE
  * L'installation du MBean sur le serveur est définie dans le fichier
  * META-INF/jboss-service.xml
  * 
+ * le tag NOSONAR est ajouté pour supprimer les warnings
+ * <ul>
+ * <li>"Signature Declare Throws Exception", car on implémente une interface
+ * prédéfinie</li>
+ * </ul>
+ * 
  * @author DESMAZIERESJ
  * 
  */
@@ -31,7 +37,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
      * chargé au démarrage du JBoss
      */
     @Override
-    protected void startService() throws Exception {
+    protected void startService() throws Exception { // NOSONAR
 	super.startService();
 	initialize();
     }
@@ -45,7 +51,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
 	log.info("Initialisation du référentiel pays et territoires");
 	try {
 	    ReferentielDataSingleton.instance.getData();
-	} catch (ReferentielOfsException e) {
+	} catch (final ReferentielOfsException e) {
 	    log.error(
 		    "Erreur de chargement du référentiel pays et territoires: {}",
 		    e);
@@ -63,7 +69,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
 	Renderable mode = DisplayMode.XML;
 	try {
 	    mode = DisplayMode.valueOf(modeDisplay);
-	} catch (IllegalArgumentException ie) {
+	} catch (final IllegalArgumentException ie) {
 	    log.warn("La valeur '"
 		    + modeDisplay
 		    + "' dans l'appel de la méthode displayStatitiques n'est pas valide (XML, HTML)");

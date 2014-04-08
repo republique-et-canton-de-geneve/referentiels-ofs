@@ -16,10 +16,21 @@ import com.google.common.cache.CacheLoader.InvalidCacheLoadException;
  * Cet intercepteur exploite l'annotation
  * ch.ge.cti.ct.referentiels.communes.interfaces.ejb.Cachable
  * 
+ * le tag NOSONAR est ajouté pour supprimer les warnings
+ * <ul>
+ * <li>"Signature Declare Throws Exception", car on implémente une interface
+ * prédéfinie</li>
+ * <li>"Preserve Stack Trace", car on ne veut pas remonter la stack incluant des
+ * exceptions des dépendances</li>
+ * </ul>
+ * 
  * @author DESMAZIERESJ
  * 
  */
 public class ReferentielOfsCacheIntercept {
+
+    private static final String DEFAULT_KEY = "_nokey_";
+
     /**
      * interception de toutes les méthodes pour gestion du cache
      */
@@ -84,7 +95,7 @@ public class ReferentielOfsCacheIntercept {
 	    }
 	    return ctx.getParameters()[0].toString();
 	} else {
-	    return "_nokey_";
+	    return DEFAULT_KEY;
 	}
     }
 }
