@@ -13,6 +13,12 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.ContinentWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.PaysWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.RegionWS;
 
+/**
+ * Interface du service au format JAX-WS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @WebService(targetNamespace = ReferentielPaysTerritoiresWS.TARGET_NAMESPACE)
 public interface ReferentielPaysTerritoiresWS {
 
@@ -30,64 +36,164 @@ public interface ReferentielPaysTerritoiresWS {
     /** QName du port */
     QName PORT_QNAME = new QName(TARGET_NAMESPACE, PORT_NAME);
 
+    /**
+     * Liste de tous les continents
+     * 
+     * @return liste des continents
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getContinents", action = "getContinents")
     @WebResult(name = "continent")
     List<ContinentWS> getContinents() throws ReferentielOfsException;
 
+    /**
+     * Recherhce de continent par son identifiant
+     * 
+     * @param continentId
+     *            identifiant continent
+     * @return continent
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getContinent", action = "getContinent")
     @WebResult(name = "continent")
     ContinentWS getContinent(@WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException;
 
+    /**
+     * Liste des régions d'un continent
+     * 
+     * @param continentId
+     *            identifiant région
+     * @return liste des régions
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getRegionsByContinent", action = "getRegionsByContinent")
     @WebResult(name = "region")
     List<RegionWS> getRegionsByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException;
 
+    /**
+     * Liste de toutes les régions
+     * 
+     * @return liste des régions
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getRegions", action = "getRegions")
     @WebResult(name = "region")
     List<RegionWS> getRegions() throws ReferentielOfsException;
 
+    /**
+     * Recherche de région par son identifiant
+     * 
+     * @param regionId
+     *            identifiant région
+     * @return région
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getRegion", action = "getRegion")
     @WebResult(name = "region")
     RegionWS getRegion(@WebParam(name = "region") final int regionId)
 	    throws ReferentielOfsException;
 
+    /**
+     * Liste des pays d'une région
+     * 
+     * @param regionId
+     *            identifiant région
+     * @return liste des pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getPaysByRegion", action = "getPaysByRegion")
     @WebResult(name = "pays")
     List<PaysWS> getPaysByRegion(@WebParam(name = "region") final int regionId)
 	    throws ReferentielOfsException;
 
+    /**
+     * Liste des pays d'un continent
+     * 
+     * @param continentId
+     *            identifiant région
+     * @return liste des pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getPaysByContinent", action = "getPaysByContinent")
     @WebResult(name = "pays")
     List<PaysWS> getPaysByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException;
 
+    /**
+     * 
+     * @return
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getPays", action = "getPays")
     @WebResult(name = "pays")
     List<PaysWS> getPays() throws ReferentielOfsException;
 
+    /**
+     * Recherche de pays par son code ISO2
+     * 
+     * @param iso2
+     *            code ISO2
+     * @return pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getPaysByIso2", action = "getPaysByIso2")
     @WebResult(name = "pays")
     PaysWS getPaysByIso2(@WebParam(name = "iso2") final String iso2)
 	    throws ReferentielOfsException;
 
+    /**
+     * Recherche de pays par son code ISO3
+     * 
+     * @param iso3
+     *            code ISO3
+     * @return pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getPaysByIso3", action = "getPaysByIso3")
     @WebResult(name = "pays")
     PaysWS getPaysByIso3(@WebParam(name = "iso3") final String iso3)
 	    throws ReferentielOfsException;
 
+    /**
+     * Recherche de la liste des pays commençant par un pattern
+     * 
+     * @param critere
+     *            critère de recherche
+     * @return liste de pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "searchPays", action = "searchPays")
     @WebResult(name = "pays")
     List<PaysWS> searchPays(@WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException;
 
+    /**
+     * Recherche de la liste des pays vérifiant une expression régulière
+     * 
+     * @param regexp
+     *            expression régulière de recherche
+     * @return liste de pays
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "searchPaysRegexp", action = "searchPaysRegexp")
     @WebResult(name = "pays")
-    List<PaysWS> searchPaysRegexp(
-	    @WebParam(name = "critere") final String critere)
+    List<PaysWS> searchPaysRegexp(@WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException;
 
 }

@@ -327,14 +327,14 @@ public class ReferentielPaysTerritoiresSEI implements
     @WebMethod(operationName = "searchPaysRegexp", action = "searchPaysRegexp")
     @WebResult(name = "pays")
     public List<PaysWS> searchPaysRegexp(
-	    @WebParam(name = "critere") final String critere)
+	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchPaysRegexp({})", critere);
-	if (StringUtils.isBlank(critere)) {
+	LOG.debug("searchPaysRegexp({})", regexp);
+	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<PaysWS>();
 	}
 	try {
-	    return FluentIterable.from(service.searchPaysRegexp(critere))
+	    return FluentIterable.from(service.searchPaysRegexp(regexp))
 		    .transform(new PaysConvert()).toList();
 	} catch (final Exception e) {
 	    throw processException(e);

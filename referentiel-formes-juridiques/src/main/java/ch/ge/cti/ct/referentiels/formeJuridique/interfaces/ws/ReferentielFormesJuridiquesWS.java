@@ -11,6 +11,12 @@ import javax.xml.namespace.QName;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
+/**
+ * Interface du service au format JAX-WS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @WebService(targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
 public interface ReferentielFormesJuridiquesWS {
 
@@ -28,10 +34,26 @@ public interface ReferentielFormesJuridiquesWS {
     /** QName du port */
     QName PORT_QNAME = new QName(TARGET_NAMESPACE, PORT_NAME);
 
+    /**
+     * Liste de toutes les formes juridiques
+     * 
+     * @return liste des formes juridiques
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getFormesJuridiques", action = "getFormesJuridiques")
     @WebResult(name = "formeJuridique")
     List<FormeJuridique> getFormesJuridiques() throws ReferentielOfsException;
 
+    /**
+     * Recherche d'une forme juridique par son identifiant
+     * 
+     * @param formeJuridiqueId
+     *            identifiant de forme juridique
+     * @return forme juridique
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getFormeJuridique", action = "getFormeJuridique")
     @WebResult(name = "formeJuridique")
     FormeJuridique getFormeJuridique(

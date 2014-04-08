@@ -34,10 +34,26 @@ public interface ReferentielEtatCivilWS {
     /** QName du port */
     QName PORT_QNAME = new QName(TARGET_NAMESPACE, PORT_NAME);
 
+    /**
+     * Liste de tous les états civils
+     * 
+     * @return liste des états civils
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getEtatsCivils", action = "getEtatsCivils")
     @WebResult(name = "etatCivil")
     List<EtatCivil> getEtatsCivils() throws ReferentielOfsException;
 
+    /**
+     * Recherche d'un état civil par son identifiant
+     * 
+     * @param etatCivilId
+     *            identifiant état civil
+     * @return état civil
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
     @WebMethod(operationName = "getEtatCivil", action = "getEtatCivil")
     @WebResult(name = "etatCivil")
     EtatCivil getEtatCivil(@WebParam(name = "etatCivil") final int etatCivilId)
