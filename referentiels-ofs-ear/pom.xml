@@ -40,6 +40,10 @@
 							<groupId>ch.ge.cti.ct.referentiels</groupId>
 							<artifactId>referentiel-professions</artifactId>
 						</ejbModule>
+						<ejbModule>
+							<groupId>ch.ge.cti.ct.referentiels</groupId>
+							<artifactId>referentiel-categorie-socioprofessionnelles</artifactId>
+						</ejbModule>
 					</modules>
 					<jboss>
 						<version>5</version>
@@ -78,6 +82,12 @@
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-professions</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>ch.ge.cti.ct.referentiels</groupId>
+			<artifactId>referentiel-categorie-socioprofessionnelles</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
