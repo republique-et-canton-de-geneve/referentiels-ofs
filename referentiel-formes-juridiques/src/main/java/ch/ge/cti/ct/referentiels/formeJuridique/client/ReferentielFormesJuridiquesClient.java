@@ -9,6 +9,12 @@ import javax.xml.ws.WebServiceClient;
 
 import ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesWS;
 
+/**
+ * Client du WebService ReferentielFormesJuridiquesWS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @WebServiceClient(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE)
 public final class ReferentielFormesJuridiquesClient extends Service {
 

@@ -9,6 +9,12 @@ import javax.xml.ws.WebServiceClient;
 
 import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS;
 
+/**
+ * Client du WebService ReferentielEtatCivilWS
+ * 
+ * @author DESMAZIERESJ
+ * 
+ */
 @WebServiceClient(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE)
 public final class ReferentielEtatCivilClient extends Service {
 

@@ -10,9 +10,10 @@ import javax.xml.ws.WebServiceClient;
 import ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesWS;
 
 /**
- * Implémentation du client JAX-WS du service
+ * Client du WebService ReferentielCommunesWS
  * 
  * @author DESMAZIERESJ
+ * 
  */
 @WebServiceClient(name = ReferentielCommunesWS.WEBSERVICE_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE)
 public final class ReferentielCommunesClient extends Service {
