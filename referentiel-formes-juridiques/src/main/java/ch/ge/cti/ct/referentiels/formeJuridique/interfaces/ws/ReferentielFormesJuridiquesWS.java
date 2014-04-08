@@ -30,12 +30,11 @@ public interface ReferentielFormesJuridiquesWS {
 
     @WebMethod(operationName = "getFormesJuridiques", action = "getFormesJuridiques")
     @WebResult(name = "formeJuridique")
-    public List<FormeJuridique> getFormesJuridiques()
-	    throws ReferentielOfsException;
+    List<FormeJuridique> getFormesJuridiques() throws ReferentielOfsException;
 
     @WebMethod(operationName = "getFormeJuridique", action = "getFormeJuridique")
     @WebResult(name = "formeJuridique")
-    public FormeJuridique getFormeJuridique(
+    FormeJuridique getFormeJuridique(
 	    @WebParam(name = "formeJuridique") final int formeJuridiqueId)
 	    throws ReferentielOfsException;
 
