@@ -298,11 +298,8 @@ public enum ReferentielCommunesService implements
 
 	@Override
 	public boolean apply(final Canton canton) {
-	    return (dateValid == null)
-		    || ((canton.getValidFrom() == null || canton.getValidFrom()
-			    .getTime() <= dateValid.getTime()) && (canton
-			    .getValidTo() == null || canton.getValidTo()
-			    .getTime() >= dateValid.getTime()));
+	    return DATEVALIDITY.validate(dateValid, canton.getValidFrom(),
+		    canton.getValidTo());
 	}
     }
 
@@ -321,11 +318,8 @@ public enum ReferentielCommunesService implements
 
 	@Override
 	public boolean apply(final District district) {
-	    return (dateValid == null)
-		    || ((district.getValidFrom() == null || district
-			    .getValidFrom().getTime() <= dateValid.getTime()) && (district
-			    .getValidTo() == null || district.getValidTo()
-			    .getTime() >= dateValid.getTime()));
+	    return DATEVALIDITY.validate(dateValid, district.getValidFrom(),
+		    district.getValidTo());
 	}
     }
 
@@ -344,10 +338,30 @@ public enum ReferentielCommunesService implements
 
 	@Override
 	public boolean apply(final Commune commune) {
+	    return DATEVALIDITY.validate(dateValid, commune.getValidFrom(),
+		    commune.getValidTo());
+	}
+    }
+
+    /** prédicat de vérification de validité d'une date dans une prériode */
+    private static final DateValidityPredicate DATEVALIDITY = new DateValidityPredicate();
+
+    private static class DateValidityPredicate {
+	/**
+	 * Validation de la date dans une période
+	 * 
+	 * @param dateValid
+	 *            date à valider
+	 * @param from
+	 *            début de période
+	 * @param to
+	 *            fin de période
+	 * @return flag de validité
+	 */
+	public boolean validate(final Date dateValid, final Date from,
+		final Date to) {
 	    return (dateValid == null)
-		    || ((commune.getValidFrom() == null || commune
-			    .getValidFrom().getTime() <= dateValid.getTime()) && (commune
-			    .getValidTo() == null || commune.getValidTo()
+		    || ((from == null || from.getTime() <= dateValid.getTime()) && (to == null || to
 			    .getTime() >= dateValid.getTime()));
 	}
     }
