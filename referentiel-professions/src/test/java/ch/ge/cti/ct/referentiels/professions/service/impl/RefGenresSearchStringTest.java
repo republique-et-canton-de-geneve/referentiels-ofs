@@ -49,7 +49,7 @@ public class RefGenresSearchStringTest extends AbstractRefTest {
     @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Genre> genres = ReferentielProfessionsService.instance
-		.searchGenreRegexp(searchString);
+		.searchGenre(searchString);
 	if (countGenres == -1) {
 	    assertNull("Genres [" + searchString + "] est incorrect", genres);
 	} else {

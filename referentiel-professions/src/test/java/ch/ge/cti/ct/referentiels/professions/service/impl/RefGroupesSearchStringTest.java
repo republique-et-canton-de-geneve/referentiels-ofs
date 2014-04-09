@@ -49,7 +49,7 @@ public class RefGroupesSearchStringTest extends AbstractRefTest {
     @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Groupe> groupes = ReferentielProfessionsService.instance
-		.searchGroupeRegexp(searchString);
+		.searchGroupe(searchString);
 	if (countGroupes == -1) {
 	    assertNull("Groupes [" + searchString + "] est incorrect", groupes);
 	} else {

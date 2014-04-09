@@ -26,4 +26,9 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
 	final ReferentielEtatCivil ref = adaptor.parse(file.toURI().toURL());
 	assertNotNull("Erreur d'instanciation du référentiel", ref);
     }
+
+    @Test
+    public void testFactory() throws Exception {
+	assertNotNull(SDMXDataAdaptor.Factory.getInstance());
+    }
 }

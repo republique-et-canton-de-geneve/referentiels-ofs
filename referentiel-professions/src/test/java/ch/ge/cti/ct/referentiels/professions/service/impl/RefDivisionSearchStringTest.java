@@ -49,7 +49,7 @@ public class RefDivisionSearchStringTest extends AbstractRefTest {
     @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Division> classes = ReferentielProfessionsService.instance
-		.searchDivisionRegexp(searchString);
+		.searchDivision(searchString);
 	if (countDivisions == -1) {
 	    assertNull("Divisions [" + searchString + "] est incorrect",
 		    classes);

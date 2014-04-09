@@ -2,6 +2,7 @@ package ch.ge.cti.ct.referentiels.socioprofessionnel.data;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -22,4 +23,11 @@ public class ReferentielDataSingletonTest extends AbstractReferentielTest {
 	assertEquals(ref1, ref2);
     }
 
+    @Test
+    public void testGetReferentielFile() throws ReferentielOfsException {
+
+	assertNotNull(ReferentielDataSingleton.instance.getReferentielFile());
+	assertTrue(ReferentielDataSingleton.instance.getReferentielFile()
+		.getFile().endsWith("CH1_BN+HCL_CSP+2.0.xml"));
+    }
 }
