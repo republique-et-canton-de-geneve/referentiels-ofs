@@ -11,7 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
+import ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesSEI;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 
 public class ReferentielFormesJuridiquesMgtTest {
 
@@ -25,6 +27,17 @@ public class ReferentielFormesJuridiquesMgtTest {
     @Before
     public void initialize() throws ExecutionException {
 	rmgt = new ReferentielFormesJuridiquesMgt();
+
+	addStat();
+    }
+
+    private void addStat() throws ExecutionException {
+	for (int i = 0; i < ReferentielFormesJuridiquesSEI.class.getMethods().length; i++) {
+	    StatistiquesServiceSingleton.instance.registerCall(
+		    ReferentielFormesJuridiquesSEI.class,
+		    ReferentielFormesJuridiquesSEI.class.getMethods()[i], null,
+		    1);
+	}
     }
 
     @Test
@@ -41,7 +54,6 @@ public class ReferentielFormesJuridiquesMgtTest {
 	assertFalse(XML.equals(HTML));
 	final String BLANK = rmgt.displayStatitiques("");
 	assertEquals(XML, BLANK);
-
 	rmgt.resetStatistiques();
     }
 

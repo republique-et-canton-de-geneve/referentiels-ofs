@@ -14,6 +14,8 @@ import org.junit.Test;
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
+import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
+import ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSEI;
 
 import com.google.common.cache.Cache;
 
@@ -49,6 +51,12 @@ public class ReferentielPaysTerritoiresMgtTest {
 		return value;
 	    }
 	});
+	for (int i = 0; i < ReferentielPaysTerritoiresSEI.class.getMethods().length; i++) {
+	    StatistiquesServiceSingleton.instance.registerCall(
+		    ReferentielPaysTerritoiresSEI.class,
+		    ReferentielPaysTerritoiresSEI.class.getMethods()[i], null,
+		    1);
+	}
     }
 
     private Cache<String, ?> getCache() {

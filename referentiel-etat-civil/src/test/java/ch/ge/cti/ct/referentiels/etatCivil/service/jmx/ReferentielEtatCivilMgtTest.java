@@ -11,7 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
+import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilSEI;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 
 public class ReferentielEtatCivilMgtTest {
 
@@ -26,6 +28,15 @@ public class ReferentielEtatCivilMgtTest {
     public void initialize() throws ExecutionException {
 	rmgt = new ReferentielEtatCivilMgt();
 
+	addStat();
+    }
+
+    private void addStat() throws ExecutionException {
+	for (int i = 0; i < ReferentielEtatCivilSEI.class.getMethods().length; i++) {
+	    StatistiquesServiceSingleton.instance.registerCall(
+		    ReferentielEtatCivilSEI.class,
+		    ReferentielEtatCivilSEI.class.getMethods()[i], null, 1);
+	}
     }
 
     @Test

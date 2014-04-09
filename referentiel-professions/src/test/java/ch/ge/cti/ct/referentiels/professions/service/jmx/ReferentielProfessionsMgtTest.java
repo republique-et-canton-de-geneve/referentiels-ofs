@@ -14,6 +14,8 @@ import org.junit.Test;
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
+import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
+import ch.ge.cti.ct.referentiels.professions.interfaces.ws.ReferentielProfessionsSEI;
 
 import com.google.common.cache.Cache;
 
@@ -49,6 +51,11 @@ public class ReferentielProfessionsMgtTest {
 		return value;
 	    }
 	});
+	for (int i = 0; i < ReferentielProfessionsSEI.class.getMethods().length; i++) {
+	    StatistiquesServiceSingleton.instance.registerCall(
+		    ReferentielProfessionsSEI.class,
+		    ReferentielProfessionsSEI.class.getMethods()[i], null, 1);
+	}
     }
 
     private Cache<String, ?> getCache() {
