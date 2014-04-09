@@ -35,7 +35,7 @@ public class AbstractReferentielTest {
 	OutputStream os = null;
 	try {
 	    os = new FileOutputStream(distributionFile);
-	    props.store(os, "");
+	    props.store(os, ".Chemins mis à jour au démarrage du test.");
 	} finally {
 	    os.close();
 	}
