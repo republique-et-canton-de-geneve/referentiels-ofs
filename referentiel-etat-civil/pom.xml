@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>ct_referentiels-ofs</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>referentiel-etat-civil</artifactId>
@@ -98,7 +98,7 @@
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiels-api</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.act</groupId>
