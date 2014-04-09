@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import ch.ge.cti.ct.referentiels.AbstractClientTest;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.client.ReferentielSocioprofessionnelClient;
 
-@EnableServices(value = { "jax-ws" }, httpDebug = true)
+@EnableServices(value = { "jax-ws" })
 @RunWith(ApplicationComposer.class)
 public class ReferentielSocioprofessionnelClientTestIT extends
 	AbstractClientTest {
@@ -37,7 +37,7 @@ public class ReferentielSocioprofessionnelClientTestIT extends
 	assertTrue(client.searchNiveaux2Regexp("^Dirigeant").size() > 0);
 
 	assertNotNull(client.getNiveau1(20));
-	assertNotNull(client.getNiveau2(200));
+	assertNotNull(client.getNiveau2(201));
 	assertNotNull(client.getNiveaux2ByNiveau1(20));
     }
 }
