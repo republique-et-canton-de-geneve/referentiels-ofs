@@ -33,7 +33,7 @@ public enum DisplayMode implements Renderable {
 	public String render() {
 	    final StringBuilder xml = new StringBuilder();
 	    xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-	    xml.append("<referentiel-socioprofessionvel-statistiques>\n");
+	    xml.append("<referentiel-socioprofessionnel-statistiques>\n");
 	    xml.append("  <cache>\n");
 	    for (final CacheEnum cache : CacheEnum.values()) {
 		CacheStatUtil.renderCacheStats(cache.name(),
