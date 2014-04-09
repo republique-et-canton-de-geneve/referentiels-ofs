@@ -1,5 +1,6 @@
 package ch.ge.cti.ct.referentiels.ofs.service.jmx;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
@@ -18,6 +19,9 @@ public class StatistiquesServiceSingletonTest {
 	StatistiquesServiceSingleton.instance.registerCall(String.class,
 		String.class.getMethods()[0], null, 1);
 	assertTrue(stats.keySet().size() == 1);
+	final Call call = stats.keySet().iterator().next();
+	assertEquals(String.class.getName(), call.getClasse());
+	assertEquals(String.class.getMethods()[0].getName(), call.getMethode());
 
 	StatistiquesServiceSingleton.instance.registerCall(String.class,
 		String.class.getMethods()[0], null, 1);
