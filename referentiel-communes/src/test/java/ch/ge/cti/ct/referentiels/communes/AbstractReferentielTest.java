@@ -41,6 +41,7 @@ public class AbstractReferentielTest {
 	}
 
 	DistributionFactory.setDisableJNDI(true);
+	DistributionFactory.getConfiguration();
     }
 
     protected static ApplicationContext ctxt;
