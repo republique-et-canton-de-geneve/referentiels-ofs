@@ -36,8 +36,8 @@ public class RefGroupesSearchStringTest extends AbstractRefTest {
 	return Arrays.asList(new Object[][] {
 	/* 0 */{ null, -1 },
 	/* 1 */{ "", -1 },
-	/* 2 */{ "Professions", 64 },
-	/* 3 */{ "Professions", 64 },
+	/* 2 */{ "Professions", 59 },
+	/* 3 */{ "Professions", 59 },
 	/* 4 */{ "Ingénieurs", 1 },
 	/* 5 */{ "Ingenieurs", 1 },
 	/* 6 */{ "xxxxxxxx", 0 }
