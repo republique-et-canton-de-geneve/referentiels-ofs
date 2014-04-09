@@ -34,7 +34,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 
 /**
- * Exposition du service au format JAX-WS
+ * Exposition du service au format JAX-WS.
  * 
  * @author DESMAZIERESJ
  * 
