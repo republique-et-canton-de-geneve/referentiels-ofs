@@ -36,10 +36,10 @@ public class RefGenresSearchStringTest extends AbstractRefTest {
 	return Arrays.asList(new Object[][] {
 	/* 0 */{ null, -1 },
 	/* 1 */{ "", -1 },
-	/* 2 */{ "Professions", 66 },
-	/* 3 */{ "professions", 66 },
-	/* 4 */{ "Ingénieurs", 11 },
-	/* 5 */{ "ingenieurs", 11 },
+	/* 2 */{ "Professions", 24 },
+	/* 3 */{ "professions", 24 },
+	/* 4 */{ "Ingénieurs", 10 },
+	/* 5 */{ "ingenieurs", 10 },
 	/* 6 */{ "xxxxxxxx", 0 }
 	/* */
 	});
