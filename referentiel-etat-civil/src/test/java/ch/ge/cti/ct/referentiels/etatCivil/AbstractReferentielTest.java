@@ -16,7 +16,7 @@ public class AbstractReferentielTest {
 
     @BeforeClass
     public static void setupDistribution() throws Exception {
-	final File targetDir = new File("target");
+	final File targetDir = new File("target/test-classes");
 	final File distributionFile = new File(targetDir,
 		"Distribution.properties");
 	System.setProperty("distribution.properties", distributionFile.toURI()

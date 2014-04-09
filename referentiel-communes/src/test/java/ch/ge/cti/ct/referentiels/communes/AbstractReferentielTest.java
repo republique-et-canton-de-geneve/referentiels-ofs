@@ -20,11 +20,13 @@ public class AbstractReferentielTest {
 
     @BeforeClass
     public static void setupDistribution() throws Exception {
-	final File targetDir = new File("target");
+	final File targetDir = new File("target/test-classes");
 	final File distributionFile = new File(targetDir,
 		"Distribution.properties");
 	System.setProperty("distribution.properties", distributionFile.toURI()
 		.toURL().toString());
+	System.err.println("distributionFile: " + distributionFile);
+
 	final Properties props = new Properties();
 	final File xmlFile = new File(
 		"src/test/resources/CH1_RN+HCL_HGDE_HIST+1.0.xml");
