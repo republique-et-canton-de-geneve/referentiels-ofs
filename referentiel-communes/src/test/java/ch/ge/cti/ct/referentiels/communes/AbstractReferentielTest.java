@@ -33,7 +33,6 @@ public class AbstractReferentielTest {
 		"Distribution.properties");
 	System.setProperty("distribution.properties", distributionFile.toURI()
 		.toURL().toString());
-	System.err.println("distributionFile: " + distributionFile);
 
 	final Properties props = new Properties();
 	final File xmlFile = new File(

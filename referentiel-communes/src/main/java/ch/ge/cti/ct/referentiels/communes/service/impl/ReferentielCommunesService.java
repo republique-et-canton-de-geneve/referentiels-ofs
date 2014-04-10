@@ -18,6 +18,7 @@ import ch.ge.cti.ct.referentiels.communes.service.ReferentielCommunesServiceAble
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.processing.IdFilterPredicate;
 import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
+import ch.ge.cti.ct.referentiels.ofs.processing.NomRegexpMatcherPredicate;
 import ch.ge.cti.ct.referentiels.ofs.processing.NomStringMatcherPredicate;
 
 import com.google.common.base.Function;
@@ -224,7 +225,30 @@ public enum ReferentielCommunesService implements
 		.filter(new CommuneValidPredicate(dateValid))
 		.filter(new NomStringMatcherPredicate(critere))
 		.toSortedList(nomComparator);
+    }
 
+    @Override
+    public List<Commune> searchCommuneRegexp(final String regexp)
+	    throws ReferentielOfsException {
+	LOG.debug("searchCommuneRegexp(regexp='{}')", regexp);
+	return searchCommuneRegexp(regexp, new Date());
+    }
+
+    @Override
+    public List<Commune> searchCommuneRegexp(final String regexp,
+	    final Date dateValid) throws ReferentielOfsException {
+	LOG.debug("searchCommuneRegexp(regexp='{}', dateValid='{}')", regexp,
+		dateValid);
+	if (StringUtils.isBlank(regexp)) {
+	    return new LinkedList<Commune>();
+	}
+	return FluentIterable
+		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.transformAndConcat(extractDistrictFunction)
+		.transformAndConcat(extractCommuneFunction)
+		.filter(new CommuneValidPredicate(dateValid))
+		.filter(new NomRegexpMatcherPredicate(regexp))
+		.toSortedList(nomComparator);
     }
 
     // ==================================================================================================================================================================

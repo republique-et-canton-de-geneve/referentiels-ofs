@@ -216,7 +216,8 @@ public interface ReferentielCommunesWS {
      */
     @WebMethod(operationName = "getCommunesByDistrictDate", action = "getCommunesByDistrictDate")
     @WebResult(name = "commune")
-    List<CommuneWS> getCommunesByDistrictDate(final int districtId,
+    List<CommuneWS> getCommunesByDistrictDate(
+	    @WebParam(name = "district") final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 
@@ -270,6 +271,39 @@ public interface ReferentielCommunesWS {
     @WebResult(name = "commune")
     List<CommuneWS> searchCommuneDate(
 	    @WebParam(name = "critere") final String critere,
+	    @WebParam(name = "dateValid") final Date dateValid)
+	    throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes correspondant à une expression régulière
+     * 
+     * @param regexp
+     *            critère de recherche
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
+    @WebMethod(operationName = "searchCommuneRegexp", action = "searchCommuneRegexp")
+    @WebResult(name = "commune")
+    List<CommuneWS> searchCommuneRegexp(
+	    @WebParam(name = "regexp") final String regexp)
+	    throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes correspondant à une expression régulière
+     * 
+     * @param regexp
+     *            critère de recherche
+     * @param dateValid
+     *            date de vérification de validité
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             exception de traitement
+     */
+    @WebMethod(operationName = "searchCommuneDateRegexp", action = "searchCommuneDateRegexp")
+    @WebResult(name = "commune")
+    List<CommuneWS> searchCommuneDateRegexp(
+	    @WebParam(name = "regexp") final String regexp,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException;
 }

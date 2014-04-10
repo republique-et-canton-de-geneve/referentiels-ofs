@@ -50,6 +50,10 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 	assertTrue(client.searchCommune("Gen").size() > 0);
 	assertTrue(client.searchCommuneDate("Gen", new Date()).size() > 0);
 
+	assertTrue(client.searchCommuneRegexp("^gen[e]+").size() > 0);
+	assertTrue(client.searchCommuneDateRegexp("^gen[e]+", new Date())
+		.size() > 0);
+
 	assertNotNull(client.getCanton("GE"));
 	assertNotNull(client.getCantonDate("GE", new Date()));
 	assertNotNull(client.getDistrict(101));

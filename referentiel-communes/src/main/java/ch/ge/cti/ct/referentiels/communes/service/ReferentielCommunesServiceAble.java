@@ -245,4 +245,30 @@ public interface ReferentielCommunesServiceAble {
      */
     List<Commune> searchCommune(final String critere, final Date dateValid)
 	    throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes par son nom
+     * 
+     * @param regexp
+     *            critère de recherche (sur le nom)
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> searchCommuneRegexp(final String regexp)
+	    throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes par son nom
+     * 
+     * @param regexp
+     *            critère de recherche (sur le nom)
+     * @param dateValid
+     *            date de validité
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> searchCommuneRegexp(final String critere, final Date dateValid)
+	    throws ReferentielOfsException;
 }

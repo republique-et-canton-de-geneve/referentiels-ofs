@@ -253,7 +253,8 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     @Override
     @WebMethod(operationName = "getCommunesByDistrictDate", action = "getCommunesByDistrictDate")
     @WebResult(name = "commune")
-    public List<CommuneWS> getCommunesByDistrictDate(final int districtId,
+    public List<CommuneWS> getCommunesByDistrictDate(
+	    @WebParam(name = "district") final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
 	LOG.debug("getCommunesByDistrict(district='{}', date='{}')",
@@ -323,6 +324,42 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	try {
 	    return FluentIterable
 		    .from(service.searchCommune(critere, dateValid))
+		    .transform(new CommuneConvert()).toList();
+	} catch (final Exception e) {
+	    throw processException(e);
+	}
+    }
+
+    @Override
+    @WebMethod(operationName = "searchCommuneRegexp", action = "searchCommuneRegexp")
+    @WebResult(name = "commune")
+    public List<CommuneWS> searchCommuneRegexp(
+	    @WebParam(name = "regexp") final String regexp)
+	    throws ReferentielOfsException {
+	if (StringUtils.isBlank(regexp)) {
+	    return new LinkedList<CommuneWS>();
+	}
+	try {
+	    return FluentIterable.from(service.searchCommuneRegexp(regexp))
+		    .transform(new CommuneConvert()).toList();
+	} catch (final Exception e) {
+	    throw processException(e);
+	}
+    }
+
+    @Override
+    @WebMethod(operationName = "searchCommuneDateRegexp", action = "searchCommuneDateRegexp")
+    @WebResult(name = "commune")
+    public List<CommuneWS> searchCommuneDateRegexp(
+	    @WebParam(name = "regexp") final String regexp,
+	    @WebParam(name = "dateValid") final Date dateValid)
+	    throws ReferentielOfsException {
+	if (StringUtils.isBlank(regexp)) {
+	    return new LinkedList<CommuneWS>();
+	}
+	try {
+	    return FluentIterable
+		    .from(service.searchCommuneRegexp(regexp, dateValid))
 		    .transform(new CommuneConvert()).toList();
 	} catch (final Exception e) {
 	    throw processException(e);
