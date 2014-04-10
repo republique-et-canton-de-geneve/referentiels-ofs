@@ -18,7 +18,15 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
 public class AbstractReferentielTest {
 
+    protected static ApplicationContext ctxt;
+
     @BeforeClass
+    public static void setupClass() throws Exception {
+	setupDistribution();
+	ctxt = new ClassPathXmlApplicationContext(
+		"referentiel-communes-context.xml");
+    }
+
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target/test-classes");
 	final File distributionFile = new File(targetDir,
@@ -42,14 +50,6 @@ public class AbstractReferentielTest {
 
 	DistributionFactory.setDisableJNDI(true);
 	DistributionFactory.getConfiguration();
-    }
-
-    protected static ApplicationContext ctxt;
-
-    @BeforeClass
-    public static void setupClass() throws Exception {
-	ctxt = new ClassPathXmlApplicationContext(
-		"referentiel-communes-context.xml");
     }
 
     // public static final DateFormat df = new SimpleDateFormat("dd.MM.yyyy",

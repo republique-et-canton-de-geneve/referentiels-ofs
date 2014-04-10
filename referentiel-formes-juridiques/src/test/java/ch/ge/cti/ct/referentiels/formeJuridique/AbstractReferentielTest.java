@@ -14,7 +14,15 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 public class AbstractReferentielTest {
     public static final String SDMX_FILE = "CH1_BUR+CL_LEGALFORMS+2.0.xml";
 
+    protected static ApplicationContext ctxt;
+
     @BeforeClass
+    public static void setupClass() throws Exception {
+	setupDistribution();
+	ctxt = new ClassPathXmlApplicationContext(
+		"referentiel-formes-juridiques-context.xml");
+    }
+
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target/test-classes");
 	final File distributionFile = new File(targetDir,
@@ -35,13 +43,5 @@ public class AbstractReferentielTest {
 
 	DistributionFactory.setDisableJNDI(true);
 	DistributionFactory.getConfiguration();
-    }
-
-    protected static ApplicationContext ctxt;
-
-    @BeforeClass
-    public static void setupClass() throws Exception {
-	ctxt = new ClassPathXmlApplicationContext(
-		"referentiel-formes-juridiques-context.xml");
     }
 }

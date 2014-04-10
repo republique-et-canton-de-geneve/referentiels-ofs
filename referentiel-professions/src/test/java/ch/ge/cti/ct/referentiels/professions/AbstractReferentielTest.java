@@ -13,7 +13,15 @@ import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
 public class AbstractReferentielTest {
 
+    protected static ApplicationContext ctxt;
+
     @BeforeClass
+    public static void setupClass() throws Exception {
+	setupDistribution();
+	ctxt = new ClassPathXmlApplicationContext(
+		"referentiel-professions-context.xml");
+    }
+
     public static void setupDistribution() throws Exception {
 	final File targetDir = new File("target/test-classes");
 	final File distributionFile = new File(targetDir,
@@ -37,11 +45,4 @@ public class AbstractReferentielTest {
 	DistributionFactory.getConfiguration();
     }
 
-    protected static ApplicationContext ctxt;
-
-    @BeforeClass
-    public static void setupClass() throws Exception {
-	ctxt = new ClassPathXmlApplicationContext(
-		"referentiel-professions-context.xml");
-    }
 }
