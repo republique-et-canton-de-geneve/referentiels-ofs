@@ -106,7 +106,7 @@ public abstract class AbstractServiceDataReader<T> {
 	    } catch (final MalformedURLException mue2) {
 		throw new ReferentielOfsException("La valeur de l'entrée ["
 			+ getConfigurationEntry() + "] est invalide: "
-			+ filename, mue);
+			+ filename, mue2);
 	    }
 	}
     }
