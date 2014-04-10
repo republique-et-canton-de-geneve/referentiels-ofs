@@ -96,6 +96,7 @@ public class ReferentielFormesJuridiquesSEI implements
      * @return ReferentielFormesJuridiquesException exception encapsulée
      */
     private ReferentielOfsException processException(final Exception e) {
+	LOG.error(e.getClass().getName(), e);
 	// pas de double encapsulation
 	if (e instanceof ReferentielOfsException) {
 	    return (ReferentielOfsException) e;
