@@ -26,6 +26,13 @@
 		<url>http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_jee5_parent-1.0.83/ct_referentiels-ofs</url>
 	</scm>
 
+	<distributionManagement>
+		<site>
+			<id>projects_Website</id>
+			<url>${projects_Website}/ch/ge/cti/ct/referentiels/${project.artifactId}/${project.version}</url>
+		</site>
+	</distributionManagement>
+
 	<modules>
 		<module>referentiels-api</module>
 		<module>referentiels-ofs-ear</module>
@@ -43,6 +50,23 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0-beta-3</version>
+					<configuration>
+						<outputEncoding>ISO-8859-1</outputEncoding>
+						<locales>fr</locales>
+					</configuration>
+					<inherited>true</inherited>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-http</artifactId>
+							<version>1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
 					<configuration>
