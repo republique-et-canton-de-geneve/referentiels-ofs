@@ -8,7 +8,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 /**
  * Singleton de stockage de l'instance du ReferentielFormesJuridiques <br/>
- * Le singleton permet de ne charger le fichier des communes qu'une seule fois.
+ * Le singleton permet de ne charger le fichier SDMX qu'une seule fois.
  * 
  * @author desmazieresj
  * 
