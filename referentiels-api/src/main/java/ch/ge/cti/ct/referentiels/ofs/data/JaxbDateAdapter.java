@@ -13,12 +13,6 @@ import org.apache.commons.lang.StringUtils;
  * Permet de supporter des champs définis comme xs:date dans le xsd d'être
  * spécifiés au format dd.MM.yyyy dans le fichier XML
  * 
- * le tag NOSONAR est ajouté pour supprimer les warnings
- * <ul>
- * <li>"Signature Declare Throws Exception", car on implémente une interface
- * prédéfinie</li>
- * </ul>
- * 
  * @author desmazieresj
  * @see javax.xml.bind.annotation.adapters.XmlAdapter
  */

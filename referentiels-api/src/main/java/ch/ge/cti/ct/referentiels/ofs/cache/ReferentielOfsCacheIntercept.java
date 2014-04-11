@@ -16,14 +16,6 @@ import com.google.common.cache.CacheLoader.InvalidCacheLoadException;
  * Cet intercepteur exploite l'annotation
  * ch.ge.cti.ct.referentiels.communes.interfaces.ejb.Cachable
  * 
- * le tag NOSONAR est ajouté pour supprimer les warnings
- * <ul>
- * <li>"Signature Declare Throws Exception", car on implémente une interface
- * prédéfinie</li>
- * <li>"Preserve Stack Trace", car on ne veut pas remonter la stack incluant des
- * exceptions des dépendances</li>
- * </ul>
- * 
  * @author DESMAZIERESJ
  * 
  */

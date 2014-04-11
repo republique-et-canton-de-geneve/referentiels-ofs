@@ -17,12 +17,6 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
  * L'installation du MBean sur le serveur est définie dans le fichier
  * META-INF/jboss-service.xml <br/>
  * 
- * le tag NOSONAR est ajouté pour supprimer les warnings
- * <ul>
- * <li>"Signature Declare Throws Exception", car on implémente une interface
- * prédéfinie</li>
- * </ul>
- * 
  * @author DESMAZIERESJ
  * 
  */

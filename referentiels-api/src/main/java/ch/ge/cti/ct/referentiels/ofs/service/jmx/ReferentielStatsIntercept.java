@@ -9,12 +9,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Intercepteur des appels afin d'alimenter le MBean de statistiques
  * 
- * le tag NOSONAR est ajouté pour supprimer les warnings
- * <ul>
- * <li>"Signature Declare Throws Exception", car on implémente une interface
- * prédéfinie</li>
- * </ul>
- * 
  * @author DESMAZIERESJ
  * 
  */

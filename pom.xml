@@ -20,6 +20,13 @@
 		http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/sdmx.html
 	</description>
 
+	<developers>
+		<developer>
+			<id>JDE</id>
+			<name>Jacques Desmazières (CE-ASI)</name>
+		</developer>
+	</developers>
+	
 	<scm>
 		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</developerConnection>
 		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</connection>
@@ -42,9 +49,9 @@
 		<module>referentiel-etat-civil</module>
 		<module>referentiel-professions</module>
 		<module>referentiel-categorie-socioprofessionnelles</module>
+		<module>referentiel-integration-tests</module>
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
 		<!-- <module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module> -->
-		<module>referentiel-integration-tests</module>
 	</modules>
 
 	<build>
@@ -124,12 +131,39 @@
 		</plugins>
 	</build>
 
-	<developers>
-		<developer>
-			<id>JDE</id>
-			<name>Jacques Desmazières (CE-ASI)</name>
-		</developer>
-	</developers>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>umlgraph</artifactId>
+						<version>5.6</version>
+					</docletArtifact>
+					<!-- http://www.umlgraph.org/doc/indexw.html -->
+					<additionalparam>
+						-views
+						-operations
+						-inferrel
+						-inferdepvis public
+						-quiet 
+						-qualify
+      					-postfixpackage
+						-collpackages java.util.* 
+						-hide java.* 
+						-hide org.*
+						-hide ObjectFactory 
+						-nodefontsize 9 -nodefontpackagesize 7
+					</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<dependencyManagement>
 		<dependencies>
