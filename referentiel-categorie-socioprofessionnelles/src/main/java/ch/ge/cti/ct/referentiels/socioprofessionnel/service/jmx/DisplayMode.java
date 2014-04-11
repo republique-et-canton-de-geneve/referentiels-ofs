@@ -58,7 +58,7 @@ public enum DisplayMode implements Renderable {
     };
 
     private enum CacheEnum {
-	divisions, classes, groupes, genres;
+	niveau1, niveau2;
     }
 
 }
