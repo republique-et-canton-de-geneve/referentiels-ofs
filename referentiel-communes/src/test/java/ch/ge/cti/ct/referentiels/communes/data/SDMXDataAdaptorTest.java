@@ -24,7 +24,7 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
     public void testParse() throws Exception {
 	final File file = new File(
 		"src/test/resources/CH1_RN+HCL_HGDE_HIST+1.0.xml");
-	final ReferentielCommunes ref = adaptor.parse(file.toURI());
+	final ReferentielCommunes ref = adaptor.parse(file.toURI().toURL());
 	assertNotNull("Erreur d'instanciation du référentiel", ref);
     }
 

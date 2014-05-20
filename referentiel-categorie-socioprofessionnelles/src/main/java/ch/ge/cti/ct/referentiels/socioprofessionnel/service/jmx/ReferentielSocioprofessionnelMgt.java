@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.socioprofessionnel.service.jmx;
 
-import java.net.URI;
+import java.net.URL;
 
 import org.jboss.system.ServiceMBeanSupport;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public class ReferentielSocioprofessionnelMgt extends ServiceMBeanSupport
     }
 
     @Override
-    public URI getReferentielFile() throws ReferentielOfsException {
+    public URL getReferentielFile() throws ReferentielOfsException {
 	log.info(getClass().getName() + ": getReferentielFile()");
 	return ReferentielDataSingleton.instance.getReferentielFile();
     }

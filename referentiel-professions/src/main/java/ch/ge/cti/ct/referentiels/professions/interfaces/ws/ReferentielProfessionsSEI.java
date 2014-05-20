@@ -45,7 +45,7 @@ import com.google.common.collect.FluentIterable;
  */
 @Stateless
 @WebService(name = ReferentielProfessionsWS.WEBSERVICE_NAME, serviceName = ReferentielProfessionsWS.SERVICE_NAME, portName = ReferentielProfessionsWS.PORT_NAME, targetNamespace = ReferentielProfessionsWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.professions.interfaces.ws.ReferentielProfessionsWS")
-@WebContext(contextRoot = "/ctiws/cible703/referentiels-ofs/professions", urlPattern = "/referentiel-professions")
+@WebContext(contextRoot = "/referentiels-ofs/professions", urlPattern = "/referentiel-professions")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })

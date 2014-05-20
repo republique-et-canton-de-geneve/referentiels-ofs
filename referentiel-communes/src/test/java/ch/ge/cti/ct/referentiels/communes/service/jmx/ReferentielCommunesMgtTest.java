@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesSEI;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 
@@ -62,8 +63,8 @@ public class ReferentielCommunesMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws Exception {
-	assertTrue(rmgt.getReferentielFile().toURL().getFile()
+    public void testGetReferentielFile() throws ReferentielOfsException {
+	assertTrue(rmgt.getReferentielFile().getFile()
 		.endsWith("CH1_RN+HCL_HGDE_HIST+1.0.xml"));
     }
 

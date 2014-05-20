@@ -43,7 +43,7 @@ import com.google.common.collect.FluentIterable;
  */
 @Stateless
 @WebService(name = ReferentielCommunesWS.WEBSERVICE_NAME, serviceName = ReferentielCommunesWS.SERVICE_NAME, portName = ReferentielCommunesWS.PORT_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesWS")
-@WebContext(contextRoot = "/ctiws/cible703/referentiels-ofs/communes", urlPattern = "/referentiel-communes")
+@WebContext(contextRoot = "/referentiels-ofs/communes", urlPattern = "/referentiel-communes")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })

@@ -2,7 +2,7 @@ package ch.ge.cti.ct.referentiels.ofs.data;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
@@ -17,7 +17,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 public abstract class AbstractServiceDataReader<T> {
 
     /** url du fichier xml */
-    private URI xmlFile = null;
+    private URL xmlFile = null;
 
     /**
      * retourne le nom de l'entrée de configuration de la localisation du
@@ -60,7 +60,7 @@ public abstract class AbstractServiceDataReader<T> {
      * @throws ReferentielOfsException
      *             erreur de chargement
      */
-    protected T parse(final URI urlXML) throws ReferentielOfsException {
+    protected T parse(final URL urlXML) throws ReferentielOfsException {
 	return getDataAdaptor().parse(urlXML);
     }
 
@@ -71,7 +71,7 @@ public abstract class AbstractServiceDataReader<T> {
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
-    private URI getURI() throws ReferentielOfsException {
+    private URL getURL() throws ReferentielOfsException {
 	try {
 	    final String filename = DistributionFactory.getConfiguration()
 		    .getString(getConfigurationEntry());
@@ -81,7 +81,7 @@ public abstract class AbstractServiceDataReader<T> {
 				+ getConfigurationEntry()
 				+ "] dans le fichier Distribution.properties");
 	    }
-	    return toURI(filename);
+	    return toURL(filename);
 	} catch (final IOException ex) {
 	    throw new ReferentielOfsException(
 		    "Impossible de lire le fichier Distribution.properties", ex);
@@ -93,16 +93,21 @@ public abstract class AbstractServiceDataReader<T> {
      * 
      * @param filename
      *            nom du fichier
-     * @return uri
+     * @return url
      * @throws ReferentielOfsException
      *             erreur de convertion
      */
-    private URI toURI(final String filename) throws ReferentielOfsException {
+    private URL toURL(final String filename) throws ReferentielOfsException {
 	try {
-	    final URL url = new URL(filename);
-	    return new URI(url.getProtocol(), url.getPath(), null);
-	} catch (final Exception mue) {
-	    return new File(filename).toURI();
+	    return new URL(filename);
+	} catch (final MalformedURLException mue) {
+	    try {
+		return new File(filename).toURI().toURL();
+	    } catch (final MalformedURLException mue2) {
+		throw new ReferentielOfsException("La valeur de l'entrée ["
+			+ getConfigurationEntry() + "] est invalide: "
+			+ filename, mue2);
+	    }
 	}
     }
 
@@ -113,9 +118,9 @@ public abstract class AbstractServiceDataReader<T> {
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
-    public synchronized URI getXmlFile() throws ReferentielOfsException {
+    public synchronized URL getXmlFile() throws ReferentielOfsException {
 	if (xmlFile == null) {
-	    xmlFile = getURI();
+	    xmlFile = getURL();
 	}
 	return xmlFile;
     }

@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.pays.data;
 
-import java.net.URI;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +72,7 @@ public class SDMXDataAdaptor extends
      *             erreur de traitement
      */
     @Override
-    public ReferentielPaysTerritoires parse(final URI urlXML)
+    public ReferentielPaysTerritoires parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
 	final Long start = System.currentTimeMillis();

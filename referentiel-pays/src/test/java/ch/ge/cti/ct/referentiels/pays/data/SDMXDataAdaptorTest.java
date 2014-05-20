@@ -24,7 +24,8 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
     public void testParse() throws Exception {
 	final File file = new File(
 		"src/test/resources/CH1_RN+HCL_COUNTRIESGEO+1.0.xml");
-	final ReferentielPaysTerritoires ref = adaptor.parse(file.toURI());
+	final ReferentielPaysTerritoires ref = adaptor.parse(file.toURI()
+		.toURL());
 	assertNotNull("Erreur d'instanciation du référentiel", ref);
     }
 

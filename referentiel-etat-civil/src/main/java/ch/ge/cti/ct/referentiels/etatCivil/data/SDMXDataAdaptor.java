@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.etatCivil.data;
 
-import java.net.URI;
+import java.net.URL;
 import java.util.List;
 import java.util.Set;
 
@@ -56,7 +56,7 @@ public class SDMXDataAdaptor extends
      *             erreur de traitement
      */
     @Override
-    public ReferentielEtatCivil parse(final URI urlXML)
+    public ReferentielEtatCivil parse(final URL urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
 	final Long start = System.currentTimeMillis();

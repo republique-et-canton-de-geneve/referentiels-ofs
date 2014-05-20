@@ -41,7 +41,7 @@ import com.google.common.collect.FluentIterable;
  */
 @Stateless
 @WebService(name = ReferentielSocioprofessionnelWS.WEBSERVICE_NAME, serviceName = ReferentielSocioprofessionnelWS.SERVICE_NAME, portName = ReferentielSocioprofessionnelWS.PORT_NAME, targetNamespace = ReferentielSocioprofessionnelWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.ReferentielSocioprofessionnelWS")
-@WebContext(contextRoot = "/ctiws/cible703/referentiels-ofs/socioprofessionnel", urlPattern = "/referentiel-socioprofessionnel")
+@WebContext(contextRoot = "/referentiels-ofs/socioprofessionnel", urlPattern = "/referentiel-socioprofessionnel")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })

@@ -23,7 +23,8 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
     @Test
     public void testParse() throws Exception {
 	final File file = new File("src/test/resources/" + SDMX_FILE);
-	final ReferentielFormesJuridiques ref = adaptor.parse(file.toURI());
+	final ReferentielFormesJuridiques ref = adaptor.parse(file.toURI()
+		.toURL());
 	assertNotNull("Erreur d'instanciation du référentiel", ref);
     }
 

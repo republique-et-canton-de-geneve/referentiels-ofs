@@ -24,10 +24,10 @@ public class ReferentielDataSingletonTest extends AbstractReferentielTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws Exception {
+    public void testGetReferentielFile() throws ReferentielOfsException {
 
 	assertNotNull(ReferentielDataSingleton.instance.getReferentielFile());
 	assertTrue(ReferentielDataSingleton.instance.getReferentielFile()
-		.toURL().getFile().endsWith("CH1_BN+HCL_SBN+2.0.xml"));
+		.getFile().endsWith("CH1_BN+HCL_SBN+2.0.xml"));
     }
 }
