@@ -31,7 +31,7 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  */
 @Stateless
 @WebService(name = ReferentielEtatCivilWS.WEBSERVICE_NAME, serviceName = ReferentielEtatCivilWS.SERVICE_NAME, portName = ReferentielEtatCivilWS.PORT_NAME, targetNamespace = ReferentielEtatCivilWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilWS")
-@WebContext(contextRoot = "/referentiels-ofs/etat-civil", urlPattern = "/referentiel-etat-civil")
+@WebContext(contextRoot = "/ctiws/cible703/referentiels-ofs/etat-civil", urlPattern = "/referentiel-etat-civil")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
 	ReferentielOfsCacheIntercept.class })

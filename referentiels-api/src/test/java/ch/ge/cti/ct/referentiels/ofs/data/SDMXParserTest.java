@@ -23,7 +23,7 @@ public class SDMXParserTest extends AbstractDataTest {
     @Test
     public void testParse() throws Exception {
 	final File file = new File("src/test/resources/test.xml");
-	final StructureWorkspace sw = parser.parse(file.toURI().toURL());
+	final StructureWorkspace sw = parser.parse(file.toURI());
 	assertNotNull("Le résultat du parsing est incorrect", sw);
 	assertEquals("Erreur de parsing du header",
 		"f198f7a6-57cd-4324-81a2-77b71e3edbef",
@@ -35,7 +35,7 @@ public class SDMXParserTest extends AbstractDataTest {
     @Test
     public void testParseEncoding() throws Exception {
 	final File file = new File("src/test/resources/test.xml");
-	final StructureWorkspace sw = parser.parse(file.toURI().toURL());
+	final StructureWorkspace sw = parser.parse(file.toURI());
 	assertEquals("Erreur de parsing des listes", "Société simple", sw
 		.getStructureBeans(false).getCodelists().iterator().next()
 		.getCodeById("02").getName());

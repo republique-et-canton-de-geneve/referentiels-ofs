@@ -23,8 +23,7 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
     @Test
     public void testParse() throws Exception {
 	final File file = new File("src/test/resources/CH1_BN+HCL_CSP+2.0.xml");
-	final ReferentielSocioprofessionnel ref = adaptor.parse(file.toURI()
-		.toURL());
+	final ReferentielSocioprofessionnel ref = adaptor.parse(file.toURI());
 	assertNotNull("Erreur d'instanciation du référentiel", ref);
     }
 

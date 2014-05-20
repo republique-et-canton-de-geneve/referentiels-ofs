@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
-import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.ReferentielProfessionsSEI;
@@ -63,8 +62,8 @@ public class ReferentielProfessionsMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
+    public void testGetReferentielFile() throws Exception {
+	assertTrue(rmgt.getReferentielFile().toURL().getFile()
 		.endsWith("CH1_BN+HCL_SBN+2.0.xml"));
     }
 

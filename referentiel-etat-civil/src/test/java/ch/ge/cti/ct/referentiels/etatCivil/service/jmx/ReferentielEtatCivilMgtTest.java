@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilSEI;
-import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 
 public class ReferentielEtatCivilMgtTest {
@@ -40,8 +39,8 @@ public class ReferentielEtatCivilMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
+    public void testGetReferentielFile() throws Exception {
+	assertTrue(rmgt.getReferentielFile().toURL().getFile()
 		.endsWith("CH1_RE+CL_MARITALSTATUS+3.0.xml"));
     }
 

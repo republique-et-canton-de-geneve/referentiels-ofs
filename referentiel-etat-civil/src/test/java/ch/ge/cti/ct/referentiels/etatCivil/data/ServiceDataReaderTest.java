@@ -2,7 +2,7 @@ package ch.ge.cti.ct.referentiels.etatCivil.data;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.net.URL;
+import java.net.URI;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ServiceDataReaderTest extends AbstractReferentielTest {
     @Test
     public void testGetXmlFile() throws ReferentielOfsException {
 	final ServiceDataReader service = new ServiceDataReader();
-	final URL url = service.getXmlFile();
+	final URI url = service.getXmlFile();
 	assertNotNull(url);
     }
 

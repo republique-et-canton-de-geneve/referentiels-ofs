@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.socioprofessionnel.data;
 
-import java.net.URL;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +67,7 @@ public class SDMXDataAdaptor extends
      *             erreur de traitement
      */
     @Override
-    public ReferentielSocioprofessionnel parse(final URL urlXML)
+    public ReferentielSocioprofessionnel parse(final URI urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
 	final Long start = System.currentTimeMillis();

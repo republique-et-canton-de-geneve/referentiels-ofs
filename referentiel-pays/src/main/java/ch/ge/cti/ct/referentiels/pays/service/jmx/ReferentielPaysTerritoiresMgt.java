@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.pays.service.jmx;
 
-import java.net.URL;
+import java.net.URI;
 
 import org.jboss.system.ServiceMBeanSupport;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public class ReferentielPaysTerritoiresMgt extends ServiceMBeanSupport
     }
 
     @Override
-    public URL getReferentielFile() throws ReferentielOfsException {
+    public URI getReferentielFile() throws ReferentielOfsException {
 	log.info(getClass().getName() + ": getReferentielFile()");
 	return ReferentielDataSingleton.instance.getReferentielFile();
     }

@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.formeJuridique.data;
 
-import java.net.URL;
+import java.net.URI;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.ReferentielFormesJuridiques;
@@ -42,7 +42,7 @@ public enum ReferentielDataSingleton {
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
-    public URL getReferentielFile() throws ReferentielOfsException {
+    public URI getReferentielFile() throws ReferentielOfsException {
 	return reader.getXmlFile();
     }
 

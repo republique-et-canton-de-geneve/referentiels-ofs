@@ -1,6 +1,6 @@
 package ch.ge.cti.ct.referentiels.communes.data;
 
-import java.net.URL;
+import java.net.URI;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -70,7 +70,7 @@ public class SDMXDataAdaptor extends
      *             erreur de traitement
      */
     @Override
-    public ReferentielCommunes parse(final URL urlXML)
+    public ReferentielCommunes parse(final URI urlXML)
 	    throws ReferentielOfsException {
 	log().info("parse({})", urlXML);
 	final Long start = System.currentTimeMillis();
