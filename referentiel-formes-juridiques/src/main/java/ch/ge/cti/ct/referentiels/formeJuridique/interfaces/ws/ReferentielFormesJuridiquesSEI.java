@@ -54,7 +54,7 @@ public class ReferentielFormesJuridiquesSEI implements
     @WebResult(name = "formeJuridique")
     public List<FormeJuridique> getFormesJuridiques()
 	    throws ReferentielOfsException {
-	LOG.debug("getContinents()");
+	LOG.debug("getFormesJuridiques()");
 	try {
 	    return service.getFormesJuridiques();
 	} catch (final Exception e) {
