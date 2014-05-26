@@ -6,6 +6,8 @@ import java.util.concurrent.Callable;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
+import org.slf4j.LoggerFactory;
+
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 import com.google.common.cache.Cache;
@@ -44,10 +46,12 @@ public class ReferentielOfsCacheIntercept {
 	    if (key == null) {
 		return null;
 	    }
+	    final boolean[] fromCache = { true };
 	    try {
 		return cache.get(key, new Callable() {
 		    @Override
 		    public Object call() throws Exception {// NOSONAR
+			fromCache[0] = false;
 			return ctx.proceed();
 		    }
 		});
@@ -56,6 +60,21 @@ public class ReferentielOfsCacheIntercept {
 		return null;
 	    } catch (final Exception e) {
 		throw new ReferentielOfsException(e.getCause());// NOSONAR
+	    } finally {
+		if (fromCache[0]) {
+		    final StringBuilder sb = new StringBuilder();
+		    for (final Object param : ctx.getParameters()) {
+			if (sb.length() > 0) {
+			    sb.append(',');
+			}
+			sb.append('\'');
+			sb.append(param.toString());
+			sb.append('\'');
+		    }
+		    LoggerFactory.getLogger(ctx.getTarget().getClass()).debug(
+			    ctx.getMethod().getName() + "(" + sb.toString()
+				    + ") (from cache)");
+		}
 	    }
 	}
     }
