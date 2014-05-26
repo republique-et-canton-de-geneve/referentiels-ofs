@@ -27,7 +27,9 @@ import ch.ge.cti.ct.referentiels.communes.model.Commune;
 import ch.ge.cti.ct.referentiels.communes.model.District;
 import ch.ge.cti.ct.referentiels.communes.service.ReferentielCommunesServiceAble;
 import ch.ge.cti.ct.referentiels.communes.service.impl.ReferentielCommunesService;
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.Cachable;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
@@ -46,8 +48,9 @@ import com.google.common.collect.FluentIterable;
 @WebContext(contextRoot = "/referentiels-ofs/communes", urlPattern = "/referentiel-communes")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
+	ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielCommunesSEI implements ReferentielCommunesWS {
+public class ReferentielCommunesSEI implements ReferentielCommunesWS, Loggable {
 
     /** Référence au service d'implémentation */
     private final ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
@@ -57,17 +60,17 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    .getLogger(ReferentielCommunesSEI.class);
 
     @Override
+    public Logger log() {
+	return LOG;
+    }
+
+    @Override
     @WebMethod(operationName = "getCantons", action = "getCantons")
     @WebResult(name = "canton")
     @Cachable(name = "cantons", size = Cachable.SMALL)
     public List<CantonWS> getCantons() throws ReferentielOfsException {
-	LOG.debug("getCantons()");
-	try {
-	    return FluentIterable.from(service.getCantons())
-		    .transform(new CantonConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getCantons())
+		.transform(new CantonConvert()).toList();
     }
 
     @Override
@@ -75,15 +78,10 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     @WebResult(name = "canton")
     public CantonWS getCanton(@WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {
-	LOG.debug("getCanton(canton='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return null;
 	}
-	try {
-	    return new CantonConvert().apply(service.getCanton(codeCanton));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new CantonConvert().apply(service.getCanton(codeCanton));
     }
 
     @Override
@@ -93,16 +91,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public List<DistrictWS> getDistrictsByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {
-	LOG.debug("getDistricts(canton='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return new LinkedList<DistrictWS>();
 	}
-	try {
-	    return FluentIterable.from(service.getDistricts(codeCanton))
-		    .transform(new DistrictConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getDistricts(codeCanton))
+		.transform(new DistrictConvert()).toList();
     }
 
     @Override
@@ -111,15 +104,10 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public DistrictWS getDistrict(
 	    @WebParam(name = "district") final int districtId)
 	    throws ReferentielOfsException {
-	LOG.debug("getDistricts(district='{}')", districtId);
 	if (districtId <= 0) {
 	    return null;
 	}
-	try {
-	    return new DistrictConvert().apply(service.getDistrict(districtId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new DistrictConvert().apply(service.getDistrict(districtId));
     }
 
     @Override
@@ -129,17 +117,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public List<CommuneWS> getCommunesByDistrict(
 	    @WebParam(name = "district") final int districtId)
 	    throws ReferentielOfsException {
-	LOG.debug("getCommunesByDistrict(district='{}')", districtId);
 	if (districtId <= 0) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.getCommunesByDistrict(districtId))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getCommunesByDistrict(districtId))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -149,16 +131,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public List<CommuneWS> getCommunesByCanton(
 	    @WebParam(name = "canton") final String codeCanton)
 	    throws ReferentielOfsException {
-	LOG.debug("getCommunesByCanton(canton='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable.from(service.getCommunesByCanton(codeCanton))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getCommunesByCanton(codeCanton))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -166,15 +143,10 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     @WebResult(name = "commune")
     public CommuneWS getCommune(@WebParam(name = "commune") final int communeId)
 	    throws ReferentielOfsException {
-	LOG.debug("getCommune(commune='{}')", communeId);
 	if (communeId <= 0) {
 	    return null;
 	}
-	try {
-	    return new CommuneConvert().apply(service.getCommune(communeId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new CommuneConvert().apply(service.getCommune(communeId));
     }
 
     @Override
@@ -184,16 +156,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getCanton(canton='{}', {})", codeCanton, dateValid);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return null;
 	}
-	try {
-	    return new CantonConvert().apply(service.getCanton(codeCanton,
-		    dateValid));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new CantonConvert().apply(service.getCanton(codeCanton,
+		dateValid));
     }
 
     @Override
@@ -202,13 +169,8 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public List<CantonWS> getCantonsDate(
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getCantons(date='{}')", dateValid);
-	try {
-	    return FluentIterable.from(service.getCantons(dateValid))
-		    .transform(new CantonConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getCantons(dateValid))
+		.transform(new CantonConvert()).toList();
     }
 
     @Override
@@ -218,16 +180,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "district") final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getDistricts(district='{}', {})", districtId, dateValid);
 	if (districtId <= 0) {
 	    return null;
 	}
-	try {
-	    return new DistrictConvert().apply(service.getDistrict(districtId,
-		    dateValid));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new DistrictConvert().apply(service.getDistrict(districtId,
+		dateValid));
     }
 
     @Override
@@ -237,17 +194,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getDistricts(canton='{}', date='{}')", codeCanton);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return new LinkedList<DistrictWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.getDistricts(codeCanton, dateValid))
-		    .transform(new DistrictConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getDistricts(codeCanton, dateValid))
+		.transform(new DistrictConvert()).toList();
     }
 
     @Override
@@ -257,18 +208,12 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "district") final int districtId,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getCommunesByDistrict(district='{}', date='{}')",
-		districtId, dateValid);
 	if (districtId <= 0) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.getCommunesByDistrict(districtId, dateValid))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable
+		.from(service.getCommunesByDistrict(districtId, dateValid))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -278,18 +223,12 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "canton") final String codeCanton,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("getCommunesByCanton(canton='{}', date='{}')", codeCanton,
-		dateValid);
 	if (StringUtils.isBlank(codeCanton)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.getCommunesByCanton(codeCanton, dateValid))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable
+		.from(service.getCommunesByCanton(codeCanton, dateValid))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -298,16 +237,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     public List<CommuneWS> searchCommune(
 	    @WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException {
-	LOG.debug("searchCommune(critere='{}')", critere);
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchCommune(critere))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchCommune(critere))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -317,17 +251,11 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	    @WebParam(name = "critere") final String critere,
 	    @WebParam(name = "dateValid") final Date dateValid)
 	    throws ReferentielOfsException {
-	LOG.debug("searchCommune(critere='{}', date='{}')", critere, dateValid);
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.searchCommune(critere, dateValid))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchCommune(critere, dateValid))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -339,12 +267,8 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchCommuneRegexp(regexp))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchCommuneRegexp(regexp))
+		.transform(new CommuneConvert()).toList();
     }
 
     @Override
@@ -357,32 +281,9 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<CommuneWS>();
 	}
-	try {
-	    return FluentIterable
-		    .from(service.searchCommuneRegexp(regexp, dateValid))
-		    .transform(new CommuneConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
-    }
-
-    /**
-     * Méthode partagée de traitement des exceptions<br/>
-     * Les exceptions sont encapsulées dans une ReferentielCommunesException<br/>
-     * Sauf si ce sont déjà des ReferentielCommunesException
-     * 
-     * @param e
-     *            exception
-     * @return ReferentielCommunesException exception encapsulée
-     */
-    private ReferentielOfsException processException(final Exception e) {
-	LOG.error(e.getClass().getName(), e);
-	// pas de double encapsulation
-	if (e instanceof ReferentielOfsException) {
-	    return (ReferentielOfsException) e;
-	}
-	return new ReferentielOfsException(
-		"Erreur technique lors du traitement de la demande", e);
+	return FluentIterable
+		.from(service.searchCommuneRegexp(regexp, dateValid))
+		.transform(new CommuneConvert()).toList();
     }
 
     /**

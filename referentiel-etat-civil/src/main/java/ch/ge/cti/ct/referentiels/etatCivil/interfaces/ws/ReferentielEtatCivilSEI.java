@@ -19,7 +19,9 @@ import org.slf4j.LoggerFactory;
 import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
 import ch.ge.cti.ct.referentiels.etatCivil.service.ReferentielEtatCivilServiceAble;
 import ch.ge.cti.ct.referentiels.etatCivil.service.impl.ReferentielEtatCivilService;
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 
@@ -34,8 +36,10 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 @WebContext(contextRoot = "/referentiels-ofs/etat-civil", urlPattern = "/referentiel-etat-civil")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
+	ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
+public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS,
+	Loggable {
 
     /** Référence sur l'implémentation */
     private final ReferentielEtatCivilServiceAble service = ReferentielEtatCivilService.instance;
@@ -45,15 +49,15 @@ public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
 	    .getLogger(ReferentielEtatCivilSEI.class);
 
     @Override
+    public Logger log() {
+	return LOG;
+    }
+
+    @Override
     @WebMethod(operationName = "getEtatsCivils", action = "getEtatsCivils")
     @WebResult(name = "etatCivil")
     public List<EtatCivil> getEtatsCivils() throws ReferentielOfsException {
-	LOG.debug("getEtatsCivils()");
-	try {
-	    return service.getEtatsCivils();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return service.getEtatsCivils();
     }
 
     @Override
@@ -62,35 +66,9 @@ public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS {
     public EtatCivil getEtatCivil(
 	    @WebParam(name = "etatCivil") final int etatCivilId)
 	    throws ReferentielOfsException {
-	LOG.debug("getEtatCivil(etatCivil='{}')", etatCivilId);
 	if (etatCivilId <= 0) {
 	    return null;
 	}
-	try {
-	    return service.getEtatCivil(etatCivilId);
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return service.getEtatCivil(etatCivilId);
     }
-
-    /**
-     * Méthode partagée de traitement des exceptions<br/>
-     * Les exceptions sont encapsulées dans une
-     * ReferentielFormesJuridiquesException<br/>
-     * Sauf si ce sont déjà des ReferentielFormesJuridiquesException
-     * 
-     * @param e
-     *            exception
-     * @return ReferentielFormesJuridiquesException exception encapsulée
-     */
-    private ReferentielOfsException processException(final Exception e) {
-	LOG.error(e.getClass().getName(), e);
-	// pas de double encapsulation
-	if (e instanceof ReferentielOfsException) {
-	    return (ReferentielOfsException) e;
-	}
-	return new ReferentielOfsException(
-		"Erreur technique lors du traitement de la demande", e);
-    }
-
 }

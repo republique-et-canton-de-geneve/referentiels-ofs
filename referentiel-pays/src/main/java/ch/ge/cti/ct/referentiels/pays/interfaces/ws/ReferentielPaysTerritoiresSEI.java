@@ -18,7 +18,9 @@ import org.jboss.wsf.spi.annotation.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.Cachable;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
@@ -45,9 +47,10 @@ import com.google.common.collect.FluentIterable;
 @WebContext(contextRoot = "/referentiels-ofs/territoires", urlPattern = "/referentiel-pays")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
+	ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
 public class ReferentielPaysTerritoiresSEI implements
-	ReferentielPaysTerritoiresWS {
+	ReferentielPaysTerritoiresWS, Loggable {
 
     /** Référence sur l'implémentation */
     private final ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.instance;
@@ -56,19 +59,16 @@ public class ReferentielPaysTerritoiresSEI implements
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielPaysTerritoiresSEI.class);
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getContinents()
-     */
+    @Override
+    public Logger log() {
+	return LOG;
+    }
+
     @Override
     @WebMethod(operationName = "getContinents", action = "getContinents")
     @WebResult(name = "continent")
     @Cachable(name = "continents", size = Cachable.SMALL)
     public List<ContinentWS> getContinents() throws ReferentielOfsException {
-	LOG.debug("getContinents()");
 	try {
 	    return FluentIterable.from(service.getContinents())
 		    .transform(new ContinentConvert()).toList();
@@ -77,20 +77,12 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getContinent(int)
-     */
     @Override
     @WebMethod(operationName = "getContinent", action = "getContinent")
     @WebResult(name = "continent")
     public ContinentWS getContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException {
-	LOG.debug("getContinent(continent='{}')", continentId);
 	if (continentId <= 0) {
 	    return null;
 	}
@@ -102,13 +94,6 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getRegionsByContinent(int)
-     */
     @Override
     @WebMethod(operationName = "getRegionsByContinent", action = "getRegionsByContinent")
     @WebResult(name = "region")
@@ -116,7 +101,6 @@ public class ReferentielPaysTerritoiresSEI implements
     public List<RegionWS> getRegionsByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException {
-	LOG.debug("getRegions(continent='{}')", continentId);
 	if (continentId <= 0) {
 	    return new LinkedList<RegionWS>();
 	}
@@ -128,19 +112,11 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getRegions()
-     */
     @Override
     @WebMethod(operationName = "getRegions", action = "getRegions")
     @WebResult(name = "region")
     @Cachable(name = "regions", size = Cachable.MEDIUM)
     public List<RegionWS> getRegions() throws ReferentielOfsException {
-	LOG.debug("getRegions()");
 	try {
 	    return FluentIterable.from(service.getRegions())
 		    .transform(new RegionConvert()).toList();
@@ -149,19 +125,11 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getRegion(int)
-     */
     @Override
     @WebMethod(operationName = "getRegion", action = "getRegion")
     @WebResult(name = "region")
     public RegionWS getRegion(@WebParam(name = "region") final int regionId)
 	    throws ReferentielOfsException {
-	LOG.debug("getRegions(region='{}')", regionId);
 	if (regionId <= 0) {
 	    return null;
 	}
@@ -172,13 +140,6 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getPaysByRegion(int)
-     */
     @Override
     @WebMethod(operationName = "getPaysByRegion", action = "getPaysByRegion")
     @WebResult(name = "pays")
@@ -186,7 +147,6 @@ public class ReferentielPaysTerritoiresSEI implements
     public List<PaysWS> getPaysByRegion(
 	    @WebParam(name = "region") final int regionId)
 	    throws ReferentielOfsException {
-	LOG.debug("getPaysByRegion(region='{}')", regionId);
 	if (regionId <= 0) {
 	    return new LinkedList<PaysWS>();
 	}
@@ -198,13 +158,6 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getPaysByContinent(int)
-     */
     @Override
     @WebMethod(operationName = "getPaysByContinent", action = "getPaysByContinent")
     @WebResult(name = "pays")
@@ -212,7 +165,6 @@ public class ReferentielPaysTerritoiresSEI implements
     public List<PaysWS> getPaysByContinent(
 	    @WebParam(name = "continent") final int continentId)
 	    throws ReferentielOfsException {
-	LOG.debug("getPaysByContinent(continent='{}')", continentId);
 	if (continentId <= 0) {
 	    return new LinkedList<PaysWS>();
 	}
@@ -224,19 +176,11 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getPays()
-     */
     @Override
     @WebMethod(operationName = "getPays", action = "getPays")
     @WebResult(name = "pays")
     @Cachable(name = "pays", size = Cachable.LARGE)
     public List<PaysWS> getPays() throws ReferentielOfsException {
-	LOG.debug("getPays()");
 	try {
 	    return FluentIterable.from(service.getPays())
 		    .transform(new PaysConvert()).toList();
@@ -245,19 +189,11 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getPaysByIso2(java.lang.String)
-     */
     @Override
     @WebMethod(operationName = "getPaysByIso2", action = "getPaysByIso2")
     @WebResult(name = "pays")
     public PaysWS getPaysByIso2(@WebParam(name = "iso2") final String iso2)
 	    throws ReferentielOfsException {
-	LOG.debug("getPaysByIso2(iso2='{}')", iso2);
 	if (StringUtils.isBlank(iso2)) {
 	    return null;
 	}
@@ -268,19 +204,11 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #getPaysByIso3(java.lang.String)
-     */
     @Override
     @WebMethod(operationName = "getPaysByIso3", action = "getPaysByIso3")
     @WebResult(name = "pays")
     public PaysWS getPaysByIso3(@WebParam(name = "iso3") final String iso3)
 	    throws ReferentielOfsException {
-	LOG.debug("getPaysByIso3(iso3='{}')", iso3);
 	if (StringUtils.isBlank(iso3)) {
 	    return null;
 	}
@@ -291,20 +219,12 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #searchPays(java.lang.String)
-     */
     @Override
     @WebMethod(operationName = "searchPays", action = "searchPays")
     @WebResult(name = "pays")
     public List<PaysWS> searchPays(
 	    @WebParam(name = "critere") final String critere)
 	    throws ReferentielOfsException {
-	LOG.debug("searchPays({})", critere);
 	if (StringUtils.isBlank(critere)) {
 	    return new LinkedList<PaysWS>();
 	}
@@ -316,20 +236,12 @@ public class ReferentielPaysTerritoiresSEI implements
 	}
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresWS
-     * #searchPaysRegexp(java.lang.String)
-     */
     @Override
     @WebMethod(operationName = "searchPaysRegexp", action = "searchPaysRegexp")
     @WebResult(name = "pays")
     public List<PaysWS> searchPaysRegexp(
 	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchPaysRegexp({})", regexp);
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<PaysWS>();
 	}

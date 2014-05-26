@@ -6,9 +6,7 @@ import java.util.concurrent.Callable;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
-import org.slf4j.LoggerFactory;
-
-import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheLoader.InvalidCacheLoadException;
@@ -37,6 +35,7 @@ public class ReferentielOfsCacheIntercept {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @AroundInvoke
     public Object processCache(final InvocationContext ctx) throws Exception {// NOSONAR
+	System.err.println("processCache() - start");
 	final Cache<String, ?> cache = getCache(ctx.getMethod());
 
 	if (cache == null) {
@@ -58,11 +57,12 @@ public class ReferentielOfsCacheIntercept {
 	    } catch (final InvalidCacheLoadException e) {
 		// le service a retourné null
 		return null;
-	    } catch (final Exception e) {
-		throw new ReferentielOfsException(e.getCause());// NOSONAR
 	    } finally {
-		if (fromCache[0]) {
-		    final StringBuilder sb = new StringBuilder();
+		final Loggable service = (Loggable) ctx.getTarget();
+		if (service.log().isDebugEnabled()) {
+		    final StringBuilder sb = new StringBuilder(ctx.getMethod()
+			    .getName());
+		    sb.append('(');
 		    for (final Object param : ctx.getParameters()) {
 			if (sb.length() > 0) {
 			    sb.append(',');
@@ -71,9 +71,11 @@ public class ReferentielOfsCacheIntercept {
 			sb.append(param.toString());
 			sb.append('\'');
 		    }
-		    LoggerFactory.getLogger(ctx.getTarget().getClass()).debug(
-			    ctx.getMethod().getName() + "(" + sb.toString()
-				    + ") (from cache)");
+		    sb.append(')');
+		    if (fromCache[0]) {
+			sb.append(" (from cache)");
+		    }
+		    service.log().debug(sb.toString());
 		}
 	    }
 	}

@@ -18,7 +18,9 @@ import org.jboss.wsf.spi.annotation.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.Cachable;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
@@ -48,8 +50,10 @@ import com.google.common.collect.FluentIterable;
 @WebContext(contextRoot = "/referentiels-ofs/professions", urlPattern = "/referentiel-professions")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @Interceptors({ ReferentielStatsIntercept.class,
+	ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
-public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
+public class ReferentielProfessionsSEI implements ReferentielProfessionsWS,
+	Loggable {
 
     /** Référence sur l'implémentation */
     private final ReferentielProfessionsServiceAble service = ReferentielProfessionsService.instance;
@@ -57,6 +61,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielProfessions.class);
+
+    @Override
+    public Logger log() {
+	return LOG;
+    }
 
     @Override
     @WebMethod(operationName = "getClasse", action = "getClasse")
@@ -67,11 +76,7 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
 	if (classeId <= 0) {
 	    return null;
 	}
-	try {
-	    return new ClasseConvert().apply(service.getClasse(classeId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new ClasseConvert().apply(service.getClasse(classeId));
     }
 
     @Override
@@ -79,13 +84,8 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "classe")
     @Cachable(name = "classes", size = Cachable.MEDIUM)
     public List<ClasseWS> getClasses() throws ReferentielOfsException {
-	LOG.debug("getClasses()");
-	try {
-	    return FluentIterable.from(service.getClasses())
-		    .transform(new ClasseConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getClasses())
+		.transform(new ClasseConvert()).toList();
     }
 
     @Override
@@ -95,16 +95,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<ClasseWS> getClassesByDivision(
 	    @WebParam(name = "divisionId") final int divisionId)
 	    throws ReferentielOfsException {
-	LOG.debug("getClassesByDivision(divisionId='{}')", divisionId);
 	if (divisionId <= 0) {
 	    return new LinkedList<ClasseWS>();
 	}
-	try {
-	    return FluentIterable.from(service.getClasses(divisionId))
-		    .transform(new ClasseConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getClasses(divisionId))
+		.transform(new ClasseConvert()).toList();
     }
 
     @Override
@@ -113,15 +108,10 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public DivisionWS getDivision(
 	    @WebParam(name = "divisionId") final int divisionId)
 	    throws ReferentielOfsException {
-	LOG.debug("getDivision(divisionId='{}')", divisionId);
 	if (divisionId <= 0) {
 	    return null;
 	}
-	try {
-	    return new DivisionConvert().apply(service.getDivision(divisionId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new DivisionConvert().apply(service.getDivision(divisionId));
     }
 
     @Override
@@ -129,13 +119,8 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "division")
     @Cachable(name = "divisions", size = Cachable.MEDIUM)
     public List<DivisionWS> getDivisions() throws ReferentielOfsException {
-	LOG.debug("getDivisions()");
-	try {
-	    return FluentIterable.from(service.getDivisions())
-		    .transform(new DivisionConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getDivisions())
+		.transform(new DivisionConvert()).toList();
     }
 
     @Override
@@ -143,15 +128,10 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "genre")
     public GenreWS getGenre(@WebParam(name = "genreId") final int genreId)
 	    throws ReferentielOfsException {
-	LOG.debug("getGenre(genreId='{}')", genreId);
 	if (genreId <= 0) {
 	    return null;
 	}
-	try {
-	    return new GenreConvert().apply(service.getGenre(genreId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new GenreConvert().apply(service.getGenre(genreId));
     }
 
     @Override
@@ -159,13 +139,8 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "genre")
     @Cachable(name = "genres", size = Cachable.LARGE)
     public List<GenreWS> getGenres() throws ReferentielOfsException {
-	LOG.debug("getGenres()");
-	try {
-	    return FluentIterable.from(service.getGenres())
-		    .transform(new GenreConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getGenres())
+		.transform(new GenreConvert()).toList();
     }
 
     @Override
@@ -175,16 +150,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GenreWS> getGenresByGroup(
 	    @WebParam(name = "groupeId") final int groupeId)
 	    throws ReferentielOfsException {
-	LOG.debug("getGenresByGroup(groupeId='{}')", groupeId);
 	if (groupeId <= 0) {
 	    return new LinkedList<GenreWS>();
 	}
-	try {
-	    return FluentIterable.from(service.getGenres(groupeId))
-		    .transform(new GenreConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getGenres(groupeId))
+		.transform(new GenreConvert()).toList();
     }
 
     @Override
@@ -192,15 +162,10 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "groupe")
     public GroupeWS getGroupe(@WebParam(name = "groupeId") final int groupeId)
 	    throws ReferentielOfsException {
-	LOG.debug("getGroupe(groupeId='{}')", groupeId);
 	if (groupeId <= 0) {
 	    return null;
 	}
-	try {
-	    return new GroupeConvert().apply(service.getGroupe(groupeId));
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return new GroupeConvert().apply(service.getGroupe(groupeId));
     }
 
     @Override
@@ -208,13 +173,8 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     @WebResult(name = "groupe")
     @Cachable(name = "groupes", size = Cachable.LARGE)
     public List<GroupeWS> getGroupes() throws ReferentielOfsException {
-	LOG.debug("getGroupes()");
-	try {
-	    return FluentIterable.from(service.getGroupes())
-		    .transform(new GroupeConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getGroupes())
+		.transform(new GroupeConvert()).toList();
     }
 
     @Override
@@ -224,16 +184,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GroupeWS> getGroupesByClasse(
 	    @WebParam(name = "classeId") final int classeId)
 	    throws ReferentielOfsException {
-	LOG.debug("getGroupesByClasse(classeId='{}')", classeId);
 	if (classeId <= 0) {
 	    return new LinkedList<GroupeWS>();
 	}
-	try {
-	    return FluentIterable.from(service.getGroupes(classeId))
-		    .transform(new GroupeConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.getGroupes(classeId))
+		.transform(new GroupeConvert()).toList();
     }
 
     @Override
@@ -242,16 +197,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<ClasseWS> searchClasse(
 	    @WebParam(name = "pattern") final String pattern)
 	    throws ReferentielOfsException {
-	LOG.debug("searchClasse(pattern='{}')", pattern);
 	if (StringUtils.isBlank(pattern)) {
 	    return new LinkedList<ClasseWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchClasse(pattern))
-		    .transform(new ClasseConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchClasse(pattern))
+		.transform(new ClasseConvert()).toList();
     }
 
     @Override
@@ -260,16 +210,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<ClasseWS> searchClasseRegexp(
 	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchClasseRegexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<ClasseWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchClasseRegexp(regexp))
-		    .transform(new ClasseConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchClasseRegexp(regexp))
+		.transform(new ClasseConvert()).toList();
     }
 
     @Override
@@ -278,16 +223,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<DivisionWS> searchDivision(
 	    @WebParam(name = "pattern") final String pattern)
 	    throws ReferentielOfsException {
-	LOG.debug("searchDivision(pattern='{}')", pattern);
 	if (StringUtils.isBlank(pattern)) {
 	    return new LinkedList<DivisionWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchDivision(pattern))
-		    .transform(new DivisionConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchDivision(pattern))
+		.transform(new DivisionConvert()).toList();
     }
 
     @Override
@@ -296,16 +236,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<DivisionWS> searchDivisionRegexp(
 	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchDivisionRegexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<DivisionWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchDivisionRegexp(regexp))
-		    .transform(new DivisionConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchDivisionRegexp(regexp))
+		.transform(new DivisionConvert()).toList();
     }
 
     @Override
@@ -314,16 +249,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GenreWS> searchGenre(
 	    @WebParam(name = "pattern") final String pattern)
 	    throws ReferentielOfsException {
-	LOG.debug("searchGenre(pattern='{}')", pattern);
 	if (StringUtils.isBlank(pattern)) {
 	    return new LinkedList<GenreWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchGenre(pattern))
-		    .transform(new GenreConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchGenre(pattern))
+		.transform(new GenreConvert()).toList();
     }
 
     @Override
@@ -332,16 +262,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GenreWS> searchGenreRegexp(
 	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchGenreRegexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<GenreWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchGenreRegexp(regexp))
-		    .transform(new GenreConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchGenreRegexp(regexp))
+		.transform(new GenreConvert()).toList();
     }
 
     @Override
@@ -350,16 +275,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GroupeWS> searchGroupe(
 	    @WebParam(name = "pattern") final String pattern)
 	    throws ReferentielOfsException {
-	LOG.debug("searchGroupe(pattern='{}')", pattern);
 	if (StringUtils.isBlank(pattern)) {
 	    return new LinkedList<GroupeWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchGroupe(pattern))
-		    .transform(new GroupeConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return FluentIterable.from(service.searchGroupe(pattern))
+		.transform(new GroupeConvert()).toList();
     }
 
     @Override
@@ -368,36 +288,11 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS {
     public List<GroupeWS> searchGroupeRegexp(
 	    @WebParam(name = "regexp") final String regexp)
 	    throws ReferentielOfsException {
-	LOG.debug("searchGroupeRegexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
 	    return new LinkedList<GroupeWS>();
 	}
-	try {
-	    return FluentIterable.from(service.searchGroupeRegexp(regexp))
-		    .transform(new GroupeConvert()).toList();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
-    }
-
-    /**
-     * Méthode partagée de traitement des exceptions<br/>
-     * Les exceptions sont encapsulées dans une
-     * ReferentielPaysTerritoiresException<br/>
-     * Sauf si ce sont déjà des ReferentielPaysTerritoiresException
-     * 
-     * @param e
-     *            exception
-     * @return ReferentielPaysTerritoiresException exception encapsulée
-     */
-    private ReferentielOfsException processException(final Exception e) {
-	LOG.error(e.getClass().getName(), e);
-	// pas de double encapsulation
-	if (e instanceof ReferentielOfsException) {
-	    return (ReferentielOfsException) e;
-	}
-	return new ReferentielOfsException(
-		"Erreur technique lors du traitement de la demande", e);
+	return FluentIterable.from(service.searchGroupeRegexp(regexp))
+		.transform(new GroupeConvert()).toList();
     }
 
     /**

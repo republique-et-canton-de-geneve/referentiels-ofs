@@ -19,7 +19,10 @@ import org.slf4j.LoggerFactory;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.formeJuridique.service.ReferentielFormesJuridiquesServiceAble;
 import ch.ge.cti.ct.referentiels.formeJuridique.service.impl.ReferentielFormesJuridiquesService;
+import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
+import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
+import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 
 /**
@@ -32,9 +35,11 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 @WebService(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, serviceName = ReferentielFormesJuridiquesWS.SERVICE_NAME, portName = ReferentielFormesJuridiquesWS.PORT_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesWS")
 @WebContext(contextRoot = "/referentiels-ofs/formes-juridiques", urlPattern = "/referentiel-formes-juridiques")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
-@Interceptors({ ReferentielStatsIntercept.class })
+@Interceptors({ ReferentielStatsIntercept.class,
+	ReferentielOfsExceptionIntercept.class,
+	ReferentielOfsCacheIntercept.class })
 public class ReferentielFormesJuridiquesSEI implements
-	ReferentielFormesJuridiquesWS {
+	ReferentielFormesJuridiquesWS, Loggable {
 
     /** Référence sur l'implémentation */
     private final ReferentielFormesJuridiquesServiceAble service = ReferentielFormesJuridiquesService.instance;
@@ -43,66 +48,29 @@ public class ReferentielFormesJuridiquesSEI implements
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ReferentielFormesJuridiquesSEI.class);
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.
-     * ReferentielFormesJuridiquesWS#getFormesJuridiques()
-     */
+    @Override
+    public Logger log() {
+	return LOG;
+    }
+
     @Override
     @WebMethod(operationName = "getFormesJuridiques", action = "getFormesJuridiques")
     @WebResult(name = "formeJuridique")
     public List<FormeJuridique> getFormesJuridiques()
 	    throws ReferentielOfsException {
-	LOG.debug("getFormesJuridiques()");
-	try {
-	    return service.getFormesJuridiques();
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
+	return service.getFormesJuridiques();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.
-     * ReferentielFormesJuridiquesWS#getFormeJuridique(int)
-     */
     @Override
     @WebMethod(operationName = "getFormeJuridique", action = "getFormeJuridique")
     @WebResult(name = "formeJuridique")
     public FormeJuridique getFormeJuridique(
 	    @WebParam(name = "formeJuridique") final int formeJuridiqueId)
 	    throws ReferentielOfsException {
-	LOG.debug("getFormeJuridique(formeJuridique='{}')", formeJuridiqueId);
 	if (formeJuridiqueId <= 0) {
 	    return null;
 	}
-	try {
-	    return service.getFormeJuridique(formeJuridiqueId);
-	} catch (final Exception e) {
-	    throw processException(e);
-	}
-    }
-
-    /**
-     * Méthode partagée de traitement des exceptions<br/>
-     * Les exceptions sont encapsulées dans une
-     * ReferentielFormesJuridiquesException<br/>
-     * Sauf si ce sont déjà des ReferentielFormesJuridiquesException
-     * 
-     * @param e
-     *            exception
-     * @return ReferentielFormesJuridiquesException exception encapsulée
-     */
-    private ReferentielOfsException processException(final Exception e) {
-	LOG.error(e.getClass().getName(), e);
-	// pas de double encapsulation
-	if (e instanceof ReferentielOfsException) {
-	    return (ReferentielOfsException) e;
-	}
-	return new ReferentielOfsException(
-		"Erreur technique lors du traitement de la demande", e);
+	return service.getFormeJuridique(formeJuridiqueId);
     }
 
 }
