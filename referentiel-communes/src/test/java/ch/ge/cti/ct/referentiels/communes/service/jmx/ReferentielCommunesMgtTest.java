@@ -64,8 +64,9 @@ public class ReferentielCommunesMgtTest {
 
     @Test
     public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
-		.endsWith("CH1_RN+HCL_HGDE_HIST+1.0.xml"));
+	assertTrue("le chemin " + rmgt.getReferentielFile().getFile()
+		+ " est incorrect", rmgt.getReferentielFile().getFile()
+		.contains("CH1_RN+HCL_HGDE_HIST+1.0"));
     }
 
     @Test
