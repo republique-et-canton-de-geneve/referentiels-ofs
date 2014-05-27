@@ -35,7 +35,6 @@ public class ReferentielOfsCacheIntercept {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @AroundInvoke
     public Object processCache(final InvocationContext ctx) throws Exception {// NOSONAR
-	System.err.println("processCache() - start");
 	final Cache<String, ?> cache = getCache(ctx.getMethod());
 
 	if (cache == null) {
