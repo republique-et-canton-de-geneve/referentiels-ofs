@@ -34,6 +34,7 @@ import ch.ge.cti.ct.referentiels.pays.service.ReferentielPaysTerritoiresServiceA
 import ch.ge.cti.ct.referentiels.pays.service.impl.ReferentielPaysTerritoiresService;
 
 import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 
 /**
@@ -183,6 +184,12 @@ public class ReferentielPaysTerritoiresSEI implements
     public List<PaysWS> getPays() throws ReferentielOfsException {
 	try {
 	    return FluentIterable.from(service.getPays())
+		    .filter(new Predicate<Pays>() {
+			    @Override
+			    public boolean apply(final Pays pays) {
+				return StringUtils.isNotBlank(pays.getIso2());
+			    }
+			})
 		    .transform(new PaysConvert()).toList();
 	} catch (final Exception e) {
 	    throw processException(e);
