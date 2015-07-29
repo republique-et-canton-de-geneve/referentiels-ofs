@@ -41,12 +41,6 @@ public class ReferentielFormesJuridiquesMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
-		.endsWith("CH1_BUR+CL_LEGALFORMS+2.0.xml"));
-    }
-
-    @Test
     public void testDisplayStatitiques() throws ExecutionException {
 	final String XML = rmgt.displayStatitiques("XML");
 	assertTrue(XML.length() > 20);

@@ -22,12 +22,4 @@ public class ReferentielDataSingletonTest extends AbstractReferentielTest {
 	assertNotNull(ref2);
 	assertEquals(ref1, ref2);
     }
-
-    @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-
-	assertNotNull(ReferentielDataSingleton.instance.getReferentielFile());
-	assertTrue(ReferentielDataSingleton.instance.getReferentielFile()
-		.getFile().endsWith("CH1_BN+HCL_SBN+2.0.xml"));
-    }
 }

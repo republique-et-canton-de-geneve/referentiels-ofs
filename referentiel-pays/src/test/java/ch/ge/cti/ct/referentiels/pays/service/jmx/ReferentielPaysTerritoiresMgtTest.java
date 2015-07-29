@@ -64,12 +64,6 @@ public class ReferentielPaysTerritoiresMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
-		.endsWith("CH1_RN+HCL_COUNTRIESGEO+1.0.xml"));
-    }
-
-    @Test
     public void testDisplayStatitiques() throws ExecutionException {
 	final String XML = rmgt.displayStatitiques("XML");
 	assertTrue(XML.length() > 20);

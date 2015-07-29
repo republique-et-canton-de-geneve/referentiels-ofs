@@ -40,12 +40,6 @@ public class ReferentielEtatCivilMgtTest {
     }
 
     @Test
-    public void testGetReferentielFile() throws ReferentielOfsException {
-	assertTrue(rmgt.getReferentielFile().getFile()
-		.endsWith("CH1_RE+CL_MARITALSTATUS+3.0.xml"));
-    }
-
-    @Test
     public void testDisplayStatitiques() throws ExecutionException {
 	final String XML = rmgt.displayStatitiques("XML");
 	assertTrue(XML.length() > 20);
