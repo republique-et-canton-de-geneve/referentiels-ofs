@@ -72,43 +72,9 @@ public abstract class AbstractServiceDataReader<T> {
      *             erreur de traitement
      */
     private URL getURL() throws ReferentielOfsException {
-	try {
-	    final String filename = DistributionFactory.getConfiguration()
-		    .getString(getConfigurationEntry());
-	    if (filename == null) {
-		throw new ReferentielOfsException(
-			"Impossible de trouver l'entrée ["
-				+ getConfigurationEntry()
-				+ "] dans le fichier Distribution.properties");
-	    }
-	    return toURL(filename);
-	} catch (final IOException ex) {
-	    throw new ReferentielOfsException(
-		    "Impossible de lire le fichier Distribution.properties", ex);
-	}
-    }
-
-    /**
-     * Convertion en URL supportant le format avec ou sans protocole
-     * 
-     * @param filename
-     *            nom du fichier
-     * @return url
-     * @throws ReferentielOfsException
-     *             erreur de convertion
-     */
-    private URL toURL(final String filename) throws ReferentielOfsException {
-	try {
-	    return new URL(filename);
-	} catch (final MalformedURLException mue) {
-	    try {
-		return new File(filename).toURI().toURL();
-	    } catch (final MalformedURLException mue2) {
-		throw new ReferentielOfsException("La valeur de l'entrée ["
-			+ getConfigurationEntry() + "] est invalide: "
-			+ filename, mue2);
-	    }
-	}
+	    final String filename = getConfigurationEntry();
+	    URL url = getClass().getClassLoader().getResource(filename);
+	    return url;
     }
 
     /**
@@ -123,22 +89,5 @@ public abstract class AbstractServiceDataReader<T> {
 	    xmlFile = getURL();
 	}
 	return xmlFile;
-    }
-
-    /** enumération des données de configuration */
-    public static enum Config {
-	/** variable d'environnement distribution.properties */
-	ENV("distribution.properties"),
-	/** chemin par défaut vers le fichier Distribution.properties */
-	FILE("/Distribution.properties");
-	private final String key;
-
-	private Config(final String key) {
-	    this.key = key;
-	}
-
-	public String key() {
-	    return this.key;
-	}
     }
 }

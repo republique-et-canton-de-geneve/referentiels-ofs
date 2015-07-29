@@ -25,6 +25,6 @@ public class ServiceDataReader extends
      * @return clef de configuration
      */
     protected String getConfigurationEntry() {
-	return "referentiel.formes-jurdiques.file";
+	return "referentiel-formes-juridiques.xml";
     }
 }

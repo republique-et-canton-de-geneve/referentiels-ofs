@@ -25,6 +25,6 @@ public class ServiceDataReader extends
      * @return clef de configuration
      */
     protected String getConfigurationEntry() {
-	return "referentiel.professions.file";
+	return "referentiel-professions.xml";
     }
 }

@@ -15,7 +15,6 @@
 
 	<properties>
 		<skipTests>false</skipTests>
-		<openejb.version>4.5.1</openejb.version>
 	</properties>
 
 	<build>
@@ -75,18 +74,6 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.openejb</groupId>
-			<artifactId>openejb-cxf</artifactId>
-			<version>${openejb.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-jdk14</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiel-communes</artifactId>

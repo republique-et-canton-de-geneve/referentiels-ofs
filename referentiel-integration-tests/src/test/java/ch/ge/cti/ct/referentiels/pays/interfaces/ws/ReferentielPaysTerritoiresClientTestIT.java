@@ -3,28 +3,17 @@ package ch.ge.cti.ct.referentiels.pays.interfaces.ws;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.openejb.junit.ApplicationComposer;
-import org.apache.openejb.junit.EnableServices;
-import org.apache.openejb.junit.Module;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import ch.ge.cti.ct.referentiels.AbstractClientTest;
 import ch.ge.cti.ct.referentiels.pays.client.ReferentielPaysTerritoiresClient;
 
-@EnableServices(value = { "jax-ws" }, httpDebug = true)
-@RunWith(ApplicationComposer.class)
 public class ReferentielPaysTerritoiresClientTestIT extends AbstractClientTest {
-
-    @Module
-    public static Class<?>[] pays() throws Exception {
-	return new Class<?>[] { ReferentielPaysTerritoiresSEI.class };
-    }
 
     @Test
     public void test() throws Exception {
 	final ReferentielPaysTerritoiresWS client = ReferentielPaysTerritoiresClient.Factory
-		.getClient("http://127.0.0.1:4204/pays/ReferentielPaysTerritoiresSEI?wsdl");
+		.getClient("http://localhost:26000/referentiels-ofs/territoires/referentiel-pays?wsdl");
 	assertTrue(client.getContinents().size() > 0);
 	assertTrue(client.getRegions().size() > 0);
 	assertTrue(client.getPays().size() > 0);

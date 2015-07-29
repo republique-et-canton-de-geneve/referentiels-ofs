@@ -3,28 +3,17 @@ package ch.ge.cti.ct.referentiels.professions.interfaces.ws;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.openejb.junit.ApplicationComposer;
-import org.apache.openejb.junit.EnableServices;
-import org.apache.openejb.junit.Module;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import ch.ge.cti.ct.referentiels.AbstractClientTest;
 import ch.ge.cti.ct.referentiels.professions.client.ReferentielProfessionsClient;
 
-@EnableServices(value = { "jax-ws" }, httpDebug = true)
-@RunWith(ApplicationComposer.class)
 public class ReferentielProfessionsClientTestIT extends AbstractClientTest {
-
-    @Module
-    public static Class<?>[] professions() throws Exception {
-	return new Class<?>[] { ReferentielProfessionsSEI.class };
-    }
 
     @Test
     public void test() throws Exception {
 	final ReferentielProfessionsWS client = ReferentielProfessionsClient.Factory
-		.getClient("http://127.0.0.1:4204/professions/ReferentielProfessionsSEI?wsdl");
+		.getClient("http://fs-282892:26000/referentiels-ofs/professions/referentiel-professions?wsdl");
 	assertTrue(client.getClasses().size() > 0);
 	assertTrue(client.getDivisions().size() > 0);
 	assertTrue(client.getGenres().size() > 0);

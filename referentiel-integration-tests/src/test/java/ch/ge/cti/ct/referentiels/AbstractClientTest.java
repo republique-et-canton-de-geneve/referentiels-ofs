@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.util.Properties;
 
 import org.apache.log4j.xml.DOMConfigurator;
-import org.apache.openejb.junit.Configuration;
 import org.junit.BeforeClass;
+import org.springframework.context.annotation.Configuration;
 
 import ch.ge.cti.ct.act.configuration.DistributionFactory;
 
@@ -50,27 +50,5 @@ public abstract class AbstractClientTest {
 		distributionFile.getAbsolutePath());
 
 	DistributionFactory.setDisableJNDI(true);
-    }
-
-    @Configuration
-    public Properties configure() throws Exception {
-	final Properties p = new Properties();
-	p.put("log4j.appender.console", "org.apache.log4j.ConsoleAppender");
-	p.put("log4j.appender.console.layout", "org.apache.log4j.PatternLayout");
-	p.put("log4j.appender.console.layout.ConversionPattern",
-		"[%-5p] %c %m %n");
-	p.put("log4j.rootLogger", "info,console");
-	p.put("log4j.category.OpenEJB", "warn");
-	p.put("log4j.category.OpenEJB.server", "warn");
-	p.put("log4j.category.OpenEJB.startup.config", "warn");
-	p.put("log4j.category.org.apache.webbeans", "warn");
-	p.put("log4j.category.OpenEJB.cdi", "warn");
-	p.put("log4j.category.org.apache.cxf.service.factory.ReflectionServiceFactoryBean",
-		"info");
-	p.put("log4j.category.org.apache.cxf", "warn");
-	p.put("log4j.category.org.springframework", "warn");
-	p.put("log4j.category.org.sdmxsource", "warn");
-
-	return p;
     }
 }

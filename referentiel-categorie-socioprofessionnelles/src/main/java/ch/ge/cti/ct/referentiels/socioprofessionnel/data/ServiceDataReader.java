@@ -27,6 +27,6 @@ public class ServiceDataReader extends
      */
     @Override
     protected String getConfigurationEntry() {
-	return "referentiel.socioprofessionnel.file";
+	return "referentiel-socioprofessionnel.xml";
     }
 }
