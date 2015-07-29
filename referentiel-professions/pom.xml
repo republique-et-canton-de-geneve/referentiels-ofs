@@ -100,10 +100,6 @@
 			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>ch.ge.cti.ct.act</groupId>
-			<artifactId>ct_configuration</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency>

@@ -15,10 +15,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>ch.ge.cti.ct.act</groupId>
-			<artifactId>ct_configuration</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency>

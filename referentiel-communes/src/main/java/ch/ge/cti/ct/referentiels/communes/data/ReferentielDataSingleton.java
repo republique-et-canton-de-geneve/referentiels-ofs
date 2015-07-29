@@ -2,7 +2,6 @@ package ch.ge.cti.ct.referentiels.communes.data;
 
 import java.net.URL;
 
-import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.communes.model.ReferentielCommunes;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
@@ -55,7 +54,6 @@ public enum ReferentielDataSingleton {
     private void loadData() throws ReferentielOfsException {
 	if (data == null) {
 	    synchronized (this) {
-		DistributionFactory.setDisableJNDI(true);
 		data = reader.read();
 	    }
 	}

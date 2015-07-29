@@ -1,11 +1,7 @@
 package ch.ge.cti.ct.referentiels.ofs.data;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 /**

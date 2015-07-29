@@ -8,12 +8,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ch.ge.cti.ct.act.configuration.DistributionFactory;
 import ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesSEI;
-import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.cache.CacheManager;
 import ch.ge.cti.ct.referentiels.ofs.service.jmx.StatistiquesServiceSingleton;
 
@@ -27,11 +24,6 @@ public class ReferentielCommunesMgtTest {
 	    { "call3", "_call2_" } };
 
     private ReferentielCommunesMgt rmgt = null;
-
-    @BeforeClass
-    public static void setupClass() {
-	DistributionFactory.setDisableJNDI(true);
-    }
 
     @Before
     public void initialize() throws ExecutionException {
