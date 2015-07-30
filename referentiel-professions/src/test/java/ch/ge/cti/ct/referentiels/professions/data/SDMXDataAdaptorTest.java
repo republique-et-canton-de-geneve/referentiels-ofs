@@ -16,7 +16,7 @@ public class SDMXDataAdaptorTest extends AbstractReferentielTest {
 
     @BeforeClass
     public static void setupSDMXDataAdaptorClass() throws Exception {
-	adaptor = ctxt.getBean(SDMXDataAdaptor.class);
+	adaptor = SDMXDataAdaptor.Factory.getInstance();
 	assertNotNull(adaptor);
     }
 
