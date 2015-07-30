@@ -30,7 +30,7 @@ public class AbstractServiceDataReaderTest extends AbstractDataTest {
 
 		@Override
 		protected String getConfigurationEntry() {
-			return "referentiel.test.file";
+			return "test.xml";
 		}
 
 		@Override
