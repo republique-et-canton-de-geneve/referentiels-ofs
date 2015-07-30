@@ -63,17 +63,17 @@
 	</distributionManagement>
 
 	<modules>
-<!-- 		<module>referentiels-api</module> -->
-<!-- 		<module>referentiels-ofs-ear</module> -->
-<!-- 		<module>referentiel-communes</module> -->
-<!-- 		<module>referentiel-pays</module> -->
-<!-- 		<module>referentiel-formes-juridiques</module> -->
-<!-- 		<module>referentiel-etat-civil</module> -->
-<!-- 		<module>referentiel-professions</module> -->
-<!-- 		<module>referentiel-categorie-socioprofessionnelles</module> -->
-<!-- 		<module>referentiel-integration-tests</module> -->
-		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module>
-<!-- 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module> -->
+		<module>referentiels-api</module>
+		<module>referentiels-ofs-ear</module>
+		<module>referentiel-communes</module>
+		<module>referentiel-pays</module>
+		<module>referentiel-formes-juridiques</module>
+		<module>referentiel-etat-civil</module>
+		<module>referentiel-professions</module>
+		<module>referentiel-categorie-socioprofessionnelles</module>
+		<module>referentiel-integration-tests</module>
+<!-- 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</module> -->
+		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module>
 	</modules>
 
 	<build>
