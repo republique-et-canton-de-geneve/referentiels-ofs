@@ -63,7 +63,7 @@ public class RefRegionTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final RegionWS region = getWS().getRegion(regionId);
 	if (regionName == null) {

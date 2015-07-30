@@ -51,7 +51,7 @@ public class RefNiveau2SearchRegexpTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Niveau2WS> Niveau2WSs = getWS().searchNiveaux2Regexp(
 		searchString);

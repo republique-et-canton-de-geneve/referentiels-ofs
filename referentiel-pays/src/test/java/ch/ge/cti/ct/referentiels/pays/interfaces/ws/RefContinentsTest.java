@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.ContinentWS;
 public class RefContinentsTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<ContinentWS> continents = getWS().getContinents();
 	assertEquals("Ls liste des continents est incorrecte", 6,

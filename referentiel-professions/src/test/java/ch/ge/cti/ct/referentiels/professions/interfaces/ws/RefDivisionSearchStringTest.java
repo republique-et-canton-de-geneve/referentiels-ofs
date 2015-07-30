@@ -46,7 +46,7 @@ public class RefDivisionSearchStringTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<DivisionWS> classes = getWS().searchDivision(searchString);
 	if (countDivisions == -1) {

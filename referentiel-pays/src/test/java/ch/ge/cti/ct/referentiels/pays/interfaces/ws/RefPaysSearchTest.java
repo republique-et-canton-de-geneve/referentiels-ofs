@@ -66,7 +66,7 @@ public class RefPaysSearchTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Pays> payss = ReferentielPaysTerritoiresService.instance
 		.searchPays(critere);

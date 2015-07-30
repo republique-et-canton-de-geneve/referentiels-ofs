@@ -53,7 +53,7 @@ public class RefGroupeTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final GroupeWS groupe = getWS().getGroupe(groupeId);
 	if (groupeNom == null) {

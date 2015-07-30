@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.model.Genre;
 public class RefGenresTest extends AbstractRefTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Genre> genres = ReferentielProfessionsService.instance
 		.getGenres();

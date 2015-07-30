@@ -54,7 +54,7 @@ public class RefNiveau1Test extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final Niveau1 niveau1 = ReferentielSocioprofessionnelService.instance
 		.getNiveau1(niveau1Id);

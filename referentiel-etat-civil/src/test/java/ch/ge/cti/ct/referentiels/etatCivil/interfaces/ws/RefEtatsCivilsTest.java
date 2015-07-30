@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 public class RefEtatsCivilsTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<EtatCivil> formesJuridiques = getWS().getEtatsCivils();
 	assertEquals("La liste des états civils est incorrecte", 7,

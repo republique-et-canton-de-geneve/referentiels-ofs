@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau1W
 public class RefNiveaux1Test extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Niveau1WS> niveaux1 = getWS().getNiveaux1();
 	assertEquals("La liste des niveaux1 est incorrecte", 17,

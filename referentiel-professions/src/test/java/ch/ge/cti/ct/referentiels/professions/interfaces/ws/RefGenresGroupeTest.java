@@ -50,7 +50,7 @@ public class RefGenresGroupeTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<GenreWS> genres = getWS().getGenresByGroup(groupId);
 	if (countGenres == -1) {

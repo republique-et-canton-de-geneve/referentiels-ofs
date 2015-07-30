@@ -63,7 +63,7 @@ public class RefCantonTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void testGetCanton() throws ReferentielOfsException {
 	Canton canton = null;
 	if (dateValid == null) {

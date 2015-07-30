@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GroupeWS;
 public class RefGroupesTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<GroupeWS> groupes = getWS().getGroupes();
 	assertEquals("La liste des groupes est incorrecte", 88, groupes.size());

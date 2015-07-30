@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau2;
 public class RefNiveaux2Test extends AbstractRefTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Niveau2> niveaux2s = ReferentielSocioprofessionnelService.instance
 		.getNiveaux2();

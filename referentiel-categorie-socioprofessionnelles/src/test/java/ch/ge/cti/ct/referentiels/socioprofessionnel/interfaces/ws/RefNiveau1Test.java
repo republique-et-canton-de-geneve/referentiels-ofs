@@ -50,7 +50,7 @@ public class RefNiveau1Test extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final Niveau1WS niveau1WS = getWS().getNiveau1(niveau1Id);
 	if (niveau1Nom == null) {

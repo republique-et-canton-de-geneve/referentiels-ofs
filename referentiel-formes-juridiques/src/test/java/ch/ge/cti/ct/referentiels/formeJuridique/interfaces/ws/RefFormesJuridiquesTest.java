@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 public class RefFormesJuridiquesTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<FormeJuridique> formesJuridiques = getWS()
 		.getFormesJuridiques();

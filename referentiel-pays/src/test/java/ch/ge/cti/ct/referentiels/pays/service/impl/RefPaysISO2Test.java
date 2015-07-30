@@ -72,7 +72,7 @@ public class RefPaysISO2Test extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final Pays pays = ReferentielPaysTerritoiresService.instance
 		.getPaysByISO2(iso2);

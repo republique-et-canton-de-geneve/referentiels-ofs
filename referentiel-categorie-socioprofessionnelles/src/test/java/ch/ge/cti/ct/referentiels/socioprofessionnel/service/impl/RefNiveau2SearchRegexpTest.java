@@ -51,7 +51,7 @@ public class RefNiveau2SearchRegexpTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 30, percentile95 = 150)
+   
     public void test() throws ReferentielOfsException {
 	final List<Niveau2> niveau2s = ReferentielSocioprofessionnelService.instance
 		.searchNiveaux2Regexp(searchString);
