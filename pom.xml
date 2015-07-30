@@ -90,31 +90,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.0-beta-3</version>
-					<configuration>
-						<outputEncoding>ISO-8859-1</outputEncoding>
-						<locales>fr</locales>
-					</configuration>
-					<inherited>true</inherited>
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.maven.wagon</groupId>
-							<artifactId>wagon-http</artifactId>
-							<version>1.0</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<configuration>
-						<preparationGoals>clean install</preparationGoals>
-						<commitByProject>true</commitByProject>
-						<goals>deploy site-deploy</goals>
-					</configuration>
-				</plugin>
-				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
 					<version>0.8.3</version>
