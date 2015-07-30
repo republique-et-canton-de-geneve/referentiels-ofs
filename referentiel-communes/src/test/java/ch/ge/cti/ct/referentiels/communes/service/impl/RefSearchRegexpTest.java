@@ -80,7 +80,6 @@ public class RefSearchRegexpTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(average = 50, percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {
