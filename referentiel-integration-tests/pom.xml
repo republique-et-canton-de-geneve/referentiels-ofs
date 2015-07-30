@@ -14,7 +14,7 @@
 	<description>Tests d'intégration des référentiels</description>
 
 	<properties>
-		<skipTests>false</skipTests>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<build>
