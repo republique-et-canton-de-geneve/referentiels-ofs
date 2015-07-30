@@ -60,7 +60,7 @@ public class RefDistrictsTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 15, percentile95 = 30)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	List<District> districts = null;
 	if (dateValid == null) {

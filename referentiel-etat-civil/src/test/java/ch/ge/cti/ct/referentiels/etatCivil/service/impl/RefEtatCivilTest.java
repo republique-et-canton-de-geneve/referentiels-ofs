@@ -47,7 +47,7 @@ public class RefEtatCivilTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 2, percentile95 = 5)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final EtatCivil etatCivil = ReferentielEtatCivilService.instance
 		.getEtatCivil(etatCivilId);

@@ -53,7 +53,7 @@ public class RefPaysRegionTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 2, percentile95 = 5)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<PaysWS> payss = getWS().getPaysByRegion(regionId);
 

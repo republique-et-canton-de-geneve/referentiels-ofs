@@ -65,7 +65,7 @@ public class RefPaysRegexpSearchTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(average = 5, percentile90 = 10, percentile95 = 20)
+    @Required(average = 5, percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<Pays> payss = ReferentielPaysTerritoiresService.instance
 		.searchPaysRegexp(critere);

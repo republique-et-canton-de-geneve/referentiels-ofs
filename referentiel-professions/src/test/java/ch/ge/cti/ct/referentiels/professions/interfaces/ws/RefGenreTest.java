@@ -49,7 +49,7 @@ public class RefGenreTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(percentile90 = 2, percentile95 = 5)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final GenreWS genre = getWS().getGenre(genreId);
 	if (genreNom == null) {

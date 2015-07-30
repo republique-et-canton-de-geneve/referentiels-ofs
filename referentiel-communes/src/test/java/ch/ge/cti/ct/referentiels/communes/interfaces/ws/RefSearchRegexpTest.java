@@ -74,7 +74,7 @@ public class RefSearchRegexpTest extends AbstractRefWSTest {
     }
 
     @Test
-    @Required(average = 50, percentile90 = 150, percentile95 = 300)
+    @Required(average = 50, percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	List<CommuneWS> communes = null;
 	if (dateValid == null) {

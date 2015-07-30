@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau1;
 public class RefTest extends AbstractRefTest {
 
     @Test
-    @Required(percentile90 = 10, percentile95 = 30)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	assertTrue(
 		"ReferentielSocioprofessionnel.id est incorrect",

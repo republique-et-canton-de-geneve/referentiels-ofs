@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.DivisionWS;
 public class RefDivisionsTest extends AbstractRefWSTest {
 
     @Test
-    @Required(percentile90 = 2, percentile95 = 5)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void test() throws ReferentielOfsException {
 	final List<DivisionWS> divisions = getWS().getDivisions();
 	assertEquals("La liste des divisions est incorrecte", 9,

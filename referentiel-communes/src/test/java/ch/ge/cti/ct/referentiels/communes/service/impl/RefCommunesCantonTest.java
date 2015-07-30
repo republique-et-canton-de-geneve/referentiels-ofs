@@ -76,7 +76,7 @@ public class RefCommunesCantonTest extends AbstractRefTest {
     }
 
     @Test
-    @Required(percentile90 = 15, percentile95 = 30)
+    @Required(percentile90 = 30, percentile95 = 150)
     public void testGetCommunes() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {
