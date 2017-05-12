@@ -180,6 +180,18 @@ public interface ReferentielCommunesServiceAble {
      */
     List<Commune> getCommunesByCanton(final String codeCanton)
 	    throws ReferentielOfsException;
+    
+    /**
+     * Liste des communes historiques d'un canton
+     * 
+     * @param codeCanton
+     *            identifiant de canton (2 caractères alpha)
+     * @return liste des communes
+     * @throws ReferentielOfsException
+     *             erreur de traitement
+     */
+    List<Commune> getCommunesHistoriquesByCanton(final String codeCanton)
+	    throws ReferentielOfsException;
 
     /**
      * Liste des communes d'un canton valides pour la date de validation

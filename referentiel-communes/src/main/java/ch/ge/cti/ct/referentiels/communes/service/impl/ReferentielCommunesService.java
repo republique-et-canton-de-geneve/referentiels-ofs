@@ -403,4 +403,23 @@ public enum ReferentielCommunesService implements
 	    return district.getCommune();
 	}
     };
+
+    @Override
+    public List<Commune> getCommunesHistoriquesByCanton(String codeCanton)
+	    throws ReferentielOfsException {
+		LOG.debug("getCommunesHistoriqueByCanton(codeCanton='{}')",
+			codeCanton);
+		if (StringUtils.isBlank(codeCanton)) {
+		    return new LinkedList<Commune>();
+		}
+		// liste de 1 canton ou vide
+		final FluentIterable<Canton> cantons = extractCanton(codeCanton, new Date());
+
+		final FluentIterable<District> districts = cantons.transformAndConcat(
+			extractDistrictFunction);
+
+		List<Commune> sortedList = districts.transformAndConcat(extractCommuneFunction)
+			.toSortedList(nomComparator);
+		return sortedList;
+    }
 }

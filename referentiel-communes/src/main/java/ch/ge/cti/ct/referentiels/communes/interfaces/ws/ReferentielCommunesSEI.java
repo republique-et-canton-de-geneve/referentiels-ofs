@@ -139,6 +139,19 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS, Loggable {
     }
 
     @Override
+    @WebMethod(operationName = "getCommunesHistoriquesByCanton", action = "getCommunesHistoriquesByCanton")
+    @WebResult(name = "commune")
+    @Cachable(name = "communes", size = Cachable.LARGE)
+    public List<CommuneWS> getCommunesHistoriquesByCanton(
+	    @WebParam(name = "canton") final String codeCanton)
+	    throws ReferentielOfsException {
+	if (StringUtils.isBlank(codeCanton)) {
+	    return new LinkedList<CommuneWS>();
+	}
+	return FluentIterable.from(service.getCommunesHistoriquesByCanton(codeCanton))
+		.transform(new CommuneConvert()).toList();
+    }
+    @Override
     @WebMethod(operationName = "getCommune", action = "getCommune")
     @WebResult(name = "commune")
     public CommuneWS getCommune(@WebParam(name = "commune") final int communeId)
