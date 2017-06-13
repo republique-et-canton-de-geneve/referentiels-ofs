@@ -4,7 +4,7 @@
 
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
-		<artifactId>CTI.COMMUN.referentiels-ofs.LOT.TPS_configuration</artifactId>
+		<artifactId>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</artifactId>
 		<version>1.0</version>
 	</parent>
 
