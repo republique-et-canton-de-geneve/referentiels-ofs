@@ -9,7 +9,7 @@
 
 	<groupId>ch.ge.cti.ct.referentiels</groupId>
 	<artifactId>ct_referentiels-ofs</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.7</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId}:${project.artifactId} parent</name>
@@ -53,9 +53,9 @@
 	</contributors>
 
 	<scm>
-		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</developerConnection>
-		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</connection>
-		<url>http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_jee5_parent-1.0.83/ct_referentiels-ofs</url>
+		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/tags/ct_referentiels-ofs-1.0.7</developerConnection>
+		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/tags/ct_referentiels-ofs-1.0.7</connection>
+		<url>http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_referentiels-ofs-1.0.7</url>
 	</scm>
 
 	<distributionManagement>
