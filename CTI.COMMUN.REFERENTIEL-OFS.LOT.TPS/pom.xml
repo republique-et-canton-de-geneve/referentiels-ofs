@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.8</version>
 	<packaging>pom</packaging>
 	
 	<name>+    ${project.artifactId} - Lot de deploiement</name>
@@ -47,4 +47,10 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <connection>scm:svn:http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_referentiels-ofs-1.0.8/CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS</connection>
+    <developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_referentiels-ofs-1.0.8/CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS</developerConnection>
+    <url>http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_referentiels-ofs-1.0.8/CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS</url>
+  </scm>
 </project>
