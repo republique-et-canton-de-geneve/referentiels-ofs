@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>ct_referentiels-ofs</artifactId>
-		<version>1.0.8</version>
+		<version>1.0.9-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>referentiel-communes</artifactId>
@@ -97,7 +97,7 @@
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiels-api</artifactId>
-			<version>1.0.8</version>
+			<version>1.0.9-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 		   <groupId>org.jvnet.jaxb2_commons</groupId>
