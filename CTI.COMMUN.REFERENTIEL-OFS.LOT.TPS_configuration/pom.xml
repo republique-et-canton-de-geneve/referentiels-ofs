@@ -9,14 +9,14 @@
 	</parent>
 
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
-		<artifactId>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</artifactId>
+		<artifactId>CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS_configuration</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0</version>
 	<!-- 1.0 car par convention avec le service Integration le pom de configuration 
 		d'un lot ne doit pas changer Il faudra juste le mettre a 1.0-SNAPSHOT au 
 		momen du release pour releaser une version 1.0 puis apres le release, le 
 		remettre a 1.0-SNAPSHOT a chaque fois -->
-	<name>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</name>
+	<name>CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS_configuration</name>
 
 	<description>Ceci est une configuration de deploiement qui herite completement de la configuration locale definie une fois pour toute.
 		les lots qui utilisent comme parent la configuration nommee: (ch.ge.ael + AEL.MOTEUR.LOT.TPS_configuration + 1.9.1-SNAPSHOT) vont donc pointer respectivement: 
