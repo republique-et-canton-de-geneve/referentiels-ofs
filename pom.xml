@@ -75,8 +75,8 @@
 		<module>referentiel-professions</module>
 		<module>referentiel-categorie-socioprofessionnelles</module>
 		<module>referentiel-integration-tests</module>
-<!-- 		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module> -->
-		<module>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</module>
+		<module>CTI.COMMUN.referentiels-ofs.LOT.TPS</module>
+<!-- 		<module>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</module> -->
 	</modules>
 
 	<build>
