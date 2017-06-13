@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.ge.cti.melusine</groupId>
+		<artifactId>pom_parent_configlocale</artifactId>
+		<version>3.2.0</version>
+	</parent>
+
+		<groupId>ch.ge.cti.ct.referentiels</groupId>
+		<artifactId>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<!-- 1.0 car par convention avec le service Integration le pom de configuration 
+		d'un lot ne doit pas changer Il faudra juste le mettre a 1.0-SNAPSHOT au 
+		momen du release pour releaser une version 1.0 puis apres le release, le 
+		remettre a 1.0-SNAPSHOT a chaque fois -->
+	<name>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</name>
+
+	<description>Ceci est une configuration de deploiement qui herite completement de la configuration locale definie une fois pour toute.
+		les lots qui utilisent comme parent la configuration nommee: (ch.ge.ael + AEL.MOTEUR.LOT.TPS_configuration + 1.9.1-SNAPSHOT) vont donc pointer respectivement: 
+		==&gt; Dans l'emvironnement Melusine de developpement (equipes de dev) sur cette configuration, 
+		et donc les deploiement se feront "localement" (i.e. le Jonas local)
+		==&gt; Dans l'environnement d'integration sur la configuration definie par l'equipe d'integration, 
+		et donc les deploiements se feront en DEV, REC, PROD
+		La version est forcee a 1.0 et NE DOIT PAS etre changee.
+		La version releasee sera toujours 1.0. Ceci est une convention avec l'"Integrattion".
+		Il suffit donc de tagger ce simple POM dans svn, et de le deployer avec Maven.</description>
+
+	<organization>
+		<name>CTI</name>
+		<url>http://intracti.etat-ge.ch/accueil/index.asp</url>
+	</organization>
+
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://etatprd.etat-ge.ch:30402/ctidemande/browse/COMP-685</url>
+	</issueManagement>
+
+	<url>file://X:/commun/Melusine/projects_Website/AEL/AEL.MOTEUR.LOT.TPS_configuration/${version}/index.html</url>
+
+	<distributionManagement>
+		<site>
+			<id>projects_Website</id>
+			<url>${siteRepository}/AEL/AEL.MOTEUR.LOT.TPS_configuration/${version}</url>
+		</site>
+	</distributionManagement>
+
+	<!-- Cette section sera utilisee ulterieurement avec l'integration continue -->
+
+	<ciManagement>
+		<system>hudson</system>
+		<url>http://ic.etat-ge.ch:20xxx/hudson/job/AEL.MOTEUR.LOT.TPS_configuration/</url>
+		<notifiers>
+			<notifier>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+</project>
