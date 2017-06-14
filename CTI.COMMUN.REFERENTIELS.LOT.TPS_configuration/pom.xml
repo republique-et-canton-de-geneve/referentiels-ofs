@@ -9,7 +9,7 @@
 	</parent>
 
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
-		<artifactId>CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS_configuration</artifactId>
+		<artifactId>CTI.COMMUN.REFERENTIELS.LOT.TPS_configuration</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0</version>
 	<!-- 1.0 car par convention avec le service Integration le pom de configuration 
