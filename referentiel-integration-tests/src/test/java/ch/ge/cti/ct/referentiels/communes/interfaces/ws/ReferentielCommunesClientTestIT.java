@@ -4,7 +4,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,14 +26,14 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  */
 public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 
-	private static final Date NOW = new Date();
-	final ReferentielCommunesWS client = ReferentielCommunesClient.Factory
-		.getClient("http://localhost:26000/referentiels-ofs/communes/referentiel-communes?wsdl");
+    private static final Date NOW = new Date();
+    final ReferentielCommunesWS client = ReferentielCommunesClient.Factory
+	    .getClient("http://localhost:26000/referentiels-ofs/communes/referentiel-communes?wsdl");
 
-	public ReferentielCommunesClientTestIT() throws Exception{
-	    
-	}
-	
+    public ReferentielCommunesClientTestIT() throws Exception {
+
+    }
+
     @Test
     public void test() throws Exception {
 
@@ -51,8 +53,7 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 	assertTrue(client.searchCommuneDate("Gen", NOW).size() > 0);
 
 	assertTrue(client.searchCommuneRegexp("^gen[e]+").size() > 0);
-	assertTrue(client.searchCommuneDateRegexp("^gen[e]+", NOW)
-		.size() > 0);
+	assertTrue(client.searchCommuneDateRegexp("^gen[e]+", NOW).size() > 0);
 
 	assertNotNull(client.getCanton("GE"));
 	assertNotNull(client.getCantonDate("GE", NOW));
@@ -60,13 +61,15 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 	assertNotNull(client.getDistrictDate(101, NOW));
 	assertNotNull(client.getCommune(1001));
     }
-    
+
     /**
-     * Vérifie que les communes historiques délivrent plus de communes que la liste des actuelles
-     * @throws ReferentielOfsException 
+     * Vérifie que les communes historiques délivrent plus de communes que la
+     * liste des actuelles
+     * 
+     * @throws ReferentielOfsException
      */
     @Test
-    public void testCommunesActuelles() throws ReferentielOfsException{
+    public void testCommunesActuelles() throws ReferentielOfsException {
 	List<CantonWS> cantons = client.getCantons();
 	boolean ancienneCommune = false;
 	for (CantonWS canton : cantons) {
@@ -74,31 +77,62 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 	    List<CommuneWS> communes = client.getCommunesByCanton(codeCanton);
 	    for (CommuneWS commune : communes) {
 		Date validTo = commune.getValidTo();
-		    ancienneCommune |= (validTo != null);
+		ancienneCommune |= (validTo != null);
 	    }
 	}
-	Assert.assertTrue("Aucune commune recue n'a de date de validité expirée", ancienneCommune);
+	Assert.assertTrue(
+		"Aucune commune recue n'a de date de validité expirée",
+		ancienneCommune);
     }
-    
+
     /**
-     * Vérifie que les communes historiques délivrent plus de communes que la liste des actuelles
-     * @throws ReferentielOfsException 
+     * Vérifie que la recherche de commune historique délivre des communes avec
+     * une date d'expiration indiquée : commune supprimée dans le passé.
+     * 
+     * @throws ReferentielOfsException
      */
     @Test
-    public void testCommunesHistoriques() throws ReferentielOfsException{
+    public void testCommunesHistoriques() throws ReferentielOfsException {
 	List<CantonWS> cantons = client.getCantons();
 	boolean ancienneCommune = false;
 	for (CantonWS canton : cantons) {
 	    String codeCanton = canton.getCode();
-	    List<CommuneWS> communesHistoriques = client.getCommunesHistoriquesByCanton(codeCanton);
+	    List<CommuneWS> communesHistoriques = client
+		    .getCommunesHistoriquesByCanton(codeCanton);
 	    for (CommuneWS commune : communesHistoriques) {
 		Date validTo = commune.getValidTo();
-		if(validTo != null){
+		if (validTo != null) {
 		    ancienneCommune |= validTo.before(NOW);
 		}
 	    }
 	}
-	Assert.assertTrue("Aucune commune recue n'a de date de validité expirée", ancienneCommune);
+	Assert.assertTrue(
+		"Aucune commune recue n'a de date de validité expirée",
+		ancienneCommune);
+    }
+
+    /**
+     * Vérifie que les communes historiques ne délivre aucunne commune en double
+     */
+    @Test
+    public void testCommunesHistoriquesNoDuplicate()
+	    throws ReferentielOfsException {
+	List<CantonWS> cantons = client.getCantons();
+	for (CantonWS canton : cantons) {
+	    String codeCanton = canton.getCode();
+	    List<CommuneWS> communesHistoriques = client
+		    .getCommunesHistoriquesByCanton(codeCanton);
+	    Set<String> nomsCommune = new HashSet<String>();
+	    for (CommuneWS commune : communesHistoriques) {
+		String nom = commune.getNom();
+		Assert.assertFalse(
+			"La commune "
+				+ nom
+				+ " ne devrait pas apparaitre a double dans le résultat des communes historiques",
+			nomsCommune.contains(nom));
+		nomsCommune.add(nom);
+	    }
+	}
     }
 
 }

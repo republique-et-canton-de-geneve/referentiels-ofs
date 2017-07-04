@@ -1,9 +1,12 @@
 package ch.ge.cti.ct.referentiels.communes.service.impl;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -24,6 +27,7 @@ import ch.ge.cti.ct.referentiels.ofs.processing.NomStringMatcherPredicate;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
+import com.google.common.collect.ImmutableList;
 
 /**
  * Implémentation POJO du service
@@ -418,8 +422,17 @@ public enum ReferentielCommunesService implements
 		final FluentIterable<District> districts = cantons.transformAndConcat(
 			extractDistrictFunction);
 
-		List<Commune> sortedList = districts.transformAndConcat(extractCommuneFunction)
+		FluentIterable<Commune> transformAndConcat = districts.transformAndConcat(extractCommuneFunction);
+		ImmutableList<Commune> sortedList2 = transformAndConcat
 			.toSortedList(nomComparator);
+		Map<String, Commune> communes = new HashMap<String, Commune>();
+		for (Commune commune : sortedList2) {
+		    String nomCommune = commune.getNom();
+		    if(!communes.containsKey(nomCommune)){
+			communes.put(nomCommune, commune);
+		    }
+		}
+		List<Commune> sortedList = new ArrayList<Commune>(communes.values());
 		return sortedList;
     }
 }
