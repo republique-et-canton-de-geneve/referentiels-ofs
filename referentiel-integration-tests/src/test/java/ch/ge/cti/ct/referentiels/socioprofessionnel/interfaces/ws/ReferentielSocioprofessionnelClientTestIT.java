@@ -14,7 +14,8 @@ public class ReferentielSocioprofessionnelClientTestIT extends
     @Test
     public void test() throws Exception {
 	final ReferentielSocioprofessionnelWS client = ReferentielSocioprofessionnelClient.Factory
-		.getClient("http://localhost:26000/referentiels-ofs/socioprofessionnel/referentiel-socioprofessionnel?wsdl");
+		//.getClient("http://jbdev20-22:20000/referentiels-ofs/socioprofessionnel/referentiel-socioprofessionnel?wsdl");
+	        .getClient("http://localhost:8080/referentiels-ofs/socioprofessionnel/referentiel-socioprofessionnel?wsdl");
 
 	assertTrue(client.getNiveaux1().size() > 0);
 	assertTrue(client.searchNiveaux1("Dirigeant").size() > 0);

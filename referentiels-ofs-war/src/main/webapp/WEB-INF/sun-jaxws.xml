@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+	version="2.0">
+	<endpoint name="ReferentielCommunesSEI"
+		implementation="ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesSEI"
+		url-pattern="/communes/referentiel-communes" />
+	<endpoint name="ReferentielPaysTerritoiresSEI"
+		implementation="ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSEI"
+		url-pattern="/territoires/referentiel-pays" />
+	<endpoint name="ReferentielFormesJuridiquesSEI"
+		implementation="ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesSEI"
+		url-pattern="/formes-juridiques/referentiel-formes-juridiques" />
+	<endpoint name="ReferentielEtatCivilSEI"
+		implementation="ch.ge.cti.ct.referentiels.etatCivil.interfaces.ws.ReferentielEtatCivilSEI"
+		url-pattern="/etat-civil/referentiel-etat-civil" />
+	<endpoint name="ReferentielProfessionsSEI"
+		implementation="ch.ge.cti.ct.referentiels.professions.interfaces.ws.ReferentielProfessionsSEI"
+		url-pattern="/professions/referentiel-professions" />
+	<endpoint name="ReferentielSocioprofessionnelSEI"
+		implementation="ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.ReferentielSocioprofessionnelSEI"
+		url-pattern="/socioprofessionnel/referentiel-socioprofessionnel" />
+</endpoints>

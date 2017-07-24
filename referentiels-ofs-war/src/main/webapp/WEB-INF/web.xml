@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, 
+Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_3.dtd">
+
+<web-app>
+	<listener>
+		<listener-class>
+			com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+		</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>referentiel-communes</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>referentiel-pays</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>referentiel-formes-juridiques</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>referentiel-etat-civil</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>referentiel-professions</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>referentiel-socioprofessionnel</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>referentiel-communes</servlet-name>
+		<url-pattern>/communes/referentiel-communes</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>referentiel-pays</servlet-name>
+		<url-pattern>/territoires/referentiel-pays</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>referentiel-formes-juridiques</servlet-name>
+		<url-pattern>/formes-juridiques/referentiel-formes-juridiques</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>referentiel-etat-civil</servlet-name>
+		<url-pattern>/etat-civil/referentiel-etat-civil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>referentiel-professions</servlet-name>
+		<url-pattern>/professions/referentiel-professions</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>referentiel-socioprofessionnel</servlet-name>
+		<url-pattern>/socioprofessionnel/referentiel-socioprofessionnel</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

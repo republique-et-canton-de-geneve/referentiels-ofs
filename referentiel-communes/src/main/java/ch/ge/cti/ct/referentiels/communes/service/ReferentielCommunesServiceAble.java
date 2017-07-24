@@ -3,8 +3,6 @@ package ch.ge.cti.ct.referentiels.communes.service;
 import java.util.Date;
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.communes.model.Canton;
 import ch.ge.cti.ct.referentiels.communes.model.Commune;
 import ch.ge.cti.ct.referentiels.communes.model.District;
@@ -34,7 +32,7 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  * @author desmazièresj
  * 
  */
-@Local
+
 public interface ReferentielCommunesServiceAble {
 
     /**

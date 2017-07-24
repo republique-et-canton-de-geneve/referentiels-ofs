@@ -3,7 +3,6 @@ package ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -14,7 +13,6 @@ import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
 import org.apache.commons.lang.StringUtils;
-import org.jboss.wsf.spi.annotation.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +21,6 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.Cachable;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
-import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau1WS;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau2WS;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau1;
@@ -40,12 +37,9 @@ import com.google.common.collect.FluentIterable;
  * @author DESMAZIERESJ
  * 
  */
-@Stateless
 @WebService(name = ReferentielSocioprofessionnelWS.WEBSERVICE_NAME, serviceName = ReferentielSocioprofessionnelWS.SERVICE_NAME, portName = ReferentielSocioprofessionnelWS.PORT_NAME, targetNamespace = ReferentielSocioprofessionnelWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.ReferentielSocioprofessionnelWS")
-@WebContext(contextRoot = "/referentiels-ofs/socioprofessionnel", urlPattern = "/referentiel-socioprofessionnel")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
-@Interceptors({ ReferentielStatsIntercept.class,
-	ReferentielOfsExceptionIntercept.class,
+@Interceptors({ ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
 public class ReferentielSocioprofessionnelSEI implements
 	ReferentielSocioprofessionnelWS, Loggable {

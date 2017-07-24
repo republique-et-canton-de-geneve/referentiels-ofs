@@ -13,13 +13,14 @@ public class ReferentielPaysTerritoiresClientTestIT extends AbstractClientTest {
     @Test
     public void test() throws Exception {
 	final ReferentielPaysTerritoiresWS client = ReferentielPaysTerritoiresClient.Factory
-		.getClient("http://localhost:26000/referentiels-ofs/territoires/referentiel-pays?wsdl");
+		//.getClient("http://jbdev20-22:20000/referentiels-ofs/territoires/referentiel-pays?wsdl");
+	        .getClient("http://localhost:8080/referentiels-ofs/territoires/referentiel-pays?wsdl");
 	assertTrue(client.getContinents().size() > 0);
 	assertTrue(client.getRegions().size() > 0);
 	assertTrue(client.getPays().size() > 0);
 
 	assertTrue(client.getPaysByContinent(1).size() > 0);
-	assertTrue(client.getPaysByRegion(1).size() > 0);
+	assertTrue(client.getPaysByRegion(11).size() > 0);
 	assertTrue(client.getRegionsByContinent(1).size() > 0);
 
 	assertTrue(client.searchPays("Fr").size() > 0);

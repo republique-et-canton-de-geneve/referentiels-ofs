@@ -2,8 +2,6 @@ package ch.ge.cti.ct.referentiels.professions.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.professions.model.Classe;
 import ch.ge.cti.ct.referentiels.professions.model.Division;
@@ -19,7 +17,6 @@ import ch.ge.cti.ct.referentiels.professions.model.ReferentielProfessions;
  * @author desmazièresj
  * 
  */
-@Local
 public interface ReferentielProfessionsServiceAble {
 
     /**

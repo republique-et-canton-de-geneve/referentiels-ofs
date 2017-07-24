@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<server>
-	<mbean code="ch.ge.cti.ct.referentiels.socioprofessionnel.service.jmx.ReferentielSocioprofessionnelMgt" name="referentiels.socioprofessionnel:service=ReferentielSocioprofessionnel" />
-</server> 

@@ -23,8 +23,9 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>ejb-api</artifactId>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-interceptor_3.0_spec</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<artifactId>junit</artifactId>
@@ -43,37 +44,37 @@
 		</dependency>
 
 		<!-- dépendances JBOSS pour JAX-WS -->
-		<dependency>
-			<groupId>libStd.jboss-as.common.lib</groupId>
-			<artifactId>jbossws-spi</artifactId>
-			<version>5.1.2</version>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>libStd.jboss-as.common.lib</groupId> -->
+<!-- 			<artifactId>jbossws-spi</artifactId> -->
+<!-- 			<version>5.1.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 		<!-- dépendances JBOSS pour JMX -->
-		<dependency>
-			<groupId>libStd.jboss-as.lib</groupId>
-			<artifactId>jboss-system-jmx</artifactId>
-			<version>5.1.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>libStd.jboss-as.lib</groupId>
-			<artifactId>jboss-kernel</artifactId>
-			<version>5.1.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>libStd.jboss-as.lib</groupId>
-			<artifactId>jboss-j2se</artifactId>
-			<version>5.1.2</version>
-			<scope>provided</scope>
-		</dependency>		
-		<dependency>
-			<groupId>libStd.jboss-as.lib</groupId>
-			<artifactId>jboss-system</artifactId>
-			<version>5.1.2</version>
-			<scope>provided</scope>
-		</dependency>		
+<!-- 		<dependency> -->
+<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
+<!-- 			<artifactId>jboss-system-jmx</artifactId> -->
+<!-- 			<version>5.1.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
+<!-- 			<artifactId>jboss-kernel</artifactId> -->
+<!-- 			<version>5.1.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
+<!-- 			<artifactId>jboss-j2se</artifactId> -->
+<!-- 			<version>5.1.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency>		 -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
+<!-- 			<artifactId>jboss-system</artifactId> -->
+<!-- 			<version>5.1.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency>		 -->
 	</dependencies>
 	
 </project>

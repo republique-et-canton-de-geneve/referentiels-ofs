@@ -2,8 +2,6 @@ package ch.ge.cti.ct.referentiels.formeJuridique.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.ReferentielFormesJuridiques;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -16,7 +14,6 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  * @author desmazièresj
  * 
  */
-@Local
 public interface ReferentielFormesJuridiquesServiceAble {
 
     /**

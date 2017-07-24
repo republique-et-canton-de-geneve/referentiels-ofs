@@ -2,8 +2,6 @@ package ch.ge.cti.ct.referentiels.etatCivil.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
 import ch.ge.cti.ct.referentiels.etatCivil.model.ReferentielEtatCivil;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -16,7 +14,6 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
  * @author desmazièresj
  * 
  */
-@Local
 public interface ReferentielEtatCivilServiceAble {
 
     /**

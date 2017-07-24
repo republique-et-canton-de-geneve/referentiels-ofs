@@ -13,7 +13,8 @@ public class ReferentielProfessionsClientTestIT extends AbstractClientTest {
     @Test
     public void test() throws Exception {
 	final ReferentielProfessionsWS client = ReferentielProfessionsClient.Factory
-		.getClient("http://fs-282892:26000/referentiels-ofs/professions/referentiel-professions?wsdl");
+		//.getClient("http://jbdev20-22:20000/referentiels-ofs/professions/referentiel-professions?wsdl");
+	        .getClient("http://localhost:8080/referentiels-ofs/professions/referentiel-professions?wsdl");
 	assertTrue(client.getClasses().size() > 0);
 	assertTrue(client.getDivisions().size() > 0);
 	assertTrue(client.getGenres().size() > 0);

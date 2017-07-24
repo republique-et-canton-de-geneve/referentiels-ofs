@@ -2,8 +2,6 @@ package ch.ge.cti.ct.referentiels.socioprofessionnel.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau1;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau2;
@@ -18,7 +16,6 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.model.ReferentielSocioprofes
  * @author desmazièresj
  * 
  */
-@Local
 public interface ReferentielSocioprofessionnelServiceAble {
 
     /**

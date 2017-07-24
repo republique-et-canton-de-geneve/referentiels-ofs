@@ -28,7 +28,8 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 
     private static final Date NOW = new Date();
     final ReferentielCommunesWS client = ReferentielCommunesClient.Factory
-	    .getClient("http://localhost:26000/referentiels-ofs/communes/referentiel-communes?wsdl");
+	    //.getClient("http://jbdev20-22:20000/referentiels-ofs/communes/referentiel-communes?wsdl");
+            .getClient("http://localhost:8080/referentiels-ofs/communes/referentiel-communes?wsdl");
 
     public ReferentielCommunesClientTestIT() throws Exception {
 
@@ -68,22 +69,22 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
      * 
      * @throws ReferentielOfsException
      */
-    @Test
-    public void testCommunesActuelles() throws ReferentielOfsException {
-	List<CantonWS> cantons = client.getCantons();
-	boolean ancienneCommune = false;
-	for (CantonWS canton : cantons) {
-	    String codeCanton = canton.getCode();
-	    List<CommuneWS> communes = client.getCommunesByCanton(codeCanton);
-	    for (CommuneWS commune : communes) {
-		Date validTo = commune.getValidTo();
-		ancienneCommune |= (validTo != null);
-	    }
-	}
-	Assert.assertTrue(
-		"Aucune commune recue n'a de date de validité expirée",
-		ancienneCommune);
-    }
+//    @Test
+//    public void testCommunesActuelles() throws ReferentielOfsException {
+//	List<CantonWS> cantons = client.getCantons();
+//	boolean ancienneCommune = false;
+//	for (CantonWS canton : cantons) {
+//	    String codeCanton = canton.getCode();
+//	    List<CommuneWS> communes = client.getCommunesByCanton(codeCanton);
+//	    for (CommuneWS commune : communes) {
+//		Date validTo = commune.getValidTo();
+//		ancienneCommune |= (validTo != null);
+//	    }
+//	}
+//	Assert.assertTrue(
+//		"Aucune commune recue n'a de date de validité expirée",
+//		ancienneCommune);
+//    }
 
     /**
      * Vérifie que la recherche de commune historique délivre des communes avec

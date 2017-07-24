@@ -2,7 +2,6 @@ package ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -12,7 +11,6 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
-import org.jboss.wsf.spi.annotation.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +21,6 @@ import ch.ge.cti.ct.referentiels.ofs.Loggable;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsExceptionIntercept;
 import ch.ge.cti.ct.referentiels.ofs.cache.ReferentielOfsCacheIntercept;
-import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
 
 /**
  * Exposition du service au format JAX-WS
@@ -31,12 +28,9 @@ import ch.ge.cti.ct.referentiels.ofs.service.jmx.ReferentielStatsIntercept;
  * @author DESMAZIERESJ
  * 
  */
-@Stateless
 @WebService(name = ReferentielFormesJuridiquesWS.WEBSERVICE_NAME, serviceName = ReferentielFormesJuridiquesWS.SERVICE_NAME, portName = ReferentielFormesJuridiquesWS.PORT_NAME, targetNamespace = ReferentielFormesJuridiquesWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesWS")
-@WebContext(contextRoot = "/referentiels-ofs/formes-juridiques", urlPattern = "/referentiel-formes-juridiques")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
-@Interceptors({ ReferentielStatsIntercept.class,
-	ReferentielOfsExceptionIntercept.class,
+@Interceptors({ ReferentielOfsExceptionIntercept.class,
 	ReferentielOfsCacheIntercept.class })
 public class ReferentielFormesJuridiquesSEI implements
 	ReferentielFormesJuridiquesWS, Loggable {

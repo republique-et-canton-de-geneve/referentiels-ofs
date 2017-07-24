@@ -2,8 +2,6 @@ package ch.ge.cti.ct.referentiels.pays.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 import ch.ge.cti.ct.referentiels.pays.model.Continent;
 import ch.ge.cti.ct.referentiels.pays.model.Pays;
@@ -18,7 +16,6 @@ import ch.ge.cti.ct.referentiels.pays.model.Region;
  * @author desmazièresj
  * 
  */
-@Local
 public interface ReferentielPaysTerritoiresServiceAble {
 
     /**
