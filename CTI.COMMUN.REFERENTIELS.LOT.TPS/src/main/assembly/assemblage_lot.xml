@@ -53,7 +53,7 @@
 			<directory>target</directory>
 			<outputDirectory>/lib</outputDirectory>
 			<includes>
-				<include>*.ear</include>
+				<include>*.war</include>
 			</includes>
 		</fileSet>
 	</fileSets>	

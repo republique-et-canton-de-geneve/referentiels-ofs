@@ -34,9 +34,9 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>ch.ge.cti.ct.referentiels</groupId>
-									<artifactId>referentiels-ofs-ear</artifactId>
+									<artifactId>referentiels-ofs</artifactId>
 									<version>${project.version}</version>
-									<type>ear</type>
+									<type>war</type>
 									<outputDirectory>${project.build.directory}</outputDirectory>
 								</artifactItem>
 							</artifactItems>

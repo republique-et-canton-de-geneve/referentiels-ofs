@@ -71,7 +71,6 @@
 
 	<modules>
 		<module>referentiels-api</module>
-<!-- 		<module>referentiels-ofs-ear</module> -->
 		<module>referentiel-communes</module>
 		<module>referentiel-pays</module>
 		<module>referentiel-formes-juridiques</module>
@@ -81,7 +80,7 @@
 		<module>referentiel-integration-tests</module>
 		<module>referentiels-ofs-war</module>
 <!-- 		<module>CTI.COMMUN.REFERENTIEL-OFS.LOT.TPS_configuration</module> -->
-<!-- 		<module>CTI.COMMUN.REFERENTIELS.LOT.TPS</module> -->
+		<module>CTI.COMMUN.REFERENTIELS.LOT.TPS</module>
 	</modules>
 
 	<build>

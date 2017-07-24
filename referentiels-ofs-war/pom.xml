@@ -9,7 +9,7 @@
 		<version>1.0.12-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>referentiels-ofs-war</artifactId>
+	<artifactId>referentiels-ofs</artifactId>
 	<packaging>war</packaging>
 
 	<name>+    ${project.artifactId}</name>
