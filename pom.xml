@@ -77,8 +77,9 @@
 		<module>referentiel-etat-civil</module>
 		<module>referentiel-professions</module>
 		<module>referentiel-categorie-socioprofessionnelles</module>
-		<module>referentiel-integration-tests</module>
 		<module>referentiels-ofs-war</module>
+		<module>referentiel-integration-tests</module>
+		<module>referentiel-soapui-tests</module>
 <!-- 		<module>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS_configuration</module> -->
 		<module>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</module>
 	</modules>
