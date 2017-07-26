@@ -22,7 +22,7 @@
 				<configuration>
 					<useOutputFolderPerProject>true</useOutputFolderPerProject>
 					<outputFolder>${project.build.directory}/reports</outputFolder>
-					<testSuite>referentiel-communes-TestSuite</testSuite>
+					<testSuite>referentiel-TestSuite</testSuite>
 					<junitReport>true</junitReport>
 					<printReport>true</printReport>
 				</configuration>
@@ -35,6 +35,56 @@
 						</goals>
 						<configuration>
 							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Communes-soapui-project.xml</projectFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>TEST_Referentiel-Etat-Civil</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Etat-Civil-soapui-project.xml</projectFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>TEST_Referentiel-Formes-Juridiques</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Formes-Juridiques-soapui-project.xml</projectFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>TEST_Referentiel-Pays</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Pays-soapui-project.xml</projectFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>TEST_Referentiel-Professions</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Professions-soapui-project.xml</projectFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>TEST_Referentiel-Socioprofessionnel</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${project.basedir}/src/test/soapui/Referentiel-Socioprofessionnel-soapui-project.xml</projectFile>
 						</configuration>
 					</execution>
 				</executions>
