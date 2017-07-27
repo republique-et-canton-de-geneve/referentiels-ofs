@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>ct_referentiels-ofs</artifactId>
-		<version>1.0.12-SNAPSHOT</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<artifactId>referentiels-api</artifactId>
