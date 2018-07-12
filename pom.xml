@@ -70,6 +70,7 @@
 	</distributionManagement>
 
 	<modules>
+		<module>referentiel-SdmxSourceUtil</module>
 		<module>referentiels-api</module>
 		<module>referentiel-communes</module>
 		<module>referentiel-pays</module>
@@ -188,6 +189,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+		<dependency>
+			<groupId>org.sdmxsource</groupId>
+			<artifactId>SdmxApi</artifactId>
+			<version>1.0.5</version>
+		</dependency>
 			<dependency>
 				<groupId>org.sdmxsource</groupId>
 				<artifactId>SdmxStructureParser</artifactId>
