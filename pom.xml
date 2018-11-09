@@ -57,9 +57,9 @@
 	</contributors>
 
 	<scm>
-		<developerConnection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</developerConnection>
-		<connection>scm:svn:http://scm.etat-ge.ch:21080/cti.composant/ct_referentiels-ofs/trunk</connection>
-		<url>http://scm.etat-ge.ch:21080/cti.melusine/tags/ct_jee5_parent-1.0.83/ct_referentiels-ofs</url>
+		<developerConnection>scm:git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</developerConnection>
+		<connection>scm:git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</connection>
+		<url>git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</url>
 	</scm>
 
 	<distributionManagement>
