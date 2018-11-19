@@ -12,6 +12,10 @@
 
 	<description>Tests SOAPUI des référentiels</description>
 
+	<properties>
+		<soapui-phase>integration-test</soapui-phase>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -19,7 +23,9 @@
 				<artifactId>soapui-maven-plugin</artifactId>
 				<version>5.2.1</version>
 				<configuration>
+					<!--
 					<useOutputFolderPerProject>true</useOutputFolderPerProject>
+					-->
 					<outputFolder>${project.build.directory}/reports</outputFolder>
 					<testSuite>referentiel-TestSuite</testSuite>
 					<junitReport>true</junitReport>
@@ -28,7 +34,7 @@
 				<executions>
 					<execution>
 						<id>TEST_Referentiel-Communes</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -38,7 +44,7 @@
 					</execution>
 					<execution>
 						<id>TEST_Referentiel-Etat-Civil</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -48,7 +54,7 @@
 					</execution>
 					<execution>
 						<id>TEST_Referentiel-Formes-Juridiques</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -58,7 +64,7 @@
 					</execution>
 					<execution>
 						<id>TEST_Referentiel-Pays</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -68,7 +74,7 @@
 					</execution>
 					<execution>
 						<id>TEST_Referentiel-Professions</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -78,7 +84,7 @@
 					</execution>
 					<execution>
 						<id>TEST_Referentiel-Socioprofessionnel</id>
-						<phase>test</phase>
+						<phase>${soapui-phase}</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>

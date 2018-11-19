@@ -19,6 +19,45 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>undeploy</goal>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<container>
+						<containerId>tomcat8x</containerId>
+						<type>remote</type>
+					</container>
+					<configuration>
+						<type>runtime</type>
+						<properties>
+							<cargo.hostname>tomlab20-01.ceti.etat-ge.ch</cargo.hostname>
+							<cargo.servlet.port>20100</cargo.servlet.port>
+							<cargo.remote.username>tomcat</cargo.remote.username>
+							<cargo.remote.password>tomcat</cargo.remote.password>
+						</properties>
+					</configuration>
+					<deployables>
+						<deployable>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<type>war</type>
+							<properties>
+								<context>referentiels-ofs</context>
+							</properties>
+							<pingURL>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/communes/referentiel-communes?wsdl</pingURL>
+						</deployable>
+					</deployables>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
