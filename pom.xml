@@ -62,6 +62,11 @@
 		<url>git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</url>
 	</scm>
 
+	<ciManagement>
+		<system>jenkins</system>
+		<url>https://prod.etat-ge.ch/jenkins_act/job/ct_referentiels-ofs</url>
+	</ciManagement>
+
 	<distributionManagement>
 		<site>
 			<id>projects_Website</id>
@@ -81,7 +86,6 @@
 		<module>referentiels-ofs-war</module>
 		<module>referentiel-integration-tests</module>
 		<module>referentiel-soapui-tests</module>
-<!-- 		<module>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS_configuration</module> -->
 		<module>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</module>
 	</modules>
 
@@ -138,7 +142,11 @@
 						</execution>
 					</executions>
 				</plugin>
-
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>1.7.0</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
