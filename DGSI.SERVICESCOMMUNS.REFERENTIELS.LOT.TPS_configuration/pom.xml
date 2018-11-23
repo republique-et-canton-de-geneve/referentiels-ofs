@@ -38,12 +38,12 @@
 		<url>http://etatprd.etat-ge.ch:30402/ctidemande/browse/COMP-685</url>
 	</issueManagement>
 
-	<url>file://X:/commun/Melusine/projects_Website/AEL/AEL.MOTEUR.LOT.TPS_configuration/${version}/index.html</url>
+	<url>file://X:/commun/Melusine/projects_Website/AEL/AEL.MOTEUR.LOT.TPS_configuration/${project.version}/index.html</url>
 
 	<distributionManagement>
 		<site>
 			<id>projects_Website</id>
-			<url>${siteRepository}/AEL/AEL.MOTEUR.LOT.TPS_configuration/${version}</url>
+			<url>${siteRepository}/AEL/AEL.MOTEUR.LOT.TPS_configuration/${project.version}</url>
 		</site>
 	</distributionManagement>
 
