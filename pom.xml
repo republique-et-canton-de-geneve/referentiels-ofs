@@ -19,8 +19,10 @@
 		http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/sdmx.html
 	</description>
 
+	<url>https://prod.etat-ge.ch/wikiadm/display/ORGCSDEV/ct-referentiels-ofs</url>
+
 	<properties>
-		<skipTests>true</skipTests>
+		<skipTests>false</skipTests>
 	</properties>
 
 	<developers>
