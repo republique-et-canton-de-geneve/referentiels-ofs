@@ -4,7 +4,7 @@ import org.junit.BeforeClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AbstractDataTest {
+public abstract class AbstractDataTest {
 
 	protected static ApplicationContext ctxt;
 

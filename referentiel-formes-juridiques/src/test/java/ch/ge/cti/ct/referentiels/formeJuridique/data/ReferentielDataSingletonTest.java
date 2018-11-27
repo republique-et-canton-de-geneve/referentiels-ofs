@@ -14,10 +14,10 @@ public class ReferentielDataSingletonTest extends AbstractReferentielTest {
 
     @Test
     public void testGetData() throws ReferentielOfsException {
-	final ReferentielFormesJuridiques ref1 = ReferentielDataSingleton.instance
+	final ReferentielFormesJuridiques ref1 = ReferentielDataSingleton.INSTANCE
 		.getData();
 	assertNotNull(ref1);
-	final ReferentielFormesJuridiques ref2 = ReferentielDataSingleton.instance
+	final ReferentielFormesJuridiques ref2 = ReferentielDataSingleton.INSTANCE
 		.getData();
 	assertNotNull(ref2);
 	assertEquals(ref1, ref2);

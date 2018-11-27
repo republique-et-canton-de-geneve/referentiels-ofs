@@ -42,13 +42,11 @@ import com.google.common.collect.FluentIterable;
  */
 @WebService(name = ReferentielCommunesWS.WEBSERVICE_NAME, serviceName = ReferentielCommunesWS.SERVICE_NAME, portName = ReferentielCommunesWS.PORT_NAME, targetNamespace = ReferentielCommunesWS.TARGET_NAMESPACE, endpointInterface = "ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesWS")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
-@Interceptors(
-{ ReferentielOfsExceptionIntercept.class, ReferentielOfsCacheIntercept.class })
+@Interceptors({ReferentielOfsExceptionIntercept.class, ReferentielOfsCacheIntercept.class})
 public class ReferentielCommunesSEI implements ReferentielCommunesWS, Loggable
 {
-
     /** Référence au service d'implémentation */
-    private final ReferentielCommunesServiceAble service = ReferentielCommunesService.instance;
+    private static final ReferentielCommunesServiceAble service = ReferentielCommunesService.INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory.getLogger(ReferentielCommunesSEI.class);

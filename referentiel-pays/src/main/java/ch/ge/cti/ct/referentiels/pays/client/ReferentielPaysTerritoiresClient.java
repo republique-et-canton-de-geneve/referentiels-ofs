@@ -30,7 +30,7 @@ public final class ReferentielPaysTerritoiresClient extends Service {
     /**
      * Instanciation du client WS
      * 
-     * @return instance du client WS
+     * @return INSTANCE du client WS
      */
     @WebEndpoint(name = "referentiel-formes-juridiques")
     public ReferentielPaysTerritoiresWS getReferentielPaysTerritoiresPort() {
@@ -43,6 +43,10 @@ public final class ReferentielPaysTerritoiresClient extends Service {
      * 
      */
     public static class Factory {
+
+    	private Factory() {
+	    }
+
 	/**
 	 * Instanciation du client WS pour un wsdl donné
 	 * 

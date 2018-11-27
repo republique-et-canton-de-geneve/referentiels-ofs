@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -48,7 +47,7 @@ public class RefNiveau2SearchStringTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Niveau2> niveau2s = ReferentielSocioprofessionnelService.instance
+	final List<Niveau2> niveau2s = ReferentielSocioprofessionnelService.INSTANCE
 		.searchNiveaux2(searchString);
 	if (countNiveau2s == -1) {
 	    assertNull("Niveau2s [" + searchString + "] est incorrect",

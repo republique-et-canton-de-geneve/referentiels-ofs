@@ -13,14 +13,14 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau1;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.model.Niveau2;
 
-public class AbstractRefTest extends AbstractReferentielTest {
+public abstract class AbstractRefTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
-	ReferentielSocioprofessionnelService.instance.getReferentiel();
+	ReferentielSocioprofessionnelService.INSTANCE.getReferentiel();
     }
 
     public void assertNiveau1(final String message, final Niveau1 niveau1) {

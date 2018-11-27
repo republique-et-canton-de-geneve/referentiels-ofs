@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.DivisionWS;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GenreWS;
 import ch.ge.cti.ct.referentiels.professions.interfaces.ws.model.GroupeWS;
 
-public class AbstractRefWSTest extends AbstractReferentielTest {
+public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();

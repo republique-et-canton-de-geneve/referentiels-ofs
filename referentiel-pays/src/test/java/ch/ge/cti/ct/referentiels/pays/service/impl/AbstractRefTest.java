@@ -15,14 +15,14 @@ import ch.ge.cti.ct.referentiels.pays.model.Continent;
 import ch.ge.cti.ct.referentiels.pays.model.Pays;
 import ch.ge.cti.ct.referentiels.pays.model.Region;
 
-public class AbstractRefTest extends AbstractReferentielTest {
+public abstract class AbstractRefTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
-	ReferentielPaysTerritoiresService.instance.getReferentiel();
+	ReferentielPaysTerritoiresService.INSTANCE.getReferentiel();
     }
 
     protected void assertContinent(final Continent continent) {

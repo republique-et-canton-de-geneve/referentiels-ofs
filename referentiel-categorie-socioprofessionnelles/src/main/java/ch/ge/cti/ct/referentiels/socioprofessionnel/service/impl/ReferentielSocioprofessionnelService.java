@@ -26,9 +26,9 @@ import com.google.common.collect.FluentIterable;
  * @author desmazieresj
  * 
  */
-public enum ReferentielSocioprofessionnelService implements
-	ReferentielSocioprofessionnelServiceAble {
-    instance;
+public enum ReferentielSocioprofessionnelService implements	ReferentielSocioprofessionnelServiceAble {
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -37,14 +37,14 @@ public enum ReferentielSocioprofessionnelService implements
     @Override
     public ReferentielSocioprofessionnel getReferentiel()
 	    throws ReferentielOfsException {
-	return ReferentielDataSingleton.instance.getData();
+	return ReferentielDataSingleton.INSTANCE.getData();
     }
 
     @Override
     public List<Niveau1> getNiveaux1() throws ReferentielOfsException {
 	LOG.debug("getNiveaux1()");
 	return FluentIterable.from(
-		ReferentielDataSingleton.instance.getData().getNiveau1())
+		ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.toSortedList(nomComparator);
     }
 
@@ -56,7 +56,7 @@ public enum ReferentielSocioprofessionnelService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.filter(new IdFilterPredicate(niveau1Id)).first().orNull();
     }
 
@@ -68,7 +68,7 @@ public enum ReferentielSocioprofessionnelService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.filter(new NomStringMatcherPredicate(pattern))
 		.toSortedList(nomComparator);
     }
@@ -78,10 +78,10 @@ public enum ReferentielSocioprofessionnelService implements
 	    throws ReferentielOfsException {
 	LOG.debug("searchNiveau1Regexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
-	    return null;
+		return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.filter(new NomRegexpMatcherPredicate(regexp))
 		.toSortedList(nomComparator);
     }
@@ -90,7 +90,7 @@ public enum ReferentielSocioprofessionnelService implements
     public List<Niveau2> getNiveaux2() throws ReferentielOfsException {
 	LOG.debug("getNiveaux2()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.transformAndConcat(extractNiveaux2Function)
 		.toSortedList(nomComparator);
     }
@@ -100,10 +100,10 @@ public enum ReferentielSocioprofessionnelService implements
 	    throws ReferentielOfsException {
 	LOG.debug("getNiveaux2(niveau1Id='{}')", niveau1Id);
 	if (niveau1Id <= 0) {
-	    return null;
+		return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.filter(new IdFilterPredicate(niveau1Id))
 		.transformAndConcat(extractNiveaux2Function)
 		.toSortedList(nomComparator);
@@ -117,7 +117,7 @@ public enum ReferentielSocioprofessionnelService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.transformAndConcat(extractNiveaux2Function)
 		.filter(new IdFilterPredicate(niveau2Id)).first().orNull();
     }
@@ -130,7 +130,7 @@ public enum ReferentielSocioprofessionnelService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.transformAndConcat(extractNiveaux2Function)
 		.filter(new NomStringMatcherPredicate(pattern))
 		.toSortedList(nomComparator);
@@ -141,10 +141,10 @@ public enum ReferentielSocioprofessionnelService implements
 	    throws ReferentielOfsException {
 	LOG.debug("searchNiveau2Regexp(regexp='{}')", regexp);
 	if (StringUtils.isBlank(regexp)) {
-	    return null;
+		return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getNiveau1())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getNiveau1())
 		.transformAndConcat(extractNiveaux2Function)
 		.filter(new NomRegexpMatcherPredicate(regexp))
 		.toSortedList(nomComparator);

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -17,7 +16,7 @@ public class RefRegionsTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Region> regions = ReferentielPaysTerritoiresService.instance
+	final List<Region> regions = ReferentielPaysTerritoiresService.INSTANCE
 		.getRegions();
 	assertEquals("Ls liste des regions est incorrecte", 32, regions.size());
 	for (Region region : regions) {

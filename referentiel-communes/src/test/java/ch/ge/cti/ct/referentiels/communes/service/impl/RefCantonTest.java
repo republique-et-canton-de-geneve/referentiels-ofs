@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -67,9 +66,9 @@ public class RefCantonTest extends AbstractRefTest {
     public void testGetCanton() throws ReferentielOfsException {
 	Canton canton = null;
 	if (dateValid == null) {
-	    canton = ReferentielCommunesService.instance.getCanton(codeCanton);
+	    canton = ReferentielCommunesService.INSTANCE.getCanton(codeCanton);
 	} else {
-	    canton = ReferentielCommunesService.instance.getCanton(codeCanton,
+	    canton = ReferentielCommunesService.INSTANCE.getCanton(codeCanton,
 		    dateValid);
 	}
 	final String msgPrefix = "getCanton('" + codeCanton + "',"

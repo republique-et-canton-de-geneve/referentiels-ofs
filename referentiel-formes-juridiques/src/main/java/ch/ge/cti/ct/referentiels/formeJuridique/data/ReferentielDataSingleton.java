@@ -6,16 +6,17 @@ import ch.ge.cti.ct.referentiels.formeJuridique.model.ReferentielFormesJuridique
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 /**
- * Singleton de stockage de l'instance du ReferentielFormesJuridiques <br/>
+ * Singleton de stockage de l'INSTANCE du ReferentielFormesJuridiques <br/>
  * Le singleton permet de ne charger le fichier SDMX qu'une seule fois.
  * 
  * @author desmazieresj
  * 
  */
 public enum ReferentielDataSingleton {
-    instance;
 
-    /** instance de la classe de lecture du flux XML */
+    INSTANCE;
+
+    /** INSTANCE de la classe de lecture du flux XML */
     private final ServiceDataReader reader = new ServiceDataReader();
     /** référentiel instancié */
     private ReferentielFormesJuridiques data;

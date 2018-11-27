@@ -35,9 +35,9 @@ import com.google.common.collect.ImmutableList;
  * @author desmazieresj
  * 
  */
-public enum ReferentielCommunesService implements
-	ReferentielCommunesServiceAble {
-    instance;
+public enum ReferentielCommunesService implements ReferentielCommunesServiceAble {
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -45,7 +45,7 @@ public enum ReferentielCommunesService implements
 
     @Override
     public ReferentielCommunes getReferentiel() throws ReferentielOfsException {
-	return ReferentielDataSingleton.instance.getData();
+	return ReferentielDataSingleton.INSTANCE.getData();
     }
 
     @Override
@@ -115,7 +115,7 @@ public enum ReferentielCommunesService implements
 	LOG.debug("getCantons(dateValid='{}')", dateValid);
 	// on retourne une copie de la liste des cantons
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.filter(new CantonValidPredicate(dateValid))
 		.toSortedList(cantonComparator);
     }
@@ -207,7 +207,7 @@ public enum ReferentielCommunesService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new IdFilterPredicate(idCommune))
@@ -223,7 +223,7 @@ public enum ReferentielCommunesService implements
 	    return new LinkedList<Commune>();
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
@@ -247,7 +247,7 @@ public enum ReferentielCommunesService implements
 	    return new LinkedList<Commune>();
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.transformAndConcat(extractDistrictFunction)
 		.transformAndConcat(extractCommuneFunction)
 		.filter(new CommuneValidPredicate(dateValid))
@@ -272,7 +272,7 @@ public enum ReferentielCommunesService implements
     private FluentIterable<Canton> extractCanton(final String codeCanton,
 	    final Date dateValid) throws ReferentielOfsException {
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.filter(new Predicate<Canton>() {
 		    @Override
 		    public boolean apply(final Canton canton) {
@@ -293,7 +293,7 @@ public enum ReferentielCommunesService implements
     private FluentIterable<District> extractDistrict(final int idDistrict,
 	    final Date dateValid) throws ReferentielOfsException {
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getCanton())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getCanton())
 		.filter(new CantonValidPredicate(dateValid))
 		.transformAndConcat(extractDistrictFunction)
 		.filter(new IdFilterPredicate(idDistrict))
@@ -432,7 +432,6 @@ public enum ReferentielCommunesService implements
 			communes.put(nomCommune, commune);
 		    }
 		}
-		List<Commune> sortedList = new ArrayList<Commune>(communes.values());
-		return sortedList;
+		return new ArrayList<Commune>(communes.values());
     }
 }

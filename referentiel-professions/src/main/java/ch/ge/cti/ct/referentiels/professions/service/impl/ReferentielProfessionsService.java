@@ -28,9 +28,9 @@ import com.google.common.collect.FluentIterable;
  * @author desmazieresj
  * 
  */
-public enum ReferentielProfessionsService implements
-	ReferentielProfessionsServiceAble {
-    instance;
+public enum ReferentielProfessionsService implements ReferentielProfessionsServiceAble {
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -39,14 +39,14 @@ public enum ReferentielProfessionsService implements
     @Override
     public ReferentielProfessions getReferentiel()
 	    throws ReferentielOfsException {
-	return ReferentielDataSingleton.instance.getData();
+	return ReferentielDataSingleton.INSTANCE.getData();
     }
 
     @Override
     public List<Division> getDivisions() throws ReferentielOfsException {
 	LOG.debug("getDivisions()");
 	return FluentIterable.from(
-		ReferentielDataSingleton.instance.getData().getDivision())
+		ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.toSortedList(nomComparator);
     }
 
@@ -58,7 +58,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.filter(new IdFilterPredicate(divisionId)).first().orNull();
     }
 
@@ -70,7 +70,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.filter(new NomStringMatcherPredicate(pattern))
 		.toSortedList(nomComparator);
     }
@@ -83,7 +83,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.filter(new NomRegexpMatcherPredicate(regexp))
 		.toSortedList(nomComparator);
     }
@@ -92,7 +92,7 @@ public enum ReferentielProfessionsService implements
     public List<Classe> getClasses() throws ReferentielOfsException {
 	LOG.debug("getClasses()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.toSortedList(nomComparator);
     }
@@ -105,7 +105,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.filter(new IdFilterPredicate(divisionId))
 		.transformAndConcat(extractClassesFunction)
 		.toSortedList(nomComparator);
@@ -118,7 +118,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.filter(new IdFilterPredicate(classeId)).first().orNull();
     }
@@ -131,7 +131,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.filter(new NomStringMatcherPredicate(pattern))
 		.toSortedList(nomComparator);
@@ -145,7 +145,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.filter(new NomRegexpMatcherPredicate(regexp))
 		.toSortedList(nomComparator);
@@ -155,7 +155,7 @@ public enum ReferentielProfessionsService implements
     public List<Groupe> getGroupes() throws ReferentielOfsException {
 	LOG.debug("getGroupes()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.toSortedList(nomComparator);
@@ -169,7 +169,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.filter(new IdFilterPredicate(classeId))
 		.transformAndConcat(extractGroupesFunction)
@@ -183,11 +183,11 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.filter(new IdFilterPredicate(groupeId)).first().orNull();
-    };
+    }
 
     @Override
     public List<Groupe> searchGroupe(final String pattern)
@@ -197,7 +197,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.filter(new NomStringMatcherPredicate(pattern))
@@ -212,7 +212,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.filter(new NomRegexpMatcherPredicate(regexp))
@@ -223,7 +223,7 @@ public enum ReferentielProfessionsService implements
     public List<Genre> getGenres() throws ReferentielOfsException {
 	LOG.debug("getGenres()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.transformAndConcat(extractGenresFunction)
@@ -238,7 +238,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.filter(new IdFilterPredicate(groupeId))
@@ -253,7 +253,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.transformAndConcat(extractGenresFunction)
@@ -268,7 +268,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.transformAndConcat(extractGenresFunction)
@@ -284,7 +284,7 @@ public enum ReferentielProfessionsService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData().getDivision())
+		.from(ReferentielDataSingleton.INSTANCE.getData().getDivision())
 		.transformAndConcat(extractClassesFunction)
 		.transformAndConcat(extractGroupesFunction)
 		.transformAndConcat(extractGenresFunction)

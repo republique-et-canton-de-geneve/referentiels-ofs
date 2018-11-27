@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -51,7 +50,7 @@ public class RefGenreTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final Genre genre = ReferentielProfessionsService.instance
+	final Genre genre = ReferentielProfessionsService.INSTANCE
 		.getGenre(genreId);
 	if (genreNom == null) {
 	    assertNull("Genre [" + genreId + "] est incorrect", genre);

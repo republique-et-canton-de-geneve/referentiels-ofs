@@ -12,7 +12,6 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -83,10 +82,10 @@ public class RefSearchTest extends AbstractRefTest {
     public void test() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {
-	    communes = ReferentielCommunesService.instance
+	    communes = ReferentielCommunesService.INSTANCE
 		    .searchCommune(search);
 	} else {
-	    communes = ReferentielCommunesService.instance.searchCommune(
+	    communes = ReferentielCommunesService.INSTANCE.searchCommune(
 		    search, dateValid);
 	}
 	final String msgPrefix = "searchCommune('" + search + "', "
@@ -104,7 +103,7 @@ public class RefSearchTest extends AbstractRefTest {
 	    System.out
 		    .println("----------------------------------------------------------------------------------------------------------");
 	    final List<Commune> cs = new ArrayList<Commune>();
-	    for (final Canton kt : ReferentielCommunesService.instance
+	    for (final Canton kt : ReferentielCommunesService.INSTANCE
 		    .getReferentiel().getCanton()) {
 		for (final District bez : kt.getDistrict()) {
 		    for (final Commune gde : bez.getCommune()) {

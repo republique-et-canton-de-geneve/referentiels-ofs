@@ -65,7 +65,7 @@ public class SDMXDataAdaptor extends
      * 
      * @param urlXML
      *            url du fichier SDMX
-     * @return instance du référentiel
+     * @return INSTANCE du référentiel
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
@@ -238,10 +238,14 @@ public class SDMXDataAdaptor extends
      * 
      */
     public static class Factory {
+
+    	private Factory() {
+	    }
+
 	/**
 	 * Instanciation du reader
 	 * 
-	 * @return instance de reader SDMX
+	 * @return INSTANCE de reader SDMX
 	 */
 	public static SDMXDataAdaptor getInstance() {
 	    @SuppressWarnings("resource")
@@ -252,14 +256,14 @@ public class SDMXDataAdaptor extends
     }
 
     private enum CodeList {
-	CL_HGDE_KT, CL_HGDE_BEZ, CL_HGDE_GDE;
+	CL_HGDE_KT, CL_HGDE_BEZ, CL_HGDE_GDE
     }
 
     private enum ListAlias {
-	KT, BEZ, GDE;
+	KT, BEZ, GDE
     }
 
     private enum AnnotationType {
-	ABBREV, CODE_OFS, INSCRIPTION, RADIATION, REC_TYPE;
+	ABBREV, CODE_OFS, INSCRIPTION, RADIATION, REC_TYPE
     }
 }

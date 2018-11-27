@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -48,9 +47,9 @@ public class RefCantonsTest extends AbstractRefTest {
     public void testGetCantons() throws ReferentielOfsException {
 	List<Canton> cantons = null;
 	if (dateValid == null) {
-	    cantons = ReferentielCommunesService.instance.getCantons();
+	    cantons = ReferentielCommunesService.INSTANCE.getCantons();
 	} else {
-	    cantons = ReferentielCommunesService.instance.getCantons(dateValid);
+	    cantons = ReferentielCommunesService.INSTANCE.getCantons(dateValid);
 	}
 	final String msgPrefix = "getCantons(" + format(dateValid) + "): ";
 	assertNotNull(msgPrefix + " la liste des cantons est vide", cantons);

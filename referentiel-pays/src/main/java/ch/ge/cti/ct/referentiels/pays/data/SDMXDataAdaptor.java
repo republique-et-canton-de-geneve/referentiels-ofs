@@ -67,7 +67,7 @@ public class SDMXDataAdaptor extends
      * 
      * @param urlXML
      *            url du fichier SDMX
-     * @return instance du référentiel
+     * @return INSTANCE du référentiel
      * @throws ReferentielOfsException
      *             erreur de traitement
      */
@@ -222,10 +222,14 @@ public class SDMXDataAdaptor extends
      * 
      */
     public static class Factory {
+
+    	private Factory() {
+	    }
+
 	/**
 	 * Instanciation du reader
 	 * 
-	 * @return instance de reader SDMX
+	 * @return INSTANCE de reader SDMX
 	 */
 	public static SDMXDataAdaptor getInstance() {
 	    @SuppressWarnings("resource")

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -17,7 +16,7 @@ public class RefGenresTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Genre> genres = ReferentielProfessionsService.instance
+	final List<Genre> genres = ReferentielProfessionsService.INSTANCE
 		.getGenres();
 	assertEquals("La liste des genres est incorrecte", 383, genres.size());
 	for (final Genre genre : genres) {

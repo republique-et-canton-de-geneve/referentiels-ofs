@@ -31,7 +31,7 @@ public abstract class AbstractRefTest extends AbstractReferentielTest {
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
-	ReferentielCommunesService.instance.getReferentiel();
+	ReferentielCommunesService.INSTANCE.getReferentiel();
     }
 
     protected void assertValidCommunes(final String message,
@@ -184,7 +184,7 @@ public abstract class AbstractRefTest extends AbstractReferentielTest {
     }
 
     protected void checkReferentiel() throws ReferentielOfsException {
-	final ReferentielCommunes referentiel = ReferentielCommunesService.instance
+	final ReferentielCommunes referentiel = ReferentielCommunesService.INSTANCE
 		.getReferentiel();
 	assertNotNull("Le référentiel est vide", referentiel);
 	assertEquals("La liste des cantons est incorrecte", 26, referentiel

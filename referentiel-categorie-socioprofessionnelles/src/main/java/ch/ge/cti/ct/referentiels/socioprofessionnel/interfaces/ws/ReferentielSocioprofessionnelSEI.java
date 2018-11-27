@@ -49,7 +49,7 @@ public class ReferentielSocioprofessionnelSEI implements
 	    .getLogger(ReferentielSocioprofessionnelSEI.class);
 
     /** Référence sur l'implémentation */
-    private final ReferentielSocioprofessionnelServiceAble service = ReferentielSocioprofessionnelService.instance;
+    private static final ReferentielSocioprofessionnelServiceAble service = ReferentielSocioprofessionnelService.INSTANCE;
 
     @Override
     public Logger log() {
