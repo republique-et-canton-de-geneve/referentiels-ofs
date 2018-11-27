@@ -35,7 +35,7 @@ public abstract class AbstractSDMXDataAdaptor<T> {
 	 * Exécution du traitement du fichier SDMX
 	 * 
 	 * @param urlXML url du fichier SDMX
-	 * @return instance du référentiel
+	 * @return INSTANCE du référentiel
 	 * @throws ReferentielOfsException erreur de traitement
 	 */
 	public abstract T parse(final URL urlXML) throws ReferentielOfsException;

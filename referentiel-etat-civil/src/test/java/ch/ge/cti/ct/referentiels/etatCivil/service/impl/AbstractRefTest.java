@@ -11,14 +11,14 @@ import ch.ge.cti.ct.referentiels.etatCivil.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
-public class AbstractRefTest extends AbstractReferentielTest {
+public abstract class AbstractRefTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
-	ReferentielEtatCivilService.instance.getReferentiel();
+	ReferentielEtatCivilService.INSTANCE.getReferentiel();
     }
 
     protected void assertEtatCivil(final EtatCivil etatCivil) {

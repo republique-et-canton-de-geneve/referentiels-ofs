@@ -11,7 +11,7 @@ import ch.ge.cti.ct.referentiels.formeJuridique.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
-public class AbstractRefWSTest extends AbstractReferentielTest {
+public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();

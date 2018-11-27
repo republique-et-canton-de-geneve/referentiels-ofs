@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -17,7 +16,7 @@ public class RefGroupesTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Groupe> groupes = ReferentielProfessionsService.instance
+	final List<Groupe> groupes = ReferentielProfessionsService.INSTANCE
 		.getGroupes();
 	assertEquals("La liste des groupes est incorrecte", 88, groupes.size());
 	for (final Groupe groupe : groupes) {

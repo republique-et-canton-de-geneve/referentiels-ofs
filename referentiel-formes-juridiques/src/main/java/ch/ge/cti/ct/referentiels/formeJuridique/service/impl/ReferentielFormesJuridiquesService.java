@@ -23,7 +23,8 @@ import com.google.common.collect.FluentIterable;
  */
 public enum ReferentielFormesJuridiquesService implements
 	ReferentielFormesJuridiquesServiceAble {
-    instance;
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -32,7 +33,7 @@ public enum ReferentielFormesJuridiquesService implements
     @Override
     public ReferentielFormesJuridiques getReferentiel()
 	    throws ReferentielOfsException {
-	return ReferentielDataSingleton.instance.getData();
+	return ReferentielDataSingleton.INSTANCE.getData();
     }
 
     @Override
@@ -41,7 +42,7 @@ public enum ReferentielFormesJuridiquesService implements
 	LOG.debug("getFormesJuridiques()");
 	// on retourne une copie de la liste des continents
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getFormeJuridique()).toSortedList(nomComparator);
     }
 
@@ -53,7 +54,7 @@ public enum ReferentielFormesJuridiquesService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getFormeJuridique())
 		.filter(new Predicate<FormeJuridique>() {
 		    @Override

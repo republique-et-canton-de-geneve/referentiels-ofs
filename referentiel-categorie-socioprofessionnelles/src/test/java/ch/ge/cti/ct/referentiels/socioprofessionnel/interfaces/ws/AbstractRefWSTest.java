@@ -13,7 +13,7 @@ import ch.ge.cti.ct.referentiels.socioprofessionnel.AbstractReferentielTest;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau1WS;
 import ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model.Niveau2WS;
 
-public class AbstractRefWSTest extends AbstractReferentielTest {
+public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();

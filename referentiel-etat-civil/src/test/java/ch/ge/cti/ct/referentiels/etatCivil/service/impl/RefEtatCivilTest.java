@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -49,7 +48,7 @@ public class RefEtatCivilTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final EtatCivil etatCivil = ReferentielEtatCivilService.instance
+	final EtatCivil etatCivil = ReferentielEtatCivilService.INSTANCE
 		.getEtatCivil(etatCivilId);
 	if (etatCivilNom == null) {
 	    assertNull("EtatCivil [" + etatCivilId + "].id est incorrect",

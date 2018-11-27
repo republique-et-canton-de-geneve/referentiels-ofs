@@ -64,23 +64,18 @@ public abstract class AbstractServiceDataReader<T> {
      * Chemin du fichier XML
      * 
      * @return url du fichier XML
-     * @throws ReferentielOfsException
-     *             erreur de traitement
      */
-    private URL getURL() throws ReferentielOfsException {
+    private URL getURL() {
 	    final String filename = getConfigurationEntry();
-	    URL url = getClass().getClassLoader().getResource(filename);
-	    return url;
+	    return getClass().getClassLoader().getResource(filename);
     }
 
     /**
      * getter url du fichier référentiel SDMX
      * 
      * @return url du fichier référentiel
-     * @throws ReferentielOfsException
-     *             erreur de traitement
      */
-    public synchronized URL getXmlFile() throws ReferentielOfsException {
+    public synchronized URL getXmlFile() {
 	if (xmlFile == null) {
 	    xmlFile = getURL();
 	}

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.etatCivil.model.EtatCivil;
@@ -17,7 +16,7 @@ public class RefEtatsCivilsTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<EtatCivil> formesJuridiques = ReferentielEtatCivilService.instance
+	final List<EtatCivil> formesJuridiques = ReferentielEtatCivilService.INSTANCE
 		.getEtatsCivils();
 	assertEquals("La liste des états civils est incorrecte", 7,
 		formesJuridiques.size());

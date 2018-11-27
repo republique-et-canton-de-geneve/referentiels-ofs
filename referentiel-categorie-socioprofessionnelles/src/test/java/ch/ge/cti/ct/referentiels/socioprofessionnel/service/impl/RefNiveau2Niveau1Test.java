@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -52,7 +51,7 @@ public class RefNiveau2Niveau1Test extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Niveau2> niveau2s = ReferentielSocioprofessionnelService.instance
+	final List<Niveau2> niveau2s = ReferentielSocioprofessionnelService.INSTANCE
 		.getNiveaux2(niveau1Id);
 	if (countNiveau2s == -1) {
 	    assertNull("Niveau2s [" + niveau1Id + "] est incorrect", niveau2s);

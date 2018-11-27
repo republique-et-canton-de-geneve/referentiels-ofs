@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -80,10 +79,10 @@ public class RefCommunesCantonTest extends AbstractRefTest {
     public void testGetCommunes() throws ReferentielOfsException {
 	List<Commune> communes = null;
 	if (dateValid == null) {
-	    communes = ReferentielCommunesService.instance
+	    communes = ReferentielCommunesService.INSTANCE
 		    .getCommunesByCanton(cantonCode);
 	} else {
-	    communes = ReferentielCommunesService.instance.getCommunesByCanton(
+	    communes = ReferentielCommunesService.INSTANCE.getCommunesByCanton(
 		    cantonCode, dateValid);
 	}
 	final String msgPrefix = "getCommunesByCanton('" + cantonCode + "', "
@@ -99,7 +98,7 @@ public class RefCommunesCantonTest extends AbstractRefTest {
 	if (dateValid == null) {
 	    System.out
 		    .println("----------------------------------------------------------------------------------------------------------");
-	    for (District d : ReferentielCommunesService.instance.getCanton(KT)
+	    for (District d : ReferentielCommunesService.INSTANCE.getCanton(KT)
 		    .getDistrict()) {
 		for (Commune c : d.getCommune()) {
 		    System.out.println(c.getId() + "\t" + KT + "\t"

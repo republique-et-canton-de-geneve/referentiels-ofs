@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -70,7 +69,7 @@ public class RefClasseTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final Classe classe = ReferentielProfessionsService.instance
+	final Classe classe = ReferentielProfessionsService.INSTANCE
 		.getClasse(classeId);
 	if (classeNom == null) {
 	    assertNull("Classe [" + classeId + "] est incorrect", classe);

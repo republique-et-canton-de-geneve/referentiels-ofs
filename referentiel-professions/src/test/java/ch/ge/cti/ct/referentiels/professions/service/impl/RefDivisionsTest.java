@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
@@ -17,7 +16,7 @@ public class RefDivisionsTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Division> divisions = ReferentielProfessionsService.instance
+	final List<Division> divisions = ReferentielProfessionsService.INSTANCE
 		.getDivisions();
 	assertEquals("La liste des divisions est incorrecte", 9,
 		divisions.size());

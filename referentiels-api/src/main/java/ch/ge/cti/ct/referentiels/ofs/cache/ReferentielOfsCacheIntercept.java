@@ -81,7 +81,7 @@ public class ReferentielOfsCacheIntercept {
     }
 
     /**
-     * Récupération de l'instance du cache si elle est définie pour la méthode
+     * Récupération de l'INSTANCE du cache si elle est définie pour la méthode
      * 
      * @param method
      *            méthode invoquée
@@ -90,7 +90,7 @@ public class ReferentielOfsCacheIntercept {
     private Cache<String, ?> getCache(final Method method) {
 	final Cachable cachable = method.getAnnotation(Cachable.class);
 	if (cachable != null) {
-	    return CacheManager.instance.getCache(cachable.name(),
+	    return CacheManager.INSTANCE.getCache(cachable.name(),
 		    cachable.stats(), cachable.size());
 	}
 	return null;
@@ -100,10 +100,8 @@ public class ReferentielOfsCacheIntercept {
      * Construction de la clef de cache pour l'invocation de la méthode<br/>
      * Le premier paramètre d'appel est utilisé comme clef<br/>
      * Si la méthode n'a pas de paramètre, alors on retourne une constante <br/>
-     * TODO: rendre + générique
-     * 
-     * @param ctx
-     *            contexte d'appel
+     *
+     * @param ctx contexte d'appel
      * @return clef de cache
      */
     private String getKey(final InvocationContext ctx) {

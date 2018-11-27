@@ -29,9 +29,9 @@ import com.google.common.collect.FluentIterable;
  * @author desmazieresj
  * 
  */
-public enum ReferentielPaysTerritoiresService implements
-	ReferentielPaysTerritoiresServiceAble {
-    instance;
+public enum ReferentielPaysTerritoiresService implements ReferentielPaysTerritoiresServiceAble {
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory
@@ -40,7 +40,7 @@ public enum ReferentielPaysTerritoiresService implements
     @Override
     public ReferentielPaysTerritoires getReferentiel()
 	    throws ReferentielOfsException {
-	return ReferentielDataSingleton.instance.getData();
+	return ReferentielDataSingleton.INSTANCE.getData();
     }
 
     @Override
@@ -48,7 +48,7 @@ public enum ReferentielPaysTerritoiresService implements
 	LOG.debug("getContinents()");
 	// on retourne une copie de la liste des continents
 	return FluentIterable.from(
-		ReferentielDataSingleton.instance.getData().getContinent())
+		ReferentielDataSingleton.INSTANCE.getData().getContinent())
 		.toSortedList(nomComparator);
     }
 
@@ -119,7 +119,7 @@ public enum ReferentielPaysTerritoiresService implements
     public List<Region> getRegions() throws ReferentielOfsException {
 	LOG.debug("getRegions()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.toSortedList(nomComparator);
@@ -129,7 +129,7 @@ public enum ReferentielPaysTerritoiresService implements
     public List<Pays> getPays() throws ReferentielOfsException {
 	LOG.debug("getPays()");
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.transformAndConcat(extractPaysFunction)
@@ -143,7 +143,7 @@ public enum ReferentielPaysTerritoiresService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.transformAndConcat(extractPaysFunction)
@@ -162,7 +162,7 @@ public enum ReferentielPaysTerritoiresService implements
 	    return null;
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.transformAndConcat(extractPaysFunction)
@@ -182,7 +182,7 @@ public enum ReferentielPaysTerritoiresService implements
 	    return new LinkedList<Pays>();
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.transformAndConcat(extractPaysFunction)
@@ -198,7 +198,7 @@ public enum ReferentielPaysTerritoiresService implements
 	    return new LinkedList<Pays>();
 	}
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.transformAndConcat(extractPaysFunction)
@@ -223,7 +223,7 @@ public enum ReferentielPaysTerritoiresService implements
     private FluentIterable<Continent> extractContinent(final int continentId)
 	    throws ReferentielOfsException {
 	return FluentIterable.from(
-		ReferentielDataSingleton.instance.getData().getContinent())
+		ReferentielDataSingleton.INSTANCE.getData().getContinent())
 		.filter(new IdFilterPredicate(continentId));
     }
 
@@ -239,7 +239,7 @@ public enum ReferentielPaysTerritoiresService implements
     private FluentIterable<Region> extractRegion(final int regionId)
 	    throws ReferentielOfsException {
 	return FluentIterable
-		.from(ReferentielDataSingleton.instance.getData()
+		.from(ReferentielDataSingleton.INSTANCE.getData()
 			.getContinent())
 		.transformAndConcat(extractRegionFunction)
 		.filter(new IdFilterPredicate(regionId));

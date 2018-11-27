@@ -36,7 +36,7 @@ public class ReferentielEtatCivilSEI implements ReferentielEtatCivilWS,
 	Loggable {
 
     /** Référence sur l'implémentation */
-    private final ReferentielEtatCivilServiceAble service = ReferentielEtatCivilService.instance;
+    private static final ReferentielEtatCivilServiceAble service = ReferentielEtatCivilService.INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory

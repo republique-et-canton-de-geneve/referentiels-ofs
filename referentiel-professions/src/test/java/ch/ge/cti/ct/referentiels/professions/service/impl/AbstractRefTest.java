@@ -15,14 +15,14 @@ import ch.ge.cti.ct.referentiels.professions.model.Division;
 import ch.ge.cti.ct.referentiels.professions.model.Genre;
 import ch.ge.cti.ct.referentiels.professions.model.Groupe;
 
-public class AbstractRefTest extends AbstractReferentielTest {
+public abstract class AbstractRefTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();
 
     @BeforeClass
     public static void load() throws ReferentielOfsException {
-	ReferentielProfessionsService.instance.getReferentiel();
+	ReferentielProfessionsService.INSTANCE.getReferentiel();
     }
 
     public void assertDivision(final String message, final Division division) {

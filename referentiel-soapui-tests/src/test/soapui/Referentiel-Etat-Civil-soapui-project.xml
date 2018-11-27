@@ -43,7 +43,7 @@
       </input>
       <output>
         <soap:body use="literal"/>
-      </output>
+      </output>n
       <fault name="ReferentielOfsException">
         <soap:fault name="ReferentielOfsException" use="literal"/>
       </fault>

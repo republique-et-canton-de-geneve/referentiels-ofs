@@ -8,7 +8,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 
-public class AbstractReferentielTest {
+public abstract class AbstractReferentielTest {
 
     protected static ApplicationContext ctxt;
 

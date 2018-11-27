@@ -36,7 +36,7 @@ public class ReferentielFormesJuridiquesSEI implements
 	ReferentielFormesJuridiquesWS, Loggable {
 
     /** Référence sur l'implémentation */
-    private final ReferentielFormesJuridiquesServiceAble service = ReferentielFormesJuridiquesService.instance;
+    private static final ReferentielFormesJuridiquesServiceAble service = ReferentielFormesJuridiquesService.INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory

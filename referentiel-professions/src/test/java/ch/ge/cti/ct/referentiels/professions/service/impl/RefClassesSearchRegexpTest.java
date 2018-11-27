@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -48,7 +47,7 @@ public class RefClassesSearchRegexpTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<Classe> classes = ReferentielProfessionsService.instance
+	final List<Classe> classes = ReferentielProfessionsService.INSTANCE
 		.searchClasseRegexp(searchString);
 	if (countClasses == -1) {
 	    assertNull("Classes [" + searchString + "] est incorrect", classes);

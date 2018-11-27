@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -96,10 +95,10 @@ public class RefDistrictTest extends AbstractRefTest {
     public void test() throws ReferentielOfsException {
 	District district = null;
 	if (dateValid == null) {
-	    district = ReferentielCommunesService.instance
+	    district = ReferentielCommunesService.INSTANCE
 		    .getDistrict(idDistrict);
 	} else {
-	    district = ReferentielCommunesService.instance.getDistrict(
+	    district = ReferentielCommunesService.INSTANCE.getDistrict(
 		    idDistrict, dateValid);
 	}
 	final String msgPrefix = "getDistrict('" + idDistrict + "',"

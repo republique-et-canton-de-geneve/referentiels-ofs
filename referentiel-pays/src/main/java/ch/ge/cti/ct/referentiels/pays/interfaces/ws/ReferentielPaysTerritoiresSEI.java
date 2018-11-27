@@ -48,7 +48,7 @@ public class ReferentielPaysTerritoiresSEI implements
 	ReferentielPaysTerritoiresWS, Loggable {
 
     /** Référence sur l'implémentation */
-    private final ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.instance;
+    private static final ReferentielPaysTerritoiresServiceAble service = ReferentielPaysTerritoiresService.INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory

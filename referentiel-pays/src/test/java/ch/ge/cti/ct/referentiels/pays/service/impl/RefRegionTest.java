@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -67,7 +66,7 @@ public class RefRegionTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final Region region = ReferentielPaysTerritoiresService.instance
+	final Region region = ReferentielPaysTerritoiresService.INSTANCE
 		.getRegion(regionId);
 	if (regionName == null) {
 	    assertNull("Region[" + regionId + "] est incorrecte", region);

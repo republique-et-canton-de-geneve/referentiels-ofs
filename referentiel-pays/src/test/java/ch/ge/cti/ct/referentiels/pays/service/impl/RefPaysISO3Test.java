@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -74,7 +73,7 @@ public class RefPaysISO3Test extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final Pays pays = ReferentielPaysTerritoiresService.instance
+	final Pays pays = ReferentielPaysTerritoiresService.INSTANCE
 		.getPaysByISO3(iso3);
 
 	if (paysNom == null) {

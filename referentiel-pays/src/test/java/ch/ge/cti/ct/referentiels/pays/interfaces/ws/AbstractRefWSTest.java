@@ -15,7 +15,7 @@ import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.ContinentWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.PaysWS;
 import ch.ge.cti.ct.referentiels.pays.interfaces.ws.model.RegionWS;
 
-public class AbstractRefWSTest extends AbstractReferentielTest {
+public abstract class AbstractRefWSTest extends AbstractReferentielTest {
 
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();

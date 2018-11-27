@@ -23,7 +23,8 @@ import com.google.common.collect.FluentIterable;
  */
 public enum ReferentielEtatCivilService implements
 	ReferentielEtatCivilServiceAble {
-    instance;
+
+	INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory

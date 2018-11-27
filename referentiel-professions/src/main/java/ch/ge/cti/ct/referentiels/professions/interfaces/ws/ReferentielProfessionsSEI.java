@@ -50,7 +50,7 @@ public class ReferentielProfessionsSEI implements ReferentielProfessionsWS,
 	Loggable {
 
     /** Référence sur l'implémentation */
-    private final ReferentielProfessionsServiceAble service = ReferentielProfessionsService.instance;
+    private static final ReferentielProfessionsServiceAble service = ReferentielProfessionsService.INSTANCE;
 
     /** logger SLF4j */
     private static final Logger LOG = LoggerFactory

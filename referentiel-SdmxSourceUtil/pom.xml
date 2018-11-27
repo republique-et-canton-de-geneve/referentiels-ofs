@@ -13,6 +13,10 @@
 
 	<name>+    ${project.artifactId}</name>
 
+	<properties>
+		<sonar.exclusions>src/main/java/org/sdmxsource/**</sonar.exclusions>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.sdmxsource</groupId>

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 
 import ch.ge.cti.ct.referentiels.formeJuridique.model.FormeJuridique;
@@ -17,7 +16,7 @@ public class RefFormesJuridiquesTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final List<FormeJuridique> formesJuridiques = ReferentielFormesJuridiquesService.instance
+	final List<FormeJuridique> formesJuridiques = ReferentielFormesJuridiquesService.INSTANCE
 		.getFormesJuridiques();
 	assertEquals("La liste des formes juridiques est incorrecte", 27,
 		formesJuridiques.size());

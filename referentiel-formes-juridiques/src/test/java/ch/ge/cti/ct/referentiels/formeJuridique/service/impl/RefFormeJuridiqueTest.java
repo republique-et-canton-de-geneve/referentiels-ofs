@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -52,7 +51,7 @@ public class RefFormeJuridiqueTest extends AbstractRefTest {
     @Test
    
     public void test() throws ReferentielOfsException {
-	final FormeJuridique formeJuridique = ReferentielFormesJuridiquesService.instance
+	final FormeJuridique formeJuridique = ReferentielFormesJuridiquesService.INSTANCE
 		.getFormeJuridique(formeJuridiqueId);
 	if (formeJuridiqueNom == null) {
 	    assertNull("FormeJuridique [" + formeJuridiqueId

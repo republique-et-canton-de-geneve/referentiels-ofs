@@ -6,16 +6,17 @@ import ch.ge.cti.ct.referentiels.communes.model.ReferentielCommunes;
 import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 
 /**
- * Singleton de stockage de l'instance du ReferentielCommunes <br/>
+ * Singleton de stockage de l'INSTANCE du ReferentielCommunes <br/>
  * Le singleton permet de ne charger le fichier SDMX qu'une seule fois.
  * 
  * @author desmazieresj
  * 
  */
 public enum ReferentielDataSingleton {
-    instance;
 
-    /** instance de la classe de lecture du flux XML */
+    INSTANCE;
+
+    /** INSTANCE de la classe de lecture du flux XML */
     private final ServiceDataReader reader = new ServiceDataReader();
     /** référentiel instancié */
     private ReferentielCommunes data;
