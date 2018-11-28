@@ -12,18 +12,12 @@
 	<version>1.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>${project.groupId}:${project.artifactId} parent</name>
-
 	<description>
 		Exposition sous forme de web services des nomenclatures fédérales au format SDMX
 		http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/sdmx.html
 	</description>
 
 	<url>***REMOVED***/display/ORGCSDEV/ct-referentiels-ofs</url>
-
-	<properties>
-		<skipTests>false</skipTests>
-	</properties>
 
 	<developers>
 		<developer>
@@ -77,6 +71,8 @@
 	</distributionManagement>
 
 	<modules>
+		<!-- Si vous ajoutez un module dans cette liste, ajoutez-le aussi en dependency dans le
+		     module referentiel-couverture -->
 		<module>referentiel-SdmxSourceUtil</module>
 		<module>referentiels-api</module>
 		<module>referentiel-communes</module>
@@ -85,6 +81,7 @@
 		<module>referentiel-etat-civil</module>
 		<module>referentiel-professions</module>
 		<module>referentiel-categorie-socioprofessionnelles</module>
+		<module>referentiel-couverture</module>
 		<module>referentiels-ofs-war</module>
 		<module>referentiel-integration-tests</module>
 		<module>referentiel-soapui-tests</module>
@@ -97,9 +94,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<configuration>
-						<skip>${skipTests}</skip>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -149,15 +143,37 @@
 					<artifactId>cargo-maven2-plugin</artifactId>
 					<version>1.7.0</version>
 				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.2</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<!-- Jacoco prepare-agent builds some command-line params without -->
+					<!-- which jacoco will not instrument. Hence it is important to add -->
+					<!-- those command-line params here (${argLine} holds those params) -->
+					<argLine>${argLine} -Xms256m -Xmx2048m</argLine>
+					<forkCount>1</forkCount>
+					<runOrder>random</runOrder>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>preparer-agent-jacoco</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -167,7 +183,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9</version>
+				<version>2.10.4</version>
 				<configuration>
 					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
 					<docletArtifact>
