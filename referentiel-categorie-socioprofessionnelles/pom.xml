@@ -9,7 +9,6 @@
 	</parent>
 
 	<artifactId>referentiel-categorie-socioprofessionnelles</artifactId>
-	<packaging>jar</packaging>
 
 	<name>+    ${project.artifactId}</name>
 
@@ -47,19 +46,6 @@
 			</activation>
 			<build>
 				<plugins>
-<!-- 					<plugin> -->
-<!-- 						<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 						<artifactId>maven-ejb-plugin</artifactId> -->
-<!-- 						<configuration> -->
-<!-- 							<ejbVersion>3.0</ejbVersion> -->
-<!-- 							<generateClient>true</generateClient> -->
-<!-- 							<clientIncludes> -->
-<!-- 								<clientInclude>ch/ge/cti/ct/referentiels/socioprofessionnel/interfaces/ws/model/*.class</clientInclude> -->
-<!-- 								<clientInclude>ch/ge/cti/ct/referentiels/socioprofessionnel/interfaces/ws/*WS.class</clientInclude> -->
-<!-- 								<clientInclude>ch/ge/cti/ct/referentiels/socioprofessionnel/client/*</clientInclude> -->
-<!-- 							</clientIncludes> -->
-<!-- 						</configuration> -->
-<!-- 					</plugin> -->
 					<plugin>
 						<groupId>org.jvnet.jaxb2.maven2</groupId>
 						<artifactId>maven-jaxb2-plugin</artifactId>
@@ -97,11 +83,7 @@
 		<dependency>
 			<groupId>ch.ge.cti.ct.referentiels</groupId>
 			<artifactId>referentiels-api</artifactId>
-			<version>1.1.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-		   <groupId>org.jvnet.jaxb2_commons</groupId>
-		   <artifactId>jaxb2-basics-runtime</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -114,18 +96,11 @@
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-interceptor_3.0_spec</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<artifactId>junit</artifactId>
-			<groupId>junit</groupId>
 		</dependency>
 		<dependency>
 			<groupId>org.databene</groupId>
 			<artifactId>contiperf</artifactId>
-			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.sdmxsource</groupId>
 			<artifactId>SdmxStructureParser</artifactId>
@@ -136,63 +111,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<!-- dépendances JBOSS pour JAX-WS -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.common.lib</groupId> -->
-<!-- 			<artifactId>jbossws-spi</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-		<!-- dépendances JBOSS pour JMX -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-system-jmx</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-kernel</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-j2se</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-system</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-dependency</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-common-core</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>jboss-logging-spi</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>libStd.jboss-as.lib</groupId> -->
-<!-- 			<artifactId>concurrent</artifactId> -->
-<!-- 			<version>5.1.2</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
 	</dependencies>
 
 </project>
