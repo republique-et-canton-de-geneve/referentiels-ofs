@@ -1,0 +1,72 @@
+L'Office fédéral de la statistique (OFS) est un service fédéral mettant à disposition des données statistiques
+publiques.
+Parmi les données publiées, il met à disposition des référentiels (ou nomenclatures) utilisés pour la constitution
+des fichiers de statistiques, permettant ainsi de créer une base référentielle des données statistiques.
+
+# Présentation
+
+## Référentiels et nomenclatures
+
+Pour ses besoins de publication de statistiques, l'OFS a défini un certain nombre de référentiels communs à tous les
+cantons suisses.
+Ces référentiels sont globaux à la Suisse et sont maintenus à jour par l'OFS.
+Ils sont décrits sur le portail de la statistique Suisse à l'URL suivante :
+[Nomenclatures](https://www.bfs.admin.ch/bfs/fr/home/registres/registre-personnes/harmonisation-registres/nomenclatures.html).
+Ils sont publiés au format SDMX qui est un format XML avec un schéma XML dédié à la publication de données statistiques.
+
+Les principaux référentiels intéressant les services informatiques de l'État de Genève sont :
+- référentiel des cantons, districts et communes
+- référentiel des état civils
+- référentiel des formes juridiques
+- référentiel des professions
+- référentiel des catégories socio-professionnelles
+- référentiel des pays
+
+Bien que l'OFS publie d'autres données statistiques (dynamiques), le composant actuel ne s'applique à exposer que
+les données des référentiels (relativement statiques).
+
+## Services Web
+
+L'objectif de ce composant est d'exposer les référentiels de l'OFS sous forme de services Web accessibles à
+toutes les applications utilisant ces référentiels. 
+Ces services Web ont pour principal objectif qu'un maximum de service de l'État reposent sur les mêmes nomenclatures, 
+maintenues à jour par un office centralisé.
+
+L'OFS ne proposant pas de services Web permettant d'exploiter ses nomenclatures, ce composant se charge de cette
+publication au format SOAP.
+
+Pour des raisons de disponibilité des fichiers SDMX sur le site de l'OFS, il n'est techniquement pas possible que le
+composant exploite directement les fichiers SDMX publiés sur le site de l'OFS. De plus, l'URL de la dernière version
+de chaque nomenclature évolue, il n'est pas possible d'automatiser la mise à jour des référentiels au fur et à mesure
+des publications de l'OFS.
+Par conséquent, la mise en oeuvre du composant repose sur une copie locale des fichiers SDMX devant être maintenue
+à jour manuellement.
+
+# Installation
+
+## Configuration
+La construction complète du WAR, comprenant les tests d'intégration SoapUI, requiert l'installation d'un serveur Tomcat.
+Celui-ci sera sollicité en deux endroits :
+- Fichier ``eferentiels-ofs-war/pom.xml`` : plugin Cargo pour déployer le WAR sur le serveur Tomcat
+- Fichiers SoapUI (voir ci-dessous) : tests des services Web déployés sur le serveur Tomcat
+
+Procédure :
+- Installer un serveur Tomcat 8+
+- Dans le fichier `tomcat-users.xml`, définir un utilisateur appelé `tomcat` avec au moins le rôle `manager-script` :
+
+``<user username="tomcat" password="mot_de_passe" roles="manager-script"/>``
+(choisir un meilleur mot de passe !)
+- Dans le répertoire `referentiel-soapui-tests/src/test/soapui`, dans chaque fichier
+  `Referentiel-XXX-soapui-project.xml`
+  remplacer les URL `http://tomlab20-01.ceti.etat-ge.ch:20100/...` par celle du serveur Tomcat,
+  par exemple `http://localhost:8080/...`. Ceci peut être fait soit au moyen d'un éditeur de texte, soit dans SoapUI.
+
+## Construction
+Lancer la commande
+
+``mvn clean install -Dtomcat_password=mot_de_passe``
+
+# Déploiement
+
+La construction Maven génère un fichier WAR dans le répertoire `referentiels-ofs-war/target`.
+Ce fichier peut être déployé sur tout serveur JEE, tel Tomcat ou JBoss.
