@@ -99,6 +99,10 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
 					<configuration>
@@ -113,6 +117,10 @@
 				<plugin>
 					<artifactId>maven-surefire-report-plugin</artifactId>
 					<version>2.22.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>

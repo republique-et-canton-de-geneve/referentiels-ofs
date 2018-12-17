@@ -4,8 +4,8 @@
 
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
-		<artifactId>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS_configuration</artifactId>
-		<version>1.0</version>
+		<artifactId>ct_referentiels-ofs</artifactId>
+		<version>1.1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</artifactId>
@@ -14,15 +14,23 @@
 	
 	<name>+    ${project.artifactId} - Lot de deploiement</name>
 
-	<properties>
-		<typeLot>tp_simple</typeLot>
-	</properties>
+	<distributionManagement>
+		<repository>
+			<id>internal.lot.release</id>
+			<name>internal.lot.release</name>
+			<url>***REMOVED***/repositories/lot_release</url>
+		</repository>
+		<snapshotRepository>
+			<id>internal.lot.snapshot</id>
+			<name>internal.lot.snapshot</name>
+			<url>***REMOVED***/repositories/lot_snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.2</version>
 				<executions>
 					<execution>
 						<id>referentiels-ofs</id>
@@ -42,6 +50,23 @@
 							</artifactItems>
 							<stripVersion>true</stripVersion>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/assemblage_lot.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

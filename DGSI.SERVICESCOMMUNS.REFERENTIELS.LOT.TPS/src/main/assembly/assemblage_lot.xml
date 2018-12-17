@@ -6,49 +6,9 @@
 		<format>zip</format>
 	</formats>
 
-	<includeBaseDirectory>true</includeBaseDirectory>
+	<includeBaseDirectory>false</includeBaseDirectory>
 
-	<files>
-		<file>
-			<source>src/main/assembly/lisez_moi.txt</source>
-			<outputDirectory>/</outputDirectory>
-			<filtered>true</filtered>
-		</file>
-		<file>
-			<source>src/main/assembly/DossierExploitation.doc</source>
-			<outputDirectory>/</outputDirectory>
-		</file>
-	</files>
 	<fileSets>
-		<fileSet>
-			<directory>src/main/assembly</directory>
-			<includes>
-				<include>README*</include>
-				<include>LICENSE*</include>
-			</includes>
-			<outputDirectory>/</outputDirectory>
-		</fileSet>
-		<fileSet>
-			<directory>src/main/server-resources</directory>
-			<includes>
-				<include>**/*.*</include>
-			</includes>
-			<outputDirectory>/server</outputDirectory>
-		</fileSet>
-		<fileSet>
-			<directory>target/server-resources</directory>
-			<includes>
-				<include>**/*.*</include>
-			</includes>
-			<outputDirectory>/server</outputDirectory>
-		</fileSet>
-		<fileSet>
-			<directory>target/scripts-resources</directory>
-			<includes>
-				<include>**/*.sql</include>
-			</includes>
-			<outputDirectory>/</outputDirectory>
-		</fileSet>
 		<fileSet>
 			<directory>target</directory>
 			<outputDirectory>/lib</outputDirectory>
@@ -56,12 +16,15 @@
 				<include>*.war</include>
 			</includes>
 		</fileSet>
-	</fileSets>	
+	</fileSets>
 
 	<dependencySets>
 		<dependencySet>
 			<unpack>false</unpack>
 			<outputDirectory>/lib</outputDirectory>
+			<excludes>
+				<exclude>jaxb2-basics-runtime-0.6.4.jar</exclude>
+			</excludes>
 		</dependencySet>
 	</dependencySets>
 
