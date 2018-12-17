@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ch.ge.cti.ct.referentiels</groupId>
-	<artifactId>ct_referentiels-ofs</artifactId>
+	<artifactId>referentiels-ofs-parent</artifactId>
 	<version>1.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -54,7 +54,7 @@
 
 	<ciManagement>
 		<system>jenkins</system>
-		<url>***REMOVED***/job/ct_referentiels-ofs</url>
+		<url>***REMOVED***/job/referentiels-ofs</url>
 	</ciManagement>
 
 	<distributionManagement>
@@ -452,3 +452,4 @@
 		</dependency>
 	</dependencies>
 </project>
+ 
