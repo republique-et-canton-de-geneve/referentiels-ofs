@@ -66,6 +66,11 @@ Lancer la commande
 
 ``mvn clean install -Dtomcat_password=mot_de_passe``
 
+Ce projet contient un module `DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS`. Il définit des éléments propres au mode
+de déploiement particulier de l'État de Genève. 
+Ils sont sans intérêt pour un lecteur externe à l'État, n'interfèrent pas dans la construction Maven du
+livrable WAR et ne sont pas concernés par le déploiement et l'exécution sur un serveur Tomcat.
+
 # Déploiement
 
 La construction Maven génère un fichier WAR dans le répertoire `referentiels-ofs-war/target`.
