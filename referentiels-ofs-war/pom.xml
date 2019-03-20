@@ -38,11 +38,19 @@
 					</container>
 					<configuration>
 						<type>runtime</type>
+						<!--   A REMETTRE !!!!!!!!!!!!!!!
 						<properties>
 							<cargo.hostname>tomlab20-01.ceti.etat-ge.ch</cargo.hostname>
 							<cargo.servlet.port>20100</cargo.servlet.port>
 							<cargo.remote.username>tomcat</cargo.remote.username>
 							<cargo.remote.password>${tomcat_password}</cargo.remote.password>
+						</properties>
+						-->
+						<properties>
+							<cargo.hostname>localhost</cargo.hostname>
+							<cargo.servlet.port>8080</cargo.servlet.port>
+							<cargo.remote.username>tomcat</cargo.remote.username>
+							<cargo.remote.password>tomcat</cargo.remote.password>
 						</properties>
 					</configuration>
 					<deployables>
@@ -53,7 +61,10 @@
 							<properties>
 								<context>referentiels-ofs</context>
 							</properties>
+							<!--
 							<pingURL>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/communes/referentiel-communes?wsdl</pingURL>
+							-->
+							<pingURL>http://localhost:8080/referentiels-ofs/communes/referentiel-communes?wsdl</pingURL>
 						</deployable>
 					</deployables>
 				</configuration>

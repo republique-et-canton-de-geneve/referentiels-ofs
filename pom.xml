@@ -11,7 +11,7 @@
 		http://www.bfs.admin.ch/bfs/portal/fr/index/infothek/nomenklaturen/sdmx.html
 	</description>
 
-	<url>***REMOVED***/display/ORGCSDEV/ct-referentiels-ofs</url>
+	<url>***REMOVED***</url>
 
 	<developers>
 		<developer>
@@ -91,6 +91,7 @@
 	</modules>
 
 	<properties>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<soapui.version>5.2.1</soapui.version>
 		<spring.version>4.3.21.RELEASE</spring.version>
 	</properties>
@@ -186,7 +187,7 @@
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.2</version>
+					<version>0.8.3</version>
 				</plugin>
 				<plugin>
 					<groupId>com.smartbear.soapui</groupId>
@@ -298,6 +299,11 @@
 				<groupId>org.apache.xmlbeans</groupId>
 				<artifactId>xmlbeans-xpath</artifactId>
 				<version>2.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.11.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
