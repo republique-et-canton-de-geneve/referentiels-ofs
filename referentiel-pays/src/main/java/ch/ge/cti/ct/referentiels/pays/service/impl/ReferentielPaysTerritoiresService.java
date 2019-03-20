@@ -18,263 +18,120 @@
  */
 package ch.ge.cti.ct.referentiels.pays.service.impl;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
-import ch.ge.cti.ct.referentiels.ofs.processing.IdFilterPredicate;
-import ch.ge.cti.ct.referentiels.ofs.processing.NomComparator;
-import ch.ge.cti.ct.referentiels.ofs.processing.NomRegexpMatcherPredicate;
-import ch.ge.cti.ct.referentiels.ofs.processing.NomStringMatcherPredicate;
-import ch.ge.cti.ct.referentiels.pays.data.ReferentielDataSingleton;
-import ch.ge.cti.ct.referentiels.pays.model.Continent;
-import ch.ge.cti.ct.referentiels.pays.model.Pays;
-import ch.ge.cti.ct.referentiels.pays.model.ReferentielPaysTerritoires;
-import ch.ge.cti.ct.referentiels.pays.model.Region;
+import ch.ge.cti.ct.referentiels.pays.data.Countries;
+import ch.ge.cti.ct.referentiels.pays.data.Country;
 import ch.ge.cti.ct.referentiels.pays.service.ReferentielPaysTerritoiresServiceAble;
+import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.FluentIterable;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
- * Implémentation POJO du service
+ * Implémentation du service.
  * 
  * @author desmazieresj
+ * @author Yves Dubois-Pelerin
  * 
  */
-public enum ReferentielPaysTerritoiresService implements ReferentielPaysTerritoiresServiceAble {
-
-	INSTANCE;
-
-    /** logger SLF4j */
-    private static final Logger LOG = LoggerFactory
-	    .getLogger(ReferentielPaysTerritoiresService.class);
-
-    @Override
-    public ReferentielPaysTerritoires getReferentiel()
-	    throws ReferentielOfsException {
-	return ReferentielDataSingleton.INSTANCE.getData();
-    }
-
-    @Override
-    public List<Continent> getContinents() throws ReferentielOfsException {
-	LOG.debug("getContinents()");
-	// on retourne une copie de la liste des continents
-	return FluentIterable.from(
-		ReferentielDataSingleton.INSTANCE.getData().getContinent())
-		.toSortedList(nomComparator);
-    }
-
-    @Override
-    public Continent getContinent(final int continentId)
-	    throws ReferentielOfsException {
-	LOG.debug("getContinent(continentId='{}')", continentId);
-	if (continentId <= 0) {
-	    return null;
-	}
-	return extractContinent(continentId).first().orNull();
-    }
-
-    @Override
-    public List<Region> getRegions(final int continentId)
-	    throws ReferentielOfsException {
-	LOG.debug("getRegions(continentId='{}')", continentId);
-	if (continentId <= 0) {
-	    return new LinkedList<Region>();
-	}
-	final FluentIterable<Continent> continents = extractContinent(continentId);
-
-	return continents.transformAndConcat(extractRegionFunction)
-		.toSortedList(nomComparator);
-    }
-
-    @Override
-    public Region getRegion(final int regionId) throws ReferentielOfsException {
-	LOG.debug("getRegions(regionId='{}')", regionId);
-	if (regionId <= 0) {
-	    return null;
-	}
-	return extractRegion(regionId).first().orNull();
-    }
-
-    @Override
-    public List<Pays> getPaysByRegion(final int regionId)
-	    throws ReferentielOfsException {
-	LOG.debug("getPaysByRegion(regionId='{}')", regionId);
-	if (regionId <= 0) {
-	    return new LinkedList<Pays>();
-	}
-
-	final FluentIterable<Region> regions = extractRegion(regionId);
-
-	// extraction de la liste des pays
-	return regions.transformAndConcat(extractPaysFunction).toSortedList(
-		nomComparator);
-    }
-
-    @Override
-    public List<Pays> getPaysByContinent(final int continentId)
-	    throws ReferentielOfsException {
-	LOG.debug("getPaysByContinent(continentId='{}')", continentId);
-	if (continentId <= 0) {
-	    return new LinkedList<Pays>();
-	}
-	final FluentIterable<Continent> continents = extractContinent(continentId);
-
-	final FluentIterable<Region> regions = continents
-		.transformAndConcat(extractRegionFunction);
-
-	return regions.transformAndConcat(extractPaysFunction).toSortedList(
-		nomComparator);
-    }
-
-    @Override
-    public List<Region> getRegions() throws ReferentielOfsException {
-	LOG.debug("getRegions()");
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.toSortedList(nomComparator);
-    }
-
-    @Override
-    public List<Pays> getPays() throws ReferentielOfsException {
-	LOG.debug("getPays()");
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.transformAndConcat(extractPaysFunction)
-		.toSortedList(nomComparator);
-    }
-
-    @Override
-    public Pays getPaysByISO2(final String iso2) throws ReferentielOfsException {
-	LOG.debug("getPaysByISO2(iso2='{}')", iso2);
-	if (StringUtils.isBlank(iso2)) {
-	    return null;
-	}
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.transformAndConcat(extractPaysFunction)
-		.filter(new Predicate<Pays>() {
-		    @Override
-		    public boolean apply(final Pays pays) {
-			return pays.getIso2().equals(iso2);
-		    }
-		}).first().orNull();
-    }
-
-    @Override
-    public Pays getPaysByISO3(final String iso3) throws ReferentielOfsException {
-	LOG.debug("getPaysByISO3(iso3='{}')", iso3);
-	if (StringUtils.isBlank(iso3)) {
-	    return null;
-	}
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.transformAndConcat(extractPaysFunction)
-		.filter(new Predicate<Pays>() {
-		    @Override
-		    public boolean apply(final Pays pays) {
-			return pays.getIso3().equals(iso3);
-		    }
-		}).first().orNull();
-    }
-
-    @Override
-    public List<Pays> searchPays(final String critere)
-	    throws ReferentielOfsException {
-	LOG.debug("searchPays(critere='{}')", critere);
-	if (StringUtils.isBlank(critere)) {
-	    return new LinkedList<Pays>();
-	}
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.transformAndConcat(extractPaysFunction)
-		.filter(new NomStringMatcherPredicate(critere))
-		.toSortedList(nomComparator);
-    }
-
-    @Override
-    public List<Pays> searchPaysRegexp(final String critere)
-	    throws ReferentielOfsException {
-	LOG.debug("searchPays(critere='{}')", critere);
-	if (StringUtils.isBlank(critere)) {
-	    return new LinkedList<Pays>();
-	}
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.transformAndConcat(extractPaysFunction)
-		.filter(new NomRegexpMatcherPredicate(critere))
-		.toSortedList(nomComparator);
-    }
-
-    // ==================================================================================================================================================================
-    // ==================================================================================================================================================================
-
-    private final NomComparator nomComparator = new NomComparator();
+public class ReferentielPaysTerritoiresService implements ReferentielPaysTerritoiresServiceAble {
 
     /**
-     * Extrait le continent du référentiel
-     * 
-     * @param continentId
-     *            identifiant du continent
-     * @return un itérateur sur le continent (1 élément ou vide)
-     * @throws ReferentielOfsException
-     *             exception d'accès au référentiel
+     * Liste des pays, expurgee et completee.
      */
-    private FluentIterable<Continent> extractContinent(final int continentId)
-	    throws ReferentielOfsException {
-	return FluentIterable.from(
-		ReferentielDataSingleton.INSTANCE.getData().getContinent())
-		.filter(new IdFilterPredicate(continentId));
+    private List<Country> pays;
+
+    public ReferentielPaysTerritoiresService() {
+        initialiseListOfCountries();
+    }
+
+    @Override
+    public List<Country> getPays2() {
+        return pays;
+    }
+
+    @Override
+    public Optional<Country> getPaysByIso2(String iso2) {
+        return getPays2().stream()
+                .filter(c -> c.getIso2Id().equals(iso2))
+                .findFirst();
+    }
+
+    @Override
+    public Optional<Country> getPaysByIso3(String iso3) {
+        return getPays2().stream()
+                .filter(c -> c.getIso3Id().equals(iso3))
+                .findFirst();
+    }
+
+    @Override
+    public List<Country> searchPays2(String critere) {
+        if (StringUtils.isBlank(critere)) {
+            return new ArrayList<>();
+        }
+
+        return getPays2().stream()
+                .filter(c -> compliesWith(c, critere))
+                .collect(Collectors.toList());
+    }
+
+    private void initialiseListOfCountries() {
+        // chargement depuis le fichier XML + corrections des données brutes
+        Countries countries = new CountriesLoader().load();
+
+        // quelques pays vont être supprimés en trop dans le filtre plus bas
+        List<Country> manquants = countries.countryList.stream()
+                .filter(c -> c.getShortNameFr().equals("Suisse")
+                        || c.getShortNameFr().equals("Palestine")
+                        || c.getShortNameFr().contains("Taïwan"))
+                .collect(Collectors.toList());
+
+        // filtrer la liste brute
+        pays = countries.countryList.stream()
+                .filter(Country::isState)
+                .filter(Country::isEntryValid)
+                .filter(Country::isRecognizedCh)  // ce filtre-ci supprime la Palestine, Taiwan et... la Suisse
+                .collect(Collectors.toList());
+
+        // remettre les manquants
+        pays.addAll(manquants);
+
+        // trier, en evitant que les accents interferent
+        pays.sort((c1, c2) -> {
+            Collator collator = Collator.getInstance(Locale.FRENCH);
+            return collator.compare(c1.getShortNameFr(), c2.getShortNameFr());
+        });
     }
 
     /**
-     * Extrait le region du référentiel
-     * 
-     * @param regionId
-     *            identifiant du region
-     * @return un itérateur sur le region (1 élément ou vide)
-     * @throws ReferentielOfsException
-     *             exception d'accès au référentiel
+     * Rend true si le nom du pays commence par le critere.
+     * Les accents sont ignores. La casse est ignoree.
+     * <p/>
+     * Exemples:
+     * <ul>
+     *     <li>(Bénin, "be") rend true</li>
+     *     <li>(Belgique, "be") rend true</li>
+     *     <li>(Belgique, "bé") rend true</li>
+     *     <li>(Belgique, "elgique") rend false</li>
+     * </ul>
      */
-    private FluentIterable<Region> extractRegion(final int regionId)
-	    throws ReferentielOfsException {
-	return FluentIterable
-		.from(ReferentielDataSingleton.INSTANCE.getData()
-			.getContinent())
-		.transformAndConcat(extractRegionFunction)
-		.filter(new IdFilterPredicate(regionId));
+    private boolean compliesWith(Country c, String critere) {
+        String name = c.getShortNameFr();
+        String crit = critere.trim();
+
+        if (name.length() < crit.length()) {
+            return false;
+        }
+
+        String nameToCompare = name.toLowerCase(Locale.FRENCH).substring(0, crit.length());
+        String critToCompare = crit.toLowerCase(Locale.FRENCH);
+
+        Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.PRIMARY);
+        return collator.equals(nameToCompare, critToCompare);
     }
-
-    private final Function<Continent, Iterable<? extends Region>> extractRegionFunction = new Function<Continent, Iterable<? extends Region>>() {
-	@Override
-	public Iterable<? extends Region> apply(final Continent continent) {
-	    return continent.getRegion();
-	}
-    };
-
-    private final Function<Region, Iterable<? extends Pays>> extractPaysFunction = new Function<Region, Iterable<? extends Pays>>() {
-	@Override
-	public Iterable<? extends Pays> apply(final Region region) {
-	    return region.getPays();
-	}
-    };
 
 }

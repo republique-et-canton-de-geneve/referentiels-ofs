@@ -31,15 +31,12 @@ public class ReferentielOfsExceptionIntercept {
     /**
      * interception de toutes les méthodes pour gestion du cache
      * 
-     * @param ctx
-     *            contexte d'appel
+     * @param ctx contexte d'appel
      * @return résultat du traitement
-     * @throws Exception
-     *             toute exception ..
+     * @throws Exception toute exception...
      */
     @AroundInvoke
-    public Object processException(final InvocationContext ctx)
-	    throws Exception {// NOSONAR
+    public Object processException(InvocationContext ctx) throws Exception {
 	try {
 	    return ctx.proceed();
 	} catch (final Exception e) {
@@ -53,12 +50,10 @@ public class ReferentielOfsExceptionIntercept {
      * ReferentielFormesJuridiquesException<br/>
      * Sauf si ce sont déjà des ReferentielFormesJuridiquesException
      * 
-     * @param e
-     *            exception
+     * @param e exception
      * @return ReferentielFormesJuridiquesException exception encapsulée
      */
-    protected ReferentielOfsException handleException(final Exception e,
-	    final Loggable service) {
+    protected ReferentielOfsException handleException(Exception e, Loggable service) {
 	service.log().error(e.getClass().getName(), e);
 	// pas de double encapsulation
 	if (e instanceof ReferentielOfsException) {
@@ -67,4 +62,5 @@ public class ReferentielOfsExceptionIntercept {
 	return new ReferentielOfsException(
 		"Erreur technique lors du traitement de la demande", e);
     }
+
 }
