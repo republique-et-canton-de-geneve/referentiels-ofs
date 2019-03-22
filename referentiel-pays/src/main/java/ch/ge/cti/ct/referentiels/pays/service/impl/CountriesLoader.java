@@ -66,7 +66,7 @@ class CountriesLoader {
     }
 
     /**
-     * Corrige la liste brute des pays obtenue par désérialisation du fichier XML de l'OFS.
+     * Corrige la liste brute des pays obtenue par deserialisation du fichier XML de l'OFS.
      */
     private void fixCountries() {
         fixKosovo();

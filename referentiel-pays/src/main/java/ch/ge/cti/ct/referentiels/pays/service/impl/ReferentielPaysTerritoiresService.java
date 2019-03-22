@@ -49,31 +49,31 @@ public class ReferentielPaysTerritoiresService implements ReferentielPaysTerrito
     }
 
     @Override
-    public List<Country> getPays2() {
+    public List<Country> getPays() {
         return pays;
     }
 
     @Override
     public Optional<Country> getPaysByIso2(String iso2) {
-        return getPays2().stream()
+        return getPays().stream()
                 .filter(c -> c.getIso2Id().equals(iso2))
                 .findFirst();
     }
 
     @Override
     public Optional<Country> getPaysByIso3(String iso3) {
-        return getPays2().stream()
+        return getPays().stream()
                 .filter(c -> c.getIso3Id().equals(iso3))
                 .findFirst();
     }
 
     @Override
-    public List<Country> searchPays2(String critere) {
+    public List<Country> searchPays(String critere) {
         if (StringUtils.isBlank(critere)) {
             return new ArrayList<>();
         }
 
-        return getPays2().stream()
+        return getPays().stream()
                 .filter(c -> compliesWith(c, critere))
                 .collect(Collectors.toList());
     }

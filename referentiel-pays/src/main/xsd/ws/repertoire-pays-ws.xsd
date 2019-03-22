@@ -8,44 +8,6 @@
 	<xs:element name="nom-long" type="xs:string" nillable="false"/>
 	<xs:element name="iso2" type="xs:string" nillable="false"/>
 	<xs:element name="iso3" type="xs:string" nillable="false"/>
-	<xs:attribute name="id" type="xs:string"/>
-	<xs:attribute name="date" type="xs:date"/>
-
-	<xs:element name="referentiel-pays-territoires">
-		<xs:annotation>
-			<xs:documentation>
-				Source: http://www.bfs.admin.ch/xmlns/sdmx/CH1_RN+HCL_COUNTRIESGEO+1.0.xml
-			</xs:documentation>
-		</xs:annotation>
-
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="continent" maxOccurs="unbounded" minOccurs="1" />
-			</xs:sequence>
-			<xs:attribute ref="id" use="optional" />
-			<xs:attribute ref="date" use="optional" />
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="continent">
-		<xs:complexType >
-			<xs:sequence>
-				<xs:element ref="id" />
-				<xs:element ref="nom"  />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="region">
-		<xs:complexType >
-			<xs:sequence>
-				<xs:element ref="id" />
-				<xs:element ref="nom" />
-				<xs:element ref="continent-id"  />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
 	<xs:element name="pays">
 		<xs:complexType >
 			<xs:sequence>

@@ -22,7 +22,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
- * DTO servant à XStream pour lire un élément "country" du fichier XML de l'OFS.
+ * DTO servant à XStream pour lire un element "country" du fichier XML de l'OFS.
  * @author Yves Dubois-Pelerin
  */
 public class Country {

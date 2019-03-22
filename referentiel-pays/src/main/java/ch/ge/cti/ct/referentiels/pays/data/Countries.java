@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe servant à XStream pour convertir en Java l'élément racine "countries" du fichier XML de l'OFS.
+ * Classe servant a XStream pour convertir en Java l'element racine "countries" du fichier XML de l'OFS.
  * @author Yves Dubois-Pelerin
  */
 public class Countries {

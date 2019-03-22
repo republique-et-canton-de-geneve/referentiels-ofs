@@ -36,7 +36,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_rendre_le_nombre_attendu_de_pays() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
         System.out.println("nombre de pays : " + countries.size());
 
         // traces (pour le debugging)
@@ -50,7 +50,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_contenir_des_pays_avec_tous_les_champs_non_nuls() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
 
         countries.forEach(c -> {
             assertFieldNotBlank(c, "shortNameFr", c.getShortNameFr());
@@ -62,7 +62,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_rendre_les_pays_dans_l_ordre_alphabetique() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
 
         assertEquals("Pays incorrect en cet endroit de la liste", "Afghanistan", countries.get(0).getShortNameFr());
         assertEquals("Pays incorrect en cet endroit de la liste", "Lettonie", countries.get(99).getShortNameFr());
@@ -71,7 +71,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_contenir_la_Suisse() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
 
         long count = countries.stream()
                 .filter(c -> c.getShortNameFr().equals("Suisse"))
@@ -81,7 +81,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_contenir_un_pays_normal_avec_les_bons_champs() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
 
         Country pays = assertPaysPresent(countries, "Brésil");
 
@@ -92,7 +92,7 @@ public class ReferentielPaysTerritoiresServiceTest {
 
     @Test
     public void getPays_devrait_contenir_le_Kosovo_bien_initialise() {
-        List<Country> countries = getService().getPays2();
+        List<Country> countries = getService().getPays();
 
         Country pays = assertPaysPresent(countries, "Kosovo");
 
@@ -138,7 +138,7 @@ public class ReferentielPaysTerritoiresServiceTest {
     @Test
     public void searchPays_devrait_rendre_une_liste_vide_si_le_critere_est_null() {
         String critere = null;
-        List<Country> countries = getService().searchPays2(critere);
+        List<Country> countries = getService().searchPays(critere);
 
         assertNotNull("La liste de pays pour critere = '" + critere + "' devrait pas etre null", countries);
         assertTrue("La liste de pays pour critere = '" + critere + "' devrait etre vide", countries.isEmpty());
@@ -147,7 +147,7 @@ public class ReferentielPaysTerritoiresServiceTest {
     @Test
     public void searchPays_devrait_rendre_une_liste_vide_si_le_critere_est_vide() {
         String critere = "";
-        List<Country> countries = getService().searchPays2(critere);
+        List<Country> countries = getService().searchPays(critere);
 
         assertNotNull("La liste de pays pour critere = '" + critere + "' ne devrait pas etre null", countries);
         assertTrue("La liste de pays pour critere = '" + critere + "' devrait etre vide", countries.isEmpty());
@@ -156,7 +156,7 @@ public class ReferentielPaysTerritoiresServiceTest {
     @Test
     public void searchPays_devrait_rendre_une_liste_vide_si_le_critere_est_debile() {
         String critere = "LongCritereDebile";
-        List<Country> countries = getService().searchPays2(critere);
+        List<Country> countries = getService().searchPays(critere);
 
         assertTrue("La liste de pays pour critere = '" + critere + "' devrait etre vide", countries.isEmpty());
     }
@@ -164,7 +164,7 @@ public class ReferentielPaysTerritoiresServiceTest {
     @Test
     public void searchPays_devrait_rendre_une_liste_correcte_1() {
         String critere = "be";   // teste aussi l'accentuation, doit trouver Belgique, Belize et Bénin
-        List<Country> countries = getService().searchPays2(critere);
+        List<Country> countries = getService().searchPays(critere);
 
         assertEquals("La liste de pays pour critere = '" + critere + "' a la taille correcte", 3, countries.size());
     }
@@ -172,7 +172,7 @@ public class ReferentielPaysTerritoiresServiceTest {
     @Test
     public void searchPays_devrait_rendre_une_liste_correcte_2() {
         String critere = "E";   // teste aussi l'accentuation, doit trouver Belgique, Belize et Bénin
-        List<Country> countries = getService().searchPays2(critere);
+        List<Country> countries = getService().searchPays(critere);
 
         assertEquals("La liste de pays pour critere = '" + critere + "' a la taille correcte", 8, countries.size());
         assertPays(countries,"Égypte", 0);

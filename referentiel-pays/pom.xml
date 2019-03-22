@@ -86,10 +86,6 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
@@ -104,16 +100,6 @@
 		<dependency>
 			<groupId>org.databene</groupId>
 			<artifactId>contiperf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.sdmxsource</groupId>
-			<artifactId>SdmxStructureParser</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>SdmxEdiParser</artifactId>
-					<groupId>org.sdmxsource</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 	

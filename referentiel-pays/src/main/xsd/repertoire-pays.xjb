@@ -11,12 +11,6 @@
    </jxb:globalBindings>
 
 	<jxb:bindings schemaLocation="repertoire-pays.xsd" node="/xs:schema">
-		<jxb:bindings node="xs:element[@name='continent']/xs:complexType">
-			<inheritance:implements>ch.ge.cti.ct.referentiels.ofs.model.IComplexType</inheritance:implements>
-		</jxb:bindings>
-		<jxb:bindings node="xs:element[@name='region']/xs:complexType">
-			<inheritance:implements>ch.ge.cti.ct.referentiels.ofs.model.IComplexType</inheritance:implements>
-		</jxb:bindings>
 		<jxb:bindings node="xs:element[@name='pays']/xs:complexType">
 			<inheritance:implements>ch.ge.cti.ct.referentiels.ofs.model.IComplexType</inheritance:implements>
 		</jxb:bindings>
