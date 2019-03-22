@@ -208,7 +208,7 @@
          <critere>T</critere>\r
       </ref:searchPays>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="searchPays"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="5d6598a7-d772-40e4-9076-4ab6a3d17e6b" name="referentiel-TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="9ab638db-3d5b-4fa9-925e-8e64a1fa4d05" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getContinent TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="0c60f47e-601a-4d7b-8248-882e28c5c9c3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getContinents TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="b76d8a24-8a96-4a16-ade4-0fb7b1f7e54c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPays TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="670d6ea5-70ff-4fd7-98e6-78c3e1cd1447" name="getPays"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>getPays</con:operation><con:request name="getPays" id="9fd466cf-6885-49b1-8571-e8f4145b2565" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="searchPays"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="5d6598a7-d772-40e4-9076-4ab6a3d17e6b" name="referentiel-TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b76d8a24-8a96-4a16-ade4-0fb7b1f7e54c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPays TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="670d6ea5-70ff-4fd7-98e6-78c3e1cd1447" name="getPays"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>getPays</con:operation><con:request name="getPays" id="9fd466cf-6885-49b1-8571-e8f4145b2565" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ref:getPays/>\r
@@ -224,7 +224,7 @@
         <iso2>AF</iso2>
         <iso3>AFG</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8349</id>
@@ -233,7 +233,7 @@
         <iso2>ZA</iso2>
         <iso3>ZAF</iso3>
         <continent-id>2</continent-id>
-        <region-id>26</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8201</id>
@@ -242,7 +242,7 @@
         <iso2>AL</iso2>
         <iso3>ALB</iso3>
         <continent-id>1</continent-id>
-        <region-id>17</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8304</id>
@@ -251,7 +251,7 @@
         <iso2>DZ</iso2>
         <iso3>DZA</iso3>
         <continent-id>2</continent-id>
-        <region-id>21</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8207</id>
@@ -260,7 +260,7 @@
         <iso2>DE</iso2>
         <iso3>DEU</iso3>
         <continent-id>1</continent-id>
-        <region-id>13</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8202</id>
@@ -269,7 +269,7 @@
         <iso2>AD</iso2>
         <iso3>AND</iso3>
         <continent-id>1</continent-id>
-        <region-id>15</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8305</id>
@@ -278,25 +278,7 @@
         <iso2>AO</iso2>
         <iso3>AGO</iso3>
         <continent-id>2</continent-id>
-        <region-id>25</region-id>
-      </pays>
-      <pays>
-        <id>8446</id>
-        <nom>Anguilla</nom>
-        <nom-long>Anguilla</nom-long>
-        <iso2>AI</iso2>
-        <iso3>AIA</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8701</id>
-        <nom>Antarctique</nom>
-        <nom-long>Antarctique</nom-long>
-        <iso2>AQ</iso2>
-        <iso3>ATA</iso3>
-        <continent-id>6</continent-id>
-        <region-id>61</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8442</id>
@@ -305,7 +287,7 @@
         <iso2>AG</iso2>
         <iso3>ATG</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8535</id>
@@ -314,7 +296,7 @@
         <iso2>SA</iso2>
         <iso3>SAU</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8401</id>
@@ -323,7 +305,7 @@
         <iso2>AR</iso2>
         <iso3>ARG</iso3>
         <continent-id>3</continent-id>
-        <region-id>36</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8560</id>
@@ -332,25 +314,7 @@
         <iso2>AM</iso2>
         <iso3>ARM</iso3>
         <continent-id>4</continent-id>
-        <region-id>45</region-id>
-      </pays>
-      <pays>
-        <id>8482</id>
-        <nom>Aruba</nom>
-        <nom-long>Aruba</nom-long>
-        <iso2>AW</iso2>
-        <iso3>ABW</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8374</id>
-        <nom>Ascension</nom>
-        <nom-long>Ascension</nom-long>
-        <iso2>SH</iso2>
-        <iso3>SHN</iso3>
-        <continent-id>2</continent-id>
-        <region-id>25</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8601</id>
@@ -359,7 +323,7 @@
         <iso2>AU</iso2>
         <iso3>AUS</iso3>
         <continent-id>5</continent-id>
-        <region-id>56</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8229</id>
@@ -368,7 +332,7 @@
         <iso2>AT</iso2>
         <iso3>AUT</iso3>
         <continent-id>1</continent-id>
-        <region-id>13</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8561</id>
@@ -377,7 +341,7 @@
         <iso2>AZ</iso2>
         <iso3>AZE</iso3>
         <continent-id>4</continent-id>
-        <region-id>45</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8402</id>
@@ -386,7 +350,7 @@
         <iso2>BS</iso2>
         <iso3>BHS</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8502</id>
@@ -395,7 +359,7 @@
         <iso2>BH</iso2>
         <iso3>BHR</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8546</id>
@@ -404,7 +368,7 @@
         <iso2>BD</iso2>
         <iso3>BGD</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8403</id>
@@ -413,7 +377,7 @@
         <iso2>BB</iso2>
         <iso3>BRB</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8204</id>
@@ -422,7 +386,7 @@
         <iso2>BE</iso2>
         <iso3>BEL</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8419</id>
@@ -431,115 +395,7 @@
         <iso2>BZ</iso2>
         <iso3>BLZ</iso3>
         <continent-id>3</continent-id>
-        <region-id>33</region-id>
-      </pays>
-      <pays>
-        <id>8404</id>
-        <nom>Bermudes</nom>
-        <nom-long>Bermudes</nom-long>
-        <iso2>BM</iso2>
-        <iso3>BMU</iso3>
-        <continent-id>3</continent-id>
-        <region-id>31</region-id>
-      </pays>
-      <pays>
-        <id>8503</id>
-        <nom>Bhoutan</nom>
-        <nom-long>Royaume du Bhoutan</nom-long>
-        <iso2>BT</iso2>
-        <iso3>BTN</iso3>
-        <continent-id>4</continent-id>
-        <region-id>46</region-id>
-      </pays>
-      <pays>
-        <id>8405</id>
-        <nom>Bolivie</nom>
-        <nom-long>Etat Plurinational de Bolivie</nom-long>
-        <iso2>BO</iso2>
-        <iso3>BOL</iso3>
-        <continent-id>3</continent-id>
-        <region-id>35</region-id>
-      </pays>
-      <pays>
-        <id>8486</id>
-        <nom>Bonaire, Saint Eustatius et Saba</nom>
-        <nom-long>Bonaire, Saint Eustatius et Saba</nom-long>
-        <iso2>BQ</iso2>
-        <iso3>BES</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8252</id>
-        <nom>Bosnie et Herzégovine</nom>
-        <nom-long>Bosnie et Herzégovine</nom-long>
-        <iso2>BA</iso2>
-        <iso3>BIH</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8307</id>
-        <nom>Botswana</nom>
-        <nom-long>République du Botswana</nom-long>
-        <iso2>BW</iso2>
-        <iso3>BWA</iso3>
-        <continent-id>2</continent-id>
-        <region-id>26</region-id>
-      </pays>
-      <pays>
-        <id>8504</id>
-        <nom>Brunéi Darussalam</nom>
-        <nom-long>Etat de Brunéi Darussalam</nom-long>
-        <iso2>BN</iso2>
-        <iso3>BRN</iso3>
-        <continent-id>4</continent-id>
-        <region-id>47</region-id>
-      </pays>
-      <pays>
-        <id>8406</id>
-        <nom>Brésil</nom>
-        <nom-long>République fédérative du Brésil</nom-long>
-        <iso2>BR</iso2>
-        <iso3>BRA</iso3>
-        <continent-id>3</continent-id>
-        <region-id>35</region-id>
-      </pays>
-      <pays>
-        <id>8205</id>
-        <nom>Bulgarie</nom>
-        <nom-long>République de Bulgarie</nom-long>
-        <iso2>BG</iso2>
-        <iso3>BGR</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8337</id>
-        <nom>Burkina Faso</nom>
-        <nom-long>Burkina Faso</nom-long>
-        <iso2>BF</iso2>
-        <iso3>BFA</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8308</id>
-        <nom>Burundi</nom>
-        <nom-long>République du Burundi</nom-long>
-        <iso2>BI</iso2>
-        <iso3>BDI</iso3>
-        <continent-id>2</continent-id>
-        <region-id>23</region-id>
-      </pays>
-      <pays>
-        <id>8266</id>
-        <nom>Bélarus</nom>
-        <nom-long>République du Bélarus</nom-long>
-        <iso2>BY</iso2>
-        <iso3>BLR</iso3>
-        <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8309</id>
@@ -548,7 +404,106 @@
         <iso2>BJ</iso2>
         <iso3>BEN</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8503</id>
+        <nom>Bhoutan</nom>
+        <nom-long>Royaume du Bhoutan</nom-long>
+        <iso2>BT</iso2>
+        <iso3>BTN</iso3>
+        <continent-id>4</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8266</id>
+        <nom>Biélorussie</nom>
+        <nom-long>République du Bélarus</nom-long>
+        <iso2>BY</iso2>
+        <iso3>BLR</iso3>
+        <continent-id>1</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8505</id>
+        <nom>Birmanie</nom>
+        <nom-long>République de l'Union de Myanmar</nom-long>
+        <iso2>MM</iso2>
+        <iso3>MMR</iso3>
+        <continent-id>4</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8405</id>
+        <nom>Bolivie</nom>
+        <nom-long>Etat Plurinational de Bolivie</nom-long>
+        <iso2>BO</iso2>
+        <iso3>BOL</iso3>
+        <continent-id>3</continent-id>
+        <region-id>5</region-id>
+      </pays>
+      <pays>
+        <id>8252</id>
+        <nom>Bosnie-Herzégovine</nom>
+        <nom-long>Bosnie et Herzégovine</nom-long>
+        <iso2>BA</iso2>
+        <iso3>BIH</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8307</id>
+        <nom>Botswana</nom>
+        <nom-long>République du Botswana</nom-long>
+        <iso2>BW</iso2>
+        <iso3>BWA</iso3>
+        <continent-id>2</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8406</id>
+        <nom>Brésil</nom>
+        <nom-long>République fédérative du Brésil</nom-long>
+        <iso2>BR</iso2>
+        <iso3>BRA</iso3>
+        <continent-id>3</continent-id>
+        <region-id>5</region-id>
+      </pays>
+      <pays>
+        <id>8504</id>
+        <nom>Brunéi</nom>
+        <nom-long>Etat de Brunéi Darussalam</nom-long>
+        <iso2>BN</iso2>
+        <iso3>BRN</iso3>
+        <continent-id>4</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8205</id>
+        <nom>Bulgarie</nom>
+        <nom-long>République de Bulgarie</nom-long>
+        <iso2>BG</iso2>
+        <iso3>BGR</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8337</id>
+        <nom>Burkina Faso</nom>
+        <nom-long>Burkina Faso</nom-long>
+        <iso2>BF</iso2>
+        <iso3>BFA</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8308</id>
+        <nom>Burundi</nom>
+        <nom-long>République du Burundi</nom-long>
+        <iso2>BI</iso2>
+        <iso3>BDI</iso3>
+        <continent-id>2</continent-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8518</id>
@@ -557,7 +512,7 @@
         <iso2>KH</iso2>
         <iso3>KHM</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8317</id>
@@ -566,7 +521,7 @@
         <iso2>CM</iso2>
         <iso3>CMR</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8423</id>
@@ -575,16 +530,16 @@
         <iso2>CA</iso2>
         <iso3>CAN</iso3>
         <continent-id>3</continent-id>
-        <region-id>31</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8319</id>
         <nom>Cap-Vert</nom>
-        <nom-long>République du Cap-Vert</nom-long>
+        <nom-long>République du Cabo Verde</nom-long>
         <iso2>CV</iso2>
         <iso3>CPV</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8407</id>
@@ -593,7 +548,7 @@
         <iso2>CL</iso2>
         <iso3>CHL</iso3>
         <continent-id>3</continent-id>
-        <region-id>36</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8508</id>
@@ -602,7 +557,7 @@
         <iso2>CN</iso2>
         <iso3>CHN</iso3>
         <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8242</id>
@@ -611,16 +566,7 @@
         <iso2>CY</iso2>
         <iso3>CYP</iso3>
         <continent-id>1</continent-id>
-        <region-id>16</region-id>
-      </pays>
-      <pays>
-        <id>8241</id>
-        <nom>Cité du Vatican</nom>
-        <nom-long>Etat de la Cité du Vatican</nom-long>
-        <iso2>VA</iso2>
-        <iso3>VAT</iso3>
-        <continent-id>1</continent-id>
-        <region-id>16</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8424</id>
@@ -629,7 +575,7 @@
         <iso2>CO</iso2>
         <iso3>COL</iso3>
         <continent-id>3</continent-id>
-        <region-id>34</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8321</id>
@@ -638,7 +584,7 @@
         <iso2>KM</iso2>
         <iso3>COM</iso3>
         <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8322</id>
@@ -647,7 +593,7 @@
         <iso2>CG</iso2>
         <iso3>COG</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8323</id>
@@ -656,25 +602,25 @@
         <iso2>CD</iso2>
         <iso3>COD</iso3>
         <continent-id>2</continent-id>
-        <region-id>23</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8530</id>
-        <nom>Corée (Nord)</nom>
+        <nom>Corée du Nord</nom>
         <nom-long>République populaire démocratique de Corée</nom-long>
         <iso2>KP</iso2>
         <iso3>PRK</iso3>
         <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8539</id>
-        <nom>Corée (Sud)</nom>
+        <nom>Corée du Sud</nom>
         <nom-long>République de Corée</nom-long>
         <iso2>KR</iso2>
         <iso3>KOR</iso3>
         <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8408</id>
@@ -683,34 +629,7 @@
         <iso2>CR</iso2>
         <iso3>CRI</iso3>
         <continent-id>3</continent-id>
-        <region-id>33</region-id>
-      </pays>
-      <pays>
-        <id>8250</id>
-        <nom>Croatie</nom>
-        <nom-long>République de Croatie</nom-long>
-        <iso2>HR</iso2>
-        <iso3>HRV</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8425</id>
-        <nom>Cuba</nom>
-        <nom-long>République de Cuba</nom-long>
-        <iso2>CU</iso2>
-        <iso3>CUB</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8484</id>
-        <nom>Curaçao</nom>
-        <nom-long>Curaçao</nom-long>
-        <iso2>CW</iso2>
-        <iso3>CUW</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8310</id>
@@ -719,7 +638,25 @@
         <iso2>CI</iso2>
         <iso3>CIV</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8250</id>
+        <nom>Croatie</nom>
+        <nom-long>République de Croatie</nom-long>
+        <iso2>HR</iso2>
+        <iso3>HRV</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8425</id>
+        <nom>Cuba</nom>
+        <nom-long>République de Cuba</nom-long>
+        <iso2>CU</iso2>
+        <iso3>CUB</iso3>
+        <continent-id>3</continent-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8206</id>
@@ -728,7 +665,7 @@
         <iso2>DK</iso2>
         <iso3>DNK</iso3>
         <continent-id>1</continent-id>
-        <region-id>11</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8303</id>
@@ -737,7 +674,7 @@
         <iso2>DJ</iso2>
         <iso3>DJI</iso3>
         <continent-id>2</continent-id>
-        <region-id>22</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8440</id>
@@ -746,52 +683,43 @@
         <iso2>DM</iso2>
         <iso3>DMA</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8359</id>
-        <nom>Egypte</nom>
-        <nom-long>République arabe d'Egypte</nom-long>
+        <nom>Égypte</nom>
+        <nom-long>République arabe d'Égypte</nom-long>
         <iso2>EG</iso2>
         <iso3>EGY</iso3>
         <continent-id>2</continent-id>
-        <region-id>21</region-id>
-      </pays>
-      <pays>
-        <id>8411</id>
-        <nom>El Salvador</nom>
-        <nom-long>République d'El Salvador</nom-long>
-        <iso2>SV</iso2>
-        <iso3>SLV</iso3>
-        <continent-id>3</continent-id>
-        <region-id>33</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8532</id>
-        <nom>Emirats arabes unis</nom>
+        <nom>Émirats arabes unis</nom>
         <nom-long>Emirats arabes unis</nom-long>
         <iso2>AE</iso2>
         <iso3>ARE</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8410</id>
-        <nom>Equateur</nom>
-        <nom-long>République de l'Equateur</nom-long>
+        <nom>Équateur</nom>
+        <nom-long>République de l'Équateur</nom-long>
         <iso2>EC</iso2>
         <iso3>ECU</iso3>
         <continent-id>3</continent-id>
-        <region-id>35</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8362</id>
-        <nom>Erythrée</nom>
-        <nom-long>Etat d'Erythrée</nom-long>
+        <nom>Érythrée</nom>
+        <nom-long>État d'Érythrée</nom-long>
         <iso2>ER</iso2>
         <iso3>ERI</iso3>
         <continent-id>2</continent-id>
-        <region-id>22</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8236</id>
@@ -800,7 +728,7 @@
         <iso2>ES</iso2>
         <iso3>ESP</iso3>
         <continent-id>1</continent-id>
-        <region-id>15</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8260</id>
@@ -809,25 +737,25 @@
         <iso2>EE</iso2>
         <iso3>EST</iso3>
         <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8439</id>
-        <nom>Etats-Unis</nom>
-        <nom-long>Etats-Unis d'Amérique</nom-long>
+        <nom>États-Unis</nom>
+        <nom-long>États-Unis d'Amérique</nom-long>
         <iso2>US</iso2>
         <iso3>USA</iso3>
         <continent-id>3</continent-id>
-        <region-id>31</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8302</id>
-        <nom>Ethiopie</nom>
-        <nom-long>République fédérale démocratique d'Ethiopie</nom-long>
+        <nom>Éthiopie</nom>
+        <nom-long>République fédérale démocratique d'Éthiopie</nom-long>
         <iso2>ET</iso2>
         <iso3>ETH</iso3>
         <continent-id>2</continent-id>
-        <region-id>22</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8602</id>
@@ -836,7 +764,7 @@
         <iso2>FJ</iso2>
         <iso3>FJI</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8211</id>
@@ -845,7 +773,7 @@
         <iso2>FI</iso2>
         <iso3>FIN</iso3>
         <continent-id>1</continent-id>
-        <region-id>11</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8212</id>
@@ -854,7 +782,7 @@
         <iso2>FR</iso2>
         <iso3>FRA</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8311</id>
@@ -863,7 +791,7 @@
         <iso2>GA</iso2>
         <iso3>GAB</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8312</id>
@@ -872,133 +800,7 @@
         <iso2>GM</iso2>
         <iso3>GMB</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8313</id>
-        <nom>Ghana</nom>
-        <nom-long>République du Ghana</nom-long>
-        <iso2>GH</iso2>
-        <iso3>GHA</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8213</id>
-        <nom>Gibraltar</nom>
-        <nom-long>Gibraltar</nom-long>
-        <iso2>GI</iso2>
-        <iso3>GIB</iso3>
-        <continent-id>1</continent-id>
-        <region-id>15</region-id>
-      </pays>
-      <pays>
-        <id>8441</id>
-        <nom>Grenade</nom>
-        <nom-long>Grenade</nom-long>
-        <iso2>GD</iso2>
-        <iso3>GRD</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8413</id>
-        <nom>Groenland</nom>
-        <nom-long>Groenland</nom-long>
-        <iso2>GL</iso2>
-        <iso3>GRL</iso3>
-        <continent-id>3</continent-id>
-        <region-id>31</region-id>
-      </pays>
-      <pays>
-        <id>8214</id>
-        <nom>Grèce</nom>
-        <nom-long>République hellénique</nom-long>
-        <iso2>GR</iso2>
-        <iso3>GRC</iso3>
-        <continent-id>1</continent-id>
-        <region-id>16</region-id>
-      </pays>
-      <pays>
-        <id>8414</id>
-        <nom>Guadeloupe</nom>
-        <nom-long>Guadeloupe</nom-long>
-        <iso2>GP</iso2>
-        <iso3>GLP</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8632</id>
-        <nom>Guam</nom>
-        <nom-long>Guam</nom-long>
-        <iso2>GU</iso2>
-        <iso3>GUM</iso3>
-        <continent-id>5</continent-id>
-        <region-id>51</region-id>
-      </pays>
-      <pays>
-        <id>8415</id>
-        <nom>Guatemala</nom>
-        <nom-long>République du Guatemala</nom-long>
-        <iso2>GT</iso2>
-        <iso3>GTM</iso3>
-        <continent-id>3</continent-id>
-        <region-id>33</region-id>
-      </pays>
-      <pays>
-        <id>8272</id>
-        <nom>Guernesey</nom>
-        <nom-long>Guernesey</nom-long>
-        <iso2>GG</iso2>
-        <iso3>GGY</iso3>
-        <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-      <pays>
-        <id>8315</id>
-        <nom>Guinée</nom>
-        <nom-long>République de Guinée</nom-long>
-        <iso2>GN</iso2>
-        <iso3>GIN</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8301</id>
-        <nom>Guinée équatoriale</nom>
-        <nom-long>République de Guinée équatoriale</nom-long>
-        <iso2>GQ</iso2>
-        <iso3>GNQ</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8314</id>
-        <nom>Guinée-Bissau</nom>
-        <nom-long>République de Guinée-Bissau</nom-long>
-        <iso2>GW</iso2>
-        <iso3>GNB</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8417</id>
-        <nom>Guyana</nom>
-        <nom-long>République coopérative du Guyana</nom-long>
-        <iso2>GY</iso2>
-        <iso3>GUY</iso3>
-        <continent-id>3</continent-id>
-        <region-id>34</region-id>
-      </pays>
-      <pays>
-        <id>8416</id>
-        <nom>Guyane Française</nom>
-        <nom-long>Guyane Française</nom-long>
-        <iso2>GF</iso2>
-        <iso3>GUF</iso3>
-        <continent-id>3</continent-id>
-        <region-id>34</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8562</id>
@@ -1007,16 +809,79 @@
         <iso2>GE</iso2>
         <iso3>GEO</iso3>
         <continent-id>4</continent-id>
-        <region-id>45</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
-        <id>8483</id>
-        <nom>Géorgie du Sud et Iles Sandwich du Sud</nom>
-        <nom-long>Géorgie du Sud et Iles Sandwich du Sud</nom-long>
-        <iso2>GS</iso2>
-        <iso3>SGS</iso3>
+        <id>8313</id>
+        <nom>Ghana</nom>
+        <nom-long>République du Ghana</nom-long>
+        <iso2>GH</iso2>
+        <iso3>GHA</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8214</id>
+        <nom>Grèce</nom>
+        <nom-long>République hellénique</nom-long>
+        <iso2>GR</iso2>
+        <iso3>GRC</iso3>
+        <continent-id>1</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8441</id>
+        <nom>Grenade</nom>
+        <nom-long>Grenade</nom-long>
+        <iso2>GD</iso2>
+        <iso3>GRD</iso3>
         <continent-id>3</continent-id>
-        <region-id>36</region-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8415</id>
+        <nom>Guatemala</nom>
+        <nom-long>République du Guatemala</nom-long>
+        <iso2>GT</iso2>
+        <iso3>GTM</iso3>
+        <continent-id>3</continent-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8315</id>
+        <nom>Guinée</nom>
+        <nom-long>République de Guinée</nom-long>
+        <iso2>GN</iso2>
+        <iso3>GIN</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8314</id>
+        <nom>Guinée-Bissau</nom>
+        <nom-long>République de Guinée-Bissau</nom-long>
+        <iso2>GW</iso2>
+        <iso3>GNB</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8301</id>
+        <nom>Guinée équatoriale</nom>
+        <nom-long>République de Guinée équatoriale</nom-long>
+        <iso2>GQ</iso2>
+        <iso3>GNQ</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8417</id>
+        <nom>Guyana</nom>
+        <nom-long>République coopérative du Guyana</nom-long>
+        <iso2>GY</iso2>
+        <iso3>GUY</iso3>
+        <continent-id>3</continent-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8418</id>
@@ -1025,7 +890,7 @@
         <iso2>HT</iso2>
         <iso3>HTI</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8420</id>
@@ -1034,16 +899,7 @@
         <iso2>HN</iso2>
         <iso3>HND</iso3>
         <continent-id>3</continent-id>
-        <region-id>33</region-id>
-      </pays>
-      <pays>
-        <id>8509</id>
-        <nom>Hong Kong</nom>
-        <nom-long>Hong Kong</nom-long>
-        <iso2>HK</iso2>
-        <iso3>HKG</iso3>
-        <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8240</id>
@@ -1052,187 +908,34 @@
         <iso2>HU</iso2>
         <iso3>HUN</iso3>
         <continent-id>1</continent-id>
-        <region-id>13</region-id>
-      </pays>
-      <pays>
-        <id>8702</id>
-        <nom>Ile Bouvet</nom>
-        <nom-long>Ile Bouvet</nom-long>
-        <iso2>BV</iso2>
-        <iso3>BVT</iso3>
-        <continent-id>6</continent-id>
-        <region-id>61</region-id>
-      </pays>
-      <pays>
-        <id>8655</id>
-        <nom>Ile Christmas (Australie)</nom>
-        <nom-long>Ile Christmas (Australie)</nom-long>
-        <iso2>CX</iso2>
-        <iso3>CXR</iso3>
-        <continent-id>5</continent-id>
-        <region-id>54</region-id>
-      </pays>
-      <pays>
-        <id>8633</id>
-        <nom>Ile Johnston</nom>
-        <nom-long>Ile Johnston</nom-long>
-        <iso2>UM</iso2>
-        <iso3>UMI</iso3>
-        <continent-id>5</continent-id>
-        <region-id>51</region-id>
-      </pays>
-      <pays>
-        <id>8654</id>
-        <nom>Ile Norfolk</nom>
-        <nom-long>Ile Norfolk</nom-long>
-        <iso2>NF</iso2>
-        <iso3>NFK</iso3>
-        <continent-id>5</continent-id>
-        <region-id>56</region-id>
-      </pays>
-      <pays>
-        <id>8636</id>
-        <nom>Ile Wake</nom>
-        <nom-long>Ile Wake</nom-long>
-        <iso2>UM</iso2>
-        <iso3>UMI</iso3>
-        <continent-id>5</continent-id>
-        <region-id>51</region-id>
-      </pays>
-      <pays>
-        <id>8225</id>
-        <nom>Ile de Man</nom>
-        <nom-long>Ile de Man</nom-long>
-        <iso2>IM</iso2>
-        <iso3>IMN</iso3>
-        <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-      <pays>
-        <id>8473</id>
-        <nom>Iles Cayman</nom>
-        <nom-long>Iles Cayman</nom-long>
-        <iso2>KY</iso2>
-        <iso3>CYM</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8652</id>
-        <nom>Iles Cocos (Keeling)</nom>
-        <nom-long>Iles Cocos (Keeling)</nom-long>
-        <iso2>CC</iso2>
-        <iso3>CCK</iso3>
-        <continent-id>5</continent-id>
-        <region-id>54</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8682</id>
-        <nom>Iles Cook</nom>
-        <nom-long>Iles Cook</nom-long>
+        <nom>Îles Cook</nom>
+        <nom-long>Îles Cook</nom-long>
         <iso2>CK</iso2>
         <iso3>COK</iso3>
         <continent-id>5</continent-id>
-        <region-id>56</region-id>
-      </pays>
-      <pays>
-        <id>8412</id>
-        <nom>Iles Falkland</nom>
-        <nom-long>Iles Falkland</nom-long>
-        <iso2>FK</iso2>
-        <iso3>FLK</iso3>
-        <continent-id>3</continent-id>
-        <region-id>36</region-id>
-      </pays>
-      <pays>
-        <id>8210</id>
-        <nom>Iles Féroé</nom>
-        <nom-long>Iles Féroé</nom-long>
-        <iso2>FO</iso2>
-        <iso3>FRO</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8617</id>
-        <nom>Iles Marshall</nom>
-        <nom-long>République des Iles Marshall</nom-long>
+        <nom>Îles Marshall</nom>
+        <nom-long>République des Îles Marshall</nom-long>
         <iso2>MH</iso2>
         <iso3>MHL</iso3>
         <continent-id>5</continent-id>
-        <region-id>51</region-id>
-      </pays>
-      <pays>
-        <id>8635</id>
-        <nom>Iles Midway</nom>
-        <nom-long>Iles Midway</nom-long>
-        <iso2>UM</iso2>
-        <iso3>UMI</iso3>
-        <continent-id>5</continent-id>
-        <region-id>51</region-id>
-      </pays>
-      <pays>
-        <id>8685</id>
-        <nom>Iles Pitcairn</nom>
-        <nom-long>Iles Pitcairn</nom-long>
-        <iso2>PN</iso2>
-        <iso3>PCN</iso3>
-        <continent-id>5</continent-id>
-        <region-id>56</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8614</id>
-        <nom>Iles Salomon</nom>
-        <nom-long>Iles Salomon</nom-long>
+        <nom>Îles Salomon</nom>
+        <nom-long>Îles Salomon</nom-long>
         <iso2>SB</iso2>
         <iso3>SLB</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8474</id>
-        <nom>Iles Turques et Caïques</nom>
-        <nom-long>Iles Turques et Caïques</nom-long>
-        <iso2>TC</iso2>
-        <iso3>TCA</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8472</id>
-        <nom>Iles Vierges américaines</nom>
-        <nom-long>Iles Vierges américaines</nom-long>
-        <iso2>VI</iso2>
-        <iso3>VIR</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8476</id>
-        <nom>Iles Vierges britanniques</nom>
-        <nom-long>Iles Vierges britanniques</nom-long>
-        <iso2>VG</iso2>
-        <iso3>VGB</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8274</id>
-        <nom>Iles d'Aland</nom>
-        <nom-long>Iles d'Aland</nom-long>
-        <iso2>AX</iso2>
-        <iso3>ALA</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
-      </pays>
-      <pays>
-        <id>8653</id>
-        <nom>Iles-Heard-et-McDonald</nom>
-        <nom-long>Iles-Heard-et-McDonald</nom-long>
-        <iso2>HM</iso2>
-        <iso3>HMD</iso3>
-        <continent-id>5</continent-id>
-        <region-id>54</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8510</id>
@@ -1241,7 +944,7 @@
         <iso2>IN</iso2>
         <iso3>IND</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8511</id>
@@ -1250,7 +953,7 @@
         <iso2>ID</iso2>
         <iso3>IDN</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8512</id>
@@ -1259,7 +962,7 @@
         <iso2>IQ</iso2>
         <iso3>IRQ</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8513</id>
@@ -1268,7 +971,7 @@
         <iso2>IR</iso2>
         <iso3>IRN</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8216</id>
@@ -1277,7 +980,7 @@
         <iso2>IE</iso2>
         <iso3>IRL</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8217</id>
@@ -1286,7 +989,7 @@
         <iso2>IS</iso2>
         <iso3>ISL</iso3>
         <continent-id>1</continent-id>
-        <region-id>11</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8514</id>
@@ -1295,7 +998,7 @@
         <iso2>IL</iso2>
         <iso3>ISR</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8218</id>
@@ -1304,7 +1007,7 @@
         <iso2>IT</iso2>
         <iso3>ITA</iso3>
         <continent-id>1</continent-id>
-        <region-id>16</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8421</id>
@@ -1313,7 +1016,7 @@
         <iso2>JM</iso2>
         <iso3>JAM</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8515</id>
@@ -1322,16 +1025,7 @@
         <iso2>JP</iso2>
         <iso3>JPN</iso3>
         <continent-id>4</continent-id>
-        <region-id>42</region-id>
-      </pays>
-      <pays>
-        <id>8271</id>
-        <nom>Jersey</nom>
-        <nom-long>Jersey</nom-long>
-        <iso2>JE</iso2>
-        <iso3>JEY</iso3>
-        <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8517</id>
@@ -1340,7 +1034,7 @@
         <iso2>JO</iso2>
         <iso3>JOR</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8563</id>
@@ -1349,7 +1043,7 @@
         <iso2>KZ</iso2>
         <iso3>KAZ</iso3>
         <continent-id>4</continent-id>
-        <region-id>43</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8320</id>
@@ -1358,7 +1052,7 @@
         <iso2>KE</iso2>
         <iso3>KEN</iso3>
         <continent-id>2</continent-id>
-        <region-id>22</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8564</id>
@@ -1367,7 +1061,7 @@
         <iso2>KG</iso2>
         <iso3>KGZ</iso3>
         <continent-id>4</continent-id>
-        <region-id>43</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8616</id>
@@ -1376,7 +1070,16 @@
         <iso2>KI</iso2>
         <iso3>KIR</iso3>
         <continent-id>5</continent-id>
-        <region-id>51</region-id>
+        <region-id>1</region-id>
+      </pays>
+      <pays>
+        <id>8256</id>
+        <nom>Kosovo</nom>
+        <nom-long>République du Kosovo</nom-long>
+        <iso2>XK</iso2>
+        <iso3>XKX</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8521</id>
@@ -1385,7 +1088,7 @@
         <iso2>KW</iso2>
         <iso3>KWT</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8522</id>
@@ -1394,7 +1097,7 @@
         <iso2>LA</iso2>
         <iso3>LAO</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8324</id>
@@ -1403,7 +1106,7 @@
         <iso2>LS</iso2>
         <iso3>LSO</iso3>
         <continent-id>2</continent-id>
-        <region-id>26</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8261</id>
@@ -1412,7 +1115,7 @@
         <iso2>LV</iso2>
         <iso3>LVA</iso3>
         <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8523</id>
@@ -1421,16 +1124,7 @@
         <iso2>LB</iso2>
         <iso3>LBN</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
-      </pays>
-      <pays>
-        <id>8326</id>
-        <nom>Libye</nom>
-        <nom-long>Etat de Libye</nom-long>
-        <iso2>LY</iso2>
-        <iso3>LBY</iso3>
-        <continent-id>2</continent-id>
-        <region-id>21</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8325</id>
@@ -1439,7 +1133,16 @@
         <iso2>LR</iso2>
         <iso3>LBR</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8326</id>
+        <nom>Libye</nom>
+        <nom-long>Etat de Libye</nom-long>
+        <iso2>LY</iso2>
+        <iso3>LBY</iso3>
+        <continent-id>2</continent-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8222</id>
@@ -1448,7 +1151,7 @@
         <iso2>LI</iso2>
         <iso3>LIE</iso3>
         <continent-id>1</continent-id>
-        <region-id>13</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8262</id>
@@ -1457,7 +1160,7 @@
         <iso2>LT</iso2>
         <iso3>LTU</iso3>
         <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8223</id>
@@ -1466,25 +1169,16 @@
         <iso2>LU</iso2>
         <iso3>LUX</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-      <pays>
-        <id>8524</id>
-        <nom>Macao</nom>
-        <nom-long>Macao</nom-long>
-        <iso2>MO</iso2>
-        <iso3>MAC</iso3>
-        <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8255</id>
-        <nom>Macédoine</nom>
-        <nom-long>Ex-République yougoslave de Macédoine</nom-long>
+        <nom>Macédoine du Nord</nom>
+        <nom-long>République de Macédoine du Nord</nom-long>
         <iso2>MK</iso2>
         <iso3>MKD</iso3>
         <continent-id>1</continent-id>
-        <region-id>17</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8327</id>
@@ -1493,7 +1187,7 @@
         <iso2>MG</iso2>
         <iso3>MDG</iso3>
         <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8525</id>
@@ -1502,7 +1196,7 @@
         <iso2>MY</iso2>
         <iso3>MYS</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8329</id>
@@ -1511,7 +1205,7 @@
         <iso2>MW</iso2>
         <iso3>MWI</iso3>
         <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8526</id>
@@ -1520,7 +1214,7 @@
         <iso2>MV</iso2>
         <iso3>MDV</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8330</id>
@@ -1529,7 +1223,7 @@
         <iso2>ML</iso2>
         <iso3>MLI</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8224</id>
@@ -1538,16 +1232,7 @@
         <iso2>MT</iso2>
         <iso3>MLT</iso3>
         <continent-id>1</continent-id>
-        <region-id>16</region-id>
-      </pays>
-      <pays>
-        <id>8630</id>
-        <nom>Mariannes du Nord</nom>
-        <nom-long>Mariannes du Nord</nom-long>
-        <iso2>MP</iso2>
-        <iso3>MNP</iso3>
-        <continent-id>5</continent-id>
-        <region-id>51</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8331</id>
@@ -1556,16 +1241,7 @@
         <iso2>MA</iso2>
         <iso3>MAR</iso3>
         <continent-id>2</continent-id>
-        <region-id>21</region-id>
-      </pays>
-      <pays>
-        <id>8426</id>
-        <nom>Martinique</nom>
-        <nom-long>Martinique</nom-long>
-        <iso2>MQ</iso2>
-        <iso3>MTQ</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8333</id>
@@ -1574,7 +1250,7 @@
         <iso2>MU</iso2>
         <iso3>MUS</iso3>
         <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8332</id>
@@ -1583,43 +1259,34 @@
         <iso2>MR</iso2>
         <iso3>MRT</iso3>
         <continent-id>2</continent-id>
-        <region-id>21</region-id>
-      </pays>
-      <pays>
-        <id>8361</id>
-        <nom>Mayotte</nom>
-        <nom-long>Mayotte</nom-long>
-        <iso2>YT</iso2>
-        <iso3>MYT</iso3>
-        <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8427</id>
         <nom>Mexique</nom>
-        <nom-long>Etats-Unis mexicains</nom-long>
+        <nom-long>États-Unis mexicains</nom-long>
         <iso2>MX</iso2>
         <iso3>MEX</iso3>
         <continent-id>3</continent-id>
-        <region-id>33</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8618</id>
         <nom>Micronésie</nom>
-        <nom-long>Etats fédérés de Micronésie</nom-long>
+        <nom-long>États fédérés de Micronésie</nom-long>
         <iso2>FM</iso2>
         <iso3>FSM</iso3>
         <continent-id>5</continent-id>
-        <region-id>51</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8263</id>
-        <nom>Moldova</nom>
+        <nom>Moldavie</nom>
         <nom-long>République de Moldova</nom-long>
         <iso2>MD</iso2>
         <iso3>MDA</iso3>
         <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8226</id>
@@ -1628,7 +1295,7 @@
         <iso2>MC</iso2>
         <iso3>MCO</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8528</id>
@@ -1637,16 +1304,7 @@
         <iso2>MN</iso2>
         <iso3>MNG</iso3>
         <continent-id>4</continent-id>
-        <region-id>41</region-id>
-      </pays>
-      <pays>
-        <id>8475</id>
-        <nom>Montserrat</nom>
-        <nom-long>Montserrat</nom-long>
-        <iso2>MS</iso2>
-        <iso3>MSR</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8254</id>
@@ -1655,7 +1313,7 @@
         <iso2>ME</iso2>
         <iso3>MNE</iso3>
         <continent-id>1</continent-id>
-        <region-id>17</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8334</id>
@@ -1664,16 +1322,7 @@
         <iso2>MZ</iso2>
         <iso3>MOZ</iso3>
         <continent-id>2</continent-id>
-        <region-id>27</region-id>
-      </pays>
-      <pays>
-        <id>8505</id>
-        <nom>Myanmar</nom>
-        <nom-long>République de l'Union de Myanmar</nom-long>
-        <iso2>MM</iso2>
-        <iso3>MMR</iso3>
-        <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8351</id>
@@ -1682,7 +1331,7 @@
         <iso2>NA</iso2>
         <iso3>NAM</iso3>
         <continent-id>2</continent-id>
-        <region-id>25</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8604</id>
@@ -1691,70 +1340,7 @@
         <iso2>NR</iso2>
         <iso3>NRU</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8429</id>
-        <nom>Nicaragua</nom>
-        <nom-long>République du Nicaragua</nom-long>
-        <iso2>NI</iso2>
-        <iso3>NIC</iso3>
-        <continent-id>3</continent-id>
-        <region-id>33</region-id>
-      </pays>
-      <pays>
-        <id>8335</id>
-        <nom>Niger</nom>
-        <nom-long>République du Niger</nom-long>
-        <iso2>NE</iso2>
-        <iso3>NER</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8336</id>
-        <nom>Nigéria</nom>
-        <nom-long>République fédérale du Nigéria</nom-long>
-        <iso2>NG</iso2>
-        <iso3>NGA</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8683</id>
-        <nom>Nioué</nom>
-        <nom-long>Nioué</nom-long>
-        <iso2>NU</iso2>
-        <iso3>NIU</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8228</id>
-        <nom>Norvège</nom>
-        <nom-long>Royaume de Norvège</nom-long>
-        <iso2>NO</iso2>
-        <iso3>NOR</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
-      </pays>
-      <pays>
-        <id>8606</id>
-        <nom>Nouvelle-Calédonie</nom>
-        <nom-long>Nouvelle-Calédonie</nom-long>
-        <iso2>NC</iso2>
-        <iso3>NCL</iso3>
-        <continent-id>5</continent-id>
-        <region-id>56</region-id>
-      </pays>
-      <pays>
-        <id>8607</id>
-        <nom>Nouvelle-Zélande</nom>
-        <nom-long>Nouvelle-Zélande</nom-long>
-        <iso2>NZ</iso2>
-        <iso3>NZL</iso3>
-        <continent-id>5</continent-id>
-        <region-id>56</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8529</id>
@@ -1763,7 +1349,52 @@
         <iso2>NP</iso2>
         <iso3>NPL</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8429</id>
+        <nom>Nicaragua</nom>
+        <nom-long>République du Nicaragua</nom-long>
+        <iso2>NI</iso2>
+        <iso3>NIC</iso3>
+        <continent-id>3</continent-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8335</id>
+        <nom>Niger</nom>
+        <nom-long>République du Niger</nom-long>
+        <iso2>NE</iso2>
+        <iso3>NER</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8336</id>
+        <nom>Nigéria</nom>
+        <nom-long>République fédérale du Nigéria</nom-long>
+        <iso2>NG</iso2>
+        <iso3>NGA</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8228</id>
+        <nom>Norvège</nom>
+        <nom-long>Royaume de Norvège</nom-long>
+        <iso2>NO</iso2>
+        <iso3>NOR</iso3>
+        <continent-id>1</continent-id>
+        <region-id>1</region-id>
+      </pays>
+      <pays>
+        <id>8607</id>
+        <nom>Nouvelle-Zélande</nom>
+        <nom-long>Nouvelle-Zélande</nom-long>
+        <iso2>NZ</iso2>
+        <iso3>NZL</iso3>
+        <continent-id>5</continent-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8527</id>
@@ -1772,7 +1403,7 @@
         <iso2>OM</iso2>
         <iso3>OMN</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8358</id>
@@ -1781,7 +1412,7 @@
         <iso2>UG</iso2>
         <iso3>UGA</iso3>
         <continent-id>2</continent-id>
-        <region-id>23</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8567</id>
@@ -1790,7 +1421,7 @@
         <iso2>UZ</iso2>
         <iso3>UZB</iso3>
         <continent-id>4</continent-id>
-        <region-id>43</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8533</id>
@@ -1799,7 +1430,7 @@
         <iso2>PK</iso2>
         <iso3>PAK</iso3>
         <continent-id>4</continent-id>
-        <region-id>46</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8619</id>
@@ -1808,16 +1439,16 @@
         <iso2>PW</iso2>
         <iso3>PLW</iso3>
         <continent-id>5</continent-id>
-        <region-id>51</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8550</id>
         <nom>Palestine</nom>
-        <nom-long>Palestine</nom-long>
+        <nom-long>État de Palestine</nom-long>
         <iso2>PS</iso2>
         <iso3>PSE</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8430</id>
@@ -1826,16 +1457,16 @@
         <iso2>PA</iso2>
         <iso3>PAN</iso3>
         <continent-id>3</continent-id>
-        <region-id>33</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8608</id>
         <nom>Papouasie-Nouvelle-Guinée</nom>
-        <nom-long>l’État indépendant de Papouasie-Nouvelle-Guinée</nom-long>
+        <nom-long>l'État indépendant de Papouasie-Nouvelle-Guinée</nom-long>
         <iso2>PG</iso2>
         <iso3>PNG</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8431</id>
@@ -1844,7 +1475,7 @@
         <iso2>PY</iso2>
         <iso3>PRY</iso3>
         <continent-id>3</continent-id>
-        <region-id>35</region-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8227</id>
@@ -1853,52 +1484,7 @@
         <iso2>NL</iso2>
         <iso3>NLD</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-      <pays>
-        <id>8534</id>
-        <nom>Philippines</nom>
-        <nom-long>République des Philippines</nom-long>
-        <iso2>PH</iso2>
-        <iso3>PHL</iso3>
-        <continent-id>4</continent-id>
-        <region-id>47</region-id>
-      </pays>
-      <pays>
-        <id>8230</id>
-        <nom>Pologne</nom>
-        <nom-long>République de Pologne</nom-long>
-        <iso2>PL</iso2>
-        <iso3>POL</iso3>
-        <continent-id>1</continent-id>
-        <region-id>13</region-id>
-      </pays>
-      <pays>
-        <id>8671</id>
-        <nom>Polynésie française</nom>
-        <nom-long>Polynésie française</nom-long>
-        <iso2>PF</iso2>
-        <iso3>PYF</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8433</id>
-        <nom>Porto Rico</nom>
-        <nom-long>Porto Rico</nom-long>
-        <iso2>PR</iso2>
-        <iso3>PRI</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8231</id>
-        <nom>Portugal</nom>
-        <nom-long>République portugaise</nom-long>
-        <iso2>PT</iso2>
-        <iso3>PRT</iso3>
-        <continent-id>1</continent-id>
-        <region-id>15</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8432</id>
@@ -1907,52 +1493,43 @@
         <iso2>PE</iso2>
         <iso3>PER</iso3>
         <continent-id>3</continent-id>
-        <region-id>35</region-id>
+        <region-id>5</region-id>
+      </pays>
+      <pays>
+        <id>8534</id>
+        <nom>Philippines</nom>
+        <nom-long>République des Philippines</nom-long>
+        <iso2>PH</iso2>
+        <iso3>PHL</iso3>
+        <continent-id>4</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8230</id>
+        <nom>Pologne</nom>
+        <nom-long>République de Pologne</nom-long>
+        <iso2>PL</iso2>
+        <iso3>POL</iso3>
+        <continent-id>1</continent-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8231</id>
+        <nom>Portugal</nom>
+        <nom-long>République portugaise</nom-long>
+        <iso2>PT</iso2>
+        <iso3>PRT</iso3>
+        <continent-id>1</continent-id>
+        <region-id>5</region-id>
       </pays>
       <pays>
         <id>8519</id>
         <nom>Qatar</nom>
-        <nom-long>Etat du Qatar</nom-long>
+        <nom-long>État du Qatar</nom-long>
         <iso2>QA</iso2>
         <iso3>QAT</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
-      </pays>
-      <pays>
-        <id>8232</id>
-        <nom>Roumanie</nom>
-        <nom-long>Roumanie</nom-long>
-        <iso2>RO</iso2>
-        <iso3>ROU</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8215</id>
-        <nom>Royaume-Uni</nom>
-        <nom-long>Royaume-Uni de Grande-Bretagne et d'Irlande du Nord</nom-long>
-        <iso2>GB</iso2>
-        <iso3>GBR</iso3>
-        <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-      <pays>
-        <id>8264</id>
-        <nom>Russie</nom>
-        <nom-long>Fédération de Russie</nom-long>
-        <iso2>RU</iso2>
-        <iso3>RUS</iso3>
-        <continent-id>1</continent-id>
-        <region-id>12</region-id>
-      </pays>
-      <pays>
-        <id>8341</id>
-        <nom>Rwanda</nom>
-        <nom-long>République du Rwanda</nom-long>
-        <iso2>RW</iso2>
-        <iso3>RWA</iso3>
-        <continent-id>2</continent-id>
-        <region-id>23</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8360</id>
@@ -1961,7 +1538,7 @@
         <iso2>CF</iso2>
         <iso3>CAF</iso3>
         <continent-id>2</continent-id>
-        <region-id>23</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8409</id>
@@ -1970,97 +1547,43 @@
         <iso2>DO</iso2>
         <iso3>DOM</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
-        <id>8244</id>
-        <nom>République tchèque</nom>
-        <nom-long>République tchèque</nom-long>
-        <iso2>CZ</iso2>
-        <iso3>CZE</iso3>
+        <id>8232</id>
+        <nom>Roumanie</nom>
+        <nom-long>Roumanie</nom-long>
+        <iso2>RO</iso2>
+        <iso3>ROU</iso3>
         <continent-id>1</continent-id>
-        <region-id>13</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
-        <id>8339</id>
-        <nom>Réunion</nom>
-        <nom-long>Réunion</nom-long>
-        <iso2>RE</iso2>
-        <iso3>REU</iso3>
-        <continent-id>2</continent-id>
-        <region-id>27</region-id>
-      </pays>
-      <pays>
-        <id>8372</id>
-        <nom>Sahara Occidental</nom>
-        <nom-long>Sahara Occidental</nom-long>
-        <iso2>EH</iso2>
-        <iso3>ESH</iso3>
-        <continent-id>2</continent-id>
-        <region-id>21</region-id>
-      </pays>
-      <pays>
-        <id>8449</id>
-        <nom>Saint-Barthélemy</nom>
-        <nom-long>Saint-Barthélemy</nom-long>
-        <iso2>BL</iso2>
-        <iso3>BLM</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8445</id>
-        <nom>Saint-Kitts-et-Nevis</nom>
-        <nom-long>Saint-Kitts-et-Nevis</nom-long>
-        <iso2>KN</iso2>
-        <iso3>KNA</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8233</id>
-        <nom>Saint-Marin</nom>
-        <nom-long>République de Saint-Marin</nom-long>
-        <iso2>SM</iso2>
-        <iso3>SMR</iso3>
+        <id>8215</id>
+        <nom>Royaume-Uni</nom>
+        <nom-long>Royaume-Uni de Grande-Bretagne et d'Irlande du Nord</nom-long>
+        <iso2>GB</iso2>
+        <iso3>GBR</iso3>
         <continent-id>1</continent-id>
-        <region-id>16</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
-        <id>8448</id>
-        <nom>Saint-Martin (France)</nom>
-        <nom-long>Saint-Martin (France)</nom-long>
-        <iso2>MF</iso2>
-        <iso3>MAF</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <id>8264</id>
+        <nom>Russie</nom>
+        <nom-long>Fédération de Russie</nom-long>
+        <iso2>RU</iso2>
+        <iso3>RUS</iso3>
+        <continent-id>1</continent-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
-        <id>8434</id>
-        <nom>Saint-Pierre-et-Miquelon</nom>
-        <nom-long>Saint-Pierre-et-Miquelon</nom-long>
-        <iso2>PM</iso2>
-        <iso3>SPM</iso3>
-        <continent-id>3</continent-id>
-        <region-id>31</region-id>
-      </pays>
-      <pays>
-        <id>8444</id>
-        <nom>Saint-Vincent-et-les Grenadines</nom>
-        <nom-long>Saint-Vincent-et-les Grenadines</nom-long>
-        <iso2>VC</iso2>
-        <iso3>VCT</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8373</id>
-        <nom>Sainte-Hélène</nom>
-        <nom-long>Sainte-Hélène</nom-long>
-        <iso2>SH</iso2>
-        <iso3>SHN</iso3>
+        <id>8341</id>
+        <nom>Rwanda</nom>
+        <nom-long>République du Rwanda</nom-long>
+        <iso2>RW</iso2>
+        <iso3>RWA</iso3>
         <continent-id>2</continent-id>
-        <region-id>25</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8443</id>
@@ -2069,7 +1592,43 @@
         <iso2>LC</iso2>
         <iso3>LCA</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8445</id>
+        <nom>Saint-Kitts-et-Nevis</nom>
+        <nom-long>Fédération de Saint-Kitts-et-Nevis</nom-long>
+        <iso2>KN</iso2>
+        <iso3>KNA</iso3>
+        <continent-id>3</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8233</id>
+        <nom>Saint-Marin</nom>
+        <nom-long>République de Saint-Marin</nom-long>
+        <iso2>SM</iso2>
+        <iso3>SMR</iso3>
+        <continent-id>1</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8444</id>
+        <nom>Saint-Vincent-et-les-Grenadines</nom>
+        <nom-long>Saint-Vincent-et-les Grenadines</nom-long>
+        <iso2>VC</iso2>
+        <iso3>VCT</iso3>
+        <continent-id>3</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8411</id>
+        <nom>Salvador</nom>
+        <nom-long>République d'El Salvador</nom-long>
+        <iso2>SV</iso2>
+        <iso3>SLV</iso3>
+        <continent-id>3</continent-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8612</id>
@@ -2078,16 +1637,7 @@
         <iso2>WS</iso2>
         <iso3>WSM</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8621</id>
-        <nom>Samoa américaines</nom>
-        <nom-long>Samoa américaines</nom-long>
-        <iso2>AS</iso2>
-        <iso3>ASM</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8344</id>
@@ -2096,160 +1646,7 @@
         <iso2>ST</iso2>
         <iso3>STP</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8248</id>
-        <nom>Serbie</nom>
-        <nom-long>République de Serbie</nom-long>
-        <iso2>RS</iso2>
-        <iso3>SRB</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8346</id>
-        <nom>Seychelles</nom>
-        <nom-long>République des Seychelles</nom-long>
-        <iso2>SC</iso2>
-        <iso3>SYC</iso3>
-        <continent-id>2</continent-id>
-        <region-id>22</region-id>
-      </pays>
-      <pays>
-        <id>8347</id>
-        <nom>Sierra Leone</nom>
-        <nom-long>République de Sierra Leone</nom-long>
-        <iso2>SL</iso2>
-        <iso3>SLE</iso3>
-        <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8537</id>
-        <nom>Singapour</nom>
-        <nom-long>République de Singapour</nom-long>
-        <iso2>SG</iso2>
-        <iso3>SGP</iso3>
-        <continent-id>4</continent-id>
-        <region-id>47</region-id>
-      </pays>
-      <pays>
-        <id>8485</id>
-        <nom>Sint Maarten (Pays-Bas)</nom>
-        <nom-long>Sint Maarten (Pays-Bas)</nom-long>
-        <iso2>SX</iso2>
-        <iso3>SXM</iso3>
-        <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8243</id>
-        <nom>Slovaquie</nom>
-        <nom-long>République slovaque</nom-long>
-        <iso2>SK</iso2>
-        <iso3>SVK</iso3>
-        <continent-id>1</continent-id>
-        <region-id>13</region-id>
-      </pays>
-      <pays>
-        <id>8251</id>
-        <nom>Slovénie</nom>
-        <nom-long>République de Slovénie</nom-long>
-        <iso2>SI</iso2>
-        <iso3>SVN</iso3>
-        <continent-id>1</continent-id>
-        <region-id>17</region-id>
-      </pays>
-      <pays>
-        <id>8348</id>
-        <nom>Somalie</nom>
-        <nom-long>République fédérale de Somalie</nom-long>
-        <iso2>SO</iso2>
-        <iso3>SOM</iso3>
-        <continent-id>2</continent-id>
-        <region-id>22</region-id>
-      </pays>
-      <pays>
-        <id>8350</id>
-        <nom>Soudan</nom>
-        <nom-long>République du Soudan</nom-long>
-        <iso2>SD</iso2>
-        <iso3>SDN</iso3>
-        <continent-id>2</continent-id>
-        <region-id>21</region-id>
-      </pays>
-      <pays>
-        <id>8363</id>
-        <nom>Soudan du Sud</nom>
-        <nom-long>République du Soudan du Sud</nom-long>
-        <iso2>SS</iso2>
-        <iso3>SSD</iso3>
-        <continent-id>2</continent-id>
-        <region-id>22</region-id>
-      </pays>
-      <pays>
-        <id>8506</id>
-        <nom>Sri Lanka</nom>
-        <nom-long>République socialiste démocratique de Sri Lanka</nom-long>
-        <iso2>LK</iso2>
-        <iso3>LKA</iso3>
-        <continent-id>4</continent-id>
-        <region-id>46</region-id>
-      </pays>
-      <pays>
-        <id>8100</id>
-        <nom>Suisse</nom>
-        <nom-long>Confédération suisse</nom-long>
-        <iso2>CH</iso2>
-        <iso3>CHE</iso3>
-        <continent-id>1</continent-id>
-        <region-id>13</region-id>
-      </pays>
-      <pays>
-        <id>8435</id>
-        <nom>Suriname</nom>
-        <nom-long>République du Suriname</nom-long>
-        <iso2>SR</iso2>
-        <iso3>SUR</iso3>
-        <continent-id>3</continent-id>
-        <region-id>34</region-id>
-      </pays>
-      <pays>
-        <id>8234</id>
-        <nom>Suède</nom>
-        <nom-long>Royaume de Suède</nom-long>
-        <iso2>SE</iso2>
-        <iso3>SWE</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
-      </pays>
-      <pays>
-        <id>8273</id>
-        <nom>Svalbard et Île Jan Mayen</nom>
-        <nom-long>Svalbard et Île Jan Mayen</nom-long>
-        <iso2>SJ</iso2>
-        <iso3>SJM</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
-      </pays>
-      <pays>
-        <id>8352</id>
-        <nom>Swaziland</nom>
-        <nom-long>Royaume du Swaziland</nom-long>
-        <iso2>SZ</iso2>
-        <iso3>SWZ</iso3>
-        <continent-id>2</continent-id>
-        <region-id>26</region-id>
-      </pays>
-      <pays>
-        <id>8541</id>
-        <nom>Syrie</nom>
-        <nom-long>République arabe syrienne</nom-long>
-        <iso2>SY</iso2>
-        <iso3>SYR</iso3>
-        <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8345</id>
@@ -2258,7 +1655,142 @@
         <iso2>SN</iso2>
         <iso3>SEN</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8248</id>
+        <nom>Serbie</nom>
+        <nom-long>République de Serbie</nom-long>
+        <iso2>RS</iso2>
+        <iso3>SRB</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8346</id>
+        <nom>Seychelles</nom>
+        <nom-long>République des Seychelles</nom-long>
+        <iso2>SC</iso2>
+        <iso3>SYC</iso3>
+        <continent-id>2</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8347</id>
+        <nom>Sierra Leone</nom>
+        <nom-long>République de Sierra Leone</nom-long>
+        <iso2>SL</iso2>
+        <iso3>SLE</iso3>
+        <continent-id>2</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8537</id>
+        <nom>Singapour</nom>
+        <nom-long>République de Singapour</nom-long>
+        <iso2>SG</iso2>
+        <iso3>SGP</iso3>
+        <continent-id>4</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8243</id>
+        <nom>Slovaquie</nom>
+        <nom-long>République slovaque</nom-long>
+        <iso2>SK</iso2>
+        <iso3>SVK</iso3>
+        <continent-id>1</continent-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8251</id>
+        <nom>Slovénie</nom>
+        <nom-long>République de Slovénie</nom-long>
+        <iso2>SI</iso2>
+        <iso3>SVN</iso3>
+        <continent-id>1</continent-id>
+        <region-id>7</region-id>
+      </pays>
+      <pays>
+        <id>8348</id>
+        <nom>Somalie</nom>
+        <nom-long>République fédérale de Somalie</nom-long>
+        <iso2>SO</iso2>
+        <iso3>SOM</iso3>
+        <continent-id>2</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8350</id>
+        <nom>Soudan</nom>
+        <nom-long>République du Soudan</nom-long>
+        <iso2>SD</iso2>
+        <iso3>SDN</iso3>
+        <continent-id>2</continent-id>
+        <region-id>1</region-id>
+      </pays>
+      <pays>
+        <id>8363</id>
+        <nom>Soudan du Sud</nom>
+        <nom-long>République du Soudan du Sud</nom-long>
+        <iso2>SS</iso2>
+        <iso3>SSD</iso3>
+        <continent-id>2</continent-id>
+        <region-id>2</region-id>
+      </pays>
+      <pays>
+        <id>8506</id>
+        <nom>Sri Lanka</nom>
+        <nom-long>République socialiste démocratique de Sri Lanka</nom-long>
+        <iso2>LK</iso2>
+        <iso3>LKA</iso3>
+        <continent-id>4</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8234</id>
+        <nom>Suède</nom>
+        <nom-long>Royaume de Suède</nom-long>
+        <iso2>SE</iso2>
+        <iso3>SWE</iso3>
+        <continent-id>1</continent-id>
+        <region-id>1</region-id>
+      </pays>
+      <pays>
+        <id>8100</id>
+        <nom>Suisse</nom>
+        <nom-long>Confédération suisse</nom-long>
+        <iso2>CH</iso2>
+        <iso3>CHE</iso3>
+        <continent-id>1</continent-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8435</id>
+        <nom>Suriname</nom>
+        <nom-long>République du Suriname</nom-long>
+        <iso2>SR</iso2>
+        <iso3>SUR</iso3>
+        <continent-id>3</continent-id>
+        <region-id>4</region-id>
+      </pays>
+      <pays>
+        <id>8352</id>
+        <nom>Swaziland</nom>
+        <nom-long>Royaume d'Eswatini</nom-long>
+        <iso2>SZ</iso2>
+        <iso3>SWZ</iso3>
+        <continent-id>2</continent-id>
+        <region-id>6</region-id>
+      </pays>
+      <pays>
+        <id>8541</id>
+        <nom>Syrie</nom>
+        <nom-long>République arabe syrienne</nom-long>
+        <iso2>SY</iso2>
+        <iso3>SYR</iso3>
+        <continent-id>4</continent-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8565</id>
@@ -2267,7 +1799,16 @@
         <iso2>TJ</iso2>
         <iso3>TJK</iso3>
         <continent-id>4</continent-id>
-        <region-id>43</region-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8507</id>
+        <nom>Taïwan</nom>
+        <nom-long>Taïwan (Taipei chinois)</nom-long>
+        <iso2>TW</iso2>
+        <iso3>TWN</iso3>
+        <continent-id>4</continent-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8353</id>
@@ -2276,16 +1817,7 @@
         <iso2>TZ</iso2>
         <iso3>TZA</iso3>
         <continent-id>2</continent-id>
-        <region-id>22</region-id>
-      </pays>
-      <pays>
-        <id>8507</id>
-        <nom>Taïwan (Taipei chinois)</nom>
-        <nom-long>Taïwan (Taipei chinois)</nom-long>
-        <iso2>TW</iso2>
-        <iso3>TWN</iso3>
-        <continent-id>4</continent-id>
-        <region-id>42</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8356</id>
@@ -2294,25 +1826,16 @@
         <iso2>TD</iso2>
         <iso3>TCD</iso3>
         <continent-id>2</continent-id>
-        <region-id>23</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
-        <id>8703</id>
-        <nom>Terres australes et antarctiques françaises</nom>
-        <nom-long>Terres australes et antarctiques françaises</nom-long>
-        <iso2>TF</iso2>
-        <iso3>ATF</iso3>
-        <continent-id>6</continent-id>
-        <region-id>61</region-id>
-      </pays>
-      <pays>
-        <id>8371</id>
-        <nom>Territoires britanniques dans l'océan indien</nom>
-        <nom-long>Territoires britanniques dans l'océan indien</nom-long>
-        <iso2>IO</iso2>
-        <iso3>IOT</iso3>
-        <continent-id>2</continent-id>
-        <region-id>27</region-id>
+        <id>8244</id>
+        <nom>Tchéquie</nom>
+        <nom-long>République tchèque</nom-long>
+        <iso2>CZ</iso2>
+        <iso3>CZE</iso3>
+        <continent-id>1</continent-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8542</id>
@@ -2321,16 +1844,16 @@
         <iso2>TH</iso2>
         <iso3>THA</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8547</id>
-        <nom>Timor-Leste</nom>
+        <nom>Timor oriental</nom>
         <nom-long>République démocratique du Timor-Leste</nom-long>
         <iso2>TL</iso2>
         <iso3>TLS</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8354</id>
@@ -2339,16 +1862,7 @@
         <iso2>TG</iso2>
         <iso3>TGO</iso3>
         <continent-id>2</continent-id>
-        <region-id>24</region-id>
-      </pays>
-      <pays>
-        <id>8684</id>
-        <nom>Tokélau</nom>
-        <nom-long>Tokélau</nom-long>
-        <iso2>TK</iso2>
-        <iso3>TKL</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8610</id>
@@ -2357,7 +1871,7 @@
         <iso2>TO</iso2>
         <iso3>TON</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8436</id>
@@ -2366,16 +1880,7 @@
         <iso2>TT</iso2>
         <iso3>TTO</iso3>
         <continent-id>3</continent-id>
-        <region-id>32</region-id>
-      </pays>
-      <pays>
-        <id>8375</id>
-        <nom>Tristan da Cunha</nom>
-        <nom-long>Tristan da Cunha</nom-long>
-        <iso2>SH</iso2>
-        <iso3>SHN</iso3>
-        <continent-id>2</continent-id>
-        <region-id>25</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8357</id>
@@ -2384,7 +1889,7 @@
         <iso2>TN</iso2>
         <iso3>TUN</iso3>
         <continent-id>2</continent-id>
-        <region-id>21</region-id>
+        <region-id>1</region-id>
       </pays>
       <pays>
         <id>8566</id>
@@ -2393,7 +1898,7 @@
         <iso2>TM</iso2>
         <iso3>TKM</iso3>
         <continent-id>4</continent-id>
-        <region-id>43</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8239</id>
@@ -2402,7 +1907,7 @@
         <iso2>TR</iso2>
         <iso3>TUR</iso3>
         <continent-id>1</continent-id>
-        <region-id>16</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8615</id>
@@ -2411,7 +1916,7 @@
         <iso2>TV</iso2>
         <iso3>TUV</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
       </pays>
       <pays>
         <id>8265</id>
@@ -2420,7 +1925,7 @@
         <iso2>UA</iso2>
         <iso3>UKR</iso3>
         <continent-id>1</continent-id>
-        <region-id>12</region-id>
+        <region-id>2</region-id>
       </pays>
       <pays>
         <id>8437</id>
@@ -2429,7 +1934,7 @@
         <iso2>UY</iso2>
         <iso3>URY</iso3>
         <continent-id>3</continent-id>
-        <region-id>36</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8605</id>
@@ -2438,7 +1943,16 @@
         <iso2>VU</iso2>
         <iso3>VUT</iso3>
         <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>3</region-id>
+      </pays>
+      <pays>
+        <id>8241</id>
+        <nom>Vatican</nom>
+        <nom-long>Etat de la Cité du Vatican</nom-long>
+        <iso2>VA</iso2>
+        <iso3>VAT</iso3>
+        <continent-id>1</continent-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8438</id>
@@ -2447,7 +1961,7 @@
         <iso2>VE</iso2>
         <iso3>VEN</iso3>
         <continent-id>3</continent-id>
-        <region-id>34</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8545</id>
@@ -2456,16 +1970,7 @@
         <iso2>VN</iso2>
         <iso3>VNM</iso3>
         <continent-id>4</continent-id>
-        <region-id>47</region-id>
-      </pays>
-      <pays>
-        <id>8611</id>
-        <nom>Wallis-et-Futuna</nom>
-        <nom-long>Wallis-et-Futuna</nom-long>
-        <iso2>WF</iso2>
-        <iso3>WLF</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
+        <region-id>7</region-id>
       </pays>
       <pays>
         <id>8516</id>
@@ -2474,7 +1979,7 @@
         <iso2>YE</iso2>
         <iso3>YEM</iso3>
         <continent-id>4</continent-id>
-        <region-id>44</region-id>
+        <region-id>4</region-id>
       </pays>
       <pays>
         <id>8343</id>
@@ -2483,7 +1988,7 @@
         <iso2>ZM</iso2>
         <iso3>ZMB</iso3>
         <continent-id>2</continent-id>
-        <region-id>26</region-id>
+        <region-id>6</region-id>
       </pays>
       <pays>
         <id>8340</id>
@@ -2492,11 +1997,11 @@
         <iso2>ZW</iso2>
         <iso3>ZWE</iso3>
         <continent-id>2</continent-id>
-        <region-id>26</region-id>
+        <region-id>6</region-id>
       </pays>
     </ns2:getPaysResponse>
   </S:Body>
-</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getPays" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d0afae6c-5be2-42da-b3a7-04a31cc3a565" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPaysByContinent TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="b7c2db27-f115-415f-8003-9698e422367b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPaysByIso2 TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3c4c5f41-9147-4f63-8c21-d01d05e88e72" name="getPaysByIso2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>getPaysByIso2</con:operation><con:request name="getPaysByIso2" id="89e3b5fc-52d5-496b-9e56-dc85a3cbbd9e" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
+</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getPays" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b7c2db27-f115-415f-8003-9698e422367b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPaysByIso2 TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3c4c5f41-9147-4f63-8c21-d01d05e88e72" name="getPaysByIso2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>getPaysByIso2</con:operation><con:request name="getPaysByIso2" id="89e3b5fc-52d5-496b-9e56-dc85a3cbbd9e" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ref:getPaysByIso2>\r
@@ -2515,7 +2020,7 @@
         <iso2>FR</iso2>
         <iso3>FRA</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
     </ns2:getPaysByIso2Response>
   </S:Body>
@@ -2538,11 +2043,11 @@
         <iso2>FR</iso2>
         <iso3>FRA</iso3>
         <continent-id>1</continent-id>
-        <region-id>14</region-id>
+        <region-id>4</region-id>
       </pays>
     </ns2:getPaysByIso3Response>
   </S:Body>
-</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getPaysByIso3" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="70d3d6ee-41dd-48a6-8fcb-f942eb3491d4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getPaysByRegion TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="2e504137-c848-418f-82b3-b9d4575cb62a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRegion TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="54aa1529-9877-4fe5-a56b-33e66f328d92" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRegions TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="b11a97f2-4547-4bb5-9b9f-4e535c1d069f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRegionsByContinent TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase id="d2eb5b44-4719-419d-8b28-34e7542ab1b8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchPays TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7ef49e2a-6ec0-4133-b317-cdc972b98d4f" name="searchPays"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>searchPays</con:operation><con:request name="searchPays" id="5c74c4dd-6a01-4231-b9f4-acf4065aa65c" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
+</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="getPaysByIso3" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d2eb5b44-4719-419d-8b28-34e7542ab1b8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchPays TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7ef49e2a-6ec0-4133-b317-cdc972b98d4f" name="searchPays"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>referentiel-pays-portBinding</con:interface><con:operation>searchPays</con:operation><con:request name="searchPays" id="5c74c4dd-6a01-4231-b9f4-acf4065aa65c" outgoingWss="" incomingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/territoires/referentiel-pays?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ref:searchPays>\r
@@ -2552,35 +2057,35 @@
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:assertion type="XPath Match" id="fb08ed14-d2ca-4421-a74d-fd18d5055912" name="XPath Match"><con:configuration><path>declare namespace soap="http://schemas.xmlsoap.org/soap/envelope/";
 //soap:Envelope</path><content><![CDATA[<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-  <S:Body>
-    <ns2:searchPaysResponse xmlns:ns2="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">
-      <pays>
-        <id>8602</id>
-        <nom>Fidji</nom>
-        <nom-long>République des Fidji</nom-long>
-        <iso2>FJ</iso2>
-        <iso3>FJI</iso3>
-        <continent-id>5</continent-id>
-        <region-id>53</region-id>
-      </pays>
-      <pays>
-        <id>8211</id>
-        <nom>Finlande</nom>
-        <nom-long>République de Finlande</nom-long>
-        <iso2>FI</iso2>
-        <iso3>FIN</iso3>
-        <continent-id>1</continent-id>
-        <region-id>11</region-id>
-      </pays>
-      <pays>
-        <id>8212</id>
-        <nom>France</nom>
-        <nom-long>République française</nom-long>
-        <iso2>FR</iso2>
-        <iso3>FRA</iso3>
-        <continent-id>1</continent-id>
-        <region-id>14</region-id>
-      </pays>
-    </ns2:searchPaysResponse>
-  </S:Body>
-</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="searchPays" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="07f213bc-03be-4769-a3f6-1fd815e89e36" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchPaysRegexp TestCase" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+   <S:Body>
+      <ns2:searchPaysResponse xmlns:ns2="http://ch.ge.cti.ct.referentiels.pays/referentiel-pays/">
+         <pays>
+            <id>8602</id>
+            <nom>Fidji</nom>
+            <nom-long>République des Fidji</nom-long>
+            <iso2>FJ</iso2>
+            <iso3>FJI</iso3>
+            <continent-id>5</continent-id>
+            <region-id>3</region-id>
+         </pays>
+         <pays>
+            <id>8211</id>
+            <nom>Finlande</nom>
+            <nom-long>République de Finlande</nom-long>
+            <iso2>FI</iso2>
+            <iso3>FIN</iso3>
+            <continent-id>1</continent-id>
+            <region-id>1</region-id>
+         </pays>
+         <pays>
+            <id>8212</id>
+            <nom>France</nom>
+            <nom-long>République française</nom-long>
+            <iso2>FR</iso2>
+            <iso3>FRA</iso3>
+            <continent-id>1</continent-id>
+            <region-id>4</region-id>
+         </pays>
+      </ns2:searchPaysResponse>
+   </S:Body>
+</S:Envelope>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username xsi:nil="true"/><con:password xsi:nil="true"/><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="searchPays" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
