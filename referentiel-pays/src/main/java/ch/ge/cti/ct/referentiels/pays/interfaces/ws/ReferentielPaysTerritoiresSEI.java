@@ -75,7 +75,7 @@ public class ReferentielPaysTerritoiresSEI implements
     @Cachable(name = "pays", size = Cachable.LARGE)
     public List<PaysWS> getPays() throws ReferentielOfsException {
         try {
-            return service.getPays2().stream()
+            return service.getPays().stream()
                     .map(c -> new CountryConverter().apply(c))
                     .collect(Collectors.toList());
         } catch (RuntimeException e) {
@@ -112,7 +112,7 @@ public class ReferentielPaysTerritoiresSEI implements
     @WebResult(name = "pays")
     public List<PaysWS> searchPays(@WebParam(name = "critere") String critere) throws ReferentielOfsException {
         try {
-            return service.searchPays2(critere).stream()
+            return service.searchPays(critere).stream()
                     .map(c -> new CountryConverter().apply(c))
                     .collect(Collectors.toList());
         } catch (RuntimeException e) {

@@ -56,7 +56,7 @@ public interface ReferentielPaysTerritoiresServiceAble {
      * 
      * @return pays
      */
-    List<Country> getPays2();
+    List<Country> getPays();
 
     /**
      * Recheche de pays par nom.
@@ -64,6 +64,6 @@ public interface ReferentielPaysTerritoiresServiceAble {
      * @param critere critère de recherche
      * @return pays liste de pays
      */
-    List<Country> searchPays2(String critere);
+    List<Country> searchPays(String critere);
 
 }
