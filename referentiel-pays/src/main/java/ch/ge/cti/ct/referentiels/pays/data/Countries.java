@@ -27,6 +27,14 @@ import java.util.List;
  */
 public class Countries {
 
-    public List<Country> countryList = new ArrayList<>();
+    private List<Country> countryList = new ArrayList<>();
+
+    public List<Country> getCountryList() {
+        return countryList;
+    }
+
+    public void setCountryList(List<Country> countryList) {
+        this.countryList = countryList;
+    }
 
 }

@@ -113,10 +113,10 @@ class CountriesLoader {
     }
 
     private Country getCountry(String name) {
-        return countries.countryList.stream()
+        return countries.getCountryList().stream()
                 .filter(c -> c.getShortNameFr().equals(name))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new IllegalStateException("Pas trouvé de pays [" + name + "]"));
     }
 
 }
