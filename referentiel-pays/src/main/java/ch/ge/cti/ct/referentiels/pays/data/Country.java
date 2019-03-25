@@ -27,25 +27,25 @@ import org.apache.commons.lang.builder.ToStringStyle;
  */
 public class Country {
 
-    private int id;
+    private int id = 0;
 
-    private String iso2Id;
+    private String iso2Id = null;
 
-    private String iso3Id;
+    private String iso3Id = null;
 
-    private String shortNameFr;
+    private String shortNameFr = null;
 
-    private String officialNameFr;
+    private String officialNameFr = null;
 
-    private int continent;
+    private int continent = 0;
 
-    private int region;
+    private int region = 0;
 
-    private boolean state;
+    private boolean state = false;
 
-    private boolean entryValid;
+    private boolean entryValid = false;
 
-    private boolean recognizedCh;
+    private boolean recognizedCh = false;
 
     public int getId() {
         return id;

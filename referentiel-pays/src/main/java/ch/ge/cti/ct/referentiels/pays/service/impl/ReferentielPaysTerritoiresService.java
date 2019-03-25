@@ -83,14 +83,14 @@ public class ReferentielPaysTerritoiresService implements ReferentielPaysTerrito
         Countries countries = new CountriesLoader().load();
 
         // quelques pays vont être supprimés en trop dans le filtre plus bas
-        List<Country> manquants = countries.countryList.stream()
+        List<Country> manquants = countries.getCountryList().stream()
                 .filter(c -> c.getShortNameFr().equals("Suisse")
                         || c.getShortNameFr().equals("Palestine")
                         || c.getShortNameFr().contains("Taïwan"))
                 .collect(Collectors.toList());
 
         // filtrer la liste brute
-        pays = countries.countryList.stream()
+        pays = countries.getCountryList().stream()
                 .filter(Country::isState)
                 .filter(Country::isEntryValid)
                 .filter(Country::isRecognizedCh)  // ce filtre-ci supprime la Palestine, Taiwan et... la Suisse
