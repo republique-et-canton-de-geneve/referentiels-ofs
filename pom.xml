@@ -3,7 +3,7 @@
 
 	<groupId>ch.ge.cti.ct.referentiels</groupId>
 	<artifactId>referentiels-ofs-parent</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<packaging>pom</packaging>
 
 	<description>
@@ -50,7 +50,8 @@
 		<developerConnection>scm:git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</developerConnection>
 		<connection>scm:git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</connection>
 		<url>git:https://argon.ceti.etat-ge.ch/gitlab/DEVELOPPEUR-EDG/Communs/referentiels-ofs.git</url>
-	</scm>
+	  <tag>referentiels-ofs-parent-1.2.0</tag>
+  </scm>
 
 	<ciManagement>
 		<system>jenkins</system>
