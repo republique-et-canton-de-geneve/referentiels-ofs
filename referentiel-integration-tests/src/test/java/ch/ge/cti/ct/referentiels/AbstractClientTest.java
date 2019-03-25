@@ -23,4 +23,9 @@ import java.io.File;
 public abstract class AbstractClientTest {
 
     protected static File serverRoot;
+
+//    protected static String URL = "http://localhost:8080/referentiels-ofs/";
+//    protected static String URL = "http://jbdev20-22:20000/referentiels-ofs/";
+    protected static String URL = "http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/";
+
 }

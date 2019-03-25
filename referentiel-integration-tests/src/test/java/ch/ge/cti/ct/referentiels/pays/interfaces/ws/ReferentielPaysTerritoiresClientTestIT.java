@@ -29,8 +29,7 @@ public class ReferentielPaysTerritoiresClientTestIT extends AbstractClientTest {
     @Test
     public void test() throws Exception {
 	final ReferentielPaysTerritoiresWS client = ReferentielPaysTerritoiresClient.Factory
-		//.getClient("http://jbdev20-22:20000/referentiels-ofs/territoires/referentiel-pays?wsdl");
-	        .getClient("http://localhost:8080/referentiels-ofs/territoires/referentiel-pays?wsdl");
+	        .getClient(URL + "territoires/referentiel-pays?wsdl");
 	assertTrue(client.getPays().size() > 0);
 	assertTrue(client.searchPays("Fr").size() > 0);
 	assertTrue(client.searchPays("FR").size() > 0);
