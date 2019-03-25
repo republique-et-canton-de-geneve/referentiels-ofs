@@ -3,7 +3,7 @@
 
 	<groupId>ch.ge.cti.ct.referentiels</groupId>
 	<artifactId>referentiels-ofs-parent</artifactId>
-	<version>1.2.2</version>
+	<version>1.2.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<description>
@@ -50,7 +50,7 @@
 		<developerConnection>scm:git:***REMOVED***/Communs/referentiels-ofs.git</developerConnection>
 		<connection>scm:git:***REMOVED***/Communs/referentiels-ofs.git</connection>
 		<url>git:***REMOVED***/Communs/referentiels-ofs.git</url>
-	  <tag>referentiels-ofs-parent-1.2.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<ciManagement>
