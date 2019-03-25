@@ -31,8 +31,7 @@ public class ReferentielFormesJuridiquesClientTestIT extends AbstractClientTest 
     @Test
     public void test() throws Exception {
 	final ReferentielFormesJuridiquesWS client = ReferentielFormesJuridiquesClient.Factory
-		//.getClient("http://jbdev20-22:20000:26000/referentiels-ofs/formes-juridiques/referentiel-formes-juridiques?wsdl");
-	        .getClient("http://localhost:8080/referentiels-ofs/formes-juridiques/referentiel-formes-juridiques?wsdl");
+	        .getClient(URL + "formes-juridiques/referentiel-formes-juridiques?wsdl");
 	assertTrue(client.getFormesJuridiques().size() > 0);
 	assertNotNull(client.getFormeJuridique(1));
     }

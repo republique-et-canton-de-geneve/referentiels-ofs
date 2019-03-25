@@ -45,9 +45,9 @@ import ch.ge.cti.ct.referentiels.ofs.ReferentielOfsException;
 public class ReferentielCommunesClientTestIT extends AbstractClientTest {
 
     private static final Date NOW = new Date();
+
     final ReferentielCommunesWS client = ReferentielCommunesClient.Factory
-	    //.getClient("http://jbdev20-22:20000/referentiels-ofs/communes/referentiel-communes?wsdl");
-            .getClient("http://localhost:8080/referentiels-ofs/communes/referentiel-communes?wsdl");
+            .getClient(URL + "communes/referentiel-communes?wsdl");
 
     public ReferentielCommunesClientTestIT() throws Exception {
 

@@ -30,6 +30,7 @@
 	</build>
 
 	<profiles>
+		<!-- le profil ci-dessous necessite que le profil "tomcat" soit egalement active -->
 		<profile>
 			<id>IT-tests</id>
 			<build>
