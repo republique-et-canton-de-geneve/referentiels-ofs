@@ -66,10 +66,6 @@
 			<id>internal.project.snapshot</id>
 			<url>http://ctinexus.prod.etat-ge.ch:23000/ctinexus/content/repositories/project_snapshot</url>
 		</snapshotRepository>
-		<site>
-			<id>projects_Website</id>
-			<url>${projects_Website}/ch/ge/cti/ct/referentiels/${project.artifactId}/${project.version}</url>
-		</site>
 	</distributionManagement>
 
 	<modules>
