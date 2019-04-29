@@ -44,6 +44,13 @@ Par conséquent, la mise en oeuvre du composant repose sur une copie locale des f
 
 # Installation
 
+## Choix de la branche
+Par défaut, choisir la branche `master` : elle contient les sources à jour et produit un livrable .war
+utilisable sur un serveur Tomcat en Java 8.
+
+Pour les besoins de l'État de Genève, une branche temporaire `java6` a été créée : elle produit un livrable .ear
+contenant le .war, destiné au déploiement sur un serveur JBoss 5.1 en Java 6.
+
 ## Configuration
 La construction complète du WAR, comprenant les tests d'intégration SoapUI, requiert l'installation d'un serveur Tomcat.
 Celui-ci sera sollicité en deux endroits :
