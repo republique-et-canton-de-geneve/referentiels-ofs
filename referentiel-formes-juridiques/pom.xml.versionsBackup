@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.3.0-SNAPSHOT</version>
+		<version>1.2.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>referentiel-categorie-socioprofessionnelles</artifactId>
+	<artifactId>referentiel-formes-juridiques</artifactId>
 
 	<name>+    ${project.artifactId}</name>
 
@@ -56,7 +56,7 @@
 									<goal>generate</goal>
 								</goals>
 								<configuration>
-									<generatePackage>ch.ge.cti.ct.referentiels.socioprofessionnel.model</generatePackage>
+									<generatePackage>ch.ge.cti.ct.referentiels.formeJuridique.model</generatePackage>
 									<schemaDirectory>src/main/xsd</schemaDirectory>
 									<bindingDirectory>src/main/xsd</bindingDirectory>
 								</configuration>
@@ -67,7 +67,7 @@
 									<goal>generate</goal>
 								</goals>
 								<configuration>
-									<generatePackage>ch.ge.cti.ct.referentiels.socioprofessionnel.interfaces.ws.model</generatePackage>
+									<generatePackage>ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.model</generatePackage>
 									<schemaDirectory>src/main/xsd/ws</schemaDirectory>
 									<bindingDirectory>src/main/xsd/ws</bindingDirectory>
 								</configuration>
@@ -112,5 +112,5 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
+	
 </project>
