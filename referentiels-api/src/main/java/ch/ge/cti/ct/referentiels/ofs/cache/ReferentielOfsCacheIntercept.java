@@ -52,7 +52,7 @@ public class ReferentielOfsCacheIntercept {
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @AroundInvoke
-    public Object processCache(final InvocationContext ctx) throws Exception {// NOSONAR
+    public Object processCache(final InvocationContext ctx) throws Exception {
 	final Cache<String, ?> cache = getCache(ctx.getMethod());
 
 	if (cache == null) {
@@ -66,7 +66,7 @@ public class ReferentielOfsCacheIntercept {
 	    try {
 		return cache.get(key, new Callable() {
 		    @Override
-		    public Object call() throws Exception {// NOSONAR
+		    public Object call() throws Exception {
 			fromCache[0] = false;
 			return ctx.proceed();
 		    }

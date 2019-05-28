@@ -49,36 +49,46 @@ Par défaut, choisir la branche `master` : elle contient les sources à jour et pr
 utilisable sur un serveur Tomcat en Java 8.
 
 Pour les besoins de l'État de Genève, une branche temporaire `java6` a été créée : elle produit un livrable .ear
-contenant le .war, destiné au déploiement sur un serveur JBoss 5.1 en Java 6.
-
-## Configuration
-La construction complète du WAR, comprenant les tests d'intégration SoapUI, requiert l'installation d'un serveur Tomcat.
-Celui-ci sera sollicité en deux endroits :
-- Fichier ``eferentiels-ofs-war/pom.xml`` : plugin Cargo pour déployer le WAR sur le serveur Tomcat
-- Fichiers SoapUI (voir ci-dessous) : tests des services Web déployés sur le serveur Tomcat
-
-Procédure :
-- Installer un serveur Tomcat 8+
-- Dans le fichier `tomcat-users.xml`, définir un utilisateur appelé `tomcat` avec au moins le rôle `manager-script` :
-
-``<user username="tomcat" password="mot_de_passe" roles="manager-script"/>``
-(choisir un meilleur mot de passe !)
-- Dans le répertoire `referentiel-soapui-tests/src/test/soapui`, dans chaque fichier
-  `Referentiel-XXX-soapui-project.xml`
-  remplacer les URL `http://tomlab20-01.ceti.etat-ge.ch:20100/...` par celle du serveur Tomcat,
-  par exemple `http://localhost:8080/...`. Ceci peut être fait soit au moyen d'un éditeur de texte, soit dans SoapUI.
+contenant le .war et destiné au déploiement sur un serveur JBoss 5.1 en Java 6.
 
 ## Construction
-Lancer la commande
 
-``mvn clean install -Dtomcat_password=mot_de_passe``
+### Construction simple
+Pour construire l'application, lancer la commande
 
+``mvn clean install``
+
+### Construction avec déploiement intégré
+Ce second mode construit l'application, puis la déploie sur un serveur Tomcat et enfin lance les tests SoapUI
+sur l'application déployée.
+
+Configuration préalable :
+- Installer un serveur Tomcat 8+
+- Dans le fichier `tomcat-users.xml`, définir un utilisateur appelé `tomcat` avec au moins le rôle `manager-script` :
+``<user username="tomcat" password="mot_de_passe" roles="manager-script"/>``
+(choisir un meilleur mot de passe !)
+- Dans le fichier `referentiels-ofs-war/pom.xml`, adapter les propriétés commençant par `cargo` 
+- Lancer le serveur Tomcat
+- Si le serveur Tomcat répond à une autre URL que `http://localhost:8080`, adapter la valeur de la propriété
+`soapui.endpoint.base` dans le fichier `referentiel-soapui-tests/pom.xml`
+
+Construction, déploiement et test :
+Lancer la commande 
+
+``mvn clean install -Ptomcat``
+
+Si l'on préfère ne pas modifier le fichier `referentiel-soapui-tests/pom.xml`, on peut spécifier l'URL dans la 
+ligne de commande :
+
+``mvn clean install -Ptomcat -Dsoapui.endpoint.base=http(s)://<HOTE>:<PORT>/referentiels-ofs``
+
+### Note
 Ce projet contient un module `DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS`. Il définit des éléments propres au mode
 de déploiement particulier de l'État de Genève. 
 Ils sont sans intérêt pour un lecteur externe à l'État, n'interfèrent pas dans la construction Maven du
 livrable WAR et ne sont pas concernés par le déploiement et l'exécution sur un serveur Tomcat.
 
-# Déploiement
+## Déploiement
 
 La construction Maven génère un fichier WAR dans le répertoire `referentiels-ofs-war/target`.
 Ce fichier peut être déployé sur tout serveur JEE, tel Tomcat ou JBoss.
