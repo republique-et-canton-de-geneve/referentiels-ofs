@@ -5,7 +5,7 @@
 		implementation="ch.ge.cti.ct.referentiels.communes.interfaces.ws.ReferentielCommunesSEI"
 		url-pattern="/communes/referentiel-communes" />
 	<endpoint name="ReferentielPaysTerritoiresSEI"
-		implementation="ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysTerritoiresSEI"
+		implementation="ch.ge.cti.ct.referentiels.pays.interfaces.ws.ReferentielPaysSEI"
 		url-pattern="/territoires/referentiel-pays" />
 	<endpoint name="ReferentielFormesJuridiquesSEI"
 		implementation="ch.ge.cti.ct.referentiels.formeJuridique.interfaces.ws.ReferentielFormesJuridiquesSEI"

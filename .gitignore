@@ -9,8 +9,9 @@
 
 # Maven
 target/
-*.log
+target-eclipse/
+pom.xml.versionsBackup
 
 # Autres
-target-eclipse/
+*.log
 

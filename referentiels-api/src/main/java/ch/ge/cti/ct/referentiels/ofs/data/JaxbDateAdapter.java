@@ -50,7 +50,7 @@ public class JaxbDateAdapter extends XmlAdapter<String, Date> {
      *                de convertion
      */
     @Override
-    public Date unmarshal(final String date) throws Exception {// NOSONAR
+    public Date unmarshal(final String date) throws Exception {
 	if (StringUtils.isNotBlank(date)) {
 	    return df.parse(date);
 	}
@@ -67,7 +67,7 @@ public class JaxbDateAdapter extends XmlAdapter<String, Date> {
      *                de convertion
      */
     @Override
-    public String marshal(final Date date) throws Exception {// NOSONAR
+    public String marshal(final Date date) {
 	if (date != null) {
 	    return df.format(date);
 	}

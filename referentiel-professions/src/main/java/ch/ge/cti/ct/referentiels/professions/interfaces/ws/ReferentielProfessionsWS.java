@@ -201,10 +201,9 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des classes commençant par un pattern
+     * Recherche de la liste des classes commencant par un pattern
      * 
-     * @param pattern
-     *            critère de recherche
+     * @param pattern critere de recherche
      * @return liste de classes
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -215,10 +214,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des classes vérifiant une expression régulière
+     * Recherche de la liste des classes verifiant une expression reguliere
      * 
      * @param regexp
-     *            expression régulière de recherche
+     *            expression reguliere de recherche
      * @return liste de classes
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -230,10 +229,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des divisions commençant par un pattern
+     * Recherche de la liste des divisions commencant par un pattern
      * 
      * @param pattern
-     *            critère de recherche
+     *            critere de recherche
      * @return liste de divisions
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -245,10 +244,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des divisions vérifiant une expression régulière
+     * Recherche de la liste des divisions verifiant une expression reguliere
      * 
      * @param regexp
-     *            expression régulière de recherche
+     *            expression reguliere de recherche
      * @return liste de divisions
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -260,10 +259,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des genres commençant par un pattern
+     * Recherche de la liste des genres commencant par un pattern
      * 
      * @param pattern
-     *            critère de recherche
+     *            critere de recherche
      * @return liste de genres
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -274,10 +273,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des genres vérifiant une expression régulière
+     * Recherche de la liste des genres verifiant une expression reguliere
      * 
      * @param regexp
-     *            expression régulière de recherche
+     *            expression reguliere de recherche
      * @return liste de genres
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -289,10 +288,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des groupes commençant par un pattern
+     * Recherche de la liste des groupes commencant par un pattern
      * 
      * @param pattern
-     *            critère de recherche
+     *            critere de recherche
      * @return liste de groupes
      * @throws ReferentielOfsException
      *             exception de traitement
@@ -303,10 +302,10 @@ public interface ReferentielProfessionsWS {
 	    throws ReferentielOfsException;
 
     /**
-     * Recherche de la liste des groupes vérifiant une expression régulière
+     * Recherche de la liste des groupes verifiant une expression reguliere
      * 
      * @param regexp
-     *            expression régulière de recherche
+     *            expression reguliere de recherche
      * @return liste de groupes
      * @throws ReferentielOfsException
      *             exception de traitement

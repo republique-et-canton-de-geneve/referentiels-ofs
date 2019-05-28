@@ -40,7 +40,7 @@ public class ReferentielOfsExceptionIntercept {
 	try {
 	    return ctx.proceed();
 	} catch (final Exception e) {
-	    throw handleException(e, (Loggable) ctx.getTarget());// NOSONAR
+	    throw handleException(e, (Loggable) ctx.getTarget());
 	}
     }
 

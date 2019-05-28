@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.3.0-SNAPSHOT</version>
+		<version>1.4.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>referentiels-ofs</artifactId>
@@ -92,10 +92,16 @@
 							<configuration>
 								<type>runtime</type>
 								<properties>
+									<cargo.hostname>localhost</cargo.hostname>
+									<cargo.servlet.port>8080</cargo.servlet.port>
+									<cargo.remote.username>tomcat</cargo.remote.username>
+									<cargo.remote.password>tomcat</cargo.remote.password>
+									<!--
 									<cargo.hostname>tomlab20-01.ceti.etat-ge.ch</cargo.hostname>
 									<cargo.servlet.port>20100</cargo.servlet.port>
 									<cargo.remote.username>tomcat</cargo.remote.username>
 									<cargo.remote.password>${tomcat_password}</cargo.remote.password>
+									-->
 								</properties>
 							</configuration>
 							<deployables>
@@ -106,7 +112,10 @@
 									<properties>
 										<context>referentiels-ofs</context>
 									</properties>
+									<!--
 									<pingURL>http://tomlab20-01.ceti.etat-ge.ch:20100/referentiels-ofs/communes/referentiel-communes?wsdl</pingURL>
+									-->
+									<pingURL>http://localhost:8080/referentiels-ofs/communes/referentiel-communes?wsdl</pingURL>
 								</deployable>
 							</deployables>
 						</configuration>
