@@ -49,8 +49,8 @@ public class ReferentielCommunesClientTestIT extends AbstractClientTest {
         assertTrue(client.getCantons().size() > 0);
         assertNotNull(client.getCanton("GE"));
 
-        assertNotNull(client.getDistrict(101));
-        assertTrue(client.getDistrictsByCanton("GE").size() > 0);
+        assertNotNull(client.getDistrict(10296));
+        assertTrue(client.getDistrictsByCanton("VD").size() > 0);
 
         assertNotNull(client.getCommune(1001));
         assertTrue(client.getCommunesByCanton("GE").size() > 0);
