@@ -60,11 +60,13 @@
 	<distributionManagement>
 		<repository>
 			<id>internal.project.release</id>
-			<url>http://ctinexus.prod.etat-ge.ch:23000/ctinexus/content/repositories/project_release</url>
+			<name>internal.project.release</name>
+			<url>${maven2Repository_projet}/project_release</url>
 		</repository>
 		<snapshotRepository>
 			<id>internal.project.snapshot</id>
-			<url>http://ctinexus.prod.etat-ge.ch:23000/ctinexus/content/repositories/project_snapshot</url>
+			<name>internal.project.snapshot</name>
+			<url>${maven2Repository_projet}/project_snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
 
