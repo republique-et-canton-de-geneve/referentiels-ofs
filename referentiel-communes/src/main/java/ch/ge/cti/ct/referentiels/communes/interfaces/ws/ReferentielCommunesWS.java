@@ -127,7 +127,20 @@ public interface ReferentielCommunesWS {
     @WebMethod(operationName = "getCommunesByCanton", action = "getCommunesByCanton")
     @WebResult(name = "commune")
     List<CommuneWS> getCommunesByCanton(
-            @WebParam(name = "canton") final String codeCanton)
+            @WebParam(name = "canton") String codeCanton)
+            throws ReferentielOfsException;
+
+    /**
+     * Recherche des communes d'un canton.
+     *
+     * @param codeCanton identifiant du canton
+     * @return liste des communes
+     * @throws ReferentielOfsException exception de traitement
+     */
+    @WebMethod(operationName = "getCommunesHistoriquesByCanton", action = "getCommunesHistoriquesByCanton")
+    @WebResult(name = "commune")
+    List<CommuneWS> getCommunesHistoriquesByCanton(
+            @WebParam(name = "canton") String codeCanton)
             throws ReferentielOfsException;
 
     /**

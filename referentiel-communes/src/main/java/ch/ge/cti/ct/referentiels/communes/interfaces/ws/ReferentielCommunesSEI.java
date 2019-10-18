@@ -131,6 +131,15 @@ public class ReferentielCommunesSEI implements ReferentielCommunesWS {
     }
 
     @Override
+    @WebMethod(operationName = "getCommunesHistoriquesByCanton", action = "getCommunesHistoriquesByCanton")
+    @WebResult(name = "commune")
+    @Cachable(name = "communes", size = Cachable.LARGE)
+    public List<CommuneWS> getCommunesHistoriquesByCanton(@WebParam(name = "canton") String codeCanton)
+            throws ReferentielOfsException {
+        return getCommunesByCanton(codeCanton);
+    }
+
+    @Override
     @WebMethod(operationName = "getCommune", action = "getCommune")
     @WebResult(name = "commune")
     public CommuneWS getCommune(@WebParam(name = "commune") int communeId)
