@@ -1,0 +1,32 @@
+image: maven:latest
+
+variables:
+  # fix for old git version
+  GIT_STRATEGY: clone
+  # config Maven
+  MAVEN_CLI_OPTS: "--batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=repository"
+  # config SonarQube
+  SONAR_MAVEN_GOAL: org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar
+  SONAR_HOST_URL: https://sonarqube.devops.etat-ge.ch/sonarqube
+  # config nexus IQ Server
+  CLM_MAVEN_GOAL: com.sonatype.clm:clm-maven-plugin:2.12.1:evaluate
+  CLM_HOST_URL: https://clm.devops.etat-ge.ch/clm
+  CLM_SERVER_ID: clm_server
+  
+cache:
+  paths:
+    - repository/
+    - target/
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+    
+deploy:
+  stage: deploy
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+  only:
+    - master
