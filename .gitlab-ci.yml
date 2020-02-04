@@ -3,6 +3,7 @@ image: maven:latest
 variables:
   # fix for old git version
   GIT_STRATEGY: clone
+  GIT_SSL_NO_VERIFY: "true"
   # config Maven
   MAVEN_CLI_OPTS: "--batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=repository"
