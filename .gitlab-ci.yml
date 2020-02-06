@@ -1,4 +1,4 @@
-image: maven:latest
+image: docker-all.devops.etat-ge.ch/ch/ge/cti/maven:3-jdk-8
 
 variables:
   # fix for old git version
