@@ -1,0 +1,20 @@
+image: maven:3-jdk-8
+
+variables:
+  # fix for old git version
+  GIT_STRATEGY: clone
+  GIT_SSL_NO_VERIFY: "true"
+  # config Maven
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+build:
+  script:
+    - mvn $MAVEN_CLI_OPTS package
+    
+deploy: 
+  script: 
+   - mvn $MAVEN_CLI_OPTS deploy -Dmaven.test.skip=true 
+  only: 
+   - master
+    
