@@ -9,7 +9,6 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   # config SonarQube
   SONAR_MAVEN_GOAL: org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar
-  SONAR_HOST_URL: $SonarQube_URL
   SONAR_USER_HOME: /builds/sonar
   # config CLM
 #  CLM_MAVEN_GOAL: com.sonatype.clm:clm-maven-plugin:2.12.1:evaluate
@@ -19,8 +18,7 @@ variables:
 build:
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS package
-    - mvn $MAVEN_CLI_OPTS verify $SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
+    - mvn $MAVEN_CLI_OPTS package $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
   except : 
     - master
     
