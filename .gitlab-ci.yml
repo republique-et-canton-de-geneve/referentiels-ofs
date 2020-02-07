@@ -15,12 +15,24 @@ variables:
   CLM_SERVER_ID: clm_server
   CLM_APPLICATION_ID: REFERENTIELS-OFS
 
+stages:
+  - test
+  - build
+  - deploy
+
+preview:
+  stage: test
+  script:
+    - mvn $MAVEN_CLI_OPTS package $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
+  except : 
+    - master
+    
 build:
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS package $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
+    - mvn $MAVEN_CLI_OPTS install $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
     - mvn $MAVEN_CLI_OPTS $CLM_MAVEN_GOAL -Dclm.applicationId=$CLM_APPLICATION_ID -Dclm.serverUrl=$CLM_URL -Dclm.serverId=$CLM_SERVER_ID
-  except : 
+  only : 
     - master
     
 deploy: 
