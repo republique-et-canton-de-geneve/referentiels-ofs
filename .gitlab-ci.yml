@@ -19,16 +19,10 @@ build:
   stage: build
   script:
     - mvn $MAVEN_CLI_OPTS package
-    
-test_sonarqube_preview:
-  stage: test
-  script:
-    - mvn $MAVEN_CLI_OPTS test
     - mvn $MAVEN_CLI_OPTS verify $SONAR_MAVEN_GOAL -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
-#    - mvn $CLM_MAVEN_GOAL -Dclm.applicationId=transferathor -Dclm.serverUrl=$CLM_HOST_URL -Dclm.serverId=$CLM_SERVER_ID
   except : 
     - master
-
+    
 deploy: 
   stage: deploy
   script: 
