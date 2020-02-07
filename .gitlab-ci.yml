@@ -15,6 +15,12 @@ variables:
   CLM_SERVER_ID: clm_server
   CLM_APPLICATION_ID: REFERENTIELS-OFS
 
+cache:
+  paths:
+    - ./.m2/repository
+  # keep cache across branch
+  key: "$CI_COMMIT_REF_SLUG"
+  
 stages:
   - build
   - sonarqube
