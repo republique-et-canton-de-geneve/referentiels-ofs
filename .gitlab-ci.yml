@@ -9,7 +9,8 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   # config SonarQube
   SONAR_MAVEN_GOAL: org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar
-  SONAR_HOST_URL: ${env.SonarQube_URL}
+  SONAR_HOST_URL: $SonarQube_URL
+  SONAR_USER_HOME: /builds/sonar
   # config CLM
 #  CLM_MAVEN_GOAL: com.sonatype.clm:clm-maven-plugin:2.12.1:evaluate
 #  CLM_HOST_URL: ***REMOVED***
