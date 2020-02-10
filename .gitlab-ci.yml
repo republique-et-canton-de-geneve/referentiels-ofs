@@ -26,6 +26,7 @@ stages:
   - sonarqube
   - clm
   - deploy
+  - release
 
 build:
   stage: build
@@ -54,4 +55,11 @@ deploy:
    - mvn $MAVEN_CLI_OPTS deploy -Dmaven.test.skip=true
   only: 
    - master
-  
+   
+release:
+  stage: release
+  script: 
+   - mvn $MAVEN_CLI_OPTS deploy -Dmaven.test.skip=true
+  when: manual
+  only:
+    - master  
