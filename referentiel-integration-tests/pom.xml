@@ -5,10 +5,11 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.4.3</version>
+		<version>1.4.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>referentiel-integration-tests</artifactId>
+  <version>1.4.2</version>
 	<name>+    ${project.artifactId}</name>
 
 	<description>Tests d'intégration des référentiels</description>
@@ -112,8 +113,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-  <scm>
-    <tag>referentiels-ofs-parent-1.4.3</tag>
-  </scm>
 </project>
