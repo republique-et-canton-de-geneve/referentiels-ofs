@@ -59,7 +59,7 @@ deploy:
 release:
   stage: release
   script: 
-   - mvn $MAVEN_CLI_OPTS deploy -Dmaven.test.skip=true
+   - mvn $MAVEN_CLI_OPTS release:prepare release:perform -Dresume=false -Darguments="-DskipTests" -DskipTests -Dusername=$SCM_USER -Dpassword=$SCM_PASSWORD -DautoVersionSubmodules=true -U
   when: manual
   only:
     - master  
