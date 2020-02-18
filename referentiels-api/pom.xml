@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.4.2</version>
+		<version>1.4.3</version>
 	</parent>
 
 	<artifactId>referentiels-api</artifactId>
@@ -37,4 +37,8 @@
 		</dependency>
 	</dependencies>
 	
+
+  <scm>
+    <tag>referentiels-ofs-parent-1.4.3</tag>
+  </scm>
 </project>

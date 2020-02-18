@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.4.2</version>
+		<version>1.4.3</version>
 	</parent>
 
 	<artifactId>referentiel-soapui-tests</artifactId>
@@ -126,4 +126,8 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+  <scm>
+    <tag>referentiels-ofs-parent-1.4.3</tag>
+  </scm>
 </project>

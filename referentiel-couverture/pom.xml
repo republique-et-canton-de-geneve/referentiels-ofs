@@ -5,7 +5,7 @@
     <parent>
         <artifactId>referentiels-ofs-parent</artifactId>
         <groupId>ch.ge.cti.ct.referentiels</groupId>
-        <version>1.4.2</version>
+        <version>1.4.3</version>
     </parent>
 
     <artifactId>referentiel-couverture</artifactId>
@@ -73,4 +73,8 @@
         </plugins>
     </build>
 
+
+  <scm>
+    <tag>referentiels-ofs-parent-1.4.3</tag>
+  </scm>
 </project>
