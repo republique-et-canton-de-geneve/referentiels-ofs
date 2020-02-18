@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>ch.ge.cti.ct.referentiels</groupId>
 		<artifactId>referentiels-ofs-parent</artifactId>
-		<version>1.4.2-SNAPSHOT</version>
+		<version>1.4.2</version>
 	</parent>
 
 	<artifactId>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</artifactId>
-	<version>1.4.2-SNAPSHOT</version>
+	<version>1.4.2</version>
 	<packaging>pom</packaging>
 	
 	<name>+    ${project.artifactId} - Lot de deploiement</name>
