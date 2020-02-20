@@ -1,5 +1,3 @@
-image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
-
 variables:
   # fix for old git version
   GIT_STRATEGY: clone
@@ -30,6 +28,7 @@ stages:
 
 build:
   stage: build
+  image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script:
     - mvn $MAVEN_CLI_OPTS package $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_COMMIT_SHA | tr '\n' ',') -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1
   except : 
@@ -37,6 +36,7 @@ build:
     
 sonarqube: 
   stage: sonarqube
+  image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script: 
    - mvn $MAVEN_CLI_OPTS install $SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQube_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.max_blocker_issues_gate=-1 -Dsonar.gitlab.max_critical_issues_gate=-1 
   only: 
@@ -44,6 +44,7 @@ sonarqube:
 
 clm: 
   stage: clm
+  image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script: 
    - mvn $MAVEN_CLI_OPTS $CLM_MAVEN_GOAL -Dclm.applicationId=$CLM_APPLICATION_ID -Dclm.serverUrl=$CLM_URL -Dclm.serverId=$CLM_SERVER_ID
   only: 
@@ -51,13 +52,26 @@ clm:
 
 deploy: 
   stage: deploy
+  image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script: 
    - mvn $MAVEN_CLI_OPTS deploy -Dmaven.test.skip=true
   only: 
    - master
    
+deploy-image: 
+  stage: deploy
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script: 
+    - echo "{\"auths\":{\"$Nexus_REPO_URL\":{\"username\":\"$Nexus_REPO_USER\",\"password\":\"$Nexus_REPO_PASS\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  only: 
+   - master
+   
 release:
   stage: release
+  image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script: 
    - git config --global user.email "***REMOVED***"
    - git config --global user.name "***REMOVED***"
@@ -65,4 +79,4 @@ release:
    - mvn $MAVEN_CLI_OPTS release:prepare release:perform -Dresume=false -Darguments="-DskipTests" -DskipTests -Dusername=$SCM_USER -Dpassword=$SCM_PASSWORD -DautoVersionSubmodules=true -U
   when: manual
   only:
-    - master  
+    - master
