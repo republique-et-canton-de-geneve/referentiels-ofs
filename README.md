@@ -1,4 +1,4 @@
-L'Office fédéral de la statistique (OFS) est un service fédéral mettant à disposition des données statistiques
+En Suisse, l'Office fédéral de la statistique (OFS) est un service national mettant à disposition des données statistiques
 publiques.
 Parmi les données publiées, il met à disposition des référentiels (ou nomenclatures) utilisés pour la constitution
 des fichiers de statistiques, permettant ainsi de créer une base référentielle des données statistiques.
@@ -10,7 +10,7 @@ des fichiers de statistiques, permettant ainsi de créer une base référentielle d
 Pour ses besoins de publication de statistiques, l'OFS a défini un certain nombre de référentiels communs à tous les
 cantons suisses.
 Ces référentiels sont globaux à la Suisse et sont maintenus à jour par l'OFS.
-Ils sont décrits sur le portail de la statistique Suisse à l'URL suivante :
+Ils sont décrits sur le portail de la statistique suisse à l'URL suivante :
 [Nomenclatures](https://www.bfs.admin.ch/bfs/fr/home/registres/registre-personnes/harmonisation-registres/nomenclatures.html).
 Ils sont publiés au format SDMX qui est un format XML avec un schéma XML dédié à la publication de données statistiques.
 
@@ -59,8 +59,8 @@ Pour construire l'application, lancer la commande
 ``mvn clean install``
 
 ### Construction avec déploiement intégré
-Ce second mode construit l'application, puis la déploie sur un serveur Tomcat et enfin lance les tests SoapUI
-sur l'application déployée.
+Ce second mode construit l'application, puis la déploie sur un serveur Tomcat et enfin lance les tests
+d'intégration SoapUI sur l'application déployée.
 
 Configuration préalable :
 - Installer un serveur Tomcat 8+
