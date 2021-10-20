@@ -18,6 +18,10 @@
         Un projet séparé est nécessaire, référençant les modules via "dependencies" et non via "modules".
     </description>
 
+    <properties>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -63,7 +67,13 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>creer-rapport-jacoco</id>
+                        <id>jacoco-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report-aggregate</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report-aggregate</goal>
