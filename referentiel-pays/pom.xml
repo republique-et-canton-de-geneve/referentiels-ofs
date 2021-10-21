@@ -9,8 +9,6 @@
 	</parent>
 
 	<artifactId>referentiel-pays</artifactId>
-  <version>1.4.2</version>
-
 	<name>+    ${project.artifactId}</name>
 
 	<dependencies>

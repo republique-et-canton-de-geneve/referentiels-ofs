@@ -11,9 +11,7 @@
 	</parent>
 
 	<artifactId>referentiels-ofs</artifactId>
-	<version>1.4.2</version>
 	<packaging>war</packaging>
-
 	<name>+    ${project.artifactId}</name>
 
 	<build>

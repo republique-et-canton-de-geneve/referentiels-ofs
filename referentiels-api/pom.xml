@@ -9,8 +9,6 @@
 	</parent>
 
 	<artifactId>referentiels-api</artifactId>
-  <version>1.4.2</version>
-
 	<name>+    ${project.artifactId}</name>
 
 	<dependencies>

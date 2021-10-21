@@ -9,9 +9,7 @@
 	</parent>
 
 	<artifactId>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</artifactId>
-	<version>1.4.2</version>
 	<packaging>pom</packaging>
-	
 	<name>+    ${project.artifactId} - Lot de deploiement</name>
 
 	<build>

@@ -9,9 +9,7 @@
 	</parent>
 
 	<artifactId>referentiel-integration-tests</artifactId>
-  <version>1.4.2</version>
 	<name>+    ${project.artifactId}</name>
-
 	<description>Tests d'intégration des référentiels</description>
 
 	<properties>

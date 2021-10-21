@@ -9,9 +9,7 @@
 	</parent>
 
 	<artifactId>referentiel-formes-juridiques</artifactId>
-  <version>1.4.2</version>
-
-	<name>+    ${project.artifactId}</name>
+  	<name>+    ${project.artifactId}</name>
 
 	<build>
 		<plugins>

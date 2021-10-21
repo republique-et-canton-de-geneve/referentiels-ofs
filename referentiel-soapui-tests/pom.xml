@@ -8,7 +8,6 @@
 	</parent>
 
 	<artifactId>referentiel-soapui-tests</artifactId>
-  <version>1.4.2</version>
 	<name>+    ${project.artifactId}</name>
 
 	<description>Tests SOAPUI des référentiels</description>
