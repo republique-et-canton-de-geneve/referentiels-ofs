@@ -10,7 +10,7 @@
 
 	<artifactId>referentiel-integration-tests</artifactId>
 	<name>+    ${project.artifactId}</name>
-	<description>Tests d'intégration des référentiels</description>
+	<description>Tests d'intÃ©gration des rÃ©fÃ©rentiels</description>
 
 	<properties>
 		<skipTests>true</skipTests>
@@ -69,7 +69,7 @@
 			<dependency>
 				<groupId>xerces</groupId>
 				<artifactId>xercesImpl</artifactId>
-				<version>2.9.1</version>
+				<version>2.12.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
