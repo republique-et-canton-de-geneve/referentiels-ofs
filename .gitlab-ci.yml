@@ -66,6 +66,7 @@ deploy-image:
   script: 
     - echo "{\"auths\":{\"$Nexus_REPO_URL\":{\"username\":\"$Nexus_REPO_USER\",\"password\":\"$Nexus_REPO_PASS\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  when: manual
   only: 
    - master
    
