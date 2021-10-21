@@ -10,8 +10,6 @@
 		Exposition sous forme de web services des nomenclatures fédérales
 	</description>
 
-	<url>***REMOVED***</url>
-
 	<developers>
 		<developer>
 			<id>JDE</id>
@@ -46,16 +44,11 @@
 	</contributors>
 
 	<scm>
-		<developerConnection>scm:git:***REMOVED***/Communs/referentiels-ofs.git</developerConnection>
-		<connection>scm:git:***REMOVED***/Communs/referentiels-ofs.git</connection>
-		<url>git:***REMOVED***/Communs/referentiels-ofs.git</url>
+		<developerConnection>scm:git:${env.GITLAB_URL}/Communs/referentiels-ofs.git</developerConnection>
+		<connection>scm:git:${env.GITLAB_URL}/Communs/referentiels-ofs.git</connection>
+		<url>git:${env.GITLAB_URL}/Communs/referentiels-ofs.git</url>
 	  <tag>referentiels-ofs-parent-1.4.2</tag>
   </scm>
-
-	<ciManagement>
-		<system>jenkins</system>
-		<url>***REMOVED***/job/referentiels-ofs</url>
-	</ciManagement>
 
 	<distributionManagement>
 		<repository>
@@ -438,4 +431,3 @@
 		</dependency>
 	</dependencies>
 </project>
- 

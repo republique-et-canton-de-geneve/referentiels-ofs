@@ -73,8 +73,8 @@ release:
   stage: release
   image: docker-all.devops.etat-ge.ch/maven:3-jdk-8
   script: 
-   - git config --global user.email "***REMOVED***"
-   - git config --global user.name "***REMOVED***"
+   - git config --global user.email "$RUNNER_EMAIL"
+   - git config --global user.name "$RUNNER_USERNAME"
    - git checkout $CI_COMMIT_REF_NAME
    - mvn $MAVEN_CLI_OPTS release:prepare release:perform -Dresume=false -Darguments="-DskipTests" -DskipTests -Dusername=$SCM_USER -Dpassword=$SCM_PASSWORD -DautoVersionSubmodules=true -U
   when: manual
