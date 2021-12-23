@@ -1,0 +1,693 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] referentiels-ofs-parent                                            [pom]
+[INFO] +    referentiel-SdmxSourceUtil                                    [jar]
+[INFO] +    referentiels-api                                              [jar]
+[INFO] +    referentiel-communes                                          [jar]
+[INFO] +    referentiel-pays                                              [jar]
+[INFO] +    referentiel-formes-juridiques                                 [jar]
+[INFO] +    referentiel-etat-civil                                        [jar]
+[INFO] +    referentiel-professions                                       [jar]
+[INFO] +    referentiel-categorie-socioprofessionnelles                   [jar]
+[INFO] +    referentiel-couverture                                        [jar]
+[INFO] +    referentiels-ofs                                              [war]
+[INFO] +    referentiel-integration-tests                                 [jar]
+[INFO] +    referentiel-soapui-tests                                      [jar]
+[INFO] +    DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS - Lot de deploiement [pom]
+[INFO] 
+[INFO] ---------< ch.ge.cti.ct.referentiels:referentiels-ofs-parent >----------
+[INFO] Building referentiels-ofs-parent 1.4.4-SNAPSHOT                   [1/14]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiels-ofs-parent ---
+[INFO] ch.ge.cti.ct.referentiels:referentiels-ofs-parent:pom:1.4.4-SNAPSHOT
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] --------< ch.ge.cti.ct.referentiels:referentiel-SdmxSourceUtil >--------
+[INFO] Building +    referentiel-SdmxSourceUtil 1.4.4-SNAPSHOT           [2/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-SdmxSourceUtil ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-SdmxSourceUtil:jar:1.4.4-SNAPSHOT
+[INFO] +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.21.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] -------------< ch.ge.cti.ct.referentiels:referentiels-api >-------------
+[INFO] Building +    referentiels-api 1.4.4-SNAPSHOT                     [3/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiels-api ---
+[INFO] ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT
+[INFO] +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] +- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |  +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |  \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] -----------< ch.ge.cti.ct.referentiels:referentiel-communes >-----------
+[INFO] Building +    referentiel-communes 1.4.4-SNAPSHOT                 [4/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-communes ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-communes:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- com.thoughtworks.xstream:xstream:jar:1.4.18:compile
+[INFO] |  \- io.github.x-stream:mxparser:jar:1.2.2:compile
+[INFO] |     \- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] -------------< ch.ge.cti.ct.referentiels:referentiel-pays >-------------
+[INFO] Building +    referentiel-pays 1.4.4-SNAPSHOT                     [5/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-pays ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-pays:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  +- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |  |  +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |  |  \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] |  \- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |     +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |     +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |     |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |     +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |     +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |     |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |     |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |     \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |        +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |        |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |        +- stax:stax:jar:1.2.0:compile
+[INFO] |        |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |        +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |        |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |        +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |        |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |        |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |        +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |        \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- com.thoughtworks.xstream:xstream:jar:1.4.18:compile
+[INFO] |  \- io.github.x-stream:mxparser:jar:1.2.2:compile
+[INFO] |     \- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ------< ch.ge.cti.ct.referentiels:referentiel-formes-juridiques >-------
+[INFO] Building +    referentiel-formes-juridiques 1.4.4-SNAPSHOT        [6/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-formes-juridiques ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-formes-juridiques:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ----------< ch.ge.cti.ct.referentiels:referentiel-etat-civil >----------
+[INFO] Building +    referentiel-etat-civil 1.4.4-SNAPSHOT               [7/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-etat-civil ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-etat-civil:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ---------< ch.ge.cti.ct.referentiels:referentiel-professions >----------
+[INFO] Building +    referentiel-professions 1.4.4-SNAPSHOT              [8/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-professions ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-professions:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] --< ch.ge.cti.ct.referentiels:referentiel-categorie-socioprofessionnelles >--
+[INFO] Building +    referentiel-categorie-socioprofessionnelles 1.4.4-SNAPSHOT [9/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-categorie-socioprofessionnelles ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-categorie-socioprofessionnelles:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] +- org.databene:contiperf:jar:2.2.0:test
+[INFO] +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |  |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |  +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |  |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |  |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |  |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |  \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |     +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |     |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |     +- stax:stax:jar:1.2.0:compile
+[INFO] |     |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |     +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |     +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |     \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ----------< ch.ge.cti.ct.referentiels:referentiel-couverture >----------
+[INFO] Building +    referentiel-couverture 1.4.4-SNAPSHOT              [10/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-couverture ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-couverture:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  +- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |  |  +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |  |  \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] |  +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] |  \- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |     +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |     +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |     |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |     +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |     +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |     |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |     |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |     \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |        +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |        |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |        +- stax:stax:jar:1.2.0:compile
+[INFO] |        |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |        +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |        |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |        +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |        |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |        |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |        +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |        \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-communes:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- com.thoughtworks.xstream:xstream:jar:1.4.18:compile
+[INFO] |  |  \- io.github.x-stream:mxparser:jar:1.2.2:compile
+[INFO] |  |     \- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |  \- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-pays:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-formes-juridiques:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-etat-civil:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-professions:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-categorie-socioprofessionnelles:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] -------------< ch.ge.cti.ct.referentiels:referentiels-ofs >-------------
+[INFO] Building +    referentiels-ofs 1.4.4-SNAPSHOT                    [11/14]
+[INFO] --------------------------------[ war ]---------------------------------
+[WARNING] The POM for com.sun.xml.ws:jaxws-rt:jar:2.2.8 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiels-ofs ---
+[INFO] ch.ge.cti.ct.referentiels:referentiels-ofs:war:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-communes:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:compile
+[INFO] |  |  +- javax.xml.bind:jaxb-api:jar:2.3.1:compile
+[INFO] |  |  |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+[INFO] |  |  \- javax.xml.ws:jaxws-api:jar:2.3.1:compile
+[INFO] |  |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:compile
+[INFO] |  |     \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- com.google.guava:guava:jar:31.0.1-jre:compile
+[INFO] |  |  +- com.google.guava:failureaccess:jar:1.0.1:compile
+[INFO] |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] |  |  +- org.checkerframework:checker-qual:jar:3.12.0:compile
+[INFO] |  |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:compile
+[INFO] |  |  \- com.google.j2objc:j2objc-annotations:jar:1.3:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] |  +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:compile
+[INFO] |  +- com.thoughtworks.xstream:xstream:jar:1.4.18:compile
+[INFO] |  |  \- io.github.x-stream:mxparser:jar:1.2.2:compile
+[INFO] |  |     \- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |  +- javax.jws:javax.jws-api:jar:1.1:compile
+[INFO] |  \- org.sdmxsource:SdmxStructureParser:jar:1.0.5:compile
+[INFO] |     +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.aspectj:aspectjweaver:jar:1.7.3:compile
+[INFO] |     +- org.springframework:spring-tx:jar:4.3.21.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:compile
+[INFO] |     |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |     +- org.sdmxsource:SdmxApi:jar:1.0.5:compile
+[INFO] |     +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:compile
+[INFO] |     |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX1-0:jar:1.0:compile
+[INFO] |     |     +- org.sdmx.beans:SDMX2-0:jar:2.0:compile
+[INFO] |     |     \- org.sdmx.beans:SDMX2-1:jar:3.0:compile
+[INFO] |     \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:compile
+[INFO] |        +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |        |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |        +- stax:stax:jar:1.2.0:compile
+[INFO] |        |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] |        +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:compile
+[INFO] |        |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:compile
+[INFO] |        +- org.springframework:spring-context:jar:4.3.21.RELEASE:compile
+[INFO] |        |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:compile
+[INFO] |        |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:compile
+[INFO] |        +- org.springframework:spring-web:jar:4.3.21.RELEASE:compile
+[INFO] |        \- joda-time:joda-time:jar:2.1:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-pays:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-formes-juridiques:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-etat-civil:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-professions:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-categorie-socioprofessionnelles:jar:1.4.4-SNAPSHOT:compile
+[INFO] +- com.sun.xml.bind:jaxb-impl:jar:2.2.5.1:compile
+[INFO] +- com.sun.xml.ws:jaxws-rt:jar:2.2.8:runtime
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ------< ch.ge.cti.ct.referentiels:referentiel-integration-tests >-------
+[INFO] Building +    referentiel-integration-tests 1.4.4-SNAPSHOT       [12/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-integration-tests ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-integration-tests:jar:1.4.4-SNAPSHOT
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-communes:jar:1.4.4-SNAPSHOT:test
+[INFO] |  +- ch.ge.cti.ct.referentiels:referentiels-api:jar:1.4.4-SNAPSHOT:test
+[INFO] |  |  +- javax.xml.bind:jaxb-api:jar:2.3.1:test
+[INFO] |  |  |  \- javax.activation:javax.activation-api:jar:1.2.0:test
+[INFO] |  |  \- javax.xml.ws:jaxws-api:jar:2.3.1:test
+[INFO] |  |     +- javax.xml.soap:javax.xml.soap-api:jar:1.4.0:test
+[INFO] |  |     \- javax.annotation:javax.annotation-api:jar:1.3.2:test
+[INFO] |  +- com.google.guava:guava:jar:31.0.1-jre:test
+[INFO] |  |  +- com.google.guava:failureaccess:jar:1.0.1:test
+[INFO] |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:test
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.2:test
+[INFO] |  |  +- org.checkerframework:checker-qual:jar:3.12.0:test
+[INFO] |  |  +- com.google.errorprone:error_prone_annotations:jar:2.7.1:test
+[INFO] |  |  \- com.google.j2objc:j2objc-annotations:jar:1.3:test
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:test
+[INFO] |  +- org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:jar:1.0.1:test
+[INFO] |  +- com.thoughtworks.xstream:xstream:jar:1.4.18:test
+[INFO] |  |  \- io.github.x-stream:mxparser:jar:1.2.2:test
+[INFO] |  |     \- xmlpull:xmlpull:jar:1.1.3.1:test
+[INFO] |  +- javax.jws:javax.jws-api:jar:1.1:test
+[INFO] |  \- org.sdmxsource:SdmxStructureParser:jar:1.0.5:test
+[INFO] |     +- org.springframework:spring-aspects:jar:4.3.21.RELEASE:test
+[INFO] |     |  \- org.aspectj:aspectjweaver:jar:1.7.3:test
+[INFO] |     +- org.springframework:spring-tx:jar:4.3.21.RELEASE:test
+[INFO] |     |  +- org.springframework:spring-beans:jar:4.3.21.RELEASE:test
+[INFO] |     |  \- org.springframework:spring-core:jar:4.3.21.RELEASE:test
+[INFO] |     |     \- commons-logging:commons-logging:jar:1.2:test
+[INFO] |     +- org.sdmxsource:SdmxApi:jar:1.0.5:test
+[INFO] |     +- org.sdmxsource:SdmxStructureRetrieval:jar:1.0.5:test
+[INFO] |     |  \- org.sdmxsource:SdmxBeans:jar:1.0.5:test
+[INFO] |     |     +- org.sdmx.beans:SDMX1-0:jar:1.0:test
+[INFO] |     |     +- org.sdmx.beans:SDMX2-0:jar:2.0:test
+[INFO] |     |     \- org.sdmx.beans:SDMX2-1:jar:3.0:test
+[INFO] |     \- org.sdmxsource:SdmxSourceUtil:jar:1.0.5:test
+[INFO] |        +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |        |  \- xml-apis:xml-apis:jar:1.0.b2:provided
+[INFO] |        +- stax:stax:jar:1.2.0:test
+[INFO] |        |  \- stax:stax-api:jar:1.0.1:test
+[INFO] |        +- org.apache.xmlbeans:xmlbeans-xpath:jar:2.6.0:test
+[INFO] |        |  \- org.apache.xmlbeans:xmlbeans:jar:2.4.0:test
+[INFO] |        +- org.springframework:spring-context:jar:4.3.21.RELEASE:test
+[INFO] |        |  +- org.springframework:spring-aop:jar:4.3.21.RELEASE:test
+[INFO] |        |  \- org.springframework:spring-expression:jar:4.3.21.RELEASE:test
+[INFO] |        +- org.springframework:spring-web:jar:4.3.21.RELEASE:test
+[INFO] |        \- joda-time:joda-time:jar:2.1:test
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-categorie-socioprofessionnelles:jar:1.4.4-SNAPSHOT:test
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-etat-civil:jar:1.4.4-SNAPSHOT:test
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-formes-juridiques:jar:1.4.4-SNAPSHOT:test
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-pays:jar:1.4.4-SNAPSHOT:test
+[INFO] +- ch.ge.cti.ct.referentiels:referentiel-professions:jar:1.4.4-SNAPSHOT:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] ---------< ch.ge.cti.ct.referentiels:referentiel-soapui-tests >---------
+[INFO] Building +    referentiel-soapui-tests 1.4.4-SNAPSHOT            [13/14]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ referentiel-soapui-tests ---
+[INFO] ch.ge.cti.ct.referentiels:referentiel-soapui-tests:jar:1.4.4-SNAPSHOT
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] 
+[INFO] --< ch.ge.cti.ct.referentiels:DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS >--
+[INFO] Building +    DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS - Lot de deploiement 1.4.4-SNAPSHOT [14/14]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS ---
+[INFO] ch.ge.cti.ct.referentiels:DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS:pom:1.4.4-SNAPSHOT
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.1:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.1:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+[INFO] \- junit:junit:jar:4.13.2:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for referentiels-ofs-parent 1.4.4-SNAPSHOT:
+[INFO] 
+[INFO] referentiels-ofs-parent ............................ SUCCESS [  0.716 s]
+[INFO] +    referentiel-SdmxSourceUtil .................... SUCCESS [  0.101 s]
+[INFO] +    referentiels-api .............................. SUCCESS [  0.116 s]
+[INFO] +    referentiel-communes .......................... SUCCESS [  0.115 s]
+[INFO] +    referentiel-pays .............................. SUCCESS [  0.070 s]
+[INFO] +    referentiel-formes-juridiques ................. SUCCESS [  0.051 s]
+[INFO] +    referentiel-etat-civil ........................ SUCCESS [  0.064 s]
+[INFO] +    referentiel-professions ....................... SUCCESS [  0.069 s]
+[INFO] +    referentiel-categorie-socioprofessionnelles ... SUCCESS [  0.064 s]
+[INFO] +    referentiel-couverture ........................ SUCCESS [  0.083 s]
+[INFO] +    referentiels-ofs .............................. SUCCESS [  0.100 s]
+[INFO] +    referentiel-integration-tests ................. SUCCESS [  0.085 s]
+[INFO] +    referentiel-soapui-tests ...................... SUCCESS [  0.015 s]
+[INFO] +    DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS - Lot de deploiement SUCCESS [  0.016 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.036 s
+[INFO] Finished at: 2021-12-23T15:38:08+01:00
+[INFO] ------------------------------------------------------------------------

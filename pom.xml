@@ -269,7 +269,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>27.0-jre</version>
+				<version>31.0.1-jre</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jvnet.jaxb2_commons</groupId>
@@ -289,7 +289,7 @@
 			<dependency>
 				<groupId>com.thoughtworks.xstream</groupId>
 				<artifactId>xstream</artifactId>
-				<version>1.4.11.1</version>
+				<version>1.4.18</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.jws</groupId>
@@ -354,7 +354,7 @@
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
-				<version>1.2.16</version>
+				<version>1.2.17</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -406,7 +406,7 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.10</version>
+				<version>4.13.2</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
