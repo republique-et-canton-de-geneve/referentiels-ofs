@@ -26,6 +26,10 @@
 			<artifactId>geronimo-interceptor_3.0_spec</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>javax.jws-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 		</dependency>
