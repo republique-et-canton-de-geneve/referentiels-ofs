@@ -197,6 +197,11 @@
 					<version>0.8.7</version>
 				</plugin>
 				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.9.1.2184</version>
+				</plugin>
+				<plugin>
 					<groupId>com.smartbear.soapui</groupId>
 					<artifactId>soapui-maven-plugin</artifactId>
 					<version>${soapui.version}</version>

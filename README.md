@@ -1,9 +1,27 @@
+Build GitHub :
+
+[![Build with GitHub](https://github.com/republique-et-canton-de-geneve/referentiels-ofs/actions/workflows/maven.yml/badge.svg)](https://github.com/republique-et-canton-de-geneve/referentiels-ofs/actions/workflows/maven.yml)
+
+Analyse SonarCloud :
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=republique-et-canton-de-geneve_referentiels-ofs&metric=bugs)](https://sonarcloud.io/dashboard?id=republique-et-canton-de-geneve_referentiels-ofs)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=republique-et-canton-de-geneve_referentiels-ofs&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=republique-et-canton-de-geneve_referentiels-ofs)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=republique-et-canton-de-geneve_referentiels-ofs&metric=code_smells)](https://sonarcloud.io/dashboard?id=republique-et-canton-de-geneve_referentiels-ofs)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=republique-et-canton-de-geneve_referentiels-ofs&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=republique-et-canton-de-geneve_referentiels-ofs)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=republique-et-canton-de-geneve_referentiels-ofs&metric=coverage)](https://sonarcloud.io/dashboard?id=republique-et-canton-de-geneve_referentiels-ofs)
+
+Licence :
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/why-affero-gpl.html)
+
+# Présentation
+
+## Introduction
+
 En Suisse, l'Office fédéral de la statistique (OFS) est un service national mettant à disposition des données statistiques
 publiques.
 Parmi les données publiées, il met à disposition des référentiels (ou nomenclatures) utilisés pour la constitution
 des fichiers de statistiques, permettant ainsi de créer une base référentielle des données statistiques.
-
-# Présentation
 
 ## Référentiels et nomenclatures
 
