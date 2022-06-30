@@ -14,6 +14,17 @@ Licence :
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/why-affero-gpl.html)
 
+# AVERTISSEMENT
+
+Migration du groupId `org.sdmxsource` vers le groupId `com.epam.deltix`
+tentée, mais pas achevée, voir la branche `migration-vers-com-epam-deltix`.
+En version open source sur GitHub, cette migration est désormais nécessaire car les dépendances Maven
+sur le groupId `org.sdmxsource` ne sont plus disponibles, le dépôt Maven de SdmxSource n'étant 
+plus accessible et les JAR n'étant pas dans Maven Central.
+
+Pour en savoir plus, voir le début de ce fichier `README.md` sur la branche `migration-vers-com-epam-deltix`.
+
+
 # Présentation
 
 ## Introduction
