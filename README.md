@@ -1,3 +1,17 @@
+**ATTENTION, TRAVAIL INACHEVE**
+
+Selon ticket Jira OPENSRC-163, les dépendances aux JAR de SDMX ont été migrées de
+du groupId `org.sdmxsource` (en version 1.0.5) vers le groupId 'com.epam.deltix'
+(en version 1.6.23).
+
+Ce travail est interrompu : non seulement de nombreux `@Override` avec une implémentation
+vide ont été ajoutés, mais on tombe sur une erreur de compilation
+`incompatible types: java.lang.String cannot be converted to org.sdmxsource.sdmx.api.model.beans.reference.MaintainableRefBean`
+dans la classe `AgencyMetadataImpl`.
+La migration demande clairement une certaine connaissance des API utilisés. 
+
+
+
 Build GitHub :
 
 [![Build with GitHub](https://github.com/republique-et-canton-de-geneve/referentiels-ofs/actions/workflows/maven.yml/badge.svg)](https://github.com/republique-et-canton-de-geneve/referentiels-ofs/actions/workflows/maven.yml)
@@ -64,7 +78,7 @@ Par conséquent, la mise en oeuvre du composant repose sur une copie locale des f
 
 ## Choix de la branche
 Par défaut, choisir la branche `master` : elle contient les sources à jour et produit un livrable .war
-utilisable sur un serveur Tomcat en Java 8.
+utilisable sur un serveur Tomcat en Java 11.
 
 Pour les besoins de l'État de Genève, une branche temporaire `java6` a été créée : elle produit un livrable .ear
 contenant le .war et destiné au déploiement sur un serveur JBoss 5.1 en Java 6.

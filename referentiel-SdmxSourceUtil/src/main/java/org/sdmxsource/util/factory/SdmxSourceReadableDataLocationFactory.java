@@ -112,6 +112,21 @@ public class SdmxSourceReadableDataLocationFactory implements ReadableDataLocati
 				}
 			}
 		}
+
+		@Override
+		protected Object clone() throws CloneNotSupportedException {
+			return new CloneNotSupportedException(getClass() + " : cloning not implemented");
+		}
+
+		@Override
+		public boolean isClosed() {
+			return false;
+		}
+
+		@Override
+		public ReadableDataLocation copy() {
+			return null;
+		}
 	}
 	
 	@Override

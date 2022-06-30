@@ -81,15 +81,9 @@
 		<module>DGSI.SERVICESCOMMUNS.REFERENTIELS.LOT.TPS</module>
 	</modules>
 
-	<repositories>
-		<repository>
-			<id>sdmx</id>
-			<url>https://sdmxsource.metadatatechnology.com/nexus/content/repositories/releases/</url>
-		</repository>
-	</repositories>
-
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<sdmx.version>1.6.23</sdmx.version>
 		<soapui.version>5.2.1</soapui.version>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../referentiel-couverture/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<spring.version>4.3.21.RELEASE</spring.version>
@@ -247,22 +241,22 @@
 		<dependencies>
 			<!-- Dépendances "compile" -->
 			<dependency>
-				<groupId>org.sdmxsource</groupId>
+				<groupId>com.epam.deltix</groupId>
 				<artifactId>SdmxApi</artifactId>
-				<version>1.0.5</version>
+				<version>${sdmx.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.sdmxsource</groupId>
+				<groupId>com.epam.deltix</groupId>
 				<artifactId>SdmxStructureParser</artifactId>
-				<version>1.0.5</version>
+				<version>${sdmx.version}</version>
 				<exclusions>
 					<exclusion>
+						<groupId>com.epam.deltix</groupId>
 						<artifactId>SdmxEdiParser</artifactId>
-						<groupId>org.sdmxsource</groupId>
 					</exclusion>
 					<exclusion>
+						<groupId>com.epam.deltix</groupId>
 						<artifactId>SdmxQueryBuilder</artifactId>
-						<groupId>org.sdmxsource</groupId>
 					</exclusion>
 				</exclusions>
 			</dependency>

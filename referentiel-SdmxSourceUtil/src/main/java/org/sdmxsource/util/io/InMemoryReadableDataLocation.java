@@ -104,4 +104,15 @@ public class InMemoryReadableDataLocation implements ReadableDataLocation {
 	public void close() {
 		this.bytes = null;
 	}
+
+	@Override
+	public boolean isClosed() {
+		return false;
+	}
+
+	@Override
+	public ReadableDataLocation copy() {
+		return null;
+	}
+
 }

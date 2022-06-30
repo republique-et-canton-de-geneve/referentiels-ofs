@@ -59,6 +59,7 @@ import org.sdmxsource.sdmx.api.model.superbeans.codelist.HierarchicalCodelistSup
 import org.sdmxsource.sdmx.api.model.superbeans.conceptscheme.ConceptSchemeSuperBean;
 import org.sdmxsource.sdmx.api.model.superbeans.datastructure.DataStructureSuperBean;
 import org.sdmxsource.sdmx.api.model.superbeans.datastructure.DataflowSuperBean;
+import org.sdmxsource.sdmx.api.model.superbeans.metadata.MetadataStructureSuperBean;
 import org.sdmxsource.sdmx.api.model.superbeans.process.ProcessSuperBean;
 import org.sdmxsource.sdmx.api.model.superbeans.registry.ProvisionAgreementSuperBean;
 import org.sdmxsource.sdmx.api.model.superbeans.registry.RegistrationSuperBean;
@@ -327,4 +328,18 @@ public class SuperBeansImpl implements SuperBeans{
 		returnSet.addAll(this.registrations);
 		return returnSet;
 	}
+
+	@Override
+	public void addMetadataStructure(MetadataStructureSuperBean metadataStructureSuperBean) {
+	}
+
+	@Override
+	public void removeMetadataStructure(MetadataStructureSuperBean metadataStructureSuperBean) {
+	}
+
+	@Override
+	public Set<MetadataStructureSuperBean> getMetadataStructures() {
+		return null;
+	}
+
 }

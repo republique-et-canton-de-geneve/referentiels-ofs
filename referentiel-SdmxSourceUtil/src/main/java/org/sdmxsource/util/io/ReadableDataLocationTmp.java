@@ -141,5 +141,15 @@ public class ReadableDataLocationTmp implements ReadableDataLocation {
 	public String toString() {
 		return uri.toString();
 	}
-	
+
+	@Override
+	public boolean isClosed() {
+		return false;
+	}
+
+	@Override
+	public ReadableDataLocation copy() {
+		return null;
+	}
+
 }

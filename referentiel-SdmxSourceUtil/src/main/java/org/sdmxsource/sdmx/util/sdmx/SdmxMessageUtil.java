@@ -80,7 +80,6 @@ import org.sdmxsource.sdmx.util.exception.ParseException;
 import org.sdmxsource.sdmx.util.stax.StaxUtil;
 import org.sdmxsource.util.io.StreamUtil;
 
-
 public class SdmxMessageUtil {
 
 
@@ -101,7 +100,7 @@ public class SdmxMessageUtil {
 						errorCode = SDMX_ERROR_CODE.parseClientCode(Integer.parseInt(code));
 					} else if(nodeName.equals("Text")) {
 						if(errorCode == null) {
-							errorCode = SDMX_ERROR_CODE.INTERNAL_SERVER_ERRROR;
+							errorCode = SDMX_ERROR_CODE.INTERNAL_SERVER_ERROR;
 						}
 						switch(errorCode) {
 						case NO_RESULTS_FOUND :	throw new SdmxNoResultsException(parser.getElementText());
@@ -112,7 +111,7 @@ public class SdmxMessageUtil {
 						case SYNTAX_ERROR :	throw new SdmxSyntaxException(parser.getElementText());
 						case RESPONSE_SIZE_EXCEEDS_SERVICE_LIMIT :	throw new SdmxResponseSizeExceedsLimitException(parser.getElementText());
 						case RESPONSE_TOO_LARGE :	throw new SdmxResponseTooLargeException(parser.getElementText());
-						case INTERNAL_SERVER_ERRROR :	throw new SdmxInternalServerException(parser.getElementText());
+						case INTERNAL_SERVER_ERROR:	throw new SdmxInternalServerException(parser.getElementText());
 						default : throw new SdmxException(parser.getElementText(), errorCode);
 						}
 					}
@@ -131,7 +130,6 @@ public class SdmxMessageUtil {
 	 * The URI is inferred by the namespaces declared in the root element of the document.
 	 * <br/>
 	 * This will throw an error if there is no way of determining the schema version 	 
-	 * @param uri
 	 * @return
 	 */
 	public static SDMX_SCHEMA getSchemaVersion(ReadableDataLocation sourceData) throws ParseException {
@@ -246,8 +244,6 @@ public class SdmxMessageUtil {
 
 	/**
 	 * Returns MESSAGE_TYPE for the URI.  This is determined from the root node.
-	 * 
-	 * @param uri
 	 * @return MESSAGE_TYPE
 	 */
 	public static MESSAGE_TYPE getMessageType(ReadableDataLocation sourceData) {
@@ -309,7 +305,6 @@ public class SdmxMessageUtil {
 	 *	<li>SUBMIT SUBSCRIPTION RESPONSE</li>
 	 *	<li>NOTIFY REGISTRY EVENT</li>
 	 * </ul>
-	 * @param uri
 	 * @return
 	 */
 	public static REGISTRY_MESSAGE_TYPE getRegistryMessageType(ReadableDataLocation sourceData) {
@@ -404,8 +399,6 @@ public class SdmxMessageUtil {
 
 	/**
 	 * Retruns the dataset action
-	 * @param uri
-	 * @return
 	 */
 	public static DATASET_ACTION getDataSetAction(ReadableDataLocation sourceData) {
 		//		if(!XmlUtil.isXML(uri)) {

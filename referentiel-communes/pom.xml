@@ -113,12 +113,12 @@
 			<artifactId>javax.jws-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.sdmxsource</groupId>
+			<groupId>com.epam.deltix</groupId>
 			<artifactId>SdmxStructureParser</artifactId>
 			<exclusions>
 				<exclusion>
+					<groupId>com.epam.deltix</groupId>
 					<artifactId>SdmxEdiParser</artifactId>
-					<groupId>org.sdmxsource</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>

@@ -53,6 +53,7 @@ import java.io.OutputStream;
 import java.net.URI;
 
 import org.sdmxsource.sdmx.api.exception.SdmxException;
+import org.sdmxsource.sdmx.api.util.ReadableDataLocation;
 import org.sdmxsource.sdmx.api.util.WriteableDataLocation;
 
 public class OverflowWriteableDataLocation implements WriteableDataLocation {
@@ -202,4 +203,15 @@ public class OverflowWriteableDataLocation implements WriteableDataLocation {
 	public static long getMaxMemory() {
 		return maxMemory;
 	}
+
+	@Override
+	public boolean isClosed() {
+		return false;
+	}
+
+	@Override
+	public ReadableDataLocation copy() {
+		return null;
+	}
+
 }

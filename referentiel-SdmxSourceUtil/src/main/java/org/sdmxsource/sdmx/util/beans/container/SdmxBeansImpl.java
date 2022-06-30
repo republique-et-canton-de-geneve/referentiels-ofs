@@ -933,11 +933,13 @@ public class SdmxBeansImpl implements SdmxBeans {
 	public Set<AttachmentConstraintBean> getAttachmentConstraints(String agencyId) {
 		return new AgencyFilter<AttachmentConstraintBean>().filterSet(agencyId, attachmentConstraints);
 	}
-	
+
+	/*
 	@Override
 	public Set<AgencySchemeBean> getAgenciesSchemes(String agencyId) {
 		return new AgencyFilter<AgencySchemeBean>().filterSet(agencyId, agencySchemes);
 	}
+	 */
 
 	@Override
 	public Set<ContentConstraintBean> getContentConstraintBeans(String agencyId) {
@@ -949,20 +951,24 @@ public class SdmxBeansImpl implements SdmxBeans {
 		return new AgencyFilter<OrganisationUnitSchemeBean>().filterSet(agencyId, organisationUnitSchemes);
 	}
 
+	/*
 	@Override
 	public Set<DataConsumerSchemeBean> getDataConsumerSchemes(String agencyId) {
 		return new AgencyFilter<DataConsumerSchemeBean>().filterSet(agencyId, dataConsumerSchemes);
 	}
+	 */
 
 	@Override
 	public Set<DataflowBean> getDataflows(String agencyId) {
 		return new AgencyFilter<DataflowBean>().filterSet(agencyId, dataflows);
 	}
 
+	/*
 	@Override
 	public Set<DataProviderSchemeBean> getDataProviderSchemes(String agencyId) {
 		return new AgencyFilter<DataProviderSchemeBean>().filterSet(agencyId, dataProviderSchemes);
 	}
+	*/
 
 	@Override
 	public Set<MetadataFlowBean> getMetadataflows(String agencyId) {
@@ -1037,6 +1043,21 @@ public class SdmxBeansImpl implements SdmxBeans {
 	@Override
 	public Set<AgencyBean> getAgencies(MaintainableRefBean ref) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AgencySchemeBean getAgencyScheme(String s) {
+		return null;
+	}
+
+	@Override
+	public DataConsumerSchemeBean getDataConsumerScheme(String s) {
+		return null;
+	}
+
+	@Override
+	public DataProviderSchemeBean getDataProviderScheme(String s) {
 		return null;
 	}
 

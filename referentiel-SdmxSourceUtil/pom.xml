@@ -17,7 +17,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.sdmxsource</groupId>
+			<groupId>com.epam.deltix</groupId>
 			<artifactId>SdmxApi</artifactId>
 		</dependency>
 		<dependency>
