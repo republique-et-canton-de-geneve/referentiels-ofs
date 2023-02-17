@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ch.ge.cti.ct.referentiels.ofs;
+package ch.ge.cti.ct.referentiels.ofs; 
 
 import org.slf4j.Logger;
 
