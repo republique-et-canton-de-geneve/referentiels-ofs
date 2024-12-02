@@ -92,7 +92,7 @@
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<soapui.version>5.2.1</soapui.version>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../referentiel-couverture/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-		<spring.version>4.3.21.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 	</properties>
 
 	<build>
